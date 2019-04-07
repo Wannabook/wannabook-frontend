@@ -1,18 +1,18 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const distFolder = "dist";
+const distFolder = 'dist';
 
 module.exports = {
-  entry: { main: "./src/index.js" },
+  entry: { main: './src/index.js' },
   output: {
     path: path.resolve(__dirname, distFolder),
-    filename: "[name].[hash].js",
-    chunkFilename: "[name].js"
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].js',
   },
   module: {
     rules: [
@@ -20,22 +20,22 @@ module.exports = {
         test: /\.js|jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
+          'style-loader',
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
-        ]
-      }
-    ]
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ['*', '.js', '.jsx'],
   },
   optimization: {
     splitChunks: {
@@ -44,31 +44,31 @@ module.exports = {
         vendors: false,
         vendor: {
           // sync + async chunks
-          chunks: "all",
+          chunks: 'all',
           // import file path containing node_modules
           test: /node_modules/,
-          name: "vendor"
-        }
-      }
-    }
+          name: 'vendor',
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       hash: true,
-      template: "./public/index.html",
-      filename: "index.html"
+      template: './public/index.html',
+      filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: 'style.css',
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new WebpackMd5Hash(),
-    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     hot: true,
-    open: true
-  }
+    open: true,
+  },
 };
