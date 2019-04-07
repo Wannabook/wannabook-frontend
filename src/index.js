@@ -1,37 +1,40 @@
-// you can play with these styles and see how ESLint behaves
-let fooBar = bar;
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import loadable from 'react-loadable';
 
-const a = (...arr) => {
-  let b = 5;
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Link to="/">Page 1</Link>
+        <Link to="/page2">Page 2</Link>
 
-  return arr.filter(x => x === b);
-};
-
-function something(arg1, arg2) {
-  if (fooBar == 9) {
-    let c = arg1 === 3 ? 4 : 3;
-
-    console.warn("something");
-
-    const arr = [
-      "something",
-      a(),
-      "someone else",
-      "some long string here too",
-      "and one more"
-    ];
-
-    return {
-      line: arr && c,
-      flagged: true,
-      something: { inside: true }
-    };
+        <Route
+          path="/"
+          exact
+          component={createAsyncComponent('./routes/Page1')}
+        />
+        <Route
+          path="/page2"
+          component={createAsyncComponent('./routes/Page2')}
+        />
+      </div>
+    );
   }
-
-  something(
-    "some very long string argument",
-    "some very very very long string argument 2"
-  );
 }
 
-something();
+const createAsyncComponent = url =>
+  loadable({
+    loader: () => import(`${url}`),
+    loading: () => <p>Loading...</p>,
+  });
+
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('app')
+);
+
+module.hot.accept();

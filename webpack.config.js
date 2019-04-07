@@ -37,25 +37,10 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-        vendors: false,
-        vendor: {
-          // sync + async chunks
-          chunks: 'all',
-          // import file path containing node_modules
-          test: /node_modules/,
-          name: 'vendor',
-        },
-      },
-    },
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      inject: true,
+      inject: 'body',
       hash: true,
       template: './public/index.html',
       filename: 'index.html',
@@ -69,6 +54,8 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
-    open: true,
+    open: false,
+    historyApiFallback: true,
   },
+  devtool: 'eval-source-map',
 };
