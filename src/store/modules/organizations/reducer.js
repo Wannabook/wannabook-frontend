@@ -4,6 +4,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   if (action.type === LOAD_ORGANIZATIONS_SUCCESS) {
     return handleLoadOrganizationsSuccess(state, action);
   }
+
+  return state;
 }
 
 const handleLoadOrganizationsSuccess = (state, { payload }) => {
