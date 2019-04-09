@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import loadable from 'react-loadable';
 
 class App extends React.Component {
@@ -31,9 +33,11 @@ const createAsyncComponent = url =>
   });
 
 render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('app')
 );
 
