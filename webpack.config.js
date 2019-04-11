@@ -12,6 +12,7 @@ module.exports = {
   entry: { main: './src/index.js' },
   output: {
     path: path.resolve(__dirname, distFolder),
+    publicPath: '/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].js',
   },
@@ -56,7 +57,6 @@ module.exports = {
     new WebpackMd5Hash(),
   ],
   devServer: {
-    contentBase: './dist',
     hot: true,
     open: false,
     historyApiFallback: true,
