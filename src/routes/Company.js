@@ -1,7 +1,8 @@
 import React from 'react';
 
-export default class Companies extends React.Component {
+export default class Company extends React.Component {
   render() {
-    return <div>Companies page is here!</div>;
+    console.warn('this.props', this.props);
+    return <div>Gorod Krasoty page</div>;
   }
 }

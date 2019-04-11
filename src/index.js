@@ -12,6 +12,9 @@ class App extends React.Component {
       <div>
         <Link to="/">Home</Link>
         <Link to="/companies">Companies</Link>
+        <Link to="/company/123456">Gorod Krasoty</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/user/123456">User Pasha</Link>
 
         <Switch>
           <Route
@@ -22,6 +25,18 @@ class App extends React.Component {
           <Route
             path="/companies"
             component={createAsyncComponent('./routes/Companies')}
+          />
+          <Route
+            path="/company/:id"
+            component={createAsyncComponent('./routes/Company')}
+          />
+          <Route
+            path="/user/:id"
+            component={createAsyncComponent('./routes/User')}
+          />
+          <Route
+            path="/login"
+            component={createAsyncComponent('./routes/Login')}
           />
           <Route component={createAsyncComponent('./routes/NotFound')} />
         </Switch>

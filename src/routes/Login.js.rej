@@ -1,0 +1,4 @@
+diff a/src/routes/Login.js b/src/routes/Login.js	(rejected hunks)
+@@ -5 +5 @@ export default class User extends React.Component {
+-    console.warn('this.props', this.props)
++    console.warn('this.props', this.props);
