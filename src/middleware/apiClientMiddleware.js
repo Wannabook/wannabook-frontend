@@ -48,8 +48,6 @@ export default function apiClientMiddleware({ getState }) {
         },
         payload: error,
       });
-
-      return reject(error);
     };
     const request = apiRequest(client)
       .then(handleSuccess)

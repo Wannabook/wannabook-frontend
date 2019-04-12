@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-
+import OrganizationsList from '../components/OrganizationsList';
 export default class Page1 extends React.Component {
   handleClick = () => {
     console.log('Ilya');
@@ -8,11 +8,14 @@ export default class Page1 extends React.Component {
 
   render() {
     return (
-      <div className="scss-test">
-        <p className="scss-test scss-test--modifier">
-          Here is page 1 and it should be yellow
-        </p>
-        <button onClick={this.handleClick}>Click me</button>
+      <div>
+        <OrganizationsList />
+        <div className="scss-test">
+          <p className="scss-test scss-test--modifier">
+            Here is page 1 and it should be yellow
+          </p>
+          <button onClick={this.handleClick}>Click me</button>
+        </div>
       </div>
     );
   }

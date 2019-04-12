@@ -5,10 +5,12 @@ export default class ApiClient {
         {
           id: 1,
           name: 'Google',
+          description: 'Google description',
         },
         {
           id: 2,
           name: 'Facebook',
+          description: 'Facebook description',
         },
       ],
       '/users': [
