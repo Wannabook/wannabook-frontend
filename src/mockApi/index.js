@@ -1,1 +1,1 @@
-export apiRequest from './apiRequest';
+export ApiClient from './ApiClient';

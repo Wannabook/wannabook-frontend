@@ -33,6 +33,7 @@ const handleLoadOrganizationsSuccess = (state, { payload }) => {
     ...state,
     loading: false,
     loaded: true,
+    error: '',
     records: [...payload],
   };
 };

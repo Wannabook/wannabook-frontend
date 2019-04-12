@@ -1,12 +1,17 @@
-import { apiRequest } from '../mockApi';
+import { ApiClient } from '../mockApi';
 
 export default function apiClientMiddleware({ getState }) {
   return next => action => {
-    const { meta, metas, types, ...rest } = action;
+    const { apiRequest, meta, metas, types, ...rest } = action;
+    if (!apiRequest) {
+      return next(action);
+    }
 
     const [REQUEST, SUCCESS, FAILURE] = types;
     const [requestMeta, successMeta, failureMeta] = metas || [];
     let resolved = false;
+
+    const client = new ApiClient();
 
     const handleSuccess = response => {
       if (resolved) {
@@ -46,7 +51,7 @@ export default function apiClientMiddleware({ getState }) {
 
       return reject(error);
     };
-    const request = apiRequest()
+    const request = apiRequest(client)
       .then(handleSuccess)
       .catch(handleFailure);
 
