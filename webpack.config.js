@@ -39,6 +39,20 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all',
+      name: true,
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
@@ -51,10 +65,15 @@ module.exports = {
       filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: '[name].style.css',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new WebpackMd5Hash(),
+    new webpack.HashedModuleIdsPlugin({
+      hashFunction: 'md4',
+      hashDigest: 'base64',
+      hashDigestLength: 8,
+    }),
   ],
   devServer: {
     hot: true,

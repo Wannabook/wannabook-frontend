@@ -47,7 +47,7 @@ class App extends React.Component {
 
 const createAsyncComponent = url =>
   loadable({
-    loader: () => import(`${url}`),
+    loader: () => import(/* webpackChunkName: "[request][index]" */ `${url}`),
     loading: () => <p>Loading...</p>,
   });
 
