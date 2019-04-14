@@ -1,6 +1,9 @@
 import React from 'react';
-import './style.scss';
+
 import OrganizationsList from '../components/OrganizationsList';
+
+import './style.scss';
+
 export default class Page1 extends React.Component {
   handleClick = () => {
     console.log('Ilya');

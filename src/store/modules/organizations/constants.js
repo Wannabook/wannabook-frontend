@@ -1,3 +1,4 @@
+//TODO: Move to common contants
 export const INITIAL_STATE = {
   loading: false,
   loaded: false,

@@ -26,24 +26,19 @@ export default class OrganizationsList extends Component {
       loaded && (
         <div>
           <ul>
-            {organization.map(elem => {
-              return (
-                <li key={elem.id}>
-                  <h3>{elem.name}</h3>
-                  <p>{elem.description}</p>
-                </li>
-              );
-            })}
+            {organization.map(elem => (
+              <li key={elem.id}>
+                <h3>{elem.name}</h3>
+                <p>{elem.description}</p>
+              </li>
+            ))}
           </ul>
         </div>
       )
     );
   }
-  renderError = error => {
-    return <h3>{error}</h3>;
-  };
 
-  renderLoading = () => {
-    return <h3>Loading...</h3>;
-  };
+  renderError = error => <h3>{error}</h3>;
+
+  renderLoading = () => <h3>Loading...</h3>;
 }

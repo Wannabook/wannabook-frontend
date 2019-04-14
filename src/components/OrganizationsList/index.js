@@ -15,11 +15,11 @@ const mapStateToProps = () => {
   };
 };
 
-export function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     loadOrganizations: () => dispatch(loadOrganizations()),
   };
-}
+};
 
 export default connect(
   mapStateToProps,

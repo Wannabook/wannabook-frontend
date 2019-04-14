@@ -25,6 +25,7 @@ const handleLoadOrganizations = state => {
   return {
     ...state,
     loading: true,
+    loaded: false,
   };
 };
 
