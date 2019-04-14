@@ -1,16 +1,49 @@
-import { INITIAL_STATE, LOAD_ORGANIZATIONS_SUCCESS } from './constants';
+import {
+  INITIAL_STATE,
+  LOAD_ORGANIZATIONS,
+  LOAD_ORGANIZATIONS_SUCCESS,
+  LOAD_ORGANIZATIONS_FAILURE,
+} from './constants';
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
-  if (action.type === LOAD_ORGANIZATIONS_SUCCESS) {
-    return handleLoadOrganizationsSuccess(state, action);
-  }
+  switch (action.type) {
+    case LOAD_ORGANIZATIONS:
+      return handleLoadOrganizations(state);
 
-  return state;
+    case LOAD_ORGANIZATIONS_SUCCESS:
+      return handleLoadOrganizationsSuccess(state, action);
+
+    case LOAD_ORGANIZATIONS_FAILURE:
+      return handleLoadOrganizationsFailure(state, action);
+
+    default:
+      return state;
+  }
 }
+
+const handleLoadOrganizations = state => {
+  return {
+    ...state,
+    loading: true,
+    loaded: false,
+  };
+};
 
 const handleLoadOrganizationsSuccess = (state, { payload }) => {
   return {
     ...state,
+    loading: false,
+    loaded: true,
+    error: '',
     records: [...payload],
+  };
+};
+
+const handleLoadOrganizationsFailure = (state, { payload }) => {
+  return {
+    ...state,
+    loading: false,
+    loaded: false,
+    error: payload,
   };
 };
