@@ -4,3 +4,5 @@ dist/
 build/
 temp/
 .env
+.env.development
+.env.staging
