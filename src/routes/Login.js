@@ -1,7 +1,29 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends React.Component {
+  state = {
+    loggedIn: !!localStorage.getItem('auth'),
+  };
+
+  handleLogin = () => {
+    localStorage.setItem('auth', true);
+    this.setState({ loggedIn: true });
+  };
+
+  renderRedirect = () => {
+    if (this.state.loggedIn) {
+      return <Redirect to="/" />;
+    }
+  };
+
   render() {
-    return <div>Login page</div>;
+    return (
+      <React.Fragment>
+        <div>Login page</div>
+        {this.renderRedirect()}
+        <button onClick={this.handleLogin}>Log in</button>
+      </React.Fragment>
+    );
   }
 }
