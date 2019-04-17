@@ -6,6 +6,10 @@ import store from './store';
 import loadable from 'react-loadable';
 
 class App extends React.Component {
+  componentDidMount() {
+    console.log('process.env.API_URL', process.env.API_URL);
+  }
+
   render() {
     return (
       <div>
