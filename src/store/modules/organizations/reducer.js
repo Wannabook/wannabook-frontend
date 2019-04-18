@@ -1,3 +1,5 @@
+import { handleActions } from 'redux-actions';
+
 import {
   INITIAL_STATE,
   LOAD_ORGANIZATIONS,
@@ -5,21 +7,18 @@ import {
   LOAD_ORGANIZATIONS_FAILURE,
 } from './constants';
 
-export default function reducer(state = INITIAL_STATE, action = {}) {
-  switch (action.type) {
-    case LOAD_ORGANIZATIONS:
-      return handleLoadOrganizations(state);
+const reducer = handleActions(
+  {
+    [LOAD_ORGANIZATIONS]: state => handleLoadOrganizations(state),
 
-    case LOAD_ORGANIZATIONS_SUCCESS:
-      return handleLoadOrganizationsSuccess(state, action);
+    [LOAD_ORGANIZATIONS_SUCCESS]: (state, { payload }) =>
+      handleLoadOrganizationsSuccess(state, { payload }),
 
-    case LOAD_ORGANIZATIONS_FAILURE:
-      return handleLoadOrganizationsFailure(state, action);
-
-    default:
-      return state;
-  }
-}
+    [LOAD_ORGANIZATIONS_FAILURE]: (state, { payload }) =>
+      handleLoadOrganizationsFailure(state, { payload }),
+  },
+  INITIAL_STATE
+);
 
 const handleLoadOrganizations = state => {
   return {
@@ -47,3 +46,5 @@ const handleLoadOrganizationsFailure = (state, { payload }) => {
     error: payload,
   };
 };
+
+export default reducer;
