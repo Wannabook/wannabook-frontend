@@ -12,3 +12,10 @@ This is a repo for Wannabook frontend
 ### Architecture and tech stack
 
 We use [the following technologies and architecture](https://docs.google.com/document/d/1bBVGc3HTySaMOgyjPUMZxbyz2gxKqtI6KeDokjYyR_Y/edit#).
+
+### Environment variables
+`.env` files are in the root directory of the project. There are three of them: for development, staging and production. 
+
+Any values you put there will be available in the source code via `process.env.SOMETHING`, where `SOMETHING` is the key in the respective `.env` file.
+
+The `scripts` section in `package.json` contains commands where we specify which environment we want to run in.

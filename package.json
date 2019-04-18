@@ -4,8 +4,9 @@
   "description": "This is a repo for Wannabook frontend",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production --env.ENVIRONMENT=production",
+    "staging": "webpack --mode production --env.ENVIRONMENT=staging",
+    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -41,6 +42,7 @@
     "babel-runtime": "6.26.0",
     "clean-webpack-plugin": "2.0.1",
     "css-loader": "2.1.1",
+    "dotenv": "7.0.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",
