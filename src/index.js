@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import loadable from 'react-loadable';
 import { Normalize } from 'styled-normalize';
+
 import Header from './components/Header';
-// import 'semantic-ui-css/semantic.min.css';
+
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,6 +19,8 @@ class App extends React.Component {
     return (
       <>
         <Normalize />
+        {/*We should abstract away this header and its contents into a separate component*/}
+        {/*Same with the list of routes that I'm now doing. This list should be somewhere in a separate place */}
         <Header>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>

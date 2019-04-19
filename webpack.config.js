@@ -50,7 +50,7 @@ module.exports = env => {
           },
         },
         {
-          test: /\.scss$/,
+          test: /\.(scss|sass|css)$/,
           use: [
             devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
@@ -60,6 +60,10 @@ module.exports = env => {
               loader: 'sass-loader',
             },
           ],
+        },
+        {
+          test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+          loader: 'url-loader',
         },
       ],
     },
