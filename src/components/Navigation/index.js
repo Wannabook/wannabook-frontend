@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 
-import IconExampleDisabled from '../Icon';
-
 const StyledMobileBar = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 60px;
   padding: 0 10px;
@@ -84,7 +83,32 @@ const Humburger = styled.div`
   }
 `;
 
-const UserIcon = () => <Icon name="user outline" />;
+const StyledIcon = styled(Icon)`
+  margin: 0 !important;
+  margin-top: 5px !important;
+  font-size: 28px !important;
+`;
+
+const links = [
+  {
+    url: '/',
+    linkText: 'Home',
+  },
+  {
+    url: '/about',
+    linkText: 'About',
+  },
+  {
+    url: '/news',
+    linkText: 'News',
+  },
+  {
+    url: '/contacts',
+    linkText: 'Contacts',
+  },
+];
+
+const UserIcon = () => <StyledIcon name="user outline" />;
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -102,18 +126,11 @@ const Navigation = () => {
         <UserIcon />
       </StyledMobileBar>
       <StyledMenu open={open} className="menu">
-        <StyleMenuItem>
-          <StyledLink to="/">Home</StyledLink>
-        </StyleMenuItem>
-        <StyleMenuItem>
-          <StyledLink to="/about">About</StyledLink>
-        </StyleMenuItem>
-        <StyleMenuItem>
-          <StyledLink to="/news">News</StyledLink>
-        </StyleMenuItem>
-        <StyleMenuItem>
-          <StyledLink to="/contacts">Contacts</StyledLink>
-        </StyleMenuItem>
+        {links.map(link => (
+          <StyleMenuItem>
+            <StyledLink to={link.url}>{link.linkText}</StyledLink>
+          </StyleMenuItem>
+        ))}
       </StyledMenu>
     </nav>
   );
