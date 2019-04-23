@@ -10,32 +10,28 @@ import Loading from './components/Loading';
 
 import store from './store';
 
+import 'semantic-ui-css/semantic.min.css';
+
 // TODO: Do we need withRouter anywhere here?
 class App extends React.Component {
+  componentDidMount() {
+    console.log('process.env.API_URL', process.env.API_URL);
+  }
+
   render() {
     return (
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/companies">Companies</Link>
-          </li>
-          <li>
-            <Link to="/company/123456">Gorod Krasoty</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/logout">Log out</Link>
-          </li>
-          <li>
-            <Link to="/user/123456">User Pasha</Link>
-          </li>
-        </ul>
-
+      <>
+        <Normalize />
+        {/*We should abstract away this header and its contents into a separate component*/}
+        {/*Same with the list of routes that I'm now doing. This list should be somewhere in a separate place */}
+        <Header>
+          <Link to="/">Home</Link>
+          <Link to="/companies">Companies</Link>
+          <Link to="/company/123456">Gorod Krasoty</Link>
+          <Link to="/user/123456">User Pasha</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/logout">Log out</Link>
+        </Header>
         <Switch>
           <Route
             path="/"
@@ -64,7 +60,7 @@ class App extends React.Component {
           />
           <Route component={createAsyncComponent('./routes/NotFound')} />
         </Switch>
-      </div>
+      </>
     );
   }
 }
