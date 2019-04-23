@@ -106,13 +106,19 @@ const Navigation = () => {
           <StyledLink to="/">Home</StyledLink>
         </StyleMenuItem>
         <StyleMenuItem>
-          <StyledLink to="/about">About</StyledLink>
+          <StyledLink to="/companies">Companies</StyledLink>
         </StyleMenuItem>
         <StyleMenuItem>
-          <StyledLink to="/news">News</StyledLink>
+          <StyledLink to="/company/123456">Gorod Krasoty</StyledLink>
         </StyleMenuItem>
         <StyleMenuItem>
-          <StyledLink to="/contacts">Contacts</StyledLink>
+          <StyledLink to="/user/123456">User Pasha</StyledLink>
+        </StyleMenuItem>
+        <StyleMenuItem>
+          <StyledLink to="/login">Login</StyledLink>
+        </StyleMenuItem>
+        <StyleMenuItem>
+          <StyledLink to="/logout">Log out</StyledLink>
         </StyleMenuItem>
       </StyledMenu>
     </nav>

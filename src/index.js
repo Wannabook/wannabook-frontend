@@ -24,14 +24,7 @@ class App extends React.Component {
         <Normalize />
         {/*We should abstract away this header and its contents into a separate component*/}
         {/*Same with the list of routes that I'm now doing. This list should be somewhere in a separate place */}
-        <Header>
-          <Link to="/">Home</Link>
-          <Link to="/companies">Companies</Link>
-          <Link to="/company/123456">Gorod Krasoty</Link>
-          <Link to="/user/123456">User Pasha</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/logout">Log out</Link>
-        </Header>
+        <Header />
         <Switch>
           <Route
             path="/"
