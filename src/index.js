@@ -3,6 +3,10 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import loadable from 'react-loadable';
+import { Normalize } from 'styled-normalize';
+
+import Header from './components/Header';
+import Loading from './components/Loading';
 
 import store from './store';
 
@@ -68,7 +72,7 @@ class App extends React.Component {
 const createAsyncComponent = url =>
   loadable({
     loader: () => import(/* webpackChunkName: "[request][index]" */ `${url}`),
-    loading: () => <p>Loading...</p>,
+    loading: Loading,
   });
 
 render(
