@@ -14,8 +14,8 @@ const links = [
     linkText: 'Home',
   },
   {
-    url: '/companies',
-    linkText: 'Companies',
+    url: '/categories',
+    linkText: 'Categories',
   },
   {
     url: '/company/123456',

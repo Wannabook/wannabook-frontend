@@ -9,10 +9,6 @@ export default function AppRoutes() {
     <Switch>
       <Route path="/" exact component={createAsyncComponent('./Home')} />
       <Route
-        path="/companies"
-        component={createAsyncComponent('./Companies')}
-      />
-      <Route
         path="/company/:id"
         component={createAsyncComponent('./Company')}
       />
@@ -20,6 +16,10 @@ export default function AppRoutes() {
       <Route
         path="/categories"
         component={createAsyncComponent('./Categories')}
+      />
+      <Route
+        path="/category/:id"
+        component={createAsyncComponent('./Category')}
       />
       <Route
         path="/service/:id"
