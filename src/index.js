@@ -4,6 +4,11 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import loadable from 'react-loadable';
+import { Normalize } from 'styled-normalize';
+
+import Header from './components/Header';
+
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -12,20 +17,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to="/">Page 1</Link>
-        <Link to="/page2">Page 2</Link>
-
+      <>
+        <Normalize />
+        {/*We should abstract away this header and its contents into a separate component*/}
+        {/*Same with the list of routes that I'm now doing. This list should be somewhere in a separate place */}
+        <Header>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </Header>
         <Route
           path="/"
           exact
-          component={createAsyncComponent('./routes/Page1')}
+          component={createAsyncComponent('./routes/Home')}
         />
         <Route
-          path="/page2"
-          component={createAsyncComponent('./routes/Page2')}
+          path="/about"
+          component={createAsyncComponent('./routes/About')}
         />
-      </div>
+      </>
     );
   }
 }
