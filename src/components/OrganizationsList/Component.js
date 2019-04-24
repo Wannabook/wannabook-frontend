@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../../ui-kit/components/Button';
 
 export default class OrganizationsList extends Component {
   static propTypes = {
@@ -33,6 +34,7 @@ export default class OrganizationsList extends Component {
               </li>
             ))}
           </ul>
+          <Button warning>Click here</Button>
         </div>
       )
     );
