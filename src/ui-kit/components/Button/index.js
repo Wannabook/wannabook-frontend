@@ -1,49 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
+import { Button as SemanticButton } from 'semantic-ui-react';
 import styled from 'styled-components';
-import {
-  brandPrimaryColor,
-  secondaryColor,
-  warningColor,
-  white,
-} from '../../theme';
+import { brandPrimaryColor, secondaryColor, white } from '../../theme';
 
-const PrimaryButton = styled(Button)`
+const PrimaryButton = styled(SemanticButton)`
   &&& {
     color: ${white};
     background-color: ${brandPrimaryColor};
   }
 `;
 
-const SecondaryButton = styled(Button)`
+const SecondaryButton = styled(SemanticButton)`
   &&& {
     color: ${white};
     background-color: ${secondaryColor};
   }
 `;
 
-const WarningButton = styled(Button)`
-  &&& {
-    color: ${white};
-    background-color: ${warningColor};
-  }
-`;
+const Button = props => {
+  const { primary, secondary, ...rest } = props;
+  if (primary) return <PrimaryButton {...rest}>{props.children}</PrimaryButton>;
+  if (secondary)
+    return <SecondaryButton {...rest}>{props.children}</SecondaryButton>;
 
-const WNBButton = props => {
-  const { primary, secondary, warning } = props;
-  if (primary) return <PrimaryButton>{props.children}</PrimaryButton>;
-  if (secondary) return <SecondaryButton>{props.children}</SecondaryButton>;
-  if (warning) return <WarningButton>{props.children}</WarningButton>;
-
-  return <Button>{props.children}</Button>;
+  return <SemanticButton {...props}>{props.children}</SemanticButton>;
 };
 
-WNBButton.propTypes = {
+Button.propTypes = {
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
-  warning: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export default WNBButton;
+export default Button;

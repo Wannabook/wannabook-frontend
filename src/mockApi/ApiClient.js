@@ -34,7 +34,7 @@ export class ApiClient {
         Math.random() > 0.2
           ? resolve(this.data[resourceUrl])
           : reject('Something went wrong...');
-      }, 3000);
+      }, 1500);
     });
   }
 }
