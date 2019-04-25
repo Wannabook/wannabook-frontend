@@ -40,7 +40,7 @@ const UserIcon = () => <StyledIcon name="user outline" />;
 const Navigation = () => {
   const [open, setOpen] = useState(false);
   const handleOpenMenu = () => setOpen(!open);
-
+  // todo check why login and logout buttons in menu don't work
   return (
     <nav className="navigation">
       <StyledMobileBar>
