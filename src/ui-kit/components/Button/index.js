@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button as SemanticButton } from 'semantic-ui-react';
 import styled from 'styled-components';
+
 import { brandPrimaryColor, secondaryColor, white } from '../../theme';
 
 const PrimaryButton = styled(SemanticButton)`
