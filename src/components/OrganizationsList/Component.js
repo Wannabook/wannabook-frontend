@@ -14,7 +14,7 @@ export default class OrganizationsList extends Component {
 
   componentDidMount() {
     const { loadOrganizations } = this.props;
-    loadOrganizations();
+    // loadOrganizations();
   }
 
   render() {

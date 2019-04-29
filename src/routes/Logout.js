@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 export default class Logout extends React.Component {
   state = {
-    loggedIn: !!localStorage.getItem('auth'),
+    loggedIn: !!localStorage.getItem('jwtToken'),
   };
 
   handleLogout = () => {
-    localStorage.removeItem('auth');
+    localStorage.removeItem('jwtToken');
     this.setState({ loggedIn: false });
   };
 

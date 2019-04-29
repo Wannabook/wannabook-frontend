@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 export default class Login extends React.Component {
   state = {
-    loggedIn: !!localStorage.getItem('auth'),
+    loggedIn: !!localStorage.getItem('jwtToken'),
   };
 
   handleLogin = () => {
-    localStorage.setItem('auth', true);
+    localStorage.setItem('jwtToken', true);
     this.setState({ loggedIn: true });
   };
 
