@@ -54,7 +54,7 @@ export default function apiClientMiddleware({ getState }) {
       .then(handleSuccess)
       .catch(handleFailure);
 
-    return next({
+    next({
       ...rest,
       type: REQUEST,
       meta: {
@@ -63,5 +63,7 @@ export default function apiClientMiddleware({ getState }) {
       },
       payload: request,
     });
+
+    return request;
   };
 }

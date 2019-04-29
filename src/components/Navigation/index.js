@@ -18,8 +18,8 @@ const links = [
     linkText: 'Categories',
   },
   {
-    url: '/company/123456',
-    linkText: 'Gorod Krasoty',
+    url: '/companies',
+    linkText: 'Organizations',
   },
   {
     url: '/user/123456',
@@ -40,7 +40,7 @@ const UserIcon = () => <StyledIcon name="user outline" />;
 const Navigation = () => {
   const [open, setOpen] = useState(false);
   const handleOpenMenu = () => setOpen(!open);
-  // todo check why login and logout buttons in menu don't work
+
   return (
     <nav className="navigation">
       <StyledMobileBar>

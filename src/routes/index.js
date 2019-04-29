@@ -8,10 +8,7 @@ export default function AppRoutes() {
   return (
     <Switch>
       <Route path="/" exact component={createAsyncComponent('./Home')} />
-      <Route
-        path="/company/:id"
-        component={createAsyncComponent('./Company')}
-      />
+      <Route path="/companies" component={createAsyncComponent('./Company')} />
       <Route path="/services" component={createAsyncComponent('./Services')} />
       <Route
         path="/categories"
