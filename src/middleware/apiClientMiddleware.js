@@ -50,20 +50,21 @@ export default function apiClientMiddleware({ getState }) {
       });
     };
 
-    const request = apiRequest(client)
+    return apiRequest(client)
       .then(handleSuccess)
       .catch(handleFailure);
 
-    next({
-      ...rest,
-      type: REQUEST,
-      meta: {
-        ...meta,
-        ...requestMeta,
-      },
-      payload: request,
-    });
-
-    return request;
+    // TODO: This caused the error "Can't perform a React state update on an unmounted component". I think we should remove this part, because const request is a promise which either resolves or rejects and in both cases we do call next(...)
+    // next({
+    //   ...rest,
+    //   type: REQUEST,
+    //   meta: {
+    //     ...meta,
+    //     ...requestMeta,
+    //   },
+    //   payload: request,
+    // });
+    //
+    // return request;
   };
 }

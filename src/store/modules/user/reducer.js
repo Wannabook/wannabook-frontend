@@ -34,7 +34,8 @@ const handleLoadUserSuccess = (state, { payload }) => {
     loading: false,
     loaded: true,
     error: '',
-    records: [...payload],
+    userInfo: payload.user,
+    token: payload.token,
   };
 };
 

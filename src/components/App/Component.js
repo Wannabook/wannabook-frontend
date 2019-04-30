@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 
 export default class App extends Component {
   static propTypes = {
-    user: PropTypes.array,
+    user: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired,

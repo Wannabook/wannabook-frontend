@@ -1,4 +1,4 @@
-export const getUser = state => state.user.records || [];
+export const getUser = state => state.user.userInfo || {};
 
 export const getUserLoadingProps = state => ({
   error: getUserLoadingError(state),
