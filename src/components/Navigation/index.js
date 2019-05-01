@@ -25,6 +25,10 @@ const links = [
     url: '/contacts',
     linkText: 'Contacts',
   },
+  {
+    url: '/registration',
+    linkText: 'Registration',
+  },
 ];
 
 const UserIcon = () => <StyledIcon name="user outline" />;
