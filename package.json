@@ -2,6 +2,9 @@
   "name": "wannabook-frontend",
   "version": "1.0.0",
   "description": "This is a repo for Wannabook frontend",
+  "engines": {
+    "node": ">=8.0.0 <11.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --env.ENVIRONMENT=production",
