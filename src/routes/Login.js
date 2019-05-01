@@ -1,13 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { JWT_TOKEN } from '../constants';
 
 export default class Login extends React.Component {
   state = {
-    loggedIn: !!localStorage.getItem('jwtToken'),
+    loggedIn: !!localStorage.getItem(JWT_TOKEN),
   };
 
   handleLogin = () => {
-    localStorage.setItem('jwtToken', true);
+    localStorage.setItem(JWT_TOKEN, true);
     this.setState({ loggedIn: true });
   };
 

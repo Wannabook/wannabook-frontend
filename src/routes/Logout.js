@@ -1,13 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { JWT_TOKEN } from '../constants';
 
 export default class Logout extends React.Component {
   state = {
-    loggedIn: !!localStorage.getItem('jwtToken'),
+    loggedIn: !!localStorage.getItem(JWT_TOKEN),
   };
 
   handleLogout = () => {
-    localStorage.removeItem('jwtToken');
+    localStorage.removeItem(JWT_TOKEN);
     this.setState({ loggedIn: false });
   };
 

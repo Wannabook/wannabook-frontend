@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import { AuthContext } from '../../core/auth/index';
 import {
   StyledIcon,
   StyledLink,
@@ -35,7 +37,16 @@ const links = [
   },
 ];
 
-const UserIcon = () => <StyledIcon name="user outline" />;
+const UserIcon = () => {
+  // TODO Use different links depending on loggedIn value
+  return (
+    <AuthContext.Consumer>
+      {loggedIn => {
+        return <StyledIcon name="user outline" />;
+      }}
+    </AuthContext.Consumer>
+  );
+};
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);

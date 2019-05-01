@@ -14,7 +14,7 @@ const mapStateToProps = () => globalState => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadUser: () => dispatch(loadUser()),
+    checkToken: () => dispatch(loadUser()),
   };
 };
 
