@@ -48,9 +48,10 @@ export default function apiClientMiddleware({ getState }) {
         },
         payload: error,
       });
-
-      return error;
     };
+    const request = apiRequest(client)
+      .then(handleSuccess)
+      .catch(handleFailure);
 
     next({
       ...rest,
@@ -59,10 +60,9 @@ export default function apiClientMiddleware({ getState }) {
         ...meta,
         ...requestMeta,
       },
+      payload: request,
     });
 
-    return apiRequest(client)
-      .then(handleSuccess)
-      .catch(handleFailure);
+    return request;
   };
 }

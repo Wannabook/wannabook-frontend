@@ -13,7 +13,6 @@ export default class OrganizationsList extends Component {
   static defaultProps = {};
 
   componentDidMount() {
-    // debugger;
     const { loadOrganizations } = this.props;
     loadOrganizations();
   }

@@ -24,10 +24,14 @@ export default class App extends Component {
     if (hasJWToken()) {
       this.props
         .checkToken()
-        .then(userInfo => this.setState({ loggedIn: true }))
-        .catch(error => this.setState({ loggedIn: false }));
+        .then(userInfo => {
+          this.setState({ loggedIn: true });
+        })
+        .catch(error => {
+          this.setState({ loggedIn: false });
+        });
     } else {
-      this.setState({ loggedIn: false });
+      // this.setState({ loggedIn: false });
     }
   }
 
