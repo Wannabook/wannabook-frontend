@@ -56,7 +56,7 @@ const Registration = () => {
     <>
       <Container>
         <Description>
-          <Illustration src={''} alt={'Illustration'} />
+          <Illustration src="" alt="Illustration" />
           <p>{descriptionText}</p>
         </Description>
         {buttons.map(item => (
