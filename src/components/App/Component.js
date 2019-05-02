@@ -21,6 +21,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
+    // TODO: extract to core/auth?
     if (hasJWToken()) {
       this.props
         .checkToken()
@@ -31,12 +32,8 @@ export default class App extends Component {
           this.setState({ loggedIn: false });
         });
     } else {
-      // this.setState({ loggedIn: false });
+      this.setState({ loggedIn: false });
     }
-  }
-
-  componentWillUnmount() {
-    console.warn('unmounting app');
   }
 
   render() {
