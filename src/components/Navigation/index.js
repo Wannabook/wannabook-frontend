@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../core/auth/index';
 import {
@@ -23,18 +24,6 @@ const links = [
     url: '/companies',
     linkText: 'Organizations',
   },
-  {
-    url: '/user/123456',
-    linkText: 'User Pasha',
-  },
-  {
-    url: '/login',
-    linkText: 'Login',
-  },
-  {
-    url: '/logout',
-    linkText: 'Logout',
-  },
 ];
 
 const UserIcon = () => {
@@ -42,7 +31,16 @@ const UserIcon = () => {
   return (
     <AuthContext.Consumer>
       {loggedIn => {
-        return <StyledIcon name="user outline" />;
+        // we will then make user/:id dynamic depending on id coming with token
+        return loggedIn ? (
+          <Link to="/user/123456">
+            <StyledIcon name="user outline" />
+          </Link>
+        ) : (
+          <Link to="/auth">
+            <StyledIcon name="user outline" />
+          </Link>
+        );
       }}
     </AuthContext.Consumer>
   );

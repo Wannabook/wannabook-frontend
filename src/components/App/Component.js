@@ -13,7 +13,7 @@ export default class App extends Component {
     loading: PropTypes.bool.isRequired,
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired,
-    checkToken: PropTypes.func.isRequired,
+    loadUser: PropTypes.func.isRequired,
   };
 
   state = {
@@ -24,7 +24,7 @@ export default class App extends Component {
     // TODO: extract to core/auth?
     if (hasJWToken()) {
       this.props
-        .checkToken()
+        .loadUser()
         .then(userInfo => {
           this.setState({ loggedIn: true });
         })

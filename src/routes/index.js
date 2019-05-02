@@ -17,6 +17,7 @@ export default function AppRoutes() {
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/signup" component={Signup} />
+      <Route path="/auth" component={Auth} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -72,6 +73,11 @@ const Login = Loadable({
 
 const Logout = Loadable({
   loader: () => import(/* webpackChunkName: "[request][index]" */ './Logout'),
+  loading: Loading,
+});
+
+const Auth = Loadable({
+  loader: () => import(/* webpackChunkName: "[request][index]" */ './Auth'),
   loading: Loading,
 });
 

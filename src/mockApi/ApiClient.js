@@ -12,7 +12,7 @@ export class ApiClient {
         description: 'Facebook description',
       },
     ],
-    '/checktoken': {
+    '/user/me': {
       // we assume the token is always correct for now and returns this obj
       user: {
         age: 0,
@@ -31,7 +31,7 @@ export class ApiClient {
   get(resourceUrl) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        Math.random() > 0.3
+        Math.random() > 0.5
           ? resolve(this.data[resourceUrl])
           : reject('Something went wrong...');
       }, 300);
