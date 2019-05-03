@@ -29,6 +29,14 @@ const links = [
     url: '/registration',
     linkText: 'Registration',
   },
+  {
+    url: '/sign-in',
+    linkText: 'Sign-in',
+  },
+  {
+    url: '/sign-up',
+    linkText: 'Sign-up',
+  },
 ];
 
 const UserIcon = () => <StyledIcon name="user outline" />;
