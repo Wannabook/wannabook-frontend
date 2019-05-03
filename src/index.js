@@ -34,6 +34,10 @@ class App extends React.Component {
           path="/about"
           component={createAsyncComponent('./routes/About')}
         />
+        <Route
+          path="/registration"
+          component={createAsyncComponent('./routes/Registration')}
+        />
       </>
     );
   }
