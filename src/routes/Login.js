@@ -15,10 +15,15 @@ export default class Login extends React.Component {
       <AuthContext.Consumer>
         {loggedIn => (
           <>
-            <div>Login page</div>
+            <div>Login page with login form</div>
+            <form action="">
+              <input type="email" />
+              <input type="password" />
+            </form>
             {// if user is logged in, redirect them away from login page
             loggedIn && <Redirect to="/" />}
             <button onClick={this.handleLogin}>Log in</button>
+            press log in to be logged in anyways
           </>
         )}
       </AuthContext.Consumer>

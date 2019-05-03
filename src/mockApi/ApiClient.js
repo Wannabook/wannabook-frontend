@@ -31,7 +31,7 @@ export class ApiClient {
   get(resourceUrl) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        Math.random() > 0.5
+        Math.random() > 0
           ? resolve(this.data[resourceUrl])
           : reject('Something went wrong...');
       }, 300);

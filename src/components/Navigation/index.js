@@ -24,6 +24,10 @@ const links = [
     url: '/companies',
     linkText: 'Organizations',
   },
+  {
+    url: '/auth',
+    linkText: 'Registration',
+  },
 ];
 
 const UserIcon = () => {
@@ -31,6 +35,7 @@ const UserIcon = () => {
   return (
     <AuthContext.Consumer>
       {loggedIn => {
+        console.warn('loggedIn', loggedIn);
         // we will then make user/:id dynamic depending on id coming with token
         return loggedIn ? (
           <Link to="/user/123456">
