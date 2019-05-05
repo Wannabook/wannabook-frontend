@@ -36,14 +36,12 @@ const SignInButton = styled(Button)`
 const buttons = [
   {
     url: '/sign-in',
-    type: { secondary: true },
-    size: 'large',
+    type: { secondary: true, size: 'large' },
     btnText: 'Войти',
   },
   {
-    url: '/',
-    type: { secondary: true },
-    size: 'large',
+    url: '/sign-up',
+    type: { secondary: true, size: 'large' },
     btnText: 'Зарегистрироваться',
   },
 ];
@@ -61,9 +59,7 @@ const Registration = () => {
         </Description>
         {buttons.map(item => (
           <Link to={item.url} key={item.url}>
-            <SignInButton size={item.size} {...item.type}>
-              {item.btnText}
-            </SignInButton>
+            <SignInButton {...item.type}>{item.btnText}</SignInButton>
           </Link>
         ))}
       </Container>
