@@ -4,8 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
+const isTestingOnMobile = process.env.MOBILE_TESTING == true;
 const distFolder = 'dist';
 
 module.exports = {
@@ -63,3 +65,13 @@ module.exports = {
   },
   devtool: 'eval-source-map',
 };
+
+if (isTestingOnMobile) {
+  mobule.exports.plugins.push(
+    new BrowserSyncPlugin({
+      proxy: 'localhost:8080',
+      // open: false,
+      // server: { baseDir: ['public'] }
+    })
+  );
+}
