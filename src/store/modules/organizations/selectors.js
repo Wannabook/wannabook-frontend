@@ -1,4 +1,4 @@
-export const getOrganizations = state => state.organizations.records || [];
+export const getOrganizations = state => state.organization.records || [];
 
 export const getOrganizationsLoadingProps = state => ({
   error: getOrganizationsLoadingError(state),
@@ -6,6 +6,6 @@ export const getOrganizationsLoadingProps = state => ({
   loading: isOrganizationsLoading(state),
 });
 
-const getOrganizationsLoadingError = state => state.organizations.error || '';
-const isOrganizationsLoaded = state => state.organizations.loaded || false;
-const isOrganizationsLoading = state => state.organizations.loading || false;
+const getOrganizationsLoadingError = state => state.organization.error || '';
+const isOrganizationsLoaded = state => state.organization.loaded || false;
+const isOrganizationsLoading = state => state.organization.loading || false;

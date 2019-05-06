@@ -35,13 +35,13 @@ const SignInButton = styled(Button)`
 
 const buttons = [
   {
-    url: '/login',
+    url: '/sign-in',
     type: { secondary: true },
     size: 'large',
     btnText: 'Войти',
   },
   {
-    url: '/signup',
+    url: '/',
     type: { secondary: true },
     size: 'large',
     btnText: 'Зарегистрироваться',
