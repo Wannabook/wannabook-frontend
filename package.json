@@ -4,9 +4,9 @@
   "description": "This is a repo for Wannabook frontend",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production --env.ENVIRONMENT=production",
-    "staging": "webpack --mode production --env.ENVIRONMENT=staging",
-    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
+    "build": "webpack --mode production",
+    "staging": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
     "dev:mobile": "webpack-dev-server --mode development --env.MOBILE_TESTING=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
