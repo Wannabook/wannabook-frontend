@@ -6,7 +6,7 @@ export default class User extends React.Component {
     return (
       <div>
         <div>User page</div>
-        <Link to="/logout">Log out</Link>
+        <Link to="/sign-out">Log out</Link>
       </div>
     );
   }
