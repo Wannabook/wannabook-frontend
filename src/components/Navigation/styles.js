@@ -19,7 +19,7 @@ export const StyledMenu = styled.ul`
   list-style: none;
   overflow: hidden;
   transition: height 0.5s;
-  height: ${props => (props.open ? '306px' : '0')};
+  height: ${props => (props.open ? 'auto' : '0')};
 `;
 
 export const StyleMenuItem = styled.li`
