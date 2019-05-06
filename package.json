@@ -2,15 +2,11 @@
   "name": "wannabook-frontend",
   "version": "1.0.0",
   "description": "This is a repo for Wannabook frontend",
-  "engines": {
-    "node": ">=8.0.0 <11.0.0"
-  },
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --env.ENVIRONMENT=production",
-    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
-    "start": "npm run dev",
     "staging": "webpack --mode production --env.ENVIRONMENT=staging",
+    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -75,7 +71,6 @@
   },
   "dependencies": {
     "prop-types": "15.7.2",
-    "ramda": "0.26.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-loadable": "5.5.0",
