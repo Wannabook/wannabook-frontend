@@ -19,7 +19,7 @@ export const StyledMenu = styled.ul`
   list-style: none;
   overflow: hidden;
   transition: height 0.5s;
-  height: ${props => (props.open ? '306px' : '0')};
+  height: ${props => (props.open ? 'auto' : '0')};
 `;
 
 export const StyleMenuItem = styled.li`
@@ -32,6 +32,7 @@ export const StyleMenuItem = styled.li`
   border-bottom: 1px solid #b2b2b6;
 `;
 
+/* TODO use NavLink to style currently opened item */
 export const StyledLink = styled(Link)`
   color: #b2b2b6;
   text-decoration: none;

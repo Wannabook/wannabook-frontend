@@ -48,7 +48,12 @@ export default function apiClientMiddleware({ getState }) {
         },
         payload: error,
       });
+
+      if (REQUEST === 'LOAD_USER') {
+        throw new Error('Unauthorized');
+      }
     };
+
     const request = apiRequest(client)
       .then(handleSuccess)
       .catch(handleFailure);

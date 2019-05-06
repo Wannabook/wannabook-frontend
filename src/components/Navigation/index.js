@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../../core/auth/index';
 import {
   StyledIcon,
   StyledLink,
@@ -14,24 +17,39 @@ const links = [
     linkText: 'Home',
   },
   {
-    url: '/about',
-    linkText: 'About',
+    url: '/categories',
+    linkText: 'Categories',
   },
   {
-    url: '/news',
-    linkText: 'News',
+    url: '/companies',
+    linkText: 'Organizations',
   },
   {
-    url: '/contacts',
-    linkText: 'Contacts',
-  },
-  {
-    url: '/registration',
+    url: '/auth',
     linkText: 'Registration',
   },
 ];
 
-const UserIcon = () => <StyledIcon name="user outline" />;
+const UserIcon = () => {
+  // TODO Use different links depending on loggedIn value
+  return (
+    <AuthContext.Consumer>
+      {loggedIn => {
+        console.warn('loggedIn', loggedIn);
+        // we will then make user/:id dynamic depending on id coming with token
+        return loggedIn ? (
+          <Link to="/user/123456">
+            <StyledIcon name="user outline" />
+          </Link>
+        ) : (
+          <Link to="/auth">
+            <StyledIcon name="user outline" />
+          </Link>
+        );
+      }}
+    </AuthContext.Consumer>
+  );
+};
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
