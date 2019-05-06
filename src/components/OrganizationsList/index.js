@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-
-import { loadOrganizations } from '../../store/modules/organizations/actionCreators';
-import Component from './Component';
 import {
   getOrganizations,
   getOrganizationsLoadingProps,
 } from '../../store/modules/organizations/selectors';
+import { loadOrganizations } from '../../store/modules/organizations/actionCreators';
+import Component from './Component';
 
 const mapStateToProps = () => {
   return globalState => {
