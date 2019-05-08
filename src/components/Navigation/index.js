@@ -24,18 +24,8 @@ const links = [
     url: '/companies',
     linkText: 'Organizations',
   },
-  {
-    url: '/auth',
-    linkText: 'Registration',
-  },
-  {
-    url: '/sign-in',
-    linkText: 'Sign-in',
-  },
-  {
-    url: '/sign-up',
-    linkText: 'Sign-up',
-  },
+  // auth links (signup, signin and auth) will be available
+  // by pressing on user icon in the top right corner
 ];
 
 const UserIcon = () => {
@@ -43,8 +33,7 @@ const UserIcon = () => {
   return (
     <AuthContext.Consumer>
       {loggedIn => {
-        console.warn('loggedIn', loggedIn);
-        // we will then make user/:id dynamic depending on id coming with token
+        // we will then make user/:id dynamic depending on id coming from backend
         return loggedIn ? (
           <Link to="/user/123456">
             <StyledIcon name="user outline" />
