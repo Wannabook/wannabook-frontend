@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import OrganizationsList from '../components/OrganizationsList';
+import MainSlider from '../components/MainSlider';
 import Input from '../ui-kit/components/Input';
 import Button from '../ui-kit/components/Button';
 
@@ -22,6 +23,7 @@ const Home = () => {
   return (
     <>
       <OrganizationsList />
+      <MainSlider />
       <Form>
         <Label>
           <StyledInput error />
