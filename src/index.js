@@ -1,36 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
+import App from './components/App';
 import store from './store';
-import loadable from 'react-loadable';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Link to="/">Page 1</Link>
-        <Link to="/page2">Page 2</Link>
-
-        <Route
-          path="/"
-          exact
-          component={createAsyncComponent('./routes/Page1')}
-        />
-        <Route
-          path="/page2"
-          component={createAsyncComponent('./routes/Page2')}
-        />
-      </div>
-    );
-  }
-}
-
-const createAsyncComponent = url =>
-  loadable({
-    loader: () => import(`${url}`),
-    loading: () => <p>Loading...</p>,
-  });
+import 'semantic-ui-css/semantic.min.css';
 
 render(
   <Provider store={store}>

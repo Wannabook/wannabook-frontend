@@ -18,3 +18,10 @@ To test the app locally via Wi-Fi, do `npm run dev:mobile` from the project root
 
 > Note: hot reloading does not work on mobiles for now. Instead, the page reloads entirely to apply changes.
 
+
+### Environment variables
+`.env` files are in the root directory of the project. There are three of them: for development, staging and production. 
+
+Any values you put there will be available in the source code via `process.env.SOMETHING`, where `SOMETHING` is the key in the respective `.env` file.
+
+The `scripts` section in `package.json` contains commands where we specify which environment we want to run in.
