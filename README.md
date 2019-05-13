@@ -13,6 +13,12 @@ This is a repo for Wannabook frontend
 
 We use [the following technologies and architecture](https://docs.google.com/document/d/1bBVGc3HTySaMOgyjPUMZxbyz2gxKqtI6KeDokjYyR_Y/edit#).
 
+### Testing on mobiles
+To test the app locally via Wi-Fi, do `npm run dev:mobile` from the project root directory. You will see an IP address in the console (Access URLs - External). Type this URL with port number on mobile and you will see the app running. Now you can test it. 
+
+> Note: hot reloading does not work on mobiles for now. Instead, the page reloads entirely to apply changes.
+
+
 ### Environment variables
 `.env` files are in the root directory of the project. There are three of them: for development, staging and production. 
 

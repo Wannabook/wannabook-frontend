@@ -5,12 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dotenv = require('dotenv');
 
-const devMode = process.env.NODE_ENV !== 'production';
-const distFolder = 'dist';
-
 module.exports = env => {
+  const devMode = process.env.NODE_ENV !== 'production';
+  const isTestingOnMobile = env && env.MOBILE_TESTING;
+  console.warn('isTestingOnMobile', isTestingOnMobile);
+  const distFolder = 'dist';
+
   // Get the root path
   const currentPath = path.join(__dirname);
 
@@ -34,7 +37,7 @@ module.exports = env => {
     return prev;
   }, {});
 
-  return {
+  const config = {
     entry: { main: './src/index.js' },
     output: {
       path: path.resolve(__dirname, distFolder),
@@ -95,4 +98,15 @@ module.exports = env => {
     },
     devtool: 'eval-source-map',
   };
+
+  if (isTestingOnMobile) {
+    config.plugins.push(
+      new BrowserSyncPlugin({
+        proxy: 'localhost:8080',
+        open: false,
+      })
+    );
+  }
+
+  return config;
 };
