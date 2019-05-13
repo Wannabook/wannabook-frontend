@@ -7,11 +7,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "staging": "webpack --mode production",
+    "build": "webpack --mode production --env.ENVIRONMENT=production",
+    "staging": "webpack --mode production --env.ENVIRONMENT=staging",
     "start": "npm run dev",
-    "dev": "webpack-dev-server --mode development",
-    "dev:mobile": "webpack-dev-server --mode development --env.MOBILE_TESTING=true",
+    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
+    "dev:mobile": "webpack-dev-server --mode development --env.MOBILE_TESTING=true --env.ENVIRONMENT=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
