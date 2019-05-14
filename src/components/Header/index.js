@@ -1,7 +1,13 @@
 import React from 'react';
 
-import Navigation from '../Navigation';
+import NavigationMobile from '../Navigation/NavMobile';
+import NavigationDesktop from '../Navigation/NavDesktop';
 
-const Header = props => <Navigation />;
+const Header = props => (
+  <>
+    <NavigationMobile />
+    <NavigationDesktop />
+  </>
+);
 
 export default Header;
