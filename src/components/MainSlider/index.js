@@ -1,33 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import Slider from 'react-slick';
 
 import SliderArrow from '../../ui-kit/components/SliderArrow';
+import { SliderWrapper, Slide, Illustration, Description } from './styles';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-const SliderWrapper = styled.div`
-  padding: 30px;
-`;
-
-const Slide = styled.div`
-  border: solid 1px grey;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Illustration = styled.img`
-  border: solid 1px black;
-  margin: 16px;
-  height: 120px;
-  flex-grow: 1;
-`;
-
-const Description = styled.p`
-  flex-grow: 2;
-`;
 const sliderItems = [
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 1',
