@@ -32,6 +32,7 @@ export const StyleMenuItem = styled.li`
   border-bottom: 1px solid #b2b2b6;
 `;
 
+/* TODO use NavLink to style currently opened item */
 export const StyledLink = styled(Link)`
   color: #b2b2b6;
   text-decoration: none;

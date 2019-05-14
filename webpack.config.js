@@ -5,19 +5,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dotenv = require('dotenv');
 
-const devMode = process.env.NODE_ENV !== 'production';
-const distFolder = 'dist';
-
 module.exports = env => {
-  // Get the root path (assuming your webpack config is in the root of your project!)
+  const devMode = process.env.NODE_ENV !== 'production';
+  const isTestingOnMobile = env && env.MOBILE_TESTING;
+  console.warn('isTestingOnMobile', isTestingOnMobile);
+  const distFolder = 'dist';
+
+  // Get the root path
   const currentPath = path.join(__dirname);
 
   // Create the fallback path (the production .env)
   const basePath = currentPath + '/.env';
 
-  // We're concatenating the environment name to our filename to specify the correct env file!
+  // We're concatenating the environment name
+  // to our filename to specify the correct env file!
   const envPath = basePath + '.' + env.ENVIRONMENT;
 
   // Check if the file exists, otherwise fall back to the production .env
@@ -26,19 +30,20 @@ module.exports = env => {
   // Set the path parameter in the dotenv config
   const fileEnv = dotenv.config({ path: finalPath }).parsed;
 
-  // reduce it to a nice object, the same as before (but with the variables from the file)
+  // reduce it to a nice object
   const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
 
     return prev;
   }, {});
 
-  return {
+  const config = {
     entry: { main: './src/index.js' },
     output: {
       path: path.resolve(__dirname, distFolder),
       filename: '[name].[hash].js',
       chunkFilename: '[name].js',
+      publicPath: '/',
     },
     module: {
       rules: [
@@ -93,4 +98,15 @@ module.exports = env => {
     },
     devtool: 'eval-source-map',
   };
+
+  if (isTestingOnMobile) {
+    config.plugins.push(
+      new BrowserSyncPlugin({
+        proxy: 'localhost:8080',
+        open: false,
+      })
+    );
+  }
+
+  return config;
 };

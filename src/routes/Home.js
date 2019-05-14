@@ -1,47 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import OrganizationsList from '../components/OrganizationsList';
 import MainSlider from '../components/MainSlider';
 import Input from '../ui-kit/components/Input';
 import Button from '../ui-kit/components/Button';
 
-const Form = styled.form`
-  padding: 0 50px;
-`;
+import '../styles/test-style.scss';
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
+export default class Home extends React.Component {
+  render() {
+    const Form = styled.form`
+      padding: 0 50px;
+    `;
 
-const StyledInput = styled(Input)`
-  width: 100%;
-`;
+    const Label = styled.label`
+      display: block;
+      margin-bottom: 10px;
+    `;
 
-const Home = () => {
-  return (
-    <>
-      <OrganizationsList />
-      <MainSlider />
-      <Form>
-        <Label>
-          <StyledInput error />
-        </Label>
-        <Label>
-          <StyledInput
-            loading
-            icon="user"
-            iconPosition="left"
-            placeholder="Search..."
-          />
-        </Label>
-        <Button size="large" primary>
-          Click here
-        </Button>
-      </Form>
-    </>
-  );
-};
+    const StyledInput = styled(Input)`
+      width: 100%;
+    `;
 
-export default Home;
+    return (
+      <div className="scss-test">
+        <MainSlider />
+        <Form>
+          <Label>
+            <StyledInput error />
+          </Label>
+          <Label>
+            <StyledInput
+              loading
+              icon="user"
+              iconPosition="left"
+              placeholder="Search..."
+            />
+          </Label>
+          <Button size="large" primary>
+            Click here
+          </Button>
+        </Form>
+      </div>
+    );
+  }
+}

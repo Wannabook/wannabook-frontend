@@ -7,6 +7,7 @@ export const SliderWrapper = styled.div`
 `;
 
 export const Slide = styled.div`
+  background: white;
   border: solid 1px grey;
   display: flex;
   justify-content: space-around;
