@@ -9,9 +9,8 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dotenv = require('dotenv');
 
 module.exports = env => {
-  const devMode = process.env.NODE_ENV !== 'production';
+  const devMode = process.env.NODE_ENV === 'development';
   const isTestingOnMobile = env && env.MOBILE_TESTING;
-  console.warn('isTestingOnMobile', isTestingOnMobile);
   const distFolder = 'dist';
 
   // Get the root path
@@ -96,7 +95,7 @@ module.exports = env => {
       open: false,
       historyApiFallback: true,
     },
-    devtool: 'eval-source-map',
+    devtool: devMode ? 'eval-source-map' : 'source-map',
   };
 
   if (isTestingOnMobile) {
