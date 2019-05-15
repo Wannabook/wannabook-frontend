@@ -67,7 +67,7 @@ module.exports = env => {
           ],
         },
         {
-          test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+          test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,
           loader: 'url-loader',
         },
       ],

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import MainSlider from '../components/MainSlider';
 import Input from '../ui-kit/components/Input';
 import Button from '../ui-kit/components/Button';
 
@@ -23,6 +24,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="scss-test">
+        <MainSlider />
         <Form>
           <Label>
             <StyledInput error />
