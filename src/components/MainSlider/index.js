@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 import SliderArrow from '../../ui-kit/components/SliderArrow';
+
 import { SliderWrapper, Slide, Illustration, Description } from './styles';
 
 const sliderItems = [

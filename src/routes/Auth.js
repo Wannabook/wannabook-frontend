@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import Button from '../ui-kit/components/Button';
@@ -51,19 +52,23 @@ const descriptionText =
 
 const Registration = () => {
   return (
-    <>
-      <Container>
-        <Description>
-          <Illustration src="" alt="Illustration" />
-          <p>{descriptionText}</p>
-        </Description>
-        {buttons.map(item => (
-          <Link to={item.url} key={item.url}>
-            <SignInButton {...item.type}>{item.btnText}</SignInButton>
-          </Link>
-        ))}
-      </Container>
-    </>
+    <Grid stackable columns="1">
+      <Grid.Row stretched columns="1">
+        <Grid.Column>
+          <Container>
+            <Description>
+              <Illustration src="" alt="Illustration" />
+              <p>{descriptionText}</p>
+            </Description>
+            {buttons.map(item => (
+              <Link to={item.url} key={item.url}>
+                <SignInButton {...item.type}>{item.btnText}</SignInButton>
+              </Link>
+            ))}
+          </Container>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 
