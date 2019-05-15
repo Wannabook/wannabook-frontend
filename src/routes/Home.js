@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Grid, Segment } from 'semantic-ui-react';
 
+import MainSlider from '../components/MainSlider';
 import Input from '../ui-kit/components/Input';
 import Button from '../ui-kit/components/Button';
 
@@ -24,6 +25,13 @@ export default class Home extends React.Component {
 
     return (
       <Grid stackable columns={1}>
+        <Grid.Row stretched columns="1">
+          <Grid.Column>
+            <Segment>
+              <MainSlider />
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
         <Grid.Row stretched columns={2}>
           <Grid.Column>
             <Segment>

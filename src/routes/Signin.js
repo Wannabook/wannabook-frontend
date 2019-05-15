@@ -90,7 +90,7 @@ class SignIn extends React.Component {
                     </Link>
                   </Form>
                   <Description>
-                    <Link to="/forgot -password">Забыли пароль?</Link>
+                    <Link to="/forgot-password">Забыли пароль?</Link>
                   </Description>
                 </Container>
                 <Container>
