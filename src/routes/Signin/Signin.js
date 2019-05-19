@@ -66,7 +66,7 @@ class SignIn extends React.Component {
             <Grid.Row stretched columns="1">
               <Grid.Column>
                 {// if user is logged in, redirect them away from login page
-                loggedIn && <Redirect to="/" />}
+                loggedIn && <Redirect to={getPageUrl('HOME')} />}
                 <Container>
                   <Description>Войти с помощью</Description>
                   <SocialNetworkList>
