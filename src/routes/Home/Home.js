@@ -1,28 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Grid, Segment } from 'semantic-ui-react';
 
-import MainSlider from '../components/MainSlider';
-import Input from '../ui-kit/components/Input';
-import Button from '../ui-kit/components/Button';
+import MainSlider from '../../components/MainSlider/index';
+import Button from '../../ui-kit/components/Button/index';
+import { Form, Label, StyledInput } from './styles';
 
-import '../styles/test-style.scss';
+import '../../styles/test-style.scss';
 
 export default class Home extends React.Component {
   render() {
-    const Form = styled.form`
-      padding: 0 50px;
-    `;
-
-    const Label = styled.label`
-      display: block;
-      margin-bottom: 10px;
-    `;
-
-    const StyledInput = styled(Input)`
-      width: 100%;
-    `;
-
     return (
       <Grid stackable columns={1}>
         <Grid.Row stretched columns="1">

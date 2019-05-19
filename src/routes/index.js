@@ -26,62 +26,73 @@ export default function AppRoutes() {
 // If you ever want to extract these into a single function,
 // don't waste your time. Dynamic imports don't play well with Routes
 const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Home'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Home/Home'),
   loading: Loading,
 });
 
 const Company = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Company'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Company/Company'),
   loading: Loading,
 });
 
 const Services = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Services'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Services/Services'),
   loading: Loading,
 });
 
 const Service = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Service'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Service/Service'),
   loading: Loading,
 });
 
 const Categories = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './Categories'),
+    import(/* webpackChunkName: "[request][index]" */ './Categories/Categories'),
   loading: Loading,
 });
 
 const Category = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Category'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Category/Category'),
   loading: Loading,
 });
 
 const User = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './User'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './User/User'),
   loading: Loading,
 });
 
 const Signup = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Signup'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Signup/Signup'),
   loading: Loading,
 });
 
 const Signin = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Signin'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Signin/Signin'),
   loading: Loading,
 });
 
 const Signout = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Signout'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Signout/Signout'),
   loading: Loading,
 });
 
 const Auth = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Auth'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Auth/Auth'),
   loading: Loading,
 });
 
 const NotFound = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './NotFound'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './NotFound/NotFound'),
   loading: Loading,
 });

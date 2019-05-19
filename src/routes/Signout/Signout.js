@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { JWT_TOKEN } from '../constants';
+import { JWT_TOKEN } from '../../constants';
 
 export default class Signout extends React.Component {
   componentDidMount() {

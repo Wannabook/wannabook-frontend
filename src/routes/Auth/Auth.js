@@ -1,47 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
-import styled from 'styled-components';
 
-import Button from '../ui-kit/components/Button';
+import { getPageUrl } from '../RouteResolver';
 
-const Container = styled.div`
-  margin: 16px;
-`;
-
-const Description = styled.div`
-  text-align: center;
-  margin: 0px 36px 36px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 25px;
-`;
-
-const Illustration = styled.img`
-  border: solid 1px black;
-  margin: 16px;
-  display: inline-block;
-  width: 110px; //temporary solution
-  height: 120px;
-`;
-
-const SignInButton = styled(Button)`
-  &&& {
-    display: block; //probably need additional type of button with display:block
-    border-radius: 0;
-    margin: 16px 0;
-    width: 100%;
-  }
-`;
+import { Container, Description, Illustration, SignInButton } from './styles';
 
 const buttons = [
   {
-    url: '/sign-in',
+    url: getPageUrl('SIGN-IN'),
     type: { secondary: true, size: 'large' },
     btnText: 'Войти',
   },
   {
-    url: '/sign-up',
+    url: getPageUrl('SIGN-UP'),
     type: { secondary: true, size: 'large' },
     btnText: 'Зарегистрироваться',
   },

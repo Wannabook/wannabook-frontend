@@ -1,5 +1,5 @@
-import Input from '../ui-kit/components/Input';
-import Button from '../ui-kit/components/Button';
+import Input from '../../ui-kit/components/Input/index';
+import Button from '../../ui-kit/components/Button/index';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 

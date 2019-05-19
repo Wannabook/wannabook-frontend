@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getPageUrl } from '../RouteResolver';
 
 export default class NotFound extends React.Component {
   render() {
@@ -7,7 +8,7 @@ export default class NotFound extends React.Component {
       <div>
         <p>This page does not exist</p>
         <p>
-          <Link to="/">Go to home page</Link>
+          <Link to={getPageUrl('HOME')}>Go to home page</Link>
         </p>
       </div>
     );
