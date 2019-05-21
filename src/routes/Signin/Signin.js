@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 
-import { JWT_TOKEN } from '../constants';
-import { AuthContext } from '../core/auth/index';
+import { JWT_TOKEN } from '../../constants';
+import { AuthContext } from '../../core/auth/index';
 
 import {
   Container,
@@ -16,23 +16,28 @@ import {
   StyledInput,
   SignInButton,
 } from './styles';
+import { getPageUrl } from '../RouteResolver';
 
 const socialNetworkList = [
   {
     name: 'Facebook',
     id: 'fb',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'Google',
     id: 'gl',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'VK',
     id: 'vk',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'Instagram',
     id: 'in',
+    url: getPageUrl('HOME'),
   },
 ];
 
@@ -61,12 +66,12 @@ class SignIn extends React.Component {
             <Grid.Row stretched columns="1">
               <Grid.Column>
                 {// if user is logged in, redirect them away from login page
-                loggedIn && <Redirect to="/" />}
+                loggedIn && <Redirect to={getPageUrl('HOME')} />}
                 <Container>
                   <Description>Войти с помощью</Description>
                   <SocialNetworkList>
                     {socialNetworkList.map(item => (
-                      <SocialNetworkLink key={item.name} to="/">
+                      <SocialNetworkLink key={item.name} to={item.url}>
                         {item.id}
                       </SocialNetworkLink>
                     ))}
@@ -79,7 +84,7 @@ class SignIn extends React.Component {
                         <StyledInput {...item} />
                       </Label>
                     ))}
-                    <Link to="/">
+                    <Link to={getPageUrl('HOME')}>
                       <SignInButton
                         size="large"
                         secondary
@@ -90,13 +95,15 @@ class SignIn extends React.Component {
                     </Link>
                   </Form>
                   <Description>
-                    <Link to="/forgot-password">Забыли пароль?</Link>
+                    <Link to={getPageUrl('FORGOT-PASSWORD')}>
+                      Забыли пароль?
+                    </Link>
                   </Description>
                 </Container>
                 <Container>
                   <Description>Нет учетной записи?</Description>
                   <Description>
-                    <Link to="/sign-up">Зарегистрироваться</Link>
+                    <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
                   </Description>
                 </Container>
               </Grid.Column>

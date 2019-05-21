@@ -12,6 +12,7 @@ import {
   StyleMenuItem,
   Hamburger,
 } from './styles';
+import { getPageUrl } from '../../routes/RouteResolver';
 
 const UserIcon = () => {
   // TODO Use different links depending on loggedIn value
@@ -20,11 +21,11 @@ const UserIcon = () => {
       {loggedIn => {
         // we will then make user/:id dynamic depending on id coming from backend
         return loggedIn ? (
-          <Link to="/user/123456">
+          <Link to={`${getPageUrl('USER')}/123456`}>
             <StyledIcon name="user outline" />
           </Link>
         ) : (
-          <Link to="/auth">
+          <Link to={getPageUrl('AUTH')}>
             <StyledIcon name="user outline" />
           </Link>
         );

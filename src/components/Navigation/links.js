@@ -1,18 +1,20 @@
+import { getPageUrl } from '../../routes/RouteResolver';
+
 export const links = [
   {
-    url: '/',
+    url: getPageUrl('HOME'),
     linkText: 'Home',
     mobile: true,
     desktop: true,
   },
   {
-    url: '/categories',
+    url: getPageUrl('CATEGORIES'),
     linkText: 'Categories',
     mobile: true,
     desktop: false,
   },
   {
-    url: '/companies',
+    url: getPageUrl('COMPANIES'),
     linkText: 'Organizations',
     mobile: true,
     desktop: true,

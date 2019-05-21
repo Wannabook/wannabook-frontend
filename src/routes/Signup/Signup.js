@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 
-import { AuthContext } from '../core/auth/index';
+import { AuthContext } from '../../core/auth/index';
 
 import {
   Container,
@@ -14,23 +14,28 @@ import {
   StyledInput,
   SignInButton,
 } from './styles';
+import { getPageUrl } from '../RouteResolver';
 
 const socialNetworkList = [
   {
     name: 'Facebook',
     id: 'fb',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'Google',
     id: 'gl',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'VK',
     id: 'vk',
+    url: getPageUrl('HOME'),
   },
   {
     name: 'Instagram',
     id: 'in',
+    url: getPageUrl('HOME'),
   },
 ];
 
@@ -63,12 +68,12 @@ const Signup = props => {
           <Grid.Row stretched columns="1">
             <Grid.Column>
               {// if user is logged in, redirect them away from sign-up page
-              loggedIn && <Redirect to="/" />}
+              loggedIn && <Redirect to={getPageUrl('HOME')} />}
               <Container>
                 <Description>{descriptionText}</Description>
                 <SocialNetworkList>
                   {socialNetworkList.map(item => (
-                    <SocialNetworkLink to="/" key={item.name}>
+                    <SocialNetworkLink to={item.url} key={item.name}>
                       {item.id}
                     </SocialNetworkLink>
                   ))}
@@ -81,7 +86,7 @@ const Signup = props => {
                       <StyledInput {...item} />
                     </Label>
                   ))}
-                  <Link to="/">
+                  <Link to={getPageUrl('HOME')}>
                     <SignInButton size="large" secondary>
                       Зарегистрироваться
                     </SignInButton>
@@ -89,7 +94,7 @@ const Signup = props => {
                 </Form>
                 <Description>Есть учетная запись?</Description>
                 <Description>
-                  <Link to="/sign-in">Войти</Link>
+                  <Link to={getPageUrl('SIGN-IN')}>Войти</Link>
                 </Description>
               </Container>
             </Grid.Column>
