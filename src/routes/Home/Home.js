@@ -1,10 +1,13 @@
 import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import MainSlider from '../../components/MainSlider/index';
 import Button from '../../ui-kit/components/Button/index';
-import { Form, Label, StyledInput } from './styles';
+import CategoryList from '../../components/CategoryList';
+import { getPageUrl } from '../RouteResolver';
 
+import { Form, Label, StyledInput, SignInButton } from './styles';
 import '../../styles/test-style.scss';
 
 export default class Home extends React.Component {
@@ -16,6 +19,16 @@ export default class Home extends React.Component {
             <Segment>
               <MainSlider />
             </Segment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row stretched columns="1">
+          <Grid.Column>
+            <CategoryList />
+            <Link to={getPageUrl('CATEGORIES')}>
+              <SignInButton size="large" secondary>
+                See more
+              </SignInButton>
+            </Link>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row stretched columns={2}>
