@@ -1,11 +1,3 @@
-//TODO: Move to common contants
-export const INITIAL_STATE = {
-  loading: false,
-  loaded: false,
-  error: '',
-  records: [],
-};
+import { createCrudActions } from '../../crud-entity-factories/action';
 
-export const LOAD_ORGANIZATIONS = 'LOAD_ORGANIZATIONS';
-export const LOAD_ORGANIZATIONS_SUCCESS = 'LOAD_ORGANIZATIONS_SUCCESS';
-export const LOAD_ORGANIZATIONS_FAILURE = 'LOAD_ORGANIZATIONS_FAILURE';
+export const orgsActions = createCrudActions('Organizations');
