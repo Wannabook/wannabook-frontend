@@ -1,3 +1,3 @@
 import { createCrudActions } from '../../crud-entity-factories/action';
 
-export const userActions = createCrudActions('User');
+export const userActions = createCrudActions('user');

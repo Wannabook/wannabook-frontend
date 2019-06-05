@@ -31,9 +31,6 @@ const handleLoadSuccess = (state, { payload }) => {
     loaded: true,
     records: [...payload],
     error: '',
-    // TODO: move these unique parts to user reducer
-    userInfo: payload.user,
-    token: payload.token,
   };
 };
 

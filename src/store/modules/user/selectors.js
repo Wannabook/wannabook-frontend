@@ -1,11 +1,4 @@
-export const getUser = state => state.user.userInfo || {};
+import { getLoadingProps } from '../../crud-entity-factories/selectors';
 
-export const getUserLoadingProps = state => ({
-  error: getUserLoadingError(state),
-  loaded: isUserLoaded(state),
-  loading: isUserLoading(state),
-});
-
-const getUserLoadingError = state => state.user.error || '';
-const isUserLoaded = state => state.user.loaded || false;
-const isUserLoading = state => state.user.loading || false;
+export const getUser = state => state.user.records[0] || {};
+export const getUserLoadingProps = getLoadingProps('user');

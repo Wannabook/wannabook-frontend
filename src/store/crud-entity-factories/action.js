@@ -9,7 +9,7 @@ export const createCrudActions = entity => {
       `LOAD_${entity.toUpperCase()}_SUCCESS`
     ),
     [`LOAD_${entity.toUpperCase()}_FAILURE`]: createAction(
-      `LOAD_${entity.toUpperCase()}_FAIURE`
+      `LOAD_${entity.toUpperCase()}_FAILURE`
     ),
   };
 };
