@@ -9,6 +9,7 @@ import { getPageUrl } from '../RouteResolver';
 
 import { Form, Label, StyledInput, SignInButton } from './styles';
 import '../../styles/test-style.scss';
+import BestProviderList from '../../components/BestPrividersList';
 
 export default class Home extends React.Component {
   render() {
@@ -18,6 +19,13 @@ export default class Home extends React.Component {
           <Grid.Column>
             <Segment>
               <MainSlider />
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row stretched columns="1">
+          <Grid.Column>
+            <Segment>
+              <BestProviderList />
             </Segment>
           </Grid.Column>
         </Grid.Row>
