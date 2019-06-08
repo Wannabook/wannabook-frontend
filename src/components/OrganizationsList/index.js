@@ -7,14 +7,10 @@ import {
   getOrganizationsLoadingProps,
 } from '../../store/modules/organizations/selectors';
 
-const mapStateToProps = () => {
-  return globalState => {
-    return {
-      ...getOrganizationsLoadingProps(globalState),
-      organization: getOrganizations(globalState),
-    };
-  };
-};
+const mapStateToProps = () => state => ({
+  ...getOrganizationsLoadingProps(state),
+  organization: getOrganizations(state),
+});
 
 const mapDispatchToProps = dispatch => {
   return {
