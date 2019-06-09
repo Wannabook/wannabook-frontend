@@ -1,51 +1,7 @@
-import { handleActions } from 'redux-actions';
+import makeReducer from '../../crud-entity-factories/reducer';
+import { combineReducers } from 'redux';
 
-import {
-  INITIAL_STATE,
-  LOAD_USER,
-  LOAD_USER_SUCCESS,
-  LOAD_USER_FAILURE,
-} from './constants';
+export default makeReducer('User');
 
-const reducer = handleActions(
-  {
-    [LOAD_USER]: state => handleLoadUser(state),
-
-    [LOAD_USER_SUCCESS]: (state, { payload }) =>
-      handleLoadUserSuccess(state, { payload }),
-
-    [LOAD_USER_FAILURE]: (state, { payload }) =>
-      handleLoadUserFailure(state, { payload }),
-  },
-  INITIAL_STATE
-);
-
-const handleLoadUser = state => {
-  return {
-    ...state,
-    loading: true,
-    loaded: false,
-  };
-};
-
-const handleLoadUserSuccess = (state, { payload }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: '',
-    userInfo: payload.user,
-    token: payload.token,
-  };
-};
-
-const handleLoadUserFailure = (state, { payload }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: false,
-    error: payload,
-  };
-};
-
-export default reducer;
+// we can make another reducer for user that contains unique
+// user-related stuff and combine it with the default CRUD reducer

@@ -1,8 +1,8 @@
-import { LOAD_USER, LOAD_USER_SUCCESS, LOAD_USER_FAILURE } from './constants';
+import { userActions } from './constants';
 
 export function loadUser() {
   return {
-    types: [LOAD_USER, LOAD_USER_SUCCESS, LOAD_USER_FAILURE],
+    types: Object.keys(userActions),
     apiRequest: apiClient => apiClient.get('/user/me'),
     meta: {},
   };
