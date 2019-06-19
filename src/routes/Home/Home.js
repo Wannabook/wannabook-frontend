@@ -24,9 +24,7 @@ export default class Home extends React.Component {
         </Grid.Row>
         <Grid.Row stretched columns="1">
           <Grid.Column>
-            <Segment>
-              <BestProviderList />
-            </Segment>
+            <BestProviderList />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row stretched columns="1">

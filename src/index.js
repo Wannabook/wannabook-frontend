@@ -7,6 +7,7 @@ import App from './components/App';
 import store from './store';
 
 import 'semantic-ui-css/semantic.min.css';
+import { background } from './ui-kit/theme';
 
 render(
   <Provider store={store}>

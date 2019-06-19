@@ -10,13 +10,13 @@ const BestProvidersList = ({ bestProvidersList }) => {
       <h2>Выбирайте лучшее!</h2>
       <Grid stackable columns={2} centered>
         {bestProvidersList.map(item => (
-          <Grid.Column key={item.id}>
+          <Grid.Column key={item.id} mobile={4} tablet={4} computer={4}>
             <Link to={getPageUrl('SERVICE')}>
-              <ImgContainer>
+              <Segment>
                 <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
                 <h2>{`${item.title} #${item.id}`}</h2>
                 <p>{item.description}</p>
-              </ImgContainer>
+              </Segment>
             </Link>
           </Grid.Column>
         ))}
