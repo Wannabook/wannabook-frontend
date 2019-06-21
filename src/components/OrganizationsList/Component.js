@@ -21,7 +21,6 @@ export default class OrganizationsList extends Component {
     const { loading, loaded, error, organization } = this.props;
     if (loading) return this.renderLoading();
     if (error) return this.renderError(error);
-
     return (
       loaded && (
         <div>

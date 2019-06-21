@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Container } from 'semantic-ui-react';
 import { Header, ContinueButton, ContinueInput } from './styles';
 
-const Index = props => {
+const PasswordRecovery = props => {
   const [email, setEmail] = useState('');
 
   const handleContinue = () => {
@@ -34,4 +34,4 @@ const Index = props => {
     </Grid>
   );
 };
-export default Index;
+export default PasswordRecovery;

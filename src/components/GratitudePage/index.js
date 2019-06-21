@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Header, Container } from 'semantic-ui-react';
 
-const Index = props => {
+const GratitudePage = props => {
   return (
     <Grid stackable columns="1">
       <Grid.Row stretched columns="1">
@@ -15,4 +15,4 @@ const Index = props => {
     </Grid>
   );
 };
-export default Index;
+export default GratitudePage;

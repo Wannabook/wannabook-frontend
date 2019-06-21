@@ -94,7 +94,7 @@ const Auth = Loadable({
 
 const ForgotPassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './ForgotPassword/ForgotPassword'),
+    import(/* webpackChunkName: "[request][index]" */ './ForgotPassword/index'),
   loading: Loading,
 });
 
