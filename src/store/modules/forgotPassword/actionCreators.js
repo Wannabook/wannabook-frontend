@@ -7,7 +7,7 @@ export function sendEmailForNewPassword(email) {
     apiRequest: apiClient =>
       new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(email);
+          resolve({ name: 'pasha', age: 29 });
         }, 2000);
       }),
     meta: {},

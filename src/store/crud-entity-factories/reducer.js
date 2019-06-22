@@ -25,12 +25,20 @@ const handleLoad = state => {
 };
 
 const handleLoadSuccess = (state, { payload }) => {
-  return {
+  const finalPayload = {
     ...state,
     loading: false,
     loaded: true,
-    records: [...payload],
     error: '',
+  };
+
+  if (typeof payload !== 'object') {
+    return { ...finalPayload, records: payload };
+  }
+
+  return {
+    ...finalPayload,
+    records: Array.isArray(payload) ? [...payload] : { ...payload },
   };
 };
 
@@ -39,6 +47,6 @@ const handleLoadFailure = (state, { payload }) => {
     ...state,
     loading: false,
     loaded: false,
-    error: payload,
+    error: typeof payload === 'object' ? { ...payload } : payload,
   };
 };
