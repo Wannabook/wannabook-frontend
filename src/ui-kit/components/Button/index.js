@@ -8,6 +8,7 @@ import { brandPrimaryColor, secondaryColor, white } from '../../theme';
 const PrimaryButton = styled(SemanticButton)`
   &&& {
     color: ${white};
+    border-radius: 20px;
     background-color: ${brandPrimaryColor};
   }
 `;

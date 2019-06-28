@@ -4,7 +4,7 @@ const pagesData = {
   COMPANIES: { route: '/companies' },
   CATEGORIES: { route: '/categories' },
   CATEGORY: { route: '/category' },
-  'FORGOT-PASSWORD': { route: '/forgot-password' },
+  'CHANGE-PASSWORD': { route: '/change-password' },
   SERVICES: { route: '/services' },
   SERVICE: { route: '/service' },
   'SIGN-IN': { route: '/sign-in' },
