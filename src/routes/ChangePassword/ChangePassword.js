@@ -128,7 +128,7 @@ const ChangePassword = props => {
                 size="large"
                 primary
                 onClick={handleChangePassword}
-                loading
+                loading={false}
               >
                 Изменить пароль
               </ChangePasswordButton>

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Segment, Modal, Button } from 'semantic-ui-react';
+import { Grid, Segment, Modal } from 'semantic-ui-react';
 import { getPageUrl } from '../RouteResolver';
 import { ShowChangePasswordModalButton } from './styles';
-import {
-  ChangePasswordButton,
-  ChangePasswordForm,
-} from '../ChangePassword/styles';
+import ChangePassword from '../ChangePassword/ChangePassword';
 
-const ChangePasswordModal = ({ open }) => (
-  <Modal open={open}>
+const ChangePasswordModal = ({ open, handleClose }) => (
+  <Modal open={open} onClose={handleClose}>
     <Modal.Header>Смена пароля</Modal.Header>
     <Modal.Content>
       <Modal.Description>
-        <p>Форма для смены пароля</p>
+        <ChangePassword
+          changePasswordRequest={() => console.log('Change password')}
+        />
       </Modal.Description>
     </Modal.Content>
   </Modal>
@@ -21,8 +20,9 @@ const ChangePasswordModal = ({ open }) => (
 
 const User = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
-  const handleShowModal = () =>
-    setShowChangePasswordModal(!showChangePasswordModal);
+  const handleShowModal = () => setShowChangePasswordModal(true);
+
+  const handleCloseModal = () => setShowChangePasswordModal(false);
 
   return (
     <Grid stackable columns="1">
@@ -31,15 +31,17 @@ const User = () => {
           <Segment>
             <div>User page</div>
             <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
-            {/*<Link to={getPageUrl('CHANGE-PASSWORD')}>Сменить пароль</Link>*/}
-            <ChangePasswordModal open={showChangePasswordModal} />
-            <ChangePasswordButton
+            <ChangePasswordModal
+              open={showChangePasswordModal}
+              handleClose={handleCloseModal}
+            />
+            <ShowChangePasswordModalButton
               size="large"
               primary
               onClick={handleShowModal}
             >
-              Изменить пароль
-            </ChangePasswordButton>
+              Сменить пароль
+            </ShowChangePasswordModalButton>
           </Segment>
         </Grid.Column>
       </Grid.Row>
