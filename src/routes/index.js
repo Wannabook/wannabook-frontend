@@ -93,7 +93,7 @@ const Auth = Loadable({
 
 const ChangePassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ '../components/Account/ChangePasswordForm/ChangePasswordForm'),
+    import(/* webpackChunkName: "[request][index]" */ '../components/Account/ChangePassword/ChangePasswordForm/ChangePasswordForm'),
   loading: Loading,
 });
 
