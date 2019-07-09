@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Segment } from 'semantic-ui-react';
+
 import { getPageUrl } from '../RouteResolver';
 import { ShowChangePasswordModalButton } from './styles';
 import ModalPopUp from '../../components/ModalPopUp';
+import ChangePassword from '../../components/ChangePassword/ChangePassword';
 
 const User = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -21,7 +23,12 @@ const User = () => {
             <ModalPopUp
               open={showChangePasswordModal}
               handleClose={handleCloseModal}
-            />
+              title="Смена пароля"
+            >
+              <ChangePassword
+                changePasswordRequest={() => console.log('Change password')}
+              />
+            </ModalPopUp>
             <ShowChangePasswordModalButton
               size="large"
               primary

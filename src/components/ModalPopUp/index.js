@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Modal } from 'semantic-ui-react';
-import ChangePassword from '../ChangePassword/ChangePassword';
 
-const ModalPopUp = ({ open, handleClose }) => (
+import { ModalHeader } from './styles';
+
+const ModalPopUp = ({ open, handleClose, title, children }) => (
   <Modal open={open} onClose={handleClose}>
-    <Modal.Header>Смена пароля</Modal.Header>
+    <ModalHeader>{title}</ModalHeader>
     <Modal.Content>
-      <Modal.Description>
-        <ChangePassword
-          changePasswordRequest={() => console.log('Change password')}
-        />
-      </Modal.Description>
+      <Modal.Description>{children}</Modal.Description>
     </Modal.Content>
   </Modal>
 );
@@ -20,6 +17,8 @@ const ModalPopUp = ({ open, handleClose }) => (
 ModalPopUp.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.element,
 };
 
 export default ModalPopUp;
