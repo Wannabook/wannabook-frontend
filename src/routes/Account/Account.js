@@ -5,7 +5,10 @@ import { Grid, Segment } from 'semantic-ui-react';
 import { getPageUrl } from '../RouteResolver';
 import ChangePassword from '../../components/Account/ChangePassword';
 
-const changePassword = () => console.log('Change Password');
+const changePassword = passwords => {
+  console.log('Change Password');
+  console.log('passwords', passwords);
+};
 
 const Account = () => {
   return (

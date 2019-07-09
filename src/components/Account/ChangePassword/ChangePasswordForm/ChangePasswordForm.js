@@ -36,14 +36,13 @@ const inputList = [
   },
 ];
 
-const ChangePasswordForm = props => {
-  const { changePasswordRequest } = props;
+const ChangePasswordForm = ({ changePassword }) => {
   const handleChangePassword = e => {
     e.preventDefault();
     const error = validatePasswords();
 
     if (error) return;
-    changePasswordRequest(passwords);
+    changePassword(passwords);
   };
   const [passwords, setPasswords] = useState({
     old: '',
@@ -141,7 +140,7 @@ const ChangePasswordForm = props => {
 };
 
 ChangePasswordForm.propTypes = {
-  changePasswordRequest: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
 };
 
 export default ChangePasswordForm;

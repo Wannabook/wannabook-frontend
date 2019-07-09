@@ -10,6 +10,11 @@ const ChangePassword = ({ changePassword }) => {
 
   const handleCloseModal = () => setShowChangePasswordModal(false);
 
+  const handleChangePassword = passwords => {
+    changePassword(passwords);
+    handleCloseModal();
+  };
+
   return (
     <>
       <ShowChangePasswordModalButton
@@ -24,7 +29,7 @@ const ChangePassword = ({ changePassword }) => {
         handleClose={handleCloseModal}
         title="Смена пароля"
       >
-        <ChangePasswordForm changePasswordRequest={changePassword} />
+        <ChangePasswordForm changePassword={handleChangePassword} />
       </ModalPopUp>
     </>
   );
