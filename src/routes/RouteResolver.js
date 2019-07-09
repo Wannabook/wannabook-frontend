@@ -9,7 +9,7 @@ const pagesData = {
   'SIGN-IN': { route: '/sign-in' },
   'SIGN-UP': { route: '/sign-up' },
   'SIGN-OUT': { route: '/sign-out' },
-  USER: { route: '/user' },
+  ACCOUNT: { route: '/account' },
 };
 
 const getPageUrl = pageCode => {

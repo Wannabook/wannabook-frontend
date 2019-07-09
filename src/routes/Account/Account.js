@@ -7,7 +7,7 @@ import { ShowChangePasswordModalButton } from './styles';
 import ModalPopUp from '../../components/ModalPopUp';
 import ChangePassword from '../../components/ChangePassword/ChangePassword';
 
-const User = () => {
+const Account = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const handleShowModal = () => setShowChangePasswordModal(true);
 
@@ -43,4 +43,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Account;

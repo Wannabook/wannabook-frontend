@@ -13,12 +13,11 @@ export default function AppRoutes() {
       <Route path="/service/:id" component={Service} />
       <Route path="/categories" component={Categories} />
       <Route path="/category/:id" component={Category} />
-      <Route path="/user/:id" component={User} />
+      <Route path="/account/:id" component={User} />
       <Route path="/sign-in" component={Signin} />
       <Route path="/sign-out" component={Signout} />
       <Route path="/sign-up" component={Signup} />
       <Route path="/auth" component={Auth} />
-      <Route path="/change-password" component={ChangePassword} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -64,7 +63,7 @@ const Category = Loadable({
 
 const User = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './User/User'),
+    import(/* webpackChunkName: "[request][index]" */ './Account/Account'),
   loading: Loading,
 });
 
