@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Button from '../../ui-kit/components/Button';
+import Button from '../../../ui-kit/components/Button';
 import { Form } from 'semantic-ui-react';
-import { warningColor } from '../../ui-kit/theme';
+import { warningColor } from '../../../ui-kit/theme';
 
 export const Container = styled.div`
   padding: 16px;
@@ -11,7 +11,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ChangePasswordForm = styled(Form)`
+export const StyledChangePasswordForm = styled(Form)`
   &&& {
     padding: 20px 0;
   }

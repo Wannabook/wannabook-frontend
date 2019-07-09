@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
-import PasswordInput from '../FormComponents/PasswordInput';
+import PasswordInput from '../../_common/FormComponents/PasswordInput';
 
 import {
   Container,
-  ChangePasswordForm,
+  StyledChangePasswordForm,
   InputBlock,
   Label,
   ErrorMessage,
@@ -36,7 +36,7 @@ const inputList = [
   },
 ];
 
-const ChangePassword = props => {
+const ChangePasswordForm = props => {
   const { changePasswordRequest } = props;
   const handleChangePassword = e => {
     e.preventDefault();
@@ -97,7 +97,7 @@ const ChangePassword = props => {
       <Grid.Row stretched columns="1">
         <Grid.Column>
           <Container>
-            <ChangePasswordForm>
+            <StyledChangePasswordForm>
               {inputList.map(item => {
                 const handleChange = e => {
                   resetErrors();
@@ -132,7 +132,7 @@ const ChangePassword = props => {
               >
                 Изменить пароль
               </ChangePasswordButton>
-            </ChangePasswordForm>
+            </StyledChangePasswordForm>
           </Container>
         </Grid.Column>
       </Grid.Row>
@@ -140,8 +140,8 @@ const ChangePassword = props => {
   );
 };
 
-ChangePassword.propTypes = {
+ChangePasswordForm.propTypes = {
   changePasswordRequest: PropTypes.func.isRequired,
 };
 
-export default ChangePassword;
+export default ChangePasswordForm;

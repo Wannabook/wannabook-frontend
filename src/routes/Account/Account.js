@@ -4,8 +4,8 @@ import { Grid, Segment } from 'semantic-ui-react';
 
 import { getPageUrl } from '../RouteResolver';
 import { ShowChangePasswordModalButton } from './styles';
-import ModalPopUp from '../../components/ModalPopUp';
-import ChangePassword from '../../components/ChangePassword/ChangePassword';
+import ModalPopUp from '../../components/_common/ModalPopUp';
+import ChangePasswordForm from '../../components/Account/ChangePasswordForm/ChangePasswordForm';
 
 const Account = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -20,22 +20,24 @@ const Account = () => {
           <Segment>
             <div>User page</div>
             <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
-            <ModalPopUp
-              open={showChangePasswordModal}
-              handleClose={handleCloseModal}
-              title="Смена пароля"
-            >
-              <ChangePassword
-                changePasswordRequest={() => console.log('Change password')}
-              />
-            </ModalPopUp>
-            <ShowChangePasswordModalButton
-              size="large"
-              primary
-              onClick={handleShowModal}
-            >
-              Сменить пароль
-            </ShowChangePasswordModalButton>
+            <>
+              <ShowChangePasswordModalButton
+                size="large"
+                primary
+                onClick={handleShowModal}
+              >
+                Сменить пароль
+              </ShowChangePasswordModalButton>
+              <ModalPopUp
+                open={showChangePasswordModal}
+                handleClose={handleCloseModal}
+                title="Смена пароля"
+              >
+                <ChangePasswordForm
+                  changePasswordRequest={() => console.log('Change password')}
+                />
+              </ModalPopUp>
+            </>
           </Segment>
         </Grid.Column>
       </Grid.Row>

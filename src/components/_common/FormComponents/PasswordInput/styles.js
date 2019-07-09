@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Input from '../../../ui-kit/components/Input';
+import Input from '../../../../ui-kit/components/Input';
 
 export const StyledInput = styled(Input)`
   &&& {
