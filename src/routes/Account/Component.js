@@ -1,16 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Segment } from 'semantic-ui-react';
 
 import { getPageUrl } from '../RouteResolver';
 import ChangePassword from '../../components/Account/ChangePassword';
 
-const changePassword = passwords => {
-  console.log('Change Password');
-  console.log('passwords', passwords);
-};
-
-const Account = () => {
+const Component = ({ changePassword }) => {
   return (
     <Grid stackable columns="1">
       <Grid.Row stretched columns="1">
@@ -26,4 +22,8 @@ const Account = () => {
   );
 };
 
-export default Account;
+Component.propTypes = {
+  changePassword: PropTypes.func.isRequired,
+};
+
+export default Component;

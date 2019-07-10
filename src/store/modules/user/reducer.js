@@ -1,7 +1,7 @@
-import makeReducer from '../../crud-entity-factories/reducer';
+import makeReducer from '../../factories/crud-entity-factories/reducer';
 import { combineReducers } from 'redux';
 
-export default makeReducer('Account');
+export default makeReducer('User');
 
 // we can make another reducer for user that contains unique
 // user-related stuff and combine it with the default CRUD reducer

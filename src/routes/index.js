@@ -62,8 +62,7 @@ const Category = Loadable({
 });
 
 const User = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './Account/Account'),
+  loader: () => import(/* webpackChunkName: "[request][index]" */ './Account'),
   loading: Loading,
 });
 

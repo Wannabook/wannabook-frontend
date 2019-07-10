@@ -36,4 +36,12 @@ export class ApiClient {
       }, 300);
     });
   }
+
+  post(resourceUrl) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        Math.random() > 0.3 ? resolve() : reject('Something went wrong...');
+      }, 300);
+    });
+  }
 }
