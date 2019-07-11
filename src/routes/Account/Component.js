@@ -6,7 +6,12 @@ import { Grid, Segment } from 'semantic-ui-react';
 import { getPageUrl } from '../RouteResolver';
 import ChangePassword from '../../components/Account/ChangePassword';
 
-const Component = ({ changePassword }) => {
+const Account = ({
+  changePassword,
+  resetChangePasswordRequestState,
+  loading,
+  loaded,
+}) => {
   return (
     <Grid stackable columns="1">
       <Grid.Row stretched columns="1">
@@ -14,7 +19,12 @@ const Component = ({ changePassword }) => {
           <Segment>
             <div>User page</div>
             <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
-            <ChangePassword changePassword={changePassword} />
+            <ChangePassword
+              changePassword={changePassword}
+              resetChangePasswordRequestState={resetChangePasswordRequestState}
+              loading={loading}
+              loaded={loaded}
+            />
           </Segment>
         </Grid.Column>
       </Grid.Row>
@@ -22,8 +32,11 @@ const Component = ({ changePassword }) => {
   );
 };
 
-Component.propTypes = {
+Account.propTypes = {
   changePassword: PropTypes.func.isRequired,
+  resetChangePasswordRequestState: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
 };
 
-export default Component;
+export default Account;

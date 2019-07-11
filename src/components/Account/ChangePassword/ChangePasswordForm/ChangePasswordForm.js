@@ -36,7 +36,7 @@ const inputList = [
   },
 ];
 
-const ChangePasswordForm = ({ changePassword }) => {
+const ChangePasswordForm = ({ changePassword, loading }) => {
   const handleChangePassword = e => {
     e.preventDefault();
     const error = validatePasswords();
@@ -127,7 +127,7 @@ const ChangePasswordForm = ({ changePassword }) => {
                 size="large"
                 primary
                 onClick={handleChangePassword}
-                loading={false}
+                loading={loading}
               >
                 Изменить пароль
               </ChangePasswordButton>
@@ -141,6 +141,7 @@ const ChangePasswordForm = ({ changePassword }) => {
 
 ChangePasswordForm.propTypes = {
   changePassword: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default ChangePasswordForm;

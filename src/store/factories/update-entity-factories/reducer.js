@@ -8,15 +8,16 @@ export default (action, entity, field) =>
       [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}`]: state =>
         handleUpdate(state),
 
-      [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_SUCCESS`]: (
-        state,
-        { payload }
-      ) => handleUpdateSuccess(state, { payload }),
+      [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_SUCCESS`]: state =>
+        handleUpdateSuccess(state),
 
       [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_FAILURE`]: (
         state,
         { payload }
       ) => handleUpdateFailure(state, { payload }),
+
+      [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_INIT`]: state =>
+        handleUpdateInit(state),
     },
     INITIAL_STATE
   );
@@ -24,6 +25,7 @@ export default (action, entity, field) =>
 const handleUpdate = state => {
   return {
     ...state,
+    error: '',
     loading: true,
     loaded: false,
   };
@@ -45,4 +47,8 @@ const handleUpdateFailure = (state, { payload }) => {
     loaded: false,
     error: payload,
   };
+};
+
+const handleUpdateInit = () => {
+  return INITIAL_STATE;
 };

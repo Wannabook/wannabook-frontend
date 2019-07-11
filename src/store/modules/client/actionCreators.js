@@ -1,4 +1,4 @@
-import { updateUserPasswordActions } from './constants';
+import { updateUserPasswordActions, setInitStateAction } from './constants';
 
 export function changePassword(passwords) {
   return {
@@ -10,7 +10,8 @@ export function changePassword(passwords) {
   };
 }
 
-// export const changePassword = passwords => {
-//   console.log("changePassword action")
-//   return { type: 'CHANGE_PASSWORD_ACTION', meta: { passwords } };
-// };
+export function resetChangePasswordRequestState() {
+  return {
+    type: Object.keys(setInitStateAction),
+  };
+}

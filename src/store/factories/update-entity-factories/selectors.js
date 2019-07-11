@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 
-export const getLoadingProps = entity => state => {
-  const getLoadingError = R.pathOr('', [entity, 'error']);
-  const isLoaded = R.pathOr(false, [entity, 'loaded']);
-  const isLoading = R.pathOr(false, [entity, 'loading']);
+export const getLoadingProps = (entity, field) => state => {
+  const getLoadingError = R.pathOr('', [entity, field, 'error']);
+  const isLoaded = R.pathOr(false, [entity, field, 'loaded']);
+  const isLoading = R.pathOr(false, [entity, field, 'loading']);
 
   return {
     error: getLoadingError(state),

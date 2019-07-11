@@ -40,8 +40,8 @@ export class ApiClient {
   post(resourceUrl) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        Math.random() > 0.3 ? resolve() : reject('Something went wrong...');
-      }, 300);
+        Math.random() > 0.5 ? resolve() : reject('Something went wrong...');
+      }, 1500);
     });
   }
 }

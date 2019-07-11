@@ -13,3 +13,11 @@ export const createUpdateEntityFieldActions = (action, entity, field) => {
     ),
   };
 };
+
+export const createSetInitStateAction = (action, entity, field) => {
+  return {
+    [`${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_INIT`]: createAction(
+      `${action.toUpperCase()}_${entity.toUpperCase()}_${field.toUpperCase()}_INIT`
+    ),
+  };
+};
