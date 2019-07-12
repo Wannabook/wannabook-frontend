@@ -13,7 +13,7 @@ export default function AppRoutes() {
       <Route path="/service/:id" component={Service} />
       <Route path="/categories" component={Categories} />
       <Route path="/category/:id" component={Category} />
-      <Route path="/user/:id" component={User} />
+      <Route path="/account/:id" component={User} />
       <Route path="/sign-in" component={Signin} />
       <Route path="/sign-out" component={Signout} />
       <Route path="/sign-up" component={Signup} />
@@ -62,8 +62,7 @@ const Category = Loadable({
 });
 
 const User = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './User/User'),
+  loader: () => import(/* webpackChunkName: "[request][index]" */ './Account'),
   loading: Loading,
 });
 
@@ -88,6 +87,12 @@ const Signout = Loadable({
 const Auth = Loadable({
   loader: () =>
     import(/* webpackChunkName: "[request][index]" */ './Auth/Auth'),
+  loading: Loading,
+});
+
+const ChangePassword = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ '../components/Account/ChangePassword/ChangePasswordForm/ChangePasswordForm'),
   loading: Loading,
 });
 

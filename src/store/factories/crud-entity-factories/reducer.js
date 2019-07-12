@@ -19,6 +19,7 @@ export default entity =>
 const handleLoad = state => {
   return {
     ...state,
+    error: '',
     loading: true,
     loaded: false,
   };

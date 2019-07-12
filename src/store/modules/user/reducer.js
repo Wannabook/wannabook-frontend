@@ -1,4 +1,4 @@
-import makeReducer from '../../crud-entity-factories/reducer';
+import makeReducer from '../../factories/crud-entity-factories/reducer';
 import { combineReducers } from 'redux';
 
 export default makeReducer('User');

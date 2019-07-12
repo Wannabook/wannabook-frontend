@@ -21,7 +21,7 @@ const UserIcon = () => {
       {loggedIn => {
         // we will then make user/:id dynamic depending on id coming from backend
         return loggedIn ? (
-          <Link to={`${getPageUrl('USER')}/123456`}>
+          <Link to={`${getPageUrl('ACCOUNT')}/123456`}>
             <StyledIcon name="user outline" />
           </Link>
         ) : (

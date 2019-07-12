@@ -4,13 +4,12 @@ const pagesData = {
   COMPANIES: { route: '/companies' },
   CATEGORIES: { route: '/categories' },
   CATEGORY: { route: '/category' },
-  'FORGOT-PASSWORD': { route: '/forgot-password' },
   SERVICES: { route: '/services' },
   SERVICE: { route: '/service' },
   'SIGN-IN': { route: '/sign-in' },
   'SIGN-UP': { route: '/sign-up' },
   'SIGN-OUT': { route: '/sign-out' },
-  USER: { route: '/user' },
+  ACCOUNT: { route: '/account' },
 };
 
 const getPageUrl = pageCode => {
