@@ -1,7 +1,27 @@
-import makeReducer from '../../factories/crud-entity-factories/reducer';
-import { combineReducers } from 'redux';
+import { handleActions } from 'redux-actions';
+import {
+  INITIAL_STATE,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_FAILURE,
+} from './constants';
+import { handleLoad, handleLoadFailure } from '../../common/reducerHandlers';
 
-export default makeReducer('User');
+export default handleActions(
+  {
+    [LOAD_USER_REQUEST]: state => handleLoad(state),
+    [LOAD_USER_SUCCESS]: (state, action) => handleLoadSuccess(state, action),
+    [LOAD_USER_FAILURE]: (state, action) => handleLoadFailure(state, action),
+  },
+  INITIAL_STATE
+);
 
-// we can make another reducer for user that contains unique
-// user-related stuff and combine it with the default CRUD reducer
+const handleLoadSuccess = (state, { payload }) => {
+  return {
+    ...state,
+    loading: false,
+    loaded: true,
+    records: [...payload],
+    error: '',
+  };
+};

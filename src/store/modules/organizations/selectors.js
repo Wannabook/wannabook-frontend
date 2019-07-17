@@ -1,4 +1,4 @@
-import { getLoadingProps } from '../../factories/crud-entity-factories/selectors';
+import { getLoadingProps } from '../../common/selectors';
 import * as R from 'ramda';
 
 export const getOrganizationsLoadingProps = getLoadingProps('organizations');

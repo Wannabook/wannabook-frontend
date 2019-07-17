@@ -4,8 +4,8 @@ import Component from './Component';
 import {
   changePassword,
   resetChangePasswordRequestState,
-} from '../../store/modules/client/actionCreators';
-import { getChangePasswordLoadingProps } from '../../store/modules/client/';
+} from '../../store/modules/client/changePassword/actionCreators';
+import { getChangePasswordLoadingProps } from '../../store/modules/client/changePassword';
 
 const mapStateToProps = () => state => ({
   loading: getChangePasswordLoadingProps(state).loading,

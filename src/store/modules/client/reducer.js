@@ -1,7 +1,5 @@
-import makeReducer from '../../factories/update-entity-factories/reducer';
 import { combineReducers } from 'redux';
-
-const changePassword = makeReducer('Update', 'user', 'password');
+import changePassword from './changePassword/reducer';
 
 export default combineReducers({
   changePassword,

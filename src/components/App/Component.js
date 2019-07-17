@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 
@@ -7,44 +7,34 @@ import AppRoutes from '../../routes/index';
 import Header from '../../components/Header';
 import { AuthContext } from '../../core/auth/index';
 
-export default class App extends Component {
-  static propTypes = {
-    user: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    error: PropTypes.string.isRequired,
-    loadUser: PropTypes.func.isRequired,
-  };
+//TODO: Replace after connect to the real API
+// const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
+const hasJWToken = () => true;
 
-  state = {
-    loggedIn: true,
-  };
+const App = props => {
+  const { user, loadUser, error } = props;
 
-  componentDidMount() {
-    // TODO: extract to core/auth?
-    if (hasJWToken()) {
-      this.props
-        .loadUser()
-        .then(userInfo => {
-          this.setState({ loggedIn: true });
-        })
-        .catch(error => {
-          this.setState({ loggedIn: false });
-        });
-    } else {
-      this.setState({ loggedIn: false });
-    }
-  }
+  useEffect(() => {
+    hasJWToken() && loadUser();
+  }, []);
 
-  render() {
-    return (
-      <AuthContext.Provider value={this.state.loggedIn}>
-        <Normalize />
-        <Header />
-        <AppRoutes />
-      </AuthContext.Provider>
-    );
-  }
-}
+  const isLoggedIn = () => !!user && !error;
 
-const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
+  return (
+    <AuthContext.Provider value={isLoggedIn()}>
+      <Normalize />
+      <Header />
+      <AppRoutes />
+    </AuthContext.Provider>
+  );
+};
+
+App.propTypes = {
+  user: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  loadUser: PropTypes.func.isRequired,
+};
+
+export default App;

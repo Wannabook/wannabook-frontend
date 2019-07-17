@@ -1,3 +1,10 @@
-import { createCrudActions } from '../../factories/crud-entity-factories/action';
+export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 
-export const userActions = createCrudActions('user');
+export const INITIAL_STATE = {
+  loading: false,
+  loaded: false,
+  error: '',
+  records: [],
+};
