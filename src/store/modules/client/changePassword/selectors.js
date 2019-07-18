@@ -1,4 +1,4 @@
-import { getLoadingProps } from '../../factories/update-entity-factories/selectors';
+import { getLoadingProps } from '../../../common/selectors';
 
 export const getChangePasswordLoadingProps = getLoadingProps(
   'client',
