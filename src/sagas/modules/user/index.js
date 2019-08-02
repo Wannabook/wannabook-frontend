@@ -10,7 +10,7 @@ export default function*() {
 
 const fetchUser = () => apiClient.get('/user/me');
 
-function* workerSaga() {
+export function* workerSaga() {
   try {
     const user = yield call(fetchUser);
     yield put(loadUserSuccess(user));

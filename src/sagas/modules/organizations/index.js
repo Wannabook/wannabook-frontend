@@ -13,7 +13,7 @@ export default function*() {
 
 const fetchOrganizations = () => apiClient.get('/organizations');
 
-function* workerSaga() {
+export function* workerSaga() {
   try {
     const organizations = yield call(fetchOrganizations);
     yield put(loadOrganizationsSuccess(organizations));

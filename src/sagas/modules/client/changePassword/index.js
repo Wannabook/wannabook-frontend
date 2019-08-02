@@ -13,7 +13,7 @@ export default function*() {
 
 const changePasswordRequest = () => apiClient.post();
 
-function* workerSaga() {
+export function* workerSaga() {
   try {
     const changePasswordResponse = yield call(changePasswordRequest);
     yield put(changePasswordSuccess(changePasswordResponse));
