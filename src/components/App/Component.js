@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
+import { isEmpty } from 'ramda';
 
 import { JWT_TOKEN } from '../../constants';
 import AppRoutes from '../../routes/index';
@@ -8,20 +9,20 @@ import Header from '../../components/Header';
 import { AuthContext } from '../../core/auth/index';
 
 //TODO: Replace after connect to the real API
-// const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
-const hasJWToken = () => true;
+// const hasJWToken = localStorage.getItem(JWT_TOKEN);
+const hasJWToken = false;
 
 const App = props => {
   const { user, loadUser, error } = props;
 
   useEffect(() => {
-    hasJWToken() && loadUser();
-  }, []);
+    hasJWToken && loadUser();
+  }, [user]);
 
-  const isLoggedIn = () => !!user && !error;
+  const isLoggedIn = !isEmpty(user) && !error;
 
   return (
-    <AuthContext.Provider value={isLoggedIn()}>
+    <AuthContext.Provider value={isLoggedIn}>
       <Normalize />
       <Header />
       <AppRoutes />

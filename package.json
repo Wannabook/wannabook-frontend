@@ -2,9 +2,6 @@
   "name": "wannabook-frontend",
   "version": "1.0.0",
   "description": "This is a repo for Wannabook frontend",
-  "engines": {
-    "node": ">=8.0.0 <10.0.0"
-  },
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --env.ENVIRONMENT=production",
@@ -84,7 +81,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-loadable": "5.5.0",
-    "react-redux": "7.0.1",
+    "react-redux": "7.1.0",
     "react-router-dom": "5.0.0",
     "react-slick": "0.24.0",
     "redux-actions": "2.6.5",
