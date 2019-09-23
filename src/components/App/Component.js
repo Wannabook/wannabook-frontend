@@ -7,6 +7,8 @@ import AppRoutes from '../../routes/index';
 import Header from '../../components/Header';
 import { AuthContext } from '../../core/auth/index';
 
+import { GlobalStyle } from './styles';
+
 //TODO: Replace after connect to the real API
 // const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
 const hasJWToken = () => true;
@@ -22,9 +24,12 @@ const App = props => {
 
   return (
     <AuthContext.Provider value={isLoggedIn()}>
-      <Normalize />
-      <Header />
-      <AppRoutes />
+      <div>
+        <Normalize />
+        <GlobalStyle />
+        <Header />
+        <AppRoutes />
+      </div>
     </AuthContext.Provider>
   );
 };
