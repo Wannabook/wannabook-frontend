@@ -12,7 +12,8 @@ const TokenGrabber = () => {
     window.location = '/';
   });
 
-  return 'Logging you in...';
+  // TODO: Do something prettier here
+  return 'Выполняем вход в систему...';
 };
 
 function getUrlParameter(name) {

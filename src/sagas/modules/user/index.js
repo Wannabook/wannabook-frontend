@@ -8,11 +8,12 @@ export default function*() {
   yield takeLatest(LOAD_USER_REQUEST, workerSaga);
 }
 
-const fetchUser = () => apiClient.get('/user/me');
+const fetchUser = () => apiClient.me();
 
 export function* workerSaga() {
   try {
     const user = yield call(fetchUser);
+    console.log('user', user);
     yield put(loadUserSuccess(user));
   } catch (error) {
     yield put(loadUserFailure(error));
