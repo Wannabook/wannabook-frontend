@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
 
 const CategoryList = ({ categoryList }) => {
@@ -14,6 +15,16 @@ const CategoryList = ({ categoryList }) => {
       ))}
     </Grid>
   );
+};
+
+CategoryList.PropTypes = {
+  categoryList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 CategoryList.defaultProps = {
