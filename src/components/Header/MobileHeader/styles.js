@@ -1,46 +1,19 @@
-import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
+import { mainBackgroundColor } from '../../../ui-kit/theme';
 
 export const StyledMobileBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  padding: 0 10px;
-  background-color: #eeeeee;
-`;
-
-export const StyledMenu = styled.ul`
-  position: relative;
-  margin: 0;
   padding: 0 15px;
-  list-style: none;
-  overflow: hidden;
-  transition: height 0.5s;
-  height: ${props => (props.open ? 'auto' : '0')};
-`;
-
-export const StyleMenuItem = styled.li`
-  padding-bottom: 15px;
-  padding-top: 16px;
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-align: center;
-  border-bottom: 1px solid #b2b2b6;
-`;
-
-/* TODO use NavLink to style currently opened item */
-export const StyledLink = styled(Link)`
-  color: #b2b2b6;
-  text-decoration: none;
+  background-color: ${mainBackgroundColor};
 `;
 
 export const Hamburger = styled.div`
-  width: 40px;
-  height: 35px;
+  width: 60px;
+  height: 28px;
   position: relative;
   transform: rotate(0deg);
   transition: 0.5s ease-in-out;
@@ -48,9 +21,11 @@ export const Hamburger = styled.div`
 
   & span {
     display: block;
+    margin: 0 auto;
     position: absolute;
-    height: 7px;
-    width: 100%;
+    right: 0;
+    height: 2px;
+    width: 30px;
     background: #111111;
     border-radius: 9px;
     opacity: 1;
@@ -61,7 +36,7 @@ export const Hamburger = styled.div`
 
   & span:nth-child(1) {
     top: ${props => (props.open ? '18px' : '0')};
-    width: ${props => (props.open ? '0' : '100%')};
+    width: ${props => (props.open ? '0' : '30px')};
     left: ${props => (props.open ? '50%' : '0')};
   }
 
@@ -76,8 +51,8 @@ export const Hamburger = styled.div`
   }
 
   & span:nth-child(4) {
-    top: ${props => (props.open ? '12px' : '24px')};
-    width: ${props => (props.open ? '0' : '100%')};
+    top: ${props => (props.open ? '12px' : '26px')};
+    width: ${props => (props.open ? '0' : '30px')};
     left: ${props => (props.open ? '50%' : '0')};
   }
 `;
@@ -87,3 +62,14 @@ export const StyledIcon = styled(Icon)`
   margin-top: 5px !important;
   font-size: 28px !important;
 `;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  a {
+    display: inline;
+  }
+`;
+
+export const SearchButton = styled.div``;

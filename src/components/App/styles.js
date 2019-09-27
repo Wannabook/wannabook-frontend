@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import { mainBackgroundColor } from '../../ui-kit/theme';
 
@@ -41,5 +41,19 @@ export const GlobalStyle = createGlobalStyle`
            src: url(${MontserratTTF600}) format('truetype');
       }
       font-family: 'Montserrat', sans-serif;
+      
+      a {
+        color: #6b62ef;
+      }
+      a:hover {
+        color: #6b62ef
+      }
+      
+      
   }
+`;
+
+export const RoutesContainer = styled.div`
+  padding: 0 15px;
+  min-height: calc(100vh - 140px);
 `;

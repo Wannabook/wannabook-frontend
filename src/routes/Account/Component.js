@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Grid, Segment } from 'semantic-ui-react';
 
 import { getPageUrl } from '../RouteResolver';
 import ChangePassword from '../../components/Account/ChangePassword';
@@ -13,22 +12,16 @@ const Account = ({
   loaded,
 }) => {
   return (
-    <Grid stackable columns="1">
-      <Grid.Row stretched columns="1">
-        <Grid.Column>
-          <Segment>
-            <div>User page</div>
-            <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
-            <ChangePassword
-              changePassword={changePassword}
-              resetChangePasswordRequestState={resetChangePasswordRequestState}
-              loading={loading}
-              loaded={loaded}
-            />
-          </Segment>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <>
+      <div>User page</div>
+      <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
+      <ChangePassword
+        changePassword={changePassword}
+        resetChangePasswordRequestState={resetChangePasswordRequestState}
+        loading={loading}
+        loaded={loaded}
+      />
+    </>
   );
 };
 

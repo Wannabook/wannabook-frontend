@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
 
 import { JWT_TOKEN } from '../../constants';
 import { AuthContext } from '../../core/auth/index';
@@ -62,53 +61,47 @@ class SignIn extends React.Component {
     return (
       <AuthContext.Consumer>
         {loggedIn => (
-          <Grid stackable columns="1">
-            <Grid.Row stretched columns="1">
-              <Grid.Column>
-                {// if user is logged in, redirect them away from login page
-                loggedIn && <Redirect to={getPageUrl('HOME')} />}
-                <Container>
-                  <Description>Войти с помощью</Description>
-                  <SocialNetworkList>
-                    {socialNetworkList.map(item => (
-                      <SocialNetworkLink key={item.name} to={item.url}>
-                        {item.id}
-                      </SocialNetworkLink>
-                    ))}
-                  </SocialNetworkList>
-                </Container>
-                <Container>
-                  <Form>
-                    {inputList.map(item => (
-                      <Label key={item.type}>
-                        <StyledInput {...item} />
-                      </Label>
-                    ))}
-                    <Link to={getPageUrl('HOME')}>
-                      <SignInButton
-                        size="large"
-                        secondary
-                        onClick={this.handleLogin}
-                      >
-                        Войти
-                      </SignInButton>
-                    </Link>
-                  </Form>
-                  <Description>
-                    <Link to={getPageUrl('FORGOT-PASSWORD')}>
-                      Забыли пароль?
-                    </Link>
-                  </Description>
-                </Container>
-                <Container>
-                  <Description>Нет учетной записи?</Description>
-                  <Description>
-                    <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
-                  </Description>
-                </Container>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <>
+            {// if user is logged in, redirect them away from login page
+            loggedIn && <Redirect to={getPageUrl('HOME')} />}
+            <Container>
+              <Description>Войти с помощью</Description>
+              <SocialNetworkList>
+                {socialNetworkList.map(item => (
+                  <SocialNetworkLink key={item.name} to={item.url}>
+                    {item.id}
+                  </SocialNetworkLink>
+                ))}
+              </SocialNetworkList>
+            </Container>
+            <Container>
+              <Form>
+                {inputList.map(item => (
+                  <Label key={item.type}>
+                    <StyledInput {...item} />
+                  </Label>
+                ))}
+                <Link to={getPageUrl('HOME')}>
+                  <SignInButton
+                    size="large"
+                    secondary
+                    onClick={this.handleLogin}
+                  >
+                    Войти
+                  </SignInButton>
+                </Link>
+              </Form>
+              <Description>
+                <Link to={getPageUrl('FORGOT-PASSWORD')}>Забыли пароль?</Link>
+              </Description>
+            </Container>
+            <Container>
+              <Description>Нет учетной записи?</Description>
+              <Description>
+                <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
+              </Description>
+            </Container>
+          </>
         )}
       </AuthContext.Consumer>
     );
