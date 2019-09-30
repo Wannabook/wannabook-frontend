@@ -16,8 +16,10 @@ const getPageUrl = pageCode => {
   const pageInfo = pagesData[pageCode];
   if (!pageInfo) {
     console.error(`No page with code "${pageCode}"!!!`);
+
     return null;
   }
+
   return pageInfo.route;
 };
 

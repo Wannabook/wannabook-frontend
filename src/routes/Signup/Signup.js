@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
 
 import { AuthContext } from '../../core/auth/index';
 
@@ -60,49 +59,45 @@ const inputList = [
 
 const descriptionText = 'Зарегистрироваться через';
 
-const Signup = props => {
+const SignUp = props => {
   return (
     <AuthContext.Consumer>
       {loggedIn => (
-        <Grid stackable columns="1">
-          <Grid.Row stretched columns="1">
-            <Grid.Column>
-              {// if user is logged in, redirect them away from sign-up page
-              loggedIn && <Redirect to={getPageUrl('HOME')} />}
-              <Container>
-                <Description>{descriptionText}</Description>
-                <SocialNetworkList>
-                  {socialNetworkList.map(item => (
-                    <SocialNetworkLink to={item.url} key={item.name}>
-                      {item.id}
-                    </SocialNetworkLink>
-                  ))}
-                </SocialNetworkList>
-              </Container>
-              <Container>
-                <Form>
-                  {inputList.map(item => (
-                    <Label key={item.type}>
-                      <StyledInput {...item} />
-                    </Label>
-                  ))}
-                  <Link to={getPageUrl('HOME')}>
-                    <SignInButton size="large" secondary>
-                      Зарегистрироваться
-                    </SignInButton>
-                  </Link>
-                </Form>
-                <Description>Есть учетная запись?</Description>
-                <Description>
-                  <Link to={getPageUrl('SIGN-IN')}>Войти</Link>
-                </Description>
-              </Container>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <>
+          {// if user is logged in, redirect them away from sign-up page
+          loggedIn && <Redirect to={getPageUrl('HOME')} />}
+          <Container>
+            <Description>{descriptionText}</Description>
+            <SocialNetworkList>
+              {socialNetworkList.map(item => (
+                <SocialNetworkLink to={item.url} key={item.name}>
+                  {item.id}
+                </SocialNetworkLink>
+              ))}
+            </SocialNetworkList>
+          </Container>
+          <Container>
+            <Form>
+              {inputList.map(item => (
+                <Label key={item.type}>
+                  <StyledInput {...item} />
+                </Label>
+              ))}
+              <Link to={getPageUrl('HOME')}>
+                <SignInButton size="large" secondary>
+                  Зарегистрироваться
+                </SignInButton>
+              </Link>
+            </Form>
+            <Description>Есть учетная запись?</Description>
+            <Description>
+              <Link to={getPageUrl('SIGN-IN')}>Войти</Link>
+            </Description>
+          </Container>
+        </>
       )}
     </AuthContext.Consumer>
   );
 };
 
-export default Signup;
+export default SignUp;
