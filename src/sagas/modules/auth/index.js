@@ -3,6 +3,6 @@ import { googleAuthSaga } from './google';
 
 const subSagas = [googleAuthSaga];
 
-export function* authSaga() {
-  yield all(subSagas.map(s => fork(s)));
+export function* authSaga(client) {
+  yield all(subSagas.map(s => fork(s, client)));
 }

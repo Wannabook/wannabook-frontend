@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 
-import { JWT_TOKEN } from '../../constants';
+import { ACCESS_TOKEN } from '../../constants';
 import { AuthContext } from '../../core/auth/index';
 
 import {
@@ -58,7 +58,7 @@ const inputList = [
 const SignIn = props => {
   const dispatch = useDispatch();
   const handleLogin = () => {
-    localStorage.setItem(JWT_TOKEN, 'erglehrgerg');
+    localStorage.setItem(ACCESS_TOKEN, 'erglehrgerg');
     location.href = '/'; // for now :)
   };
 

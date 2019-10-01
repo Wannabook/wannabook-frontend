@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { JWT_TOKEN } from '../../constants';
+import { ACCESS_TOKEN } from '../../constants';
 
 export default class Signout extends React.Component {
   componentDidMount() {
-    localStorage.removeItem(JWT_TOKEN);
+    localStorage.removeItem(ACCESS_TOKEN);
     location.href = '/'; // temp solution
   }
 

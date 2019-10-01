@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { isEmpty } from 'ramda';
 
-import { ACCESS_TOKEN, JWT_TOKEN } from '../../constants';
+import { ACCESS_TOKEN } from '../../constants';
 import AppRoutes from '../../routes/index';
 import Header from '../../components/Header';
 import { AuthContext } from '../../core/auth/index';
 
-// eslint-disable-next-line max-len
-// TODO what to do when both tokens are present? Check for both? Or make sure we always have only one?
-const hasToken = localStorage.getItem(ACCESS_TOKEN || JWT_TOKEN);
+const hasToken = localStorage.getItem(ACCESS_TOKEN);
 
 const App = props => {
   const { user, loadUser, error } = props;

@@ -1,5 +1,4 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { apiClient } from '../../../services';
 import { LOAD_ORGANIZATIONS_REQUEST } from '../../../store/modules/organizations';
 import {
   loadOrganizationsSuccess,
@@ -7,15 +6,13 @@ import {
 } from '../../../store/modules/organizations';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
-export default function*() {
-  yield takeLatest(LOAD_ORGANIZATIONS_REQUEST, workerSaga);
+export default function*(client) {
+  yield takeLatest(LOAD_ORGANIZATIONS_REQUEST, workerSaga, client);
 }
 
-const fetchOrganizations = () => apiClient.get('/organizations');
-
-export function* workerSaga() {
+export function* workerSaga(client) {
   try {
-    const organizations = yield call(fetchOrganizations);
+    const organizations = yield call(client.request, '/organizations');
     yield put(loadOrganizationsSuccess(organizations));
   } catch (error) {
     yield put(loadOrganizationsFailure(error));

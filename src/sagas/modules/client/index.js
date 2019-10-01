@@ -5,6 +5,6 @@ import changePassword from './changePassword';
 /**
  * rootSaga
  */
-export default function*() {
-  yield all([fork(changePassword)]);
+export default function*(client) {
+  yield all(fork(changePassword, client));
 }

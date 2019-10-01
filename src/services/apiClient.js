@@ -13,17 +13,13 @@ export class ApiClient {
     return this.request(API.me);
   }
 
-  get(endpoint, params = {}) {
-    return this.request(endpoint, params);
-  }
-
   request(endpoint, params = {}) {
     const requestParams = {
-      headers: this.headers,
+      headers: { ...this.headers, ...params.headers },
       ...params,
     };
 
-    console.warn('requestParams', requestParams);
+    console.warn('params', params);
 
     const url = isAbsolute(endpoint)
       ? endpoint
