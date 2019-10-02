@@ -10,6 +10,7 @@ const pagesData = {
   'SIGN-UP': { route: '/sign-up' },
   'SIGN-OUT': { route: '/sign-out' },
   ACCOUNT: { route: '/account' },
+  'FORGOT-PASSWORD': { route: '/forgot-password' },
 };
 
 const getPageUrl = pageCode => {

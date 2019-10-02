@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   padding: 16px;
-  border-bottom: 1px solid #e5e5e5;
-  &:last-child {
-    border-bottom: none;
-  }
 `;
 
 export const SocialNetworkList = styled.div`
@@ -19,11 +15,9 @@ export const SocialNetworkList = styled.div`
 `;
 
 export const SocialNetworkLink = styled(Link)`
-  border-radius: 50%;
-  border: solid blue 1px;
-  flex-basis: 32px;
-  height: 32px;
-  margin: 8px;
+  flex-basis: 40px;
+  height: 40px;
+  margin: 10px;
 `;
 
 export const Description = styled.p`
@@ -51,8 +45,7 @@ export const StyledInput = styled(Input)`
 export const SignInButton = styled(Button)`
   &&& {
     display: block;
-    border-radius: 0;
-    margin: 16px 0;
     width: 100%;
+    margin-bottom: 16px;
   }
 `;
