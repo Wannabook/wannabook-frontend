@@ -5,21 +5,23 @@ import { Redirect } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 
-import { ACCESS_TOKEN } from '../../constants';
 import { AuthContext } from '../../core/auth/index';
+import { getPageUrl } from '../RouteResolver';
+
+import {
+  startGoogleAuth,
+  startLoginPasswordAuth,
+} from '../../store/modules/auth/actions';
 
 import {
   Container,
   SocialNetworkList,
-  SocialNetworkLink,
   Description,
   Form,
   Label,
   StyledInput,
   SignInButton,
 } from './styles';
-import { getPageUrl } from '../RouteResolver';
-import { startGoogleAuth } from '../../store/modules/auth/actions';
 
 const socialNetworkList = [
   {
@@ -57,9 +59,10 @@ const inputList = [
 
 const SignIn = props => {
   const dispatch = useDispatch();
+
+  // TODO: Control creds in state of this component
   const handleLogin = () => {
-    localStorage.setItem(ACCESS_TOKEN, 'erglehrgerg');
-    location.href = '/'; // for now :)
+    dispatch(startLoginPasswordAuth());
   };
 
   const handleStartGoogleAuth = () => {
