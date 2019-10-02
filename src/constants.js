@@ -5,7 +5,7 @@ export const API_ENDPOINTS = {
 };
 
 // TODO: should be in single place for both backend and frontend
-export const AUTH_TYPE = {
+export const AUTH_METHOD = {
   FB: 'facebook',
   GOOGLE: 'google',
   LOGIN_PASSWORD: 'login-password',

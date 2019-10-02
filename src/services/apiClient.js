@@ -1,25 +1,20 @@
-import { API_ENDPOINTS as API } from '../constants';
+import { omit } from 'ramda';
 
 export class ApiClient {
   constructor(token) {
-    this.headers = { 'content-type': 'application/json' };
+    this.headers = {};
+    this.headers['Content-Type'] = 'application/json';
 
     if (token) {
       this.headers['Authorization'] = `Bearer ${token}`;
     }
   }
 
-  me() {
-    return this.request(API.me);
-  }
-
   request(endpoint, params = {}) {
     const requestParams = {
-      headers: { ...this.headers, ...params.headers },
-      ...params,
+      headers: Object.assign({}, this.headers, params.headers),
+      ...omit(['headers'], params),
     };
-
-    console.warn('params', params);
 
     const url = isAbsolute(endpoint)
       ? endpoint

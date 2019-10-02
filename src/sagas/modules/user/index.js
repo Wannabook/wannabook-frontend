@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { LOAD_USER_REQUEST } from '../../../store/modules/user';
 import { loadUserSuccess, loadUserFailure } from '../../../store/modules/user';
+import { API_ENDPOINTS } from '../../../constants';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* userSaga(client) {
@@ -8,9 +9,12 @@ export function* userSaga(client) {
 }
 
 export function* workerSaga(client) {
-  console.log('client', client);
   try {
-    const user = yield call(() => client.me());
+    const user = yield call([client, 'request'], API_ENDPOINTS.me, {
+      headers: {
+        'X-Auth-Method': localStorage.getItem('authMethod'),
+      },
+    });
 
     console.log('user', user);
 

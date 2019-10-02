@@ -1,7 +1,6 @@
 import { call, takeLatest } from '@redux-saga/core/effects';
 // omg!
 import { startGoogleAuth } from '../../../../store/modules/auth/actions';
-import { AUTH_TYPE } from '../../../../constants';
 
 export function* googleAuthSaga(client) {
   yield takeLatest(startGoogleAuth, handler, client);
@@ -9,17 +8,14 @@ export function* googleAuthSaga(client) {
 
 function* handler(client) {
   try {
-    const res = yield call(client.request, [
-      'http://localhost:5000/users/login/google/authUrl',
+    window.location = yield call(
+      [client, 'request'],
+      // TODO: do not hardcode url here, get it from env
+      'http://localhost:5000/users/login/google/auth',
       {
         method: 'POST',
-        headers: {
-          'X-Auth-Method': AUTH_TYPE.GOOGLE,
-        },
-      },
-    ]);
-
-    window.location = yield res.json();
+      }
+    );
   } catch (error) {
     console.error(error);
   }
