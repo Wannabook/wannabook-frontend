@@ -7,9 +7,9 @@ import { brandPrimaryColor, warningColor } from '../../theme';
 const PrimaryInput = styled(SemanticInput)`
   &&& input {
     padding: 10px 15px 14px;
-    border-radius: 10px !important;
+    border-radius: 10px;
     &:focus {
-      box-shadow: 0 0 5px ${brandPrimaryColor};
+      box-shadow: 0 4px 7px rgba(129, 122, 182, 0.2);
     }
   }
 `;
@@ -17,14 +17,15 @@ const PrimaryInput = styled(SemanticInput)`
 const InputWithError = styled(SemanticInput)`
   &&& input {
     padding: 10px 15px 14px;
-    border-radius: 10px !important;
+    border-radius: 10px;
     color: ${warningColor};
     border-style: solid;
     border-width: 1px;
     border-color: ${warningColor};
+    outline-color: transparent;
 
     &:focus {
-      box-shadow: 0 0 5px ${warningColor};
+      box-shadow: 0 4px 7px rgba(129, 122, 182, 0.2);
     }
   }
 `;

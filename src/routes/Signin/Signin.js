@@ -7,14 +7,16 @@ import { JWT_TOKEN } from '../../constants';
 import { AuthContext } from '../../core/auth/index';
 
 import {
-  Container,
+  SignInContainer,
   SocialNetworkList,
   SocialNetworkLink,
   Description,
   Form,
-  Label,
   StyledInput,
+  StyledPasswordInput,
   SignInButton,
+  ForgotPasswordLink,
+  SignUpLink,
 } from './styles';
 import { getPageUrl } from '../RouteResolver';
 
@@ -22,7 +24,6 @@ import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
 import googleIcon from './images/vk.svg';
 import odnoklassnikiIcon from './images/ok.svg';
-import { Advantage } from '../../components/AdvantagesList/styles';
 
 const socialNetworkList = [
   {
@@ -51,27 +52,15 @@ const socialNetworkList = [
   },
 ];
 
-const inputList = [
-  {
-    placeholder: 'Адрес эл. почты*',
-    type: 'email',
-  },
-  {
-    placeholder: 'Пароль*',
-    type: 'password',
-  },
-];
-
 const SignIn = () => {
-  const handleLogin = () => {
-    localStorage.setItem(JWT_TOKEN, 'erglehrgerg');
-    location.href = '/'; // for now :)
+  const handleLogin = e => {
+    e.preventDefault();
   };
 
   const { loggedIn } = useContext(AuthContext);
 
   return (
-    <>
+    <SignInContainer>
       {// if user is logged in, redirect them away from login page
       loggedIn && <Redirect to={getPageUrl('HOME')} />}
       <Description>Войти с помощью</Description>
@@ -82,30 +71,19 @@ const SignIn = () => {
           </SocialNetworkLink>
         ))}
       </SocialNetworkList>
-      <Container>
-        <Form>
-          {inputList.map(item => (
-            <Label key={item.type}>
-              <StyledInput {...item} />
-            </Label>
-          ))}
-          <Link to={getPageUrl('HOME')}>
-            <SignInButton size="large" secondary onClick={handleLogin}>
-              Войти
-            </SignInButton>
-          </Link>
-        </Form>
-        <Description>
-          <Link to={getPageUrl('FORGOT-PASSWORD')}>Забыли пароль?</Link>
-        </Description>
-      </Container>
-      <Container>
-        <Description>Нет учетной записи?</Description>
-        <Description>
-          <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
-        </Description>
-      </Container>
-    </>
+      <Form>
+        <StyledInput type="email" placeholder="Адрес эл. почты*" required />
+        <StyledPasswordInput placeholder="Пароль*" required />
+        <SignInButton type="submit" size="large" primary onClick={handleLogin}>
+          Войти
+        </SignInButton>
+      </Form>
+      <ForgotPasswordLink to={getPageUrl('FORGOT-PASSWORD')}>
+        Забыли пароль?
+      </ForgotPasswordLink>
+      <Description>Нет учетной записи?</Description>
+      <SignUpLink to={getPageUrl('SIGN-UP')}>Зарегистрироваться</SignUpLink>
+    </SignInContainer>
   );
 };
 
