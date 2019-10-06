@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
@@ -11,14 +11,11 @@ import {
   SocialNetworkList,
   SocialNetworkLink,
   Description,
-  Form,
-  StyledInput,
-  StyledPasswordInput,
-  SignInButton,
   ForgotPasswordLink,
   SignUpLink,
 } from './styles';
 import { getPageUrl } from '../RouteResolver';
+import SignInForm from './SignInForm';
 
 import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
@@ -55,9 +52,12 @@ const socialNetworkList = [
 const SignIn = () => {
   const handleLogin = e => {
     e.preventDefault();
+
+    return formError ? setFormError('') : setFormError('some error');
   };
 
   const { loggedIn } = useContext(AuthContext);
+  const [formError, setFormError] = useState('');
 
   return (
     <SignInContainer>
@@ -71,13 +71,7 @@ const SignIn = () => {
           </SocialNetworkLink>
         ))}
       </SocialNetworkList>
-      <Form>
-        <StyledInput type="email" placeholder="Адрес эл. почты*" required />
-        <StyledPasswordInput placeholder="Пароль*" required />
-        <SignInButton type="submit" size="large" primary onClick={handleLogin}>
-          Войти
-        </SignInButton>
-      </Form>
+      <SignInForm />
       <ForgotPasswordLink to={getPageUrl('FORGOT-PASSWORD')}>
         Забыли пароль?
       </ForgotPasswordLink>
