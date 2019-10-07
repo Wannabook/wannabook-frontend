@@ -13,9 +13,9 @@ const Form = ({
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { error } = verify(data);
+    const error = verify(data);
     if (error) {
-      setData({ ...data, error });
+      setData({ ...data, error: error.message });
 
       return;
     }
@@ -34,6 +34,13 @@ const Form = ({
     setData({ ...data, [name]: targetValue, error: '' });
   };
 
+  const addContextAsProp = elem =>
+    React.cloneElement(elem, { formContext: FormContext });
+
+  const childrenWithProps = React.Children.map(children, child =>
+    addContextAsProp(child)
+  );
+
   return (
     <FormContext.Provider
       value={{
@@ -44,7 +51,7 @@ const Form = ({
       }}
     >
       <form className={className} method="POST" onSubmit={handleSubmit}>
-        {children}
+        {childrenWithProps}
       </form>
     </FormContext.Provider>
   );

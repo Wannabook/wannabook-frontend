@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   StyledForm,
   StyledEmailInput,
@@ -17,8 +17,8 @@ const ApiClientSendForm = () => {
   });
 };
 
-const verifySignInForm = ({ email, password }) => {
-  return password.length > 6 ? { error: '' } : { error: 'Password too short' };
+const verifySignInForm = ({ password }) => {
+  return password.length < 6 ? { message: 'Password too short' } : null;
 };
 
 const SignInForm = () => {
@@ -33,21 +33,10 @@ const SignInForm = () => {
         name="email"
         placeholder="Адрес эл. почты*"
         required
-        formContext={SignInFormContext}
       />
-      <StyledPasswordInput
-        name="password"
-        placeholder="Пароль*"
-        required
-        formContext={SignInFormContext}
-      />
-      <ErrorMessage formContext={SignInFormContext} />
-      <SignInButton
-        type="submit"
-        size="large"
-        primary
-        formContext={SignInFormContext}
-      >
+      <StyledPasswordInput name="password" placeholder="Пароль*" required />
+      <ErrorMessage />
+      <SignInButton type="submit" size="large" primary>
         Войти
       </SignInButton>
     </StyledForm>
