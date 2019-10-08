@@ -50,12 +50,12 @@ const socialNetworkList = [
 ];
 
 const SignIn = () => {
-  const { loggedIn } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <SignInContainer>
       {// if user is logged in, redirect them away from login page
-      loggedIn && <Redirect to={getPageUrl('HOME')} />}
+      isLoggedIn && <Redirect to={getPageUrl('HOME')} />}
       <Description>Войти с помощью</Description>
       <SocialNetworkList>
         {socialNetworkList.map(item => (

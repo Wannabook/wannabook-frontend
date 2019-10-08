@@ -1,10 +1,10 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { apiClient } from '../../../../services';
-import { USER_LOGIN_REQUEST } from '../../../../store/modules/client/logIn';
+import { USER_LOGIN_REQUEST } from '../../../../store/modules/auth/logIn';
 import {
   logInRequestSuccess,
   logInRequestFailure,
-} from '../../../../store/modules/client/logIn';
+} from '../../../../store/modules/auth/logIn';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function*() {

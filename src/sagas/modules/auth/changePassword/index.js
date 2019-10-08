@@ -1,10 +1,10 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { apiClient } from '../../../../services';
-import { UPDATE_USER_PASSWORD_REQUEST } from '../../../../store/modules/client/changePassword';
+import { UPDATE_USER_PASSWORD_REQUEST } from '../../../../store/modules/auth/changePassword';
 import {
   changePasswordSuccess,
   changePasswordFailure,
-} from '../../../../store/modules/client/changePassword';
+} from '../../../../store/modules/auth/changePassword';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function*() {

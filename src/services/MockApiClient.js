@@ -41,7 +41,10 @@ export default class MockApiClient {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.5
-          ? resolve({ email: 'mail@mail.com' })
+          ? resolve({
+              email: 'mail@mail.com',
+              authToken: 'Bearer: wef0ih8gg9g3gn',
+            })
           : reject('Something went wrong...');
       }, 1500);
     });

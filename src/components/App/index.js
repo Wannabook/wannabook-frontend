@@ -9,7 +9,7 @@ import {
 
 const mapStateToProps = () => globalState => ({
   ...getUserLoadingProps(globalState),
-  user: getUser(globalState),
+  isLoggedIn: !!getUser(globalState),
 });
 
 const mapDispatchToProps = dispatch => {

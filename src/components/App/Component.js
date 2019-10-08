@@ -17,16 +17,16 @@ import { GlobalStyle } from './styles';
 
 //TODO: Replace after connect to the real API
 // const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
-const hasJWToken = () => true;
+const hasJWToken = () => false;
 
 const App = props => {
-  const { user, loadUser, error } = props;
+  const { isLoggedIn, loadUser, error } = props;
 
   useEffect(() => {
     hasJWToken() && loadUser();
   }, []);
 
-  const isLoggedIn = () => !!user && !error;
+  console.log('isLoggedIn', isLoggedIn);
 
   const [isLeftSideBarVisible, setLeftSideBarVisibility] = useState(false);
   const [isRightSideBarVisible, setRightSideBarVisibility] = useState(false);
@@ -37,7 +37,7 @@ const App = props => {
   const hideRightSideBar = () => setRightSideBarVisibility(false);
 
   return (
-    <AuthContext.Provider value={isLoggedIn()}>
+    <AuthContext.Provider value={{ isLoggedIn }}>
       <SideBarStateContext.Provider
         value={{
           isLeftSideBarVisible,
@@ -79,9 +79,7 @@ const App = props => {
 };
 
 App.propTypes = {
-  user: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   loadUser: PropTypes.func.isRequired,
 };
