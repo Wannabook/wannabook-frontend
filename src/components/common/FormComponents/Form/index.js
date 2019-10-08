@@ -5,24 +5,21 @@ const Form = ({
   children,
   className,
   onSubmit,
+  isSubmitting,
   verify,
   formContext: FormContext,
 }) => {
-  const [isSubmitting, setSubmit] = useState(false);
   const [data, setData] = useState({});
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const error = verify(data);
-    if (error) {
-      setData({ ...data, error: error.message });
-
-      return;
+    const verificationError = verify(data);
+    if (verificationError) {
+      return setData({ ...data, error: verificationError.message });
     }
 
-    setSubmit(true);
-    await onSubmit();
-    setSubmit(false);
+    const { error, ...payload } = data;
+    onSubmit(payload);
   };
 
   const getInputValue = (name, defaultValue = '') => {
@@ -61,6 +58,7 @@ Form.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object),
   className: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   verify: PropTypes.func.isRequired,
   formContext: PropTypes.object.isRequired,
 };

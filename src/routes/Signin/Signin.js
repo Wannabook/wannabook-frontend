@@ -50,14 +50,7 @@ const socialNetworkList = [
 ];
 
 const SignIn = () => {
-  const handleLogin = e => {
-    e.preventDefault();
-
-    return formError ? setFormError('') : setFormError('some error');
-  };
-
   const { loggedIn } = useContext(AuthContext);
-  const [formError, setFormError] = useState('');
 
   return (
     <SignInContainer>

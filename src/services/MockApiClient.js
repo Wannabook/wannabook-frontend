@@ -12,7 +12,7 @@ export default class MockApiClient {
         description: 'Facebook description',
       },
     ],
-    '/user/me': [
+    '/users/me': [
       {
         // we assume the token is always correct for now and returns this obj
         age: 0,
@@ -37,7 +37,17 @@ export default class MockApiClient {
     });
   }
 
-  post(resourceUrl) {
+  post(resourceUrl, { body = {} }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        Math.random() > 0.5
+          ? resolve({ email: 'mail@mail.com' })
+          : reject('Something went wrong...');
+      }, 1500);
+    });
+  }
+
+  put(resourceUrl) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.5 ? resolve() : reject('Something went wrong...');

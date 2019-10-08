@@ -11,7 +11,7 @@ export default function*() {
   yield takeLatest(UPDATE_USER_PASSWORD_REQUEST, workerSaga);
 }
 
-const changePasswordRequest = () => apiClient.post();
+const changePasswordRequest = () => apiClient.put();
 
 export function* workerSaga() {
   try {
