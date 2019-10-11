@@ -11,13 +11,18 @@ export default function*() {
   yield takeLatest(USER_LOGIN_REQUEST, workerSaga);
 }
 
-const changePasswordRequest = data =>
+const logInRequest = data =>
   apiClient.post('/users/login', { body: { ...data.payload } });
 
 export function* workerSaga(data) {
   try {
-    const loginUserResponse = yield call(changePasswordRequest, data);
-    yield put(logInRequestSuccess(loginUserResponse));
+    const logInResponse = yield call(logInRequest, data);
+    console.log('logInResponse', logInResponse);
+    const { authToken, expirationDate, userId } = logInResponse;
+    yield localStorage.setItem('authToken', authToken);
+    yield localStorage.setItem('expirationDate', expirationDate);
+    yield localStorage.setItem('userId', userId);
+    yield put(logInRequestSuccess(logInResponse));
   } catch (error) {
     yield put(logInRequestFailure(error));
   }

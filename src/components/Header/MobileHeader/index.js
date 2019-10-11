@@ -17,11 +17,11 @@ import searchIcon from '../images/search.svg';
 import profileIcon from '../images/profile.svg';
 
 const UserProfile = () => {
-  const { loggedIn } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   // TODO Use different links depending on loggedIn value
   // we will then make user/:id dynamic depending on id coming from backend
 
-  return loggedIn ? (
+  return isLoggedIn ? (
     <Link to={`${getPageUrl('ACCOUNT')}/123456`}>
       <Image src={profileIcon} />
     </Link>

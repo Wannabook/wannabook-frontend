@@ -2,13 +2,10 @@ import { connect } from 'react-redux';
 
 import Component from './Component';
 import { loadUser } from '../../store/modules/user/actionCreators';
-import {
-  getUser,
-  getUserLoadingProps,
-} from '../../store/modules/user/selectors';
+import { getUser, getLogInLoadingProps } from '../../store/modules/auth/logIn';
 
 const mapStateToProps = () => globalState => ({
-  ...getUserLoadingProps(globalState),
+  ...getLogInLoadingProps(globalState),
   isLoggedIn: !!getUser(globalState),
 });
 

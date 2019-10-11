@@ -23,10 +23,10 @@ const App = props => {
   const { isLoggedIn, loadUser, error } = props;
 
   useEffect(() => {
-    hasJWToken() && loadUser();
+    if (!isLoggedIn) {
+      loadUser();
+    }
   }, []);
-
-  console.log('isLoggedIn', isLoggedIn);
 
   const [isLeftSideBarVisible, setLeftSideBarVisibility] = useState(false);
   const [isRightSideBarVisible, setRightSideBarVisibility] = useState(false);
