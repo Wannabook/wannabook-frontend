@@ -4,6 +4,7 @@ export class ApiClient {
   constructor(token) {
     this.headers = {};
     this.headers['Content-Type'] = 'application/json';
+    console.warn('this.headers', this.headers);
 
     if (token) {
       this.headers['Authorization'] = `Bearer ${token}`;

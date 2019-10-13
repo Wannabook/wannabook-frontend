@@ -10,14 +10,17 @@ const pagesData = {
   'SIGN-UP': { route: '/sign-up' },
   'SIGN-OUT': { route: '/sign-out' },
   ACCOUNT: { route: '/account' },
+  'FORGOT-PASSWORD': { route: '/forgot-password' },
 };
 
 const getPageUrl = pageCode => {
   const pageInfo = pagesData[pageCode];
   if (!pageInfo) {
     console.error(`No page with code "${pageCode}"!!!`);
+
     return null;
   }
+
   return pageInfo.route;
 };
 

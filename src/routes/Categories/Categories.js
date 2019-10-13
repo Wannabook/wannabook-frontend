@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
-import CategoryList from '../../components/CategoryList';
+import CategoryList from '../../components/Categories';
 
 const categoryList = [
   {
@@ -55,16 +54,6 @@ const categoryList = [
 
 export default class Categories extends React.Component {
   render() {
-    return (
-      <Grid stackable columns="1">
-        <Grid.Row stretched columns="1">
-          <Grid.Column>
-            <Segment>
-              <CategoryList categoryList={categoryList} />
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
+    return <CategoryList categoryList={categoryList} />;
   }
 }

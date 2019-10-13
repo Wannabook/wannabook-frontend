@@ -1,31 +1,39 @@
 import styled from 'styled-components';
 import Button from '../../ui-kit/components/Button';
 
-export const Container = styled.div`
-  margin: 16px;
+export const RegistrationContainer = styled.div`
+  padding: 50px 0;
 `;
 
-export const Description = styled.div`
+export const Title = styled.h2`
   text-align: center;
-  margin: 0px 36px 36px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 25px;
+  font-size: 22px;
+  font-family: inherit;
+  line-height: 27px;
+`;
+
+export const Description = styled.p`
+  text-align: center;
 `;
 
 export const Illustration = styled.img`
-  border: solid 1px black;
-  margin: 16px;
-  display: inline-block;
-  width: 110px; //temporary solution
-  height: 120px;
+  display: block;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const SignInButton = styled(Button)`
   &&& {
-    display: block; //probably need additional type of button with display:block
-    border-radius: 0;
-    margin: 16px 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+`;
+
+export const SignUpButton = styled(Button)`
+  &&& {
+    display: block;
     width: 100%;
   }
 `;

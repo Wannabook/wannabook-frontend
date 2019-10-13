@@ -62,20 +62,11 @@ const inputList = [
 
 const descriptionText = 'Зарегистрироваться через';
 
-const Signup = props => {
-  // TODO: Control creds in state of this component
-  const { loggedIn } = React.useContext(AuthContext);
-  const dispatch = useDispatch();
-
-  // TODO: Give creds from state to this method
-  const handleSignup = () => {
-    dispatch(startLoginPasswordSignup(/* creds from state */));
-  };
-
+const SignUp = props => {
   return (
-    <Grid stackable columns="1">
-      <Grid.Row stretched columns="1">
-        <Grid.Column>
+    <AuthContext.Consumer>
+      {loggedIn => (
+        <>
           {// if user is logged in, redirect them away from sign-up page
           loggedIn && <Redirect to={getPageUrl('HOME')} />}
           <Container>
@@ -96,7 +87,7 @@ const Signup = props => {
                 </Label>
               ))}
               <Link to={getPageUrl('HOME')}>
-                <SignInButton size="large" secondary onClick={handleSignup}>
+                <SignInButton size="large" secondary>
                   Зарегистрироваться
                 </SignInButton>
               </Link>
@@ -106,10 +97,10 @@ const Signup = props => {
               <Link to={getPageUrl('SIGN-IN')}>Войти</Link>
             </Description>
           </Container>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+        </>
+      )}
+    </AuthContext.Consumer>
   );
 };
 
-export default Signup;
+export default SignUp;

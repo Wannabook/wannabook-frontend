@@ -1,17 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 
-import { googleAuthSaga } from './google';
-import {
-  loginPasswordLoginSaga,
-  loginPasswordSignUpSaga,
-} from './login-password';
+import changePassword from './changePassword';
+import logIn from './logIn';
 
-const subSagas = [
-  googleAuthSaga,
-  loginPasswordLoginSaga,
-  loginPasswordSignUpSaga,
-];
-
-export function* authSaga(client) {
-  yield all(subSagas.map(s => fork(s, client)));
+/**
+ * rootSaga
+ */
+export default function*() {
+  yield all([fork(changePassword), fork(logIn)]);
 }

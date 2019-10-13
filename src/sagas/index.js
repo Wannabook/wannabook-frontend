@@ -1,15 +1,16 @@
 import { all, fork } from 'redux-saga/effects';
 
+import auth from './modules/auth';
 import organizations from './modules/organizations';
 import { userSaga } from './modules/user';
-import clientRoot from './modules/client';
-import { authSaga } from '../sagas/modules/auth';
+import { googleAuthSaga } from './modules/auth/google';
+
 import { apiClient } from '../services';
 
 /**
  * rootSaga
  */
-const subSagas = [organizations, userSaga, clientRoot, authSaga];
+const subSagas = [auth, organizations, userSaga, googleAuthSaga];
 
 export default function*() {
   yield all(subSagas.map(s => fork(s, apiClient)));

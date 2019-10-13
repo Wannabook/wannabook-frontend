@@ -3,20 +3,30 @@ import PropTypes from 'prop-types';
 import { Button as SemanticButton } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-import { brandPrimaryColor, secondaryColor, white } from '../../theme';
+import { brandPrimaryColor, white, mainBackgroundColor } from '../../theme';
 
 const PrimaryButton = styled(SemanticButton)`
   &&& {
+    height: 45px;
+    padding: 0;
     color: ${white};
-    border-radius: 20px;
+    border-radius: 50px;
     background-color: ${brandPrimaryColor};
+    font-family: inherit;
+    font-size: inherit;
   }
 `;
 
 const SecondaryButton = styled(SemanticButton)`
   &&& {
-    color: ${white};
-    background-color: ${secondaryColor};
+    height: 45px;
+    padding: 0;
+    color: ${brandPrimaryColor};
+    border-radius: 50px;
+    background-color: ${mainBackgroundColor};
+    border: 2px solid ${brandPrimaryColor};
+    font-family: inherit;
+    font-size: inherit;
   }
 `;
 

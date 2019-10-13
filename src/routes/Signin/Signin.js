@@ -1,9 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 
 import { AuthContext } from '../../core/auth/index';
 import { getPageUrl } from '../RouteResolver';
@@ -14,103 +12,68 @@ import {
 } from '../../store/modules/auth/actions';
 
 import {
-  Container,
+  SignInContainer,
   SocialNetworkList,
   Description,
-  Form,
-  Label,
-  StyledInput,
-  SignInButton,
+  ForgotPasswordLink,
+  SignUpLink,
 } from './styles';
+import SignInForm from './SignInForm';
+
+import facebookIcon from './images/f.svg';
+import vkIcon from './images/vk.svg';
+import googleIcon from './images/vk.svg';
+import odnoklassnikiIcon from './images/ok.svg';
 
 const socialNetworkList = [
   {
     name: 'Facebook',
     id: 'fb',
     url: getPageUrl('HOME'),
-  },
-  {
-    name: 'Google',
-    id: 'gl',
-    url: getPageUrl('HOME'),
+    icon: facebookIcon,
   },
   {
     name: 'VK',
     id: 'vk',
     url: getPageUrl('HOME'),
+    icon: vkIcon,
   },
   {
-    name: 'Instagram',
-    id: 'in',
+    name: 'Google',
+    id: 'gl',
     url: getPageUrl('HOME'),
+    icon: googleIcon,
+  },
+  {
+    name: 'Odnoklassniki',
+    id: 'ok',
+    url: getPageUrl('HOME'),
+    icon: odnoklassnikiIcon,
   },
 ];
 
-const inputList = [
-  {
-    placeholder: 'Адрес эл. почты*',
-    type: 'email',
-  },
-  {
-    placeholder: 'Пароль*',
-    type: 'password',
-  },
-];
-
-const SignIn = props => {
-  const dispatch = useDispatch();
-
-  // TODO: Control creds in state of this component
-  const handleLogin = () => {
-    dispatch(startLoginPasswordAuth());
-  };
-
-  const handleStartGoogleAuth = () => {
-    dispatch(startGoogleAuth());
-  };
+const SignIn = () => {
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
-    <AuthContext.Consumer>
-      {loggedIn => (
-        <Grid stackable columns="1">
-          <Grid.Row stretched columns="1">
-            <Grid.Column>
-              {// if user is logged in, redirect them away from login page
-              loggedIn && <Redirect to={getPageUrl('HOME')} />}
-              <Container>
-                <Description>Войти с помощью</Description>
-                <SocialNetworkList>
-                  <Button onClick={handleStartGoogleAuth}>Google auth</Button>
-                </SocialNetworkList>
-              </Container>
-              <Container>
-                <Form>
-                  {inputList.map(item => (
-                    <Label key={item.type}>
-                      <StyledInput {...item} />
-                    </Label>
-                  ))}
-                  <Link to={getPageUrl('HOME')}>
-                    <SignInButton size="large" secondary onClick={handleLogin}>
-                      Войти
-                    </SignInButton>
-                  </Link>
-                </Form>
-                <Description>
-                  <Link to={getPageUrl('FORGOT-PASSWORD')}>Забыли пароль?</Link>
-                </Description>
-              </Container>
-              <Container>
-                <Description>Нет учетной записи?</Description>
-                <Description>
-                  <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
-                </Description>
-              </Container>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      )}
-    </AuthContext.Consumer>
+    <SignInContainer>
+      {// if user is logged in, redirect them away from login page
+      isLoggedIn && <Redirect to={getPageUrl('HOME')} />}
+      <Description>Войти с помощью</Description>
+      <SocialNetworkList>
+        {socialNetworkList.map(item => (
+          <SocialNetworkLink key={item.name} to={item.url}>
+            <Image src={item.icon} />
+          </SocialNetworkLink>
+        ))}
+      </SocialNetworkList>
+      <SignInForm />
+      <ForgotPasswordLink to={getPageUrl('FORGOT-PASSWORD')}>
+        Забыли пароль?
+      </ForgotPasswordLink>
+      <Description>Нет учетной записи?</Description>
+      <SignUpLink to={getPageUrl('SIGN-UP')}>Зарегистрироваться</SignUpLink>
+    </SignInContainer>
   );
 };
 
