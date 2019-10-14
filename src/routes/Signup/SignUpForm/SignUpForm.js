@@ -6,6 +6,7 @@ import {
   StyledNameInput,
   StyledPasswordInput,
   StyledPhoneInput,
+  Description,
   SignInButton,
   ErrorMessage,
 } from './styles';
@@ -35,6 +36,9 @@ export const SignUpForm = ({ signUp, isSubmitting }) => {
         pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
         required
       />
+      <Description>
+        Оставьте свой номер для связи с администраторами выбранных заведений
+      </Description>
       <ErrorMessage />
       <SignInButton type="submit" size="large" primary>
         Зарегестрироваться

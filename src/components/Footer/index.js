@@ -1,9 +1,14 @@
 import React from 'react';
 
-import { FooterContainer } from './styles';
+import { FooterContainer, CopyRight, ForBusinessButton } from './styles';
 
 const Footer = () => (
-  <FooterContainer>{`${new Date().getFullYear()} © WANNABOOK`}</FooterContainer>
+  <FooterContainer>
+    <CopyRight>
+      {`© ${new Date().getFullYear()} Wannabook Inc. Все права защищены.`}
+    </CopyRight>
+    <ForBusinessButton>Для бизнеса</ForBusinessButton>
+  </FooterContainer>
 );
 
 export default Footer;

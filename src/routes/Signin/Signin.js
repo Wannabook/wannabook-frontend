@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
-import { JWT_TOKEN } from '../../constants';
 import { AuthContext } from '../../core/auth/index';
 
 import {

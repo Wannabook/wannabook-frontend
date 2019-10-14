@@ -5,6 +5,8 @@ import PasswordInput from '../../../components/common/FormComponents/PasswordInp
 import SubmitButton from '../../../components/common/FormComponents/SubmitButton';
 import Error from '../../../components/common/FormComponents/Error';
 
+import { fontSmall } from '../../../ui-kit/theme/default';
+
 export const StyledForm = styled(Form)`
   margin-bottom: 20px;
 `;
@@ -23,6 +25,12 @@ export const StyledPasswordInput = styled(PasswordInput)`
 
 export const StyledPhoneInput = styled(CommonInput)`
   margin-bottom: 10px;
+`;
+
+export const Description = styled.p`
+  margin-bottom: 10px;
+  font-size: ${fontSmall};
+  text-align: left;
 `;
 
 export const SignInButton = styled(SubmitButton)`
