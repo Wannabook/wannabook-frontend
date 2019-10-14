@@ -10,7 +10,7 @@ export function* userSaga(client) {
 
 export function* workerSaga(client) {
   try {
-    const user = yield call([client, 'request'], API_ENDPOINTS.me, {
+    const user = yield call([client, 'post'], API_ENDPOINTS.me, {
       headers: {
         'X-Auth-Method': localStorage.getItem('authMethod'),
       },
