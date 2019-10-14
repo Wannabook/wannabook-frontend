@@ -1,29 +1,48 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import { apiClient } from '../../../../services';
-import { USER_LOGIN_REQUEST } from '../../../../store/modules/auth/logIn';
+import {
+  USER_LOGIN_REQUEST,
+  LOAD_USER,
+} from '../../../../store/modules/auth/logIn';
 import {
   logInRequestSuccess,
   logInRequestFailure,
 } from '../../../../store/modules/auth/logIn';
+import {
+  loadUserFailure,
+  loadUserSuccess,
+} from '../../../../store/modules/auth/logIn';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function*() {
-  yield takeLatest(USER_LOGIN_REQUEST, workerSaga);
+  yield takeEvery(USER_LOGIN_REQUEST, logIn);
+  yield takeEvery(LOAD_USER, loadUser);
 }
 
 const logInRequest = data =>
   apiClient.post('/users/login', { body: { ...data.payload } });
 
-export function* workerSaga(data) {
+const fetchUser = () => apiClient.get('/users/me');
+
+export function* logIn(data) {
   try {
     const logInResponse = yield call(logInRequest, data);
-    console.log('logInResponse', logInResponse);
-    const { authToken, expirationDate, userId } = logInResponse;
+    const { authToken } = logInResponse;
     yield localStorage.setItem('authToken', authToken);
-    yield localStorage.setItem('expirationDate', expirationDate);
-    yield localStorage.setItem('userId', userId);
     yield put(logInRequestSuccess(logInResponse));
   } catch (error) {
     yield put(logInRequestFailure(error));
+  }
+}
+
+export function* loadUser() {
+  try {
+    const authToken = yield localStorage.getItem('authToken');
+    if (authToken) {
+      const fetchUserResponse = yield call(fetchUser);
+      yield put(loadUserSuccess(fetchUserResponse));
+    }
+  } catch (error) {
+    yield put(loadUserFailure(error));
   }
 }

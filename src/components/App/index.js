@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Component from './Component';
-import { loadUser } from '../../store/modules/user/actionCreators';
+import { loadUser } from '../../store/modules/auth/logIn';
 import { getUser, getLogInLoadingProps } from '../../store/modules/auth/logIn';
 
 const mapStateToProps = () => globalState => ({
