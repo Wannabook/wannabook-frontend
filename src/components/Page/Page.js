@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
+import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
 import { RoutesContainer } from '../App/styles';
 import AppRoutes from '../../routes';
 
 import { StyledPage } from './style.js';
 
-const Page = () => (
+export const Page = () => (
   <StyledPage className="page">
     <Header />
     <RoutesContainer className="routes-container">
@@ -15,5 +15,3 @@ const Page = () => (
     <Footer />
   </StyledPage>
 );
-
-export default Page;

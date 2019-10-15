@@ -5,7 +5,7 @@ import DesktopHeader from './DesktopHeader';
 
 import { StyledGrid } from '../../ui-kit/components/Layout/Grid';
 
-const Header = () => (
+export const Header = () => (
   <>
     <StyledGrid className="navigation">
       <StyledGrid.Row stretched only="mobile tablet" columns="1">
@@ -21,5 +21,3 @@ const Header = () => (
     </StyledGrid>
   </>
 );
-
-export default Header;
