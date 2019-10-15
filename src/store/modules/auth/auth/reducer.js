@@ -4,6 +4,9 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_REQUEST_SUCCESS,
   USER_LOGIN_REQUEST_FAILURE,
+  USER_SIGN_UP_REQUEST,
+  USER_SIGN_UP_REQUEST_SUCCESS,
+  USER_SIGN_UP_REQUEST_FAILURE,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAILURE,
 } from './constants';
@@ -17,6 +20,13 @@ export default handleActions(
       handleRequestSuccess(state, action),
     [USER_LOGIN_REQUEST_FAILURE]: (state, action) =>
       handleRequestFailure(state, action),
+
+    [USER_SIGN_UP_REQUEST]: (state, action) => handleRequest(state, action),
+    [USER_SIGN_UP_REQUEST_SUCCESS]: (state, action) =>
+      handleRequestSuccess(state, action),
+    [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
+      handleRequestFailure(state, action),
+
     [LOAD_USER_SUCCESS]: (state, action) =>
       handleLoadUserSuccess(state, action),
     [LOAD_USER_FAILURE]: (state, action) =>

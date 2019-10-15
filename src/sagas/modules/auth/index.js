@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
 import changePassword from './changePassword';
-import logIn from './logIn';
+import logIn from './auth';
 
 /**
  * rootSaga

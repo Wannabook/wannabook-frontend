@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   StyledForm,
@@ -14,11 +13,11 @@ import {
 import { SignUpFormContext } from './SignUpFormContext';
 import { formValidator } from '../../../services';
 
-import { signUpRequest } from '../../../store/modules/auth/logIn';
-import { getLogInLoadingProps } from '../../../store/modules/auth/logIn';
+import { signUpRequest } from '../../../store/modules/auth/auth';
+import { getLogInLoadingProps } from '../../../store/modules/auth/auth';
 
 export const SignUpForm = () => {
-  const isSubmitting = useSelector(getLogInLoadingProps).loading;
+  const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
 
@@ -60,8 +59,3 @@ export const SignUpForm = () => {
     </StyledForm>
   );
 };
-
-// SignUpForm.propTypes = {
-//   signUp: PropTypes.func.isRequired,
-//   isSubmitting: PropTypes.bool.isRequired,
-// };

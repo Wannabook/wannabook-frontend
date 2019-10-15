@@ -1,4 +1,12 @@
 export default class MockApiClient {
+  userResponse = {
+    user: {
+      name: 'ilya',
+      email: 'kushliansky@gmail.com',
+      phone: '375295565656',
+    },
+    authToken: 'Bearer: wef0ih8gg9g3gn',
+  };
   data = {
     '/organizations': [
       {
@@ -12,13 +20,7 @@ export default class MockApiClient {
         description: 'Facebook description',
       },
     ],
-    '/users/me': {
-      user: {
-        name: 'ilya',
-        email: 'kushliansky@gmail.com',
-      },
-      authToken: 'Bearer: wef0ih8gg9g3gn',
-    },
+    '/users/me': this.userResponse,
   };
 
   get(resourceUrl) {
@@ -35,13 +37,7 @@ export default class MockApiClient {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.1
-          ? resolve({
-              user: {
-                name: 'ilya',
-                email: 'kushliansky@gmail.com',
-              },
-              authToken: 'Bearer: wef0ih8gg9g3gn',
-            })
+          ? resolve(this.userResponse)
           : reject('Something went wrong...');
       }, 1500);
     });
