@@ -19,7 +19,7 @@ export const ForBusinessButton = styled(Button)`
   &&& {
     margin-right: 0;
     padding: 10px 15px;
-    background-color: cornflowerblue; //TODO: Update background color
+    background-color: #e1e0fc; //TODO: Update background color
     color: #4f55e8;
     border-radius: 50px;
     font-size: ${fontSmall};
