@@ -14,6 +14,13 @@ export const SocialNetworkList = styled.div`
   margin-bottom: 20px;
 `;
 
+export const SocialNetworkIcon = styled.div`
+  flex-basis: 40px;
+  height: 40px;
+  margin: 10px;
+  cursor: pointer;
+`;
+
 export const SocialNetworkLink = styled(Link)`
   flex-basis: 40px;
   height: 40px;

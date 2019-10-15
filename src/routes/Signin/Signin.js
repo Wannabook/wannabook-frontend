@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
 
 import { AuthContext } from '../../core/auth/index';
 import { getPageUrl } from '../RouteResolver';
-
+import { SocialNetworkIcon } from './styles';
 import {
   startGoogleAuth,
   startLoginPasswordAuth,
@@ -22,7 +22,7 @@ import SignInForm from './SignInForm';
 
 import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
-import googleIcon from './images/vk.svg';
+import googleIcon from './images/g.svg';
 import odnoklassnikiIcon from './images/ok.svg';
 
 const socialNetworkList = [
@@ -52,6 +52,26 @@ const socialNetworkList = [
   },
 ];
 
+const SocialNetworkItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if (item.id === 'gl') {
+      dispatch(startGoogleAuth());
+    }
+  };
+
+  return (
+    <SocialNetworkIcon onClick={handleClick}>
+      <Image src={item.icon} />
+    </SocialNetworkIcon>
+  );
+};
+
+SocialNetworkItem.propTypes = {
+  item: PropTypes.object,
+};
+
 const SignIn = () => {
   const { isLoggedIn } = useContext(AuthContext);
 
@@ -62,9 +82,7 @@ const SignIn = () => {
       <Description>Войти с помощью</Description>
       <SocialNetworkList>
         {socialNetworkList.map(item => (
-          <SocialNetworkLink key={item.name} to={item.url}>
-            <Image src={item.icon} />
-          </SocialNetworkLink>
+          <SocialNetworkItem item={item} key={item.id} />
         ))}
       </SocialNetworkList>
       <SignInForm />

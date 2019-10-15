@@ -10,9 +10,10 @@ export function* userSaga(client) {
 
 export function* workerSaga(client) {
   try {
-    const user = yield call([client, 'post'], API_ENDPOINTS.me, {
+    const user = yield call([client, 'get'], API_ENDPOINTS.me, {
       headers: {
         'X-Auth-Method': localStorage.getItem('authMethod'),
+        'X-Id-Token': localStorage.getItem('idToken'), // for Google auth
       },
     });
 
