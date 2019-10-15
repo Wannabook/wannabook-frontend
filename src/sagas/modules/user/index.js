@@ -19,6 +19,9 @@ export function* workerSaga(client) {
 
     console.log('user', user);
 
+    // TODO if we refreshed our token, update it in localstorage
+    // localStorage.setItem('accessToken', accessToken);
+
     yield put(loadUserSuccess(user));
   } catch (error) {
     console.error('error', error);

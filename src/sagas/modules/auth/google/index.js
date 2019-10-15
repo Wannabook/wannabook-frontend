@@ -8,14 +8,13 @@ export function* googleAuthSaga(client) {
 
 function* handler(client) {
   try {
-    window.location = yield call(
-      [client, 'request'],
+    const response = yield call(
+      [client, 'post'],
       // TODO: do not hardcode url here, get it from env
-      'http://localhost:5000/users/login/google/auth',
-      {
-        method: 'POST',
-      }
+      'http://localhost:5000/users/login/google/auth'
     );
+
+    window.location = response.data;
   } catch (error) {
     console.error(error);
   }

@@ -4,6 +4,7 @@ const TokenGrabber = () => {
   React.useEffect(() => {
     const accessToken = getUrlParameter('access_token');
     const authMethod = getUrlParameter('auth_method');
+    const idToken = getUrlParameter('id_token');
     console.warn('accessToken', accessToken);
 
     if (accessToken) {
@@ -14,6 +15,10 @@ const TokenGrabber = () => {
       localStorage.setItem('authMethod', authMethod);
     }
 
+    if (idToken) {
+      localStorage.setItem('idToken', idToken);
+    }
+
     window.location = '/';
   });
 
@@ -21,6 +26,7 @@ const TokenGrabber = () => {
   return 'Выполняем вход в систему...';
 };
 
+// yes, this is Stackoverflow :(
 function getUrlParameter(name) {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
   const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');

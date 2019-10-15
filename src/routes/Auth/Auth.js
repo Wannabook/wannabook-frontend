@@ -17,6 +17,8 @@ import authImage from './images/auth_image.svg';
 const descriptionText =
   'Наличие профиля поможет без труда бронировать услуги на нашем сайте';
 
+// TODO: don't let users in here if they are logged in
+
 const Registration = () => {
   return (
     <RegistrationContainer>

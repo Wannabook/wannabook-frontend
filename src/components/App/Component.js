@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { Sidebar } from 'semantic-ui-react';
 
-import { JWT_TOKEN } from '../../constants';
+import { ACCESS_TOKEN } from '../../constants';
 import MobileSideBar from '../SideBar';
 import Page from '../Page';
 import CategoryListMenu from '../CategoryListMenu';
@@ -15,9 +15,7 @@ import { SideBarStateContext } from './sideBarStateContext';
 import { StyledSideBar } from '../SideBar/styles';
 import { GlobalStyle } from './styles';
 
-//TODO: Replace after connect to the real API
-// const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
-const hasJWToken = () => false;
+const hasAccessToken = () => localStorage.getItem(ACCESS_TOKEN);
 
 const App = props => {
   const { isLoggedIn, loadUser, error } = props;

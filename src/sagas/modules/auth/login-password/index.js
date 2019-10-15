@@ -3,7 +3,7 @@ import {
   startLoginPasswordAuth,
   startLoginPasswordSignup,
 } from '../../../../store/modules/auth/actions';
-import { AUTH_METHOD } from '../../../../constants';
+import { AUTH_METHODS } from '../../../../constants';
 import {
   loadUserFailure,
   loadUserSuccess,
@@ -23,13 +23,14 @@ export function* loginPasswordLoginSaga(client) {
 
       if (error) {
         console.error(error);
+        // TODO handle it on ui somehow
       }
 
       yield put(loadUserSuccess(user));
 
       if (token) {
         localStorage.setItem('accessToken', token);
-        localStorage.setItem('authMethod', AUTH_METHOD.LOGIN_PASSWORD);
+        localStorage.setItem('authMethod', AUTH_METHODS.LOGIN_PASSWORD);
       }
     } catch (error) {
       console.error(error);
@@ -62,7 +63,7 @@ export function* loginPasswordSignUpSaga(client) {
 
       if (token) {
         localStorage.setItem('accessToken', token);
-        localStorage.setItem('authMethod', AUTH_METHOD.LOGIN_PASSWORD);
+        localStorage.setItem('authMethod', AUTH_METHODS.LOGIN_PASSWORD);
       }
     } catch (error) {
       console.error(error);
