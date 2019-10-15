@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   StyledForm,
   StyledEmailInput,
@@ -17,8 +18,7 @@ import { signUpRequest } from '../../../store/modules/auth/logIn';
 import { getLogInLoadingProps } from '../../../store/modules/auth/logIn';
 
 export const SignUpForm = () => {
-  // const isSubmitting = useSelector(state => state.auth.logIn).loading;
-  const isSubmitting = false;
+  const isSubmitting = useSelector(getLogInLoadingProps).loading;
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
 
