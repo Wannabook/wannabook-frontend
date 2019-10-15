@@ -15,11 +15,19 @@ export class ApiClient {
     }
   }
 
+  get(endpoint, params = {}) {
+    const requestParams = {
+      headers: Object.assign({}, this.headers, params.headers),
+      ...omit(['headers'], params),
+    };
+
+    return this.request(endpoint, requestParams);
+  }
+
   put(endpoint, params = {}) {
     const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers, {
-        method: 'PUT',
-      }),
+      headers: Object.assign({}, this.headers, params.headers),
+      method: 'PUT',
       ...omit(['headers'], params),
     };
 
@@ -28,9 +36,8 @@ export class ApiClient {
 
   post(endpoint, params = {}) {
     const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers, {
-        method: 'POST',
-      }),
+      headers: Object.assign({}, this.headers, params.headers),
+      method: 'POST',
       ...omit(['headers'], params),
     };
 
@@ -39,9 +46,8 @@ export class ApiClient {
 
   delete(endpoint, params = {}) {
     const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers, {
-        method: 'DELETE',
-      }),
+      headers: Object.assign({}, this.headers, params.headers),
+      method: 'DELETE',
       ...omit(['headers'], params),
     };
 
@@ -49,8 +55,11 @@ export class ApiClient {
   }
 
   request(endpoint, params = {}) {
+    const authMethod = localStorage.getItem('authMethod');
     const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
+      headers: Object.assign({}, this.headers, params.headers, {
+        'X-Auth-Method': authMethod,
+      }),
       ...omit(['headers'], params),
     };
 
