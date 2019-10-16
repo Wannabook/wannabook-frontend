@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { Sidebar } from 'semantic-ui-react';
 
-import { JWT_TOKEN } from '../../constants';
 import MobileSideBar from '../SideBar';
-import Page from '../Page';
+import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
-import Search from '../Search';
+import { Search } from '../Search/Search';
 
 import { AuthContext } from '../../core/auth/index';
 import { SideBarStateContext } from './sideBarStateContext';
@@ -15,18 +14,14 @@ import { SideBarStateContext } from './sideBarStateContext';
 import { StyledSideBar } from '../SideBar/styles';
 import { GlobalStyle } from './styles';
 
-//TODO: Replace after connect to the real API
-// const hasJWToken = () => localStorage.getItem(JWT_TOKEN);
-const hasJWToken = () => true;
-
 const App = props => {
-  const { user, loadUser, error } = props;
+  const { isLoggedIn, loadUser, error } = props;
 
   useEffect(() => {
-    hasJWToken() && loadUser();
+    if (!isLoggedIn) {
+      loadUser();
+    }
   }, []);
-
-  const isLoggedIn = () => !!user && !error;
 
   const [isLeftSideBarVisible, setLeftSideBarVisibility] = useState(false);
   const [isRightSideBarVisible, setRightSideBarVisibility] = useState(false);
@@ -37,7 +32,7 @@ const App = props => {
   const hideRightSideBar = () => setRightSideBarVisibility(false);
 
   return (
-    <AuthContext.Provider value={isLoggedIn()}>
+    <AuthContext.Provider value={{ isLoggedIn }}>
       <SideBarStateContext.Provider
         value={{
           isLeftSideBarVisible,
@@ -79,9 +74,7 @@ const App = props => {
 };
 
 App.propTypes = {
-  user: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   loadUser: PropTypes.func.isRequired,
 };

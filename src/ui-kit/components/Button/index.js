@@ -7,20 +7,26 @@ import { brandPrimaryColor, white, mainBackgroundColor } from '../../theme';
 
 const PrimaryButton = styled(SemanticButton)`
   &&& {
+    height: 45px;
+    padding: 0;
     color: ${white};
     border-radius: 50px;
     background-color: ${brandPrimaryColor};
     font-family: inherit;
+    font-size: inherit;
   }
 `;
 
 const SecondaryButton = styled(SemanticButton)`
   &&& {
+    height: 45px;
+    padding: 0;
     color: ${brandPrimaryColor};
     border-radius: 50px;
     background-color: ${mainBackgroundColor};
     border: 2px solid ${brandPrimaryColor};
     font-family: inherit;
+    font-size: inherit;
   }
 `;
 

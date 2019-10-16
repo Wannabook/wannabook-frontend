@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { getPageUrl } from '../RouteResolver';
-import ChangePassword from '../../components/Account/ChangePassword';
+import ChangePassword from '../../components/routes/Account/ChangePassword';
 
 const Account = ({
   changePassword,

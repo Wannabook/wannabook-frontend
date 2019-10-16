@@ -12,13 +12,7 @@ export const Title = styled.h2`
   line-height: 27px;
 `;
 
-export const Description = styled.div`
-  margin-bottom: 25px;
-  padding: 0 45px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
+export const Description = styled.p`
   text-align: center;
 `;
 

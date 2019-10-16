@@ -1,58 +1,28 @@
 import styled from 'styled-components';
-import Input from '../../ui-kit/components/Input/index';
-import Button from '../../ui-kit/components/Button/index';
 import { Link } from 'react-router-dom';
 
-export const Container = styled.div`
-  padding: 16px;
-  border-bottom: 1px solid #e5e5e5;
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-export const SocialNetworkList = styled.div`
+export const SignInContainer = styled.div`
+  padding-top: 60px;
+  padding-bottom: 40px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-item: center;
-`;
-
-export const SocialNetworkLink = styled(Link)`
-  border-radius: 50%;
-  border: solid blue 1px;
-  flex-basis: 32px;
-  height: 32px;
-  margin: 8px;
 `;
 
 export const Description = styled.p`
   text-align: center;
+  margin-bottom: 5px;
 `;
 
-export const Form = styled.form`
-  padding: 20px 0;
+export const StyledLink = styled(Link)`
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+  text-decoration: underline;
 `;
 
-export const Label = styled.label`
-  display: block;
-  margin-bottom: 10px;
+export const ForgotPasswordLink = styled(StyledLink)`
+  margin-bottom: 40px;
 `;
 
-export const StyledInput = styled(Input)`
-  &&& {
-    width: 100%;
-    &&& input {
-      border-radius: 0;
-    }
-  }
-`;
-
-export const SignInButton = styled(Button)`
-  &&& {
-    display: block;
-    border-radius: 0;
-    margin: 16px 0;
-    width: 100%;
-  }
+export const SignUpLink = styled(StyledLink)`
+  font-weight: bold;
 `;

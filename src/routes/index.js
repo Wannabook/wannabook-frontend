@@ -18,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/sign-out" component={Signout} />
       <Route path="/sign-up" component={Signup} />
       <Route path="/auth" component={Auth} />
+      <Route path="/forgot-password" component={ForgotPassword} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -92,7 +93,13 @@ const Auth = Loadable({
 
 const ChangePassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ '../components/Account/ChangePassword/ChangePasswordForm/ChangePasswordForm'),
+    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Account/ChangePassword/ChangePasswordForm/ChangePasswordForm'),
+  loading: Loading,
+});
+
+const ForgotPassword = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './ForgotPassword/ForgotPassword'),
   loading: Loading,
 });
 

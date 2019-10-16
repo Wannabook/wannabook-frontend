@@ -1,111 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { JWT_TOKEN } from '../../constants';
+import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
 import { AuthContext } from '../../core/auth/index';
 
 import {
-  Container,
-  SocialNetworkList,
-  SocialNetworkLink,
+  SignInContainer,
   Description,
-  Form,
-  Label,
-  StyledInput,
-  SignInButton,
+  ForgotPasswordLink,
+  SignUpLink,
 } from './styles';
 import { getPageUrl } from '../RouteResolver';
+import SignInForm from '../../components/routes/Signin/SignInForm';
 
-const socialNetworkList = [
-  {
-    name: 'Facebook',
-    id: 'fb',
-    url: getPageUrl('HOME'),
-  },
-  {
-    name: 'Google',
-    id: 'gl',
-    url: getPageUrl('HOME'),
-  },
-  {
-    name: 'VK',
-    id: 'vk',
-    url: getPageUrl('HOME'),
-  },
-  {
-    name: 'Instagram',
-    id: 'in',
-    url: getPageUrl('HOME'),
-  },
-];
+const SignIn = () => {
+  const { isLoggedIn } = useContext(AuthContext);
 
-const inputList = [
-  {
-    placeholder: 'Адрес эл. почты*',
-    type: 'email',
-  },
-  {
-    placeholder: 'Пароль*',
-    type: 'password',
-  },
-];
-
-class SignIn extends React.Component {
-  handleLogin = () => {
-    localStorage.setItem(JWT_TOKEN, 'erglehrgerg');
-    location.href = '/'; // for now :)
-  };
-
-  render() {
-    return (
-      <AuthContext.Consumer>
-        {loggedIn => (
-          <>
-            {// if user is logged in, redirect them away from login page
-            loggedIn && <Redirect to={getPageUrl('HOME')} />}
-            <Container>
-              <Description>Войти с помощью</Description>
-              <SocialNetworkList>
-                {socialNetworkList.map(item => (
-                  <SocialNetworkLink key={item.name} to={item.url}>
-                    {item.id}
-                  </SocialNetworkLink>
-                ))}
-              </SocialNetworkList>
-            </Container>
-            <Container>
-              <Form>
-                {inputList.map(item => (
-                  <Label key={item.type}>
-                    <StyledInput {...item} />
-                  </Label>
-                ))}
-                <Link to={getPageUrl('HOME')}>
-                  <SignInButton
-                    size="large"
-                    secondary
-                    onClick={this.handleLogin}
-                  >
-                    Войти
-                  </SignInButton>
-                </Link>
-              </Form>
-              <Description>
-                <Link to={getPageUrl('FORGOT-PASSWORD')}>Забыли пароль?</Link>
-              </Description>
-            </Container>
-            <Container>
-              <Description>Нет учетной записи?</Description>
-              <Description>
-                <Link to={getPageUrl('SIGN-UP')}>Зарегистрироваться</Link>
-              </Description>
-            </Container>
-          </>
-        )}
-      </AuthContext.Consumer>
-    );
-  }
-}
+  return (
+    <SignInContainer>
+      {// if user is logged in, redirect them away from login page
+      isLoggedIn && <Redirect to={getPageUrl('HOME')} />}
+      <Description>Войти с помощью</Description>
+      <AuthNetworkList />
+      <SignInForm />
+      <ForgotPasswordLink to={getPageUrl('FORGOT-PASSWORD')}>
+        Забыли пароль?
+      </ForgotPasswordLink>
+      <Description>Нет учетной записи?</Description>
+      <SignUpLink to={getPageUrl('SIGN-UP')}>Зарегистрироваться</SignUpLink>
+    </SignInContainer>
+  );
+};
 
 export default SignIn;

@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Icon } from 'semantic-ui-react';
-import { StyledInput } from './styles';
+import Input from '../../../../ui-kit/components/Input';
 
-const PasswordInput = props => {
+const PasswordInput = ({ error, formContext, name, ...restProps }) => {
   const [showPass, setShowPass] = useState(false);
-  const handleOpenMenu = () => setShowPass(!showPass);
+  const { getInputValue, inputChange } = useContext(formContext);
+  const showContent = () => setShowPass(!showPass);
   const iconName = showPass ? 'eye' : 'eye slash';
   const inputType = showPass ? 'text' : 'password';
-  const icon = <Icon name={iconName} link onClick={handleOpenMenu} />;
+  const icon = <Icon name={iconName} link onClick={showContent} />;
 
-  return <StyledInput {...props} type={inputType} icon={icon} />;
+  return (
+    <Input
+      {...restProps}
+      type={inputType}
+      name={name}
+      value={getInputValue(name)}
+      onChange={inputChange(name)}
+      icon={icon}
+      fluid
+      error={!!error}
+    />
+  );
 };
 
 export default PasswordInput;

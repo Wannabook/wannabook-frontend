@@ -16,6 +16,7 @@ import MontserratTTF600 from '../../ui-kit/theme/default/fonts/montserrat-v14-cy
 
 export const GlobalStyle = createGlobalStyle`
   body {
+      font-size: 16px;
       background-color: ${mainBackgroundColor};
       @font-face {
            font-family: Montserrat;
@@ -49,7 +50,9 @@ export const GlobalStyle = createGlobalStyle`
         color: #6b62ef
       }
       
-      
+      p {
+        margin: 0 0 1.5em;
+      }
   }
 `;
 
