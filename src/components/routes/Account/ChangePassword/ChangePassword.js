@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ShowChangePasswordModalButton } from '../../../../routes/Account/styles';
 import ModalPopUp from '../../../common/ModalPopUp';
 import { ChangePasswordForm } from './ChangePasswordForm/ChangePasswordForm';
 import {
-  changePassword,
   getChangePasswordLoadingProps,
   resetChangePasswordRequestState,
 } from '../../../../store/modules/auth/changePassword';
+import { ShowChangePasswordModalButton, CancelButton } from './styles';
 
 export const ChangePassword = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+
   const handleShowModal = () => {
     handleResetChangePasswordRequestState();
     setShowChangePasswordModal(true);
   };
 
-  const { loading, loaded } = useSelector(getChangePasswordLoadingProps);
+  const handleHideModal = () => {
+    handleResetChangePasswordRequestState();
+    setShowChangePasswordModal(false);
+  };
+
+  const { loaded } = useSelector(getChangePasswordLoadingProps);
   const dispatch = useDispatch();
-  const handleChangePassword = () => dispatch(changePassword());
   const handleResetChangePasswordRequestState = () =>
     dispatch(resetChangePasswordRequestState());
 
@@ -40,6 +44,9 @@ export const ChangePassword = () => {
         title="Смена пароля"
       >
         <ChangePasswordForm />
+        <CancelButton secondary onClick={handleHideModal}>
+          Отменить
+        </CancelButton>
       </ModalPopUp>
     </>
   );
