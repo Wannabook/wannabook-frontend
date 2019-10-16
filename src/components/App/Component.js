@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { Sidebar } from 'semantic-ui-react';
 
-import { ACCESS_TOKEN } from '../../constants';
 import MobileSideBar from '../SideBar';
-import Page from '../Page';
+import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
-import Search from '../Search';
+import { Search } from '../Search/Search';
 
 import { AuthContext } from '../../core/auth/index';
 import { SideBarStateContext } from './sideBarStateContext';
 
 import { StyledSideBar } from '../SideBar/styles';
 import { GlobalStyle } from './styles';
-
-const hasAccessToken = () => localStorage.getItem(ACCESS_TOKEN);
 
 const App = props => {
   const { isLoggedIn, loadUser, error } = props;

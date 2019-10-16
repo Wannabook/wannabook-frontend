@@ -16,4 +16,14 @@ export default class FormValidator {
 
     return error ? error : this.verifyPassword(data);
   };
+
+  verifySignUpForm = data => {
+    const error = this.verifyEmail(data);
+
+    return error ? error : this.verifyPassword(data);
+  };
+
+  verifyForgotPasswordForm = data => {
+    return this.verifyEmail(data);
+  };
 }
