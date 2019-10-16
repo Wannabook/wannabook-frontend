@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../../core/auth/index';
 import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
 import { getPageUrl } from '../RouteResolver';
-import { SignUpForm } from './SignUpForm/SignUpForm';
+import { SignUpForm } from '../../components/routes/Signup/SignUpForm/SignUpForm';
 
 import { SignUpContainer, Description, SignInLink } from './styles';
 

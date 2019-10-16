@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
 
-const CategoryList = ({ categoryList }) => {
+export const CategoryList = ({ categoryList }) => {
   return (
     <Grid>
       {categoryList.map(item => (
@@ -55,5 +55,3 @@ CategoryList.defaultProps = {
     },
   ],
 };
-
-export default CategoryList;

@@ -11,13 +11,12 @@ export default function*() {
   yield takeLatest(FORGOT_PASSWORD_REQUEST, workerSaga);
 }
 
-const forgotPasswordRequest = data => {
-  return apiClient.post('/users', { body: { ...data.payload } });
-};
+const forgotPasswordRequest = data =>
+  apiClient.post('/users', { body: { ...data.payload } });
 
-export function* workerSaga() {
+export function* workerSaga(data) {
   try {
-    const forgotPasswordResponse = yield call(forgotPasswordRequest);
+    const forgotPasswordResponse = yield call(forgotPasswordRequest, data);
     yield put(forgotPasswordSuccess(forgotPasswordResponse));
   } catch (error) {
     yield put(forgotPasswordFailure(error));

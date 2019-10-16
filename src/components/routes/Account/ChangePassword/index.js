@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ShowChangePasswordModalButton } from '../../../routes/Account/styles';
-import ModalPopUp from '../../common/ModalPopUp';
+import { ShowChangePasswordModalButton } from '../../../../routes/Account/styles';
+import ModalPopUp from '../../../common/ModalPopUp';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 
 const ChangePassword = ({

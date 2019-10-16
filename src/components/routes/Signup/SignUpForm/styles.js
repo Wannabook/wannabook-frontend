@@ -1,11 +1,11 @@
 import styled, { keyframes } from 'styled-components';
-import Form from '../../../components/common/FormComponents/Form';
-import CommonInput from '../../../components/common/FormComponents/CommonInput';
-import PasswordInput from '../../../components/common/FormComponents/PasswordInput';
-import SubmitButton from '../../../components/common/FormComponents/SubmitButton';
-import Error from '../../../components/common/FormComponents/Error';
+import Form from '../../../common/FormComponents/Form';
+import CommonInput from '../../../common/FormComponents/CommonInput';
+import PasswordInput from '../../../common/FormComponents/PasswordInput';
+import SubmitButton from '../../../common/FormComponents/SubmitButton';
+import Error from '../../../common/FormComponents/Error';
 
-import { fontSmall } from '../../../ui-kit/theme/default';
+import { fontSmall } from '../../../../ui-kit/theme/default';
 
 export const StyledForm = styled(Form)`
   margin-bottom: 20px;

@@ -8,7 +8,7 @@ import {
   ErrorMessage,
 } from './styles';
 import { SignInFormContext } from './SignInFormContext';
-import { formValidator } from '../../../services';
+import { formValidator } from '../../../../services';
 
 const SignInForm = ({ logIn, isSubmitting }) => {
   return (

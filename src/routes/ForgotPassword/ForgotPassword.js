@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 import { AuthContext } from '../../core/auth/index';
 import { getPageUrl } from '../RouteResolver';
-import { ForgotPasswordForm } from './ForgotPasswordForm/ForgotPasswordForm';
-import { Gratitude } from './Gratitude/Gratitude';
+import { ForgotPasswordForm } from '../../components/routes/ForgotPassword/ForgotPasswordForm/ForgotPasswordForm';
+import { Gratitude } from '../../components/routes/ForgotPassword/Gratitude/Gratitude';
 
 import { ForgotPasswordContainer, Description } from './styles';
 import { getForgotPasswordLoadingProps } from '../../store/modules/auth/forgotPassword';

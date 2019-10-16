@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
-import PasswordInput from '../../../common/FormComponents/PasswordInput';
+import PasswordInput from '../../../../common/FormComponents/PasswordInput';
 
 import {
   Container,

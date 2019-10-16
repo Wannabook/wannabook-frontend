@@ -6,7 +6,7 @@ import { Sidebar } from 'semantic-ui-react';
 import MobileSideBar from '../SideBar';
 import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
-import Search from '../Search';
+import { Search } from '../Search/Search';
 
 import { AuthContext } from '../../core/auth/index';
 import { SideBarStateContext } from './sideBarStateContext';

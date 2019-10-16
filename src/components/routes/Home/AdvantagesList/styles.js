@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { white } from '../../ui-kit/theme';
+import { white } from '../../../../ui-kit/theme';
 
 export const AdvantagesListContainer = styled.div`
   margin: 0 -15px;

@@ -11,10 +11,10 @@ import {
   ErrorMessage,
 } from './styles';
 import { SignUpFormContext } from './SignUpFormContext';
-import { formValidator } from '../../../services';
+import { formValidator } from '../../../../services';
 
-import { signUpRequest } from '../../../store/modules/auth/auth';
-import { getLogInLoadingProps } from '../../../store/modules/auth/auth';
+import { signUpRequest } from '../../../../store/modules/auth/auth';
+import { getLogInLoadingProps } from '../../../../store/modules/auth/auth';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
