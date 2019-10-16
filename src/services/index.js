@@ -1,10 +1,12 @@
 import FormValidator from './FormValidator';
-import { ApiClient } from './apiClient';
+import { ApiClient } from './ApiClient';
+import { MockApiClient } from './MockApiClient';
 import { ACCESS_TOKEN } from '../constants';
 
 export const formValidator = new FormValidator();
 
 const token = localStorage.getItem(ACCESS_TOKEN);
 
-// Use real one
-export const apiClient = new ApiClient(token);
+export const apiClient = Boolean(process.env.MOCK_CLIENT)
+  ? new MockApiClient()
+  : new ApiClient(token);

@@ -1,4 +1,4 @@
-export default class MockApiClient {
+export class MockApiClient {
   userResponse = {
     user: {
       name: 'ilya',
