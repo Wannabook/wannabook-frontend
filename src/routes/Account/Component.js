@@ -3,24 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { getPageUrl } from '../RouteResolver';
-import ChangePassword from '../../components/routes/Account/ChangePassword';
+import { ChangePassword } from '../../components/routes/Account/ChangePassword/ChangePassword';
 
-const Account = ({
-  changePassword,
-  resetChangePasswordRequestState,
-  loading,
-  loaded,
-}) => {
+const Account = () => {
   return (
     <>
       <div>User page</div>
       <Link to={getPageUrl('SIGN-OUT')}>Log out</Link>
-      <ChangePassword
-        changePassword={changePassword}
-        resetChangePasswordRequestState={resetChangePasswordRequestState}
-        loading={loading}
-        loaded={loaded}
-      />
+      <ChangePassword />
     </>
   );
 };

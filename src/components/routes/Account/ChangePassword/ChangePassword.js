@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { ShowChangePasswordModalButton } from '../../../../routes/Account/styles';
 import ModalPopUp from '../../../common/ModalPopUp';
-import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
-
-const ChangePassword = ({
+import { ChangePasswordForm } from './ChangePasswordForm/ChangePasswordForm';
+import {
   changePassword,
+  getChangePasswordLoadingProps,
   resetChangePasswordRequestState,
-  loading,
-  loaded,
-}) => {
+} from '../../../../store/modules/auth/changePassword';
+
+export const ChangePassword = () => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const handleShowModal = () => {
-    resetChangePasswordRequestState();
+    handleResetChangePasswordRequestState();
     setShowChangePasswordModal(true);
   };
+
+  const { loading, loaded } = useSelector(getChangePasswordLoadingProps);
+  const dispatch = useDispatch();
+  const handleChangePassword = () => dispatch(changePassword());
+  const handleResetChangePasswordRequestState = () =>
+    dispatch(resetChangePasswordRequestState());
 
   const handleCloseModal = () => setShowChangePasswordModal(false);
   const inModalOpen = showChangePasswordModal && !loaded;
@@ -23,26 +29,18 @@ const ChangePassword = ({
     <>
       <ShowChangePasswordModalButton
         size="large"
-        primary
+        secondary
         onClick={handleShowModal}
       >
-        Сменить пароль
+        Изменить пароль
       </ShowChangePasswordModalButton>
       <ModalPopUp
         open={inModalOpen}
         handleClose={handleCloseModal}
         title="Смена пароля"
       >
-        <ChangePasswordForm changePassword={changePassword} loading={loading} />
+        <ChangePasswordForm />
       </ModalPopUp>
     </>
   );
 };
-
-ChangePassword.propTypes = {
-  changePassword: PropTypes.func.isRequired,
-  resetChangePasswordRequestState: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
-
-export default ChangePassword;

@@ -11,6 +11,7 @@ import { SignInFormContext } from './SignInFormContext';
 import { formValidator } from '../../../../services';
 
 const SignInForm = ({ logIn, isSubmitting }) => {
+  //TODO: Get rid of index file
   return (
     <StyledForm
       onSubmit={logIn}

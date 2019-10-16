@@ -1,41 +1,46 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import Form from '../../../../common/FormComponents/Form';
+import SubmitButton from '../../../../common/FormComponents/SubmitButton';
+import Error from '../../../../common/FormComponents/Error';
+import PasswordInput from '../../../../common/FormComponents/PasswordInput';
 import Button from '../../../../../ui-kit/components/Button';
-import { Form } from 'semantic-ui-react';
-import { warningColor } from '../../../../../ui-kit/theme';
+import { fontSmall } from '../../../../../ui-kit/theme/default';
 
-export const Container = styled.div`
-  padding: 16px;
-  border-bottom: 1px solid #e5e5e5;
-  &:last-child {
-    border-bottom: none;
-  }
+export const Title = styled.div`
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 `;
 
-export const StyledChangePasswordForm = styled(Form)`
-  &&& {
-    padding: 20px 0;
-  }
-`;
-
-export const InputBlock = styled(Form.Field)`
+export const StyledForm = styled(Form)`
   margin-bottom: 20px;
 `;
 
 export const Label = styled.label`
-  display: block;
+  font-size: ${fontSmall};
+`;
+
+export const StyledPasswordInput = styled(PasswordInput)`
   margin-bottom: 10px;
 `;
 
-export const ErrorMessage = styled.div`
-  display: block;
-  margin-top: 5px;
-  color: ${warningColor};
-`;
-
-export const ChangePasswordButton = styled(Button)`
+export const ChangePasswordButton = styled(SubmitButton)`
   &&& {
     display: block;
-    margin: 16px 0;
     width: 100%;
+    margin-top: 25px;
   }
+`;
+
+export const CancelButton = styled(Button)`
+  &&& {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+  }
+`;
+
+export const ErrorMessage = styled(Error)`
+  margin-top: 25px;
 `;
