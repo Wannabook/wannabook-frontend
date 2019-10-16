@@ -52,6 +52,7 @@ const socialNetworkList = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 const SocialNetworkItem = ({ item }) => {
   const dispatch = useDispatch();
 
@@ -66,10 +67,6 @@ const SocialNetworkItem = ({ item }) => {
       <Image src={item.icon} />
     </SocialNetworkIcon>
   );
-};
-
-SocialNetworkItem.propTypes = {
-  item: PropTypes.object,
 };
 
 const SignIn = () => {
