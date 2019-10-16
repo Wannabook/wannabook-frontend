@@ -18,7 +18,7 @@ ModalPopUp.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  children: PropTypes.element,
+  children: PropTypes.array,
 };
 
 export default ModalPopUp;
