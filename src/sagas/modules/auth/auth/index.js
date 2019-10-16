@@ -15,9 +15,10 @@ import {
   loadUserFailure,
   loadUserSuccess,
 } from '../../../../store/modules/auth/auth';
+import { API_ENDPOINTS } from '../../../../constants';
 
-// watcher saga: watches for actions dispatched to the store, starts worker saga
-export default function*() {
+// TODO get client from root saga
+export function* loginSaga() {
   yield takeEvery(USER_LOGIN_REQUEST, logIn);
   yield takeEvery(USER_SIGN_UP_REQUEST, signUp);
   yield takeEvery(LOAD_USER, loadUser);
@@ -29,7 +30,7 @@ const logInRequest = data =>
 const signUpRequest = data =>
   apiClient.post('/users', { body: { ...data.payload } });
 
-const fetchUser = () => apiClient.get('/users/me');
+const fetchUser = () => apiClient.get(API_ENDPOINTS.me);
 // headers: {
 //   'X-Auth-Method': localStorage.getItem('authMethod'),
 //   'X-Id-Token': localStorage.getItem('idToken'), // for Google auth

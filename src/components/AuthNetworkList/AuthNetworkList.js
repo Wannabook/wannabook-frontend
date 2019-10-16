@@ -1,11 +1,12 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+
 import { getPageUrl } from '../../routes/RouteResolver';
 import { SocialNetworkLink, SocialNetworkList } from './styles';
 
 import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
-import googleIcon from './images/vk.svg';
+import googleIcon from './images/g.svg';
 import odnoklassnikiIcon from './images/ok.svg';
 
 const socialNetworkList = [
