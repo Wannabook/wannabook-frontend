@@ -1,8 +1,8 @@
 import { call, takeLatest } from '@redux-saga/core/effects';
-// omg!
+
 import { startGoogleAuth } from '../../../store/auth/actions';
 
-export function* googleAuthSaga(client) {
+export function* googleLoginSaga(client) {
   yield takeLatest(startGoogleAuth, handler, client);
 }
 

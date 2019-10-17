@@ -5,15 +5,17 @@ import { emailLoginSaga } from './signin/email';
 import { signUpSaga } from './signup/email';
 import changePassword from './changePassword';
 import forgotPassword from './forgotPassword';
-import { googleAuthSaga } from './signin/google';
+import { googleLoginSaga } from './signin/google';
+import { signOutSaga } from './signout';
 
 const subSagas = [
   loadUserSaga,
   changePassword,
   forgotPassword,
   emailLoginSaga,
+  googleLoginSaga,
   signUpSaga,
-  googleAuthSaga,
+  signOutSaga,
 ];
 
 export function* authSaga(client) {

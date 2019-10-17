@@ -10,6 +10,7 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAILURE,
+  USER_SIGN_OUT,
 } from './constants';
 
 export const logInRequest = createAction(
@@ -37,6 +38,8 @@ export const signUpRequestFailure = createAction(
   USER_SIGN_UP_REQUEST_FAILURE,
   payload => payload
 );
+
+export const signOut = createAction(USER_SIGN_OUT);
 
 export const loadUser = createAction(LOAD_USER);
 export const loadUserRequest = createAction(LOAD_USER_REQUEST);
