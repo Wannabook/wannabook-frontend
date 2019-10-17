@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { AuthContext } from '../../core/auth/index';
+import { AuthContext } from '../../components/App/contexts';
 import { getPageUrl } from '../RouteResolver';
 import { ForgotPasswordForm } from '../../components/routes/ForgotPassword/ForgotPasswordForm/ForgotPasswordForm';
 import { Gratitude } from '../../components/routes/ForgotPassword/Gratitude/Gratitude';
 
 import { ForgotPasswordContainer, Description } from './styles';
-import { getForgotPasswordLoadingProps } from '../../store/modules/auth/forgotPassword';
+import { getForgotPasswordLoadingProps } from '../../store/auth/forgotPassword';
 
 const ForgotPassword = () => {
   const { isLoggedIn } = useContext(AuthContext);

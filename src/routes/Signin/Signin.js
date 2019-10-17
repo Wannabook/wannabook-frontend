@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
-import { AuthContext } from '../../core/auth/index';
+import { AuthContext } from '../../components/App/contexts';
 import { getPageUrl } from '../RouteResolver';
 
 import {

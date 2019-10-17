@@ -9,8 +9,8 @@ import {
 import { ForgotPasswordFormContext } from './ForgotPasswordFormContext';
 import { formValidator } from '../../../../services';
 
-import { forgotPassword } from '../../../../store/modules/auth/forgotPassword';
-import { getForgotPasswordLoadingProps } from '../../../../store/modules/auth/forgotPassword';
+import { forgotPassword } from '../../../../store/auth/forgotPassword';
+import { getForgotPasswordLoadingProps } from '../../../../store/auth/forgotPassword';
 
 export const ForgotPasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getForgotPasswordLoadingProps);

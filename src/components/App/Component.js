@@ -8,8 +8,8 @@ import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
 import { Search } from '../Search/Search';
 
-import { AuthContext } from '../../core/auth/index';
-import { SideBarStateContext } from './sideBarStateContext';
+import { AuthContext } from './contexts';
+import { SideBarStateContext } from './contexts';
 
 import { StyledSideBar } from '../SideBar/styles';
 import { GlobalStyle } from './styles';

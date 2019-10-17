@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import { loadOrganizations } from '../../store/modules/organizations/actionCreators';
+import { loadOrganizations } from '../../store/organizations/actionCreators';
 import Component from './Component';
 import {
   getOrganizations,
   getOrganizationsLoadingProps,
-} from '../../store/modules/organizations/selectors';
+} from '../../store/organizations/selectors';
 
 const mapStateToProps = () => state => ({
   ...getOrganizationsLoadingProps(state),

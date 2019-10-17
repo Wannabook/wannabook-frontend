@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import Component from './Component';
-import { loadUser } from '../../store/modules/auth/auth';
-import { getUser, getLogInLoadingProps } from '../../store/modules/auth/auth';
+import { loadUser } from '../../store/auth/auth';
+import { getUser, getLogInLoadingProps } from '../../store/auth/auth';
 
 const mapStateToProps = () => globalState => ({
   ...getLogInLoadingProps(globalState),
