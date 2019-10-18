@@ -7,7 +7,7 @@ import {
   logInRequestFailure,
   logInRequestSuccess,
   USER_LOGIN_REQUEST,
-} from '../../../store/auth/auth';
+} from '../../../store/auth/user';
 import { apiClient } from '../../../services';
 
 export function* loginPasswordLoginSaga(client) {

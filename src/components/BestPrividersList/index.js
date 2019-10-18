@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Segment, Image } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+
 import { getPageUrl } from '../../routes/RouteResolver';
 import { ImgContainer } from './styles';
 

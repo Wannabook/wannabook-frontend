@@ -13,8 +13,8 @@ import {
 import { SignUpFormContext } from './SignUpFormContext';
 import { formValidator } from '../../../../services';
 
-import { signUpRequest } from '../../../../store/auth/auth';
-import { getLogInLoadingProps } from '../../../../store/auth/auth';
+import { signUpRequest } from '../../../../store/auth/user';
+import { getLogInLoadingProps } from '../../../../store/auth/user';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);

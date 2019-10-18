@@ -3,7 +3,7 @@ import {
   LOAD_USER,
   loadUserFailure,
   loadUserSuccess,
-} from '../../../store/auth/auth';
+} from '../../../store/auth/user';
 import { API_ENDPOINTS } from '../../../constants';
 
 export function* loadUserSaga(client) {

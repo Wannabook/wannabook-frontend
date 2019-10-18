@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import Component from './Component';
-import { logInRequest } from '../../../../store/auth/auth';
-import { getLogInLoadingProps } from '../../../../store/auth/auth';
+import { logInRequest } from '../../../../store/auth/user';
+import { getLogInLoadingProps } from '../../../../store/auth/user';
 
 const mapStateToProps = () => state => ({
   isSubmitting: getLogInLoadingProps(state).loading,

@@ -5,13 +5,13 @@ import {
   startLoginPasswordAuth,
   startLoginPasswordSignup,
 } from '../../../store/auth/actions';
-import { loadUserFailure, loadUserSuccess } from '../../../store/auth/auth';
+import { loadUserFailure, loadUserSuccess } from '../../../store/auth/user';
 import { apiClient } from '../../../services';
 import {
   signUpRequestFailure,
   signUpRequestSuccess,
   USER_SIGN_UP_REQUEST,
-} from '../../../store/auth/auth';
+} from '../../../store/auth/user';
 
 export function* loginPasswordSignUpSaga(client) {
   yield takeLatest(startLoginPasswordSignup, function* handler() {
