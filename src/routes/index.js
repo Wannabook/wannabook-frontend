@@ -63,7 +63,8 @@ const Category = Loadable({
 });
 
 const User = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Account'),
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Profile/Profile'),
   loading: Loading,
 });
 
@@ -93,7 +94,7 @@ const Auth = Loadable({
 
 const ChangePassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Account/ChangePassword/ChangePassword'),
+    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Profile/ChangePassword/ChangePassword'),
   loading: Loading,
 });
 
