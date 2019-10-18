@@ -11,7 +11,7 @@ import {
   SignUpLink,
 } from './styles';
 import { getPageUrl } from '../RouteResolver';
-import SignInForm from '../../components/routes/Signin/SignInForm';
+import { SignInForm } from '../../components/routes/Signin/SignInForm/SignInForm';
 
 const SignIn = () => {
   const { isLoggedIn } = useContext(AuthContext);

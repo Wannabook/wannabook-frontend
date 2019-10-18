@@ -1,147 +1,54 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Grid } from 'semantic-ui-react';
-import PasswordInput from '../../../../common/FormComponents/PasswordInput';
-
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
-  Container,
-  StyledChangePasswordForm,
-  InputBlock,
+  StyledForm,
   Label,
-  ErrorMessage,
+  StyledPasswordInput,
   ChangePasswordButton,
+  ErrorMessage,
 } from './styles';
+import { ChangePasswordFormContext } from './ChangePasswordFormContext';
 
-const inputList = [
-  {
-    labelText: 'Старый пароль',
-    inputAttrs: {
-      placeholder: 'Старый пароль',
-      name: 'old',
-    },
-  },
-  {
-    labelText: 'Новый пароль',
-    inputAttrs: {
-      placeholder: 'Новый пароль',
-      name: 'newPassword',
-    },
-  },
-  {
-    labelText: 'Повторите новый пароль',
-    inputAttrs: {
-      placeholder: 'Повторите новый пароль',
-      name: 'confirmed',
-    },
-  },
-];
+import { changePassword } from '../../../../../store/modules/auth/changePassword';
+import { getChangePasswordLoadingProps } from '../../../../../store/modules/auth/changePassword';
 
-const ChangePasswordForm = ({ changePassword, loading }) => {
-  const handleChangePassword = e => {
-    e.preventDefault();
-    const error = validatePasswords();
-
-    if (error) return;
-    changePassword(passwords);
-  };
-  const [passwords, setPasswords] = useState({
-    old: '',
-    newPassword: '',
-    confirmed: '',
-  });
-  const [inputError, setInputError] = useState({
-    old: '',
-    newPassword: '',
-    confirmed: '',
-  });
-
-  const resetErrors = () => {
-    setInputError({
-      old: '',
-      newPassword: '',
-      confirmed: '',
-    });
-  };
-
-  const validatePasswords = () => {
-    const errorMessages = {
-      match: 'Пароль совпадает',
-      notMatch: 'Пароль не совпадает',
-    };
-
-    if (passwords.newPassword === passwords.old) {
-      setInputError({
-        ...inputError,
-        old: errorMessages.match,
-        newPassword: errorMessages.match,
-      });
-
-      return 'Пароль не совпадает';
-    }
-    if (passwords.newPassword !== passwords.confirmed) {
-      setInputError({
-        ...inputError,
-        newPassword: errorMessages.notMatch,
-        confirmed: errorMessages.notMatch,
-      });
-
-      return 'Пароль не совпадает';
-    }
-
-    return null;
-  };
+export const ChangePasswordForm = () => {
+  const { loading: isSubmitting } = useSelector(getChangePasswordLoadingProps);
+  const dispatch = useDispatch();
+  const handleSubmit = data => dispatch(changePassword(data));
 
   return (
-    <Grid stackable columns="1">
-      <Grid.Row stretched columns="1">
-        <Grid.Column>
-          <Container>
-            <StyledChangePasswordForm>
-              {inputList.map(item => {
-                const handleChange = e => {
-                  resetErrors();
-                  setPasswords({
-                    ...passwords,
-                    [item.inputAttrs.name]: e.target.value,
-                  });
-                };
-
-                return (
-                  <InputBlock key={item.labelText}>
-                    <Label>{item.labelText}</Label>
-                    <PasswordInput
-                      {...item.inputAttrs}
-                      value={passwords[item.inputAttrs.name]}
-                      onChange={handleChange}
-                      error={!!inputError[item.inputAttrs.name]}
-                    />
-                    {!!inputError[item.inputAttrs.name] && (
-                      <ErrorMessage>
-                        {inputError[item.inputAttrs.name]}
-                      </ErrorMessage>
-                    )}
-                  </InputBlock>
-                );
-              })}
-              <ChangePasswordButton
-                size="large"
-                primary
-                onClick={handleChangePassword}
-                loading={loading}
-              >
-                Изменить пароль
-              </ChangePasswordButton>
-            </StyledChangePasswordForm>
-          </Container>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <StyledForm
+      onSubmit={handleSubmit}
+      isSubmitting={isSubmitting}
+      formName="changePassword"
+      formContext={ChangePasswordFormContext}
+    >
+      <Label htmlFor="old-password-input">Старый пароль</Label>
+      <StyledPasswordInput
+        id="old-password-input"
+        name="oldPassword"
+        placeholder="Пароль*"
+        required
+      />
+      <Label htmlFor="new-password-input">Новый пароль</Label>
+      <StyledPasswordInput
+        id="new-password-input"
+        name="newPassword"
+        placeholder="Пароль*"
+        required
+      />
+      <Label htmlFor="repeat-password-input">Повторите новый пароль</Label>
+      <StyledPasswordInput
+        id="repeat-password-input"
+        name="repeatPassword"
+        placeholder="Пароль*"
+        required
+      />
+      <ErrorMessage />
+      <ChangePasswordButton type="submit" size="large" primary>
+        Изменить пароль
+      </ChangePasswordButton>
+    </StyledForm>
   );
 };
-
-ChangePasswordForm.propTypes = {
-  changePassword: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
-
-export default ChangePasswordForm;

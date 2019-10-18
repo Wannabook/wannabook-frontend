@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { formValidator } from '../../../../services';
 
 const Form = ({
   children,
   className,
   onSubmit,
   isSubmitting,
-  verify,
+  formName,
   formContext: FormContext,
 }) => {
   const [data, setData] = useState({});
 
   const handleSubmit = e => {
     e.preventDefault();
-    const verificationError = verify(data);
+    const verificationError = formValidator.verifyMapper[formName](data);
     if (verificationError) {
       return setData({ ...data, error: verificationError.message });
     }
@@ -59,7 +60,7 @@ Form.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
-  verify: PropTypes.func.isRequired,
+  formName: PropTypes.oneOf(Object.keys(formValidator.verifyMapper)).isRequired,
   formContext: PropTypes.object.isRequired,
 };
 

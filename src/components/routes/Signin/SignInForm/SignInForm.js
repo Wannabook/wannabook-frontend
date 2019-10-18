@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   StyledForm,
   StyledEmailInput,
@@ -8,14 +8,21 @@ import {
   ErrorMessage,
 } from './styles';
 import { SignInFormContext } from './SignInFormContext';
-import { formValidator } from '../../../../services';
+import {
+  getLogInLoadingProps,
+  logInRequest,
+} from '../../../../store/modules/auth/auth';
 
-const SignInForm = ({ logIn, isSubmitting }) => {
+export const SignInForm = () => {
+  const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
+  const dispatch = useDispatch();
+  const logIn = data => dispatch(logInRequest(data));
+
   return (
     <StyledForm
       onSubmit={logIn}
       isSubmitting={isSubmitting}
-      verify={formValidator.verifySignInForm}
+      formName="signIn"
       formContext={SignInFormContext}
     >
       <StyledEmailInput
@@ -32,10 +39,3 @@ const SignInForm = ({ logIn, isSubmitting }) => {
     </StyledForm>
   );
 };
-
-SignInForm.propTypes = {
-  logIn: PropTypes.func.isRequired,
-  isSubmitting: PropTypes.bool.isRequired,
-};
-
-export default SignInForm;
