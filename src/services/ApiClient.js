@@ -1,18 +1,16 @@
 import { omit, identity } from 'ramda';
 import axios from 'axios';
 
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../constants';
+
 const client = axios.create({
-  baseURL: '/api/v1',
+  baseURL: `/api/v${Number(process.env.API_VERSION) || 1}`,
   headers: { 'Content-Type': 'application/json' },
 });
 
 export class ApiClient {
-  constructor(token) {
+  constructor() {
     this.headers = {};
-
-    if (token) {
-      this.headers['Authorization'] = `Bearer ${token}`;
-    }
   }
 
   get(endpoint, params = {}) {
@@ -55,10 +53,18 @@ export class ApiClient {
   }
 
   request(endpoint, params = {}) {
-    const authMethod = localStorage.getItem('authMethod');
+    // if we initialize Client with these values then we'll not be able to
+    // detect change to these values during app lifetime,
+    // so we get "fresh" values before each request is made
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    const idToken = localStorage.getItem(ID_TOKEN);
+    const authMethod = localStorage.getItem(AUTH_METHOD);
+
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers, {
+        Authorization: `Bearer ${accessToken}`,
         'X-Auth-Method': authMethod,
+        'X-Id-Token': idToken,
       }),
       ...omit(['headers'], params),
     };
@@ -71,6 +77,4 @@ export class ApiClient {
   }
 }
 
-const isAbsolute = url => {
-  return /^(?:[a-z]+:)?\/\//i.test(url);
-};
+const isAbsolute = url => /^(?:[a-z]+:)?\/\//i.test(url);
