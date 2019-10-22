@@ -22,7 +22,7 @@ const UserProfile = () => {
   // we will then make user/:id dynamic depending on id coming from backend
 
   return isLoggedIn ? (
-    <Link to={`${getPageUrl('ACCOUNT')}/123456`}>
+    <Link to={`${getPageUrl('PROFILE')}/123456`}>
       <Image src={profileIcon} />
     </Link>
   ) : (

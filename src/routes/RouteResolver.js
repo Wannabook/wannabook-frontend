@@ -9,7 +9,7 @@ const pagesData = {
   'SIGN-IN': { route: '/sign-in' },
   'SIGN-UP': { route: '/sign-up' },
   'SIGN-OUT': { route: '/sign-out' },
-  ACCOUNT: { route: '/account' },
+  PROFILE: { route: '/profile' },
   'FORGOT-PASSWORD': { route: '/forgot-password' },
 };
 

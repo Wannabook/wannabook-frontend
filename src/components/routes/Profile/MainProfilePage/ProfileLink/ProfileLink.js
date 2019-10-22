@@ -19,7 +19,7 @@ export const ProfileLink = props => {
 
 ProfileLink.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
+  icon: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   notificationsAmount: PropTypes.number,
 };

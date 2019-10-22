@@ -1,6 +1,6 @@
 import React from 'react';
-import { ChangePassword } from '../ChangePassword/ChangePassword';
 import { ProfileLink } from './ProfileLink/ProfileLink';
+import { ProfileImage } from './ProfileImage/ProfileImage';
 
 import notifications from './images/notifications.svg';
 import myinfo from './images/my_info_icon.svg';
@@ -11,6 +11,8 @@ import exit from './images/exit_icon.svg';
 
 import { MainProfilePageContainer } from './styles';
 
+import { getPageUrl } from '../../../../routes/RouteResolver';
+
 const profileLinksData = [
   {
     url: '/',
@@ -19,7 +21,7 @@ const profileLinksData = [
     notificationsAmount: 2,
   },
   {
-    url: '/',
+    url: `${getPageUrl('PROFILE')}/123456/my-info`,
     text: 'Моя информация',
     icon: myinfo,
     notificationsAmount: null,
@@ -52,6 +54,7 @@ const profileLinksData = [
 export const MainProfilePage = () => {
   return (
     <MainProfilePageContainer>
+      <ProfileImage />
       {profileLinksData.map(link => {
         return (
           <ProfileLink
@@ -64,8 +67,6 @@ export const MainProfilePage = () => {
           </ProfileLink>
         );
       })}
-      {/*<StyledProfileLink to={getPageUrl('SIGN-OUT')}>Log out</StyledProfileLink>*/}
-      <ChangePassword />
     </MainProfilePageContainer>
   );
 };

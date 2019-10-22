@@ -4,6 +4,8 @@ export default class MockApiClient {
       name: 'ilya',
       email: 'kushliansky@gmail.com',
       phone: '375295565656',
+      avatar:
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/5a81fc730e6608334b45e809/bf0b3a3c-4ccc-49a9-8a72-8271b6caea4b/128?size=48&amp;s=48&',
     },
     authToken: 'Bearer: wef0ih8gg9g3gn',
   };
