@@ -10,8 +10,9 @@ function* handler(client) {
   try {
     const response = yield call(
       [client, 'post'],
-      // TODO: do not hardcode url here, get it from env
-      'http://localhost:5000/users/login/google/auth'
+      `${process.env.API_URL}/api/v${process.env.API_VERSION}/${
+        process.env.GOOGLE_AUTH_URL
+      }`
     );
 
     window.location = response.data;

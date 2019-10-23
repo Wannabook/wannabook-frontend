@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+
 import {
   INITIAL_STATE,
   USER_LOGIN_REQUEST,
@@ -44,27 +45,37 @@ const handleRequest = (state, { payload }) => {
   };
 };
 
-const handleRequestSuccess = (state, { payload }) => {
-  const { user, authToken } = payload;
-
+const handleRequestSuccess = (
+  state,
+  {
+    payload: {
+      data: { user, accessToken },
+    },
+  }
+) => {
   return {
     ...state,
     loading: false,
     loaded: true,
     error: '',
     user,
-    authToken,
+    accessToken,
   };
 };
 
-const handleLoadUserSuccess = (state, { payload }) => {
-  const { user, authToken } = payload;
-
+const handleLoadUserSuccess = (
+  state,
+  {
+    payload: {
+      data: { user, accessToken },
+    },
+  }
+) => {
   return {
     ...state,
+    ...user,
     error: '',
-    user,
-    authToken,
+    accessToken,
   };
 };
 

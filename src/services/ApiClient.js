@@ -3,8 +3,14 @@ import axios from 'axios';
 
 import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../constants';
 
+const API_VERSION = process.env.API_VERSION;
+
+if (!API_VERSION) {
+  throw new Error('Api version is not found in your .env file');
+}
+
 const client = axios.create({
-  baseURL: `/api/v${Number(process.env.API_VERSION) || 1}`,
+  baseURL: `/api/v${Number(API_VERSION)}`,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -71,7 +77,7 @@ export class ApiClient {
 
     const url = isAbsolute(endpoint)
       ? endpoint
-      : `${process.env.API_URL}/${endpoint}`;
+      : `${process.env.API_URL}/api/v${Number(API_VERSION)}/${endpoint}`;
 
     return client(url, requestParams).then(identity);
   }

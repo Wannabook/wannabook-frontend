@@ -1,4 +1,4 @@
-import { all, fork } from 'redux-saga/effects';
+import { all, spawn } from 'redux-saga/effects';
 
 import { loadUserSaga } from './user';
 import { emailLoginSaga } from './signin/email';
@@ -19,5 +19,5 @@ const subSagas = [
 ];
 
 export function* authSaga(client) {
-  yield all(subSagas.map(s => fork(s, client)));
+  yield all(subSagas.map(s => spawn(s, client)));
 }

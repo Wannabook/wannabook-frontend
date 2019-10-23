@@ -17,6 +17,5 @@ export const INITIAL_STATE = {
   loading: false,
   loaded: false,
   error: '',
-  user: null,
-  authToken: null,
+  accessToken: null,
 };
