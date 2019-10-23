@@ -9,8 +9,8 @@ import {
 } from './styles';
 import { ChangePasswordFormContext } from './ChangePasswordFormContext';
 
-import { changePassword } from '../../../../../store/modules/auth/changePassword';
-import { getChangePasswordLoadingProps } from '../../../../../store/modules/auth/changePassword';
+import { changePassword } from '../../../../../../store/modules/auth/changePassword';
+import { getChangePasswordLoadingProps } from '../../../../../../store/modules/auth/changePassword';
 
 export const ChangePasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getChangePasswordLoadingProps);

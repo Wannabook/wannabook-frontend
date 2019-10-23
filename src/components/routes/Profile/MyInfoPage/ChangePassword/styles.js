@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from '../../../../ui-kit/components/Button';
+import Button from '../../../../../ui-kit/components/Button';
 
 export const ShowChangePasswordModalButton = styled(Button)`
   &&& {
