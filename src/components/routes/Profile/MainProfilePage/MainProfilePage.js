@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { ProfileLink } from './ProfileLink/ProfileLink';
 import { ProfileImage } from './ProfileImage/ProfileImage';
 
@@ -12,6 +13,7 @@ import exit from './images/exit_icon.svg';
 import { MainProfilePageContainer } from './styles';
 
 import { getPageUrl } from '../../../../routes/RouteResolver';
+import { AuthContext } from '../../../../core/auth';
 
 const profileLinksData = [
   {
@@ -52,8 +54,11 @@ const profileLinksData = [
   },
 ];
 export const MainProfilePage = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <MainProfilePageContainer>
+      {!isLoggedIn && <Redirect to={getPageUrl('AUTH')} />}
       <ProfileImage />
       {profileLinksData.map(link => {
         return (
