@@ -45,10 +45,11 @@ export default class MockApiClient {
     });
   }
 
-  put(resourceUrl) {
+  put(resourceUrl, data) {
+    const { body: user } = data;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        Math.random() > 0.5 ? resolve() : reject('Something went wrong...');
+        Math.random() > 0.1 ? resolve(user) : reject('Something went wrong...');
       }, 1500);
     });
   }

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import CommonInput from '../../../../../common/FormComponents/CommonInput';
 
 import {
   GenderToggleContainer,
@@ -23,8 +22,9 @@ const genderButtons = [
   },
 ];
 
-export const GenderToggle = ({ userGender }) => {
-  const [gender, setGender] = useState(userGender);
+export const GenderToggle = ({ userGender, formContext }) => {
+  const { getInputValue, inputChange } = useContext(formContext);
+  const gender = getInputValue('gender', userGender);
 
   return (
     <GenderToggleContainer>
@@ -32,7 +32,7 @@ export const GenderToggle = ({ userGender }) => {
         <Description>Вы:</Description>
         {genderButtons.map(button => {
           const handleClick = () => {
-            setGender(button.name);
+            inputChange('gender')({ target: { value: button.name } });
           };
 
           return (
@@ -52,8 +52,9 @@ export const GenderToggle = ({ userGender }) => {
 
 GenderToggle.propTypes = {
   userGender: PropTypes.string,
+  formContext: PropTypes.object,
 };
 
 GenderToggle.defaultProps = {
-  userGender: 'male',
+  userGender: PropTypes.oneOf(['male', 'female']).isRequired,
 };

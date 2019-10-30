@@ -18,7 +18,7 @@ export const Description = styled.span`
   left: 0;
 `;
 
-export const ToggleButton = styled.button`
+export const ToggleButton = styled.div`
   width: 70px;
   height: 70px;
   background-color: ${white};

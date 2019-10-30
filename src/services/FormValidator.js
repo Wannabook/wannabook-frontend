@@ -37,10 +37,15 @@ export default class FormValidator {
     return newPasswordError ? newPasswordError : matchPasswordError;
   };
 
+  verifyUserInfo = data => {
+    return null;
+  };
+
   verifyMapper = {
     signIn: this.verifySignInForm,
     signUp: this.verifySignUpForm,
     forgotPassword: this.verifyForgotPasswordForm,
     changePassword: this.verifyChangePasswordForm,
+    userInfo: this.verifyUserInfo,
   };
 }

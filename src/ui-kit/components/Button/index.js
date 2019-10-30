@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Button as SemanticButton } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-import { brandPrimaryColor, white, mainBackgroundColor } from '../../theme';
+import {
+  brandPrimaryColor,
+  white,
+  mainBackgroundColor,
+  lightGrey,
+} from '../../theme';
 
 const PrimaryButton = styled(SemanticButton)`
   &&& {
@@ -11,7 +16,8 @@ const PrimaryButton = styled(SemanticButton)`
     padding: 0;
     color: ${white};
     border-radius: 50px;
-    background-color: ${brandPrimaryColor};
+    background-color: ${props =>
+      props.disabled ? lightGrey : brandPrimaryColor};
     font-family: inherit;
     font-size: inherit;
   }

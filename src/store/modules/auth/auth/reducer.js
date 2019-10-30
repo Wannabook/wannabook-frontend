@@ -11,6 +11,8 @@ import {
   LOAD_USER_FAILURE,
 } from './constants';
 
+import { UPDATE_USER_INFO_SUCCESS } from '../updateUserInfo';
+
 import { handleLoadFailure as handleRequestFailure } from '../../../common/reducerHandlers';
 
 export default handleActions(
@@ -31,6 +33,9 @@ export default handleActions(
       handleLoadUserSuccess(state, action),
     [LOAD_USER_FAILURE]: (state, action) =>
       handleLoadUserFailure(state, action),
+
+    [UPDATE_USER_INFO_SUCCESS]: (state, action) =>
+      handleUpdateUserInfoSuccess(state, action),
   },
   INITIAL_STATE
 );
@@ -72,5 +77,15 @@ const handleLoadUserFailure = (state, { payload }) => {
   return {
     ...state,
     error: payload,
+  };
+};
+
+const handleUpdateUserInfoSuccess = (state, { payload }) => {
+  return {
+    ...state,
+    user: { ...payload },
+    loading: false,
+    loaded: true,
+    error: '',
   };
 };

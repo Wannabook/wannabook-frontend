@@ -1,40 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MyInfoFormContext } from './MyInfoFormContext';
 import { ChangePassword } from '../ChangePassword/ChangePassword';
 import { GenderToggle } from './GenderToggle/GenderToggle';
 
-import { getUserInfo } from '../../selectors';
-// import { changePassword } from '../../../../../../store/modules/auth/changePassword';
-// import { getChangePasswordLoadingProps } from '../../../../../../store/modules/auth/changePassword';
+import { updateUserInfo } from '../../../../../store/modules/auth/updateUserInfo';
+import { updateUserInfoLoadingProps } from '../../../../../store/modules/auth/updateUserInfo';
+import { getUser } from '../../../../../store/modules/auth/auth';
 
 import {
   StyledForm,
   Label,
   StyledTextInput,
+  StyledBirthdateInput,
   StyledEmailInput,
-  ChangePasswordButton,
+  SaveUserInfoButton,
   ErrorMessage,
 } from './styles';
 
 export const MyInfoForm = () => {
+  const user = useSelector(getUser) || {};
   const {
     name = '',
     email = '',
     surname = '',
     birthdate = '',
     district = '',
-  } = useSelector(getUserInfo);
-  const { loading: isSubmitting } = { loading: false };
+    gender = '',
+  } = user;
+  const { loading: isSubmitting } = useSelector(updateUserInfoLoadingProps);
   const dispatch = useDispatch();
-  const handleSubmit = data =>
-    dispatch(() => ({ type: 'SAVE_USER_INFO', payload: data }));
+  const handleSubmit = data => dispatch(updateUserInfo({ ...user, ...data }));
 
   return (
     <StyledForm
       onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
-      formName="changePassword"
+      formName="userInfo"
       formContext={MyInfoFormContext}
     >
       <Label htmlFor="user-name-input">Имя*</Label>
@@ -57,7 +59,7 @@ export const MyInfoForm = () => {
         pattern="^[a-zA-Z]+$"
       />
       <Label htmlFor="user-birthdate-input">Дата рождения</Label>
-      <StyledTextInput
+      <StyledBirthdateInput
         id="user-birthdate-input"
         type="date"
         name="birthdate"
@@ -65,7 +67,7 @@ export const MyInfoForm = () => {
         placeholder="DD/MM/YYYY"
         pattern="^[a-zA-Z]+$"
       />
-      <GenderToggle />
+      <GenderToggle userGender={gender} />
       <Label htmlFor="user-email-input">Адрес эл. почты</Label>
       <StyledEmailInput
         id="user-email-input"
@@ -82,13 +84,12 @@ export const MyInfoForm = () => {
         name="district"
         defaultValue={district}
         placeholder="Введите Ваш микрорайон"
-        pattern="^[a-zA-Z]+$"
       />
-      <ChangePassword />
       <ErrorMessage />
-      <ChangePasswordButton type="submit" size="large" primary>
+      <ChangePassword />
+      <SaveUserInfoButton type="submit" size="large" primary>
         Сохранить изменения
-      </ChangePasswordButton>
+      </SaveUserInfoButton>
     </StyledForm>
   );
 };
