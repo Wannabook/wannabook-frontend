@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const SocialNetworkList = styled.div`
   text-align: center;
@@ -9,8 +8,9 @@ export const SocialNetworkList = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SocialNetworkLink = styled(Link)`
+export const SocialNetworkLink = styled.div`
   flex-basis: 40px;
   height: 40px;
   margin: 10px;
+  cursor: pointer;
 `;

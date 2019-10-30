@@ -1,21 +1,28 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import {
-  LOAD_USER,
+  LOAD_USER_REQUEST,
   loadUserFailure,
   loadUserSuccess,
 } from '../../../store/auth/user';
-import { API_ENDPOINTS } from '../../../constants';
+import { ACCESS_TOKEN, API_ENDPOINTS } from '../../../constants';
 
 export function* loadUserSaga(client) {
-  yield takeEvery(LOAD_USER, loadUser, client);
+  yield takeEvery(LOAD_USER_REQUEST, loadUser, client);
 }
 
 export function* loadUser(client) {
   try {
-    const fetchUserResponse = yield call(fetchUser, client);
+    const { data } = yield call(fetchUser, client);
 
-    yield put(loadUserSuccess(fetchUserResponse));
+    // Access token might have been refreshed so we need to set it for client to pick up
+    const { accessToken, user } = data;
+
+    if (accessToken) {
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
+    }
+
+    yield put(loadUserSuccess(user));
   } catch (error) {
     /*
     TODO: Dispatch a universal action that will show

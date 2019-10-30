@@ -10,9 +10,13 @@ import {
   USER_SIGN_UP_REQUEST_FAILURE,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAILURE,
+  LOAD_USER_REQUEST,
 } from './constants';
 
-import { handleLoadFailure as handleRequestFailure } from '../../common/reducerHandlers';
+import {
+  handleLoad as handleLoadUserStart,
+  handleLoadFailure as handleRequestFailure,
+} from '../../common/reducerHandlers';
 
 export default handleActions(
   {
@@ -28,6 +32,7 @@ export default handleActions(
     [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
       handleRequestFailure(state, action),
 
+    [LOAD_USER_REQUEST]: (state, action) => handleLoadUserStart(state, action),
     [LOAD_USER_SUCCESS]: (state, action) =>
       handleLoadUserSuccess(state, action),
     [LOAD_USER_FAILURE]: (state, action) =>
@@ -49,7 +54,7 @@ const handleRequestSuccess = (
   state,
   {
     payload: {
-      data: { user, accessToken },
+      data: { user },
     },
   }
 ) => {
@@ -59,29 +64,23 @@ const handleRequestSuccess = (
     loaded: true,
     error: '',
     user,
-    accessToken,
   };
 };
 
-const handleLoadUserSuccess = (
-  state,
-  {
-    payload: {
-      data: { user, accessToken },
-    },
-  }
-) => {
+const handleLoadUserSuccess = (state, { payload: user }) => {
   return {
     ...state,
-    ...user,
-    error: '',
-    accessToken,
+    profile: user,
+    loaded: true,
+    loading: false,
   };
 };
 
 const handleLoadUserFailure = (state, { payload }) => {
   return {
     ...state,
+    loaded: false,
+    loading: false,
     error: payload,
   };
 };

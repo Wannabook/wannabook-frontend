@@ -2,6 +2,7 @@ import { omit, identity } from 'ramda';
 import axios from 'axios';
 
 import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../constants';
+import { unauthorized } from './authService';
 
 const API_VERSION = process.env.API_VERSION;
 
@@ -79,7 +80,13 @@ export class ApiClient {
       ? endpoint
       : `${process.env.API_URL}/api/v${Number(API_VERSION)}/${endpoint}`;
 
-    return client(url, requestParams).then(identity);
+    return client(url, requestParams)
+      .then(identity)
+      .catch(error => {
+        if (error?.response?.status === 401) {
+          unauthorized();
+        }
+      });
   }
 }
 

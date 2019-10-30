@@ -1,6 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-const TokenGrabber = () => {
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../../constants';
+
+const TokenGrabber = ({ history }) => {
   React.useEffect(() => {
     const accessToken = getUrlParameter('access_token');
     const authMethod = getUrlParameter('auth_method');
@@ -8,19 +11,19 @@ const TokenGrabber = () => {
     console.warn('accessToken', accessToken);
 
     if (accessToken) {
-      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
     }
 
     if (authMethod) {
-      localStorage.setItem('authMethod', authMethod);
+      localStorage.setItem(AUTH_METHOD, authMethod);
     }
 
     if (idToken) {
-      localStorage.setItem('idToken', idToken);
+      localStorage.setItem(ID_TOKEN, idToken);
     }
 
-    window.location = '/';
-  });
+    history.push('/');
+  }, [history]);
 
   // TODO: Render loader here?
   return 'Выполняем вход в систему...';
@@ -37,4 +40,4 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
-export default TokenGrabber;
+export default withRouter(TokenGrabber);

@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+
 import {
   INITIAL_STATE,
   UPDATE_USER_PASSWORD_REQUEST,

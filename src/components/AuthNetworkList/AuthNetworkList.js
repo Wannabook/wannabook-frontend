@@ -4,7 +4,7 @@ import { Image } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 
 import { getPageUrl } from '../../routes/RouteResolver';
-import { SocialNetworkList } from './styles';
+import { SocialNetworkList, SocialNetworkLink } from './styles';
 
 import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
@@ -56,9 +56,9 @@ export const AuthNetworkList = () => {
   return (
     <SocialNetworkList>
       {socialNetworkList.map(item => (
-        <div key={item.name} onClick={() => handleClick(item.id)}>
+        <SocialNetworkLink key={item.name} onClick={() => handleClick(item.id)}>
           <Image src={item.icon} />
-        </div>
+        </SocialNetworkLink>
       ))}
     </SocialNetworkList>
   );
