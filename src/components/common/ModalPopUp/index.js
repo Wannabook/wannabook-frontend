@@ -7,7 +7,7 @@ import { ModalHeader } from './styles';
 
 const ModalPopUp = ({ open, handleClose, title, children }) => (
   <Modal open={open} onClose={handleClose}>
-    <ModalHeader>{title}</ModalHeader>
+    {title && <ModalHeader>{title}</ModalHeader>}
     <Modal.Content>
       <Modal.Description>{children}</Modal.Description>
     </Modal.Content>
@@ -17,8 +17,8 @@ const ModalPopUp = ({ open, handleClose, title, children }) => (
 ModalPopUp.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.element,
+  title: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 export default ModalPopUp;

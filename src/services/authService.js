@@ -5,5 +5,7 @@ export const unauthorized = () => {
   localStorage.removeItem(ID_TOKEN);
   localStorage.removeItem(AUTH_METHOD);
 
+  // Calling this action we should also remove user from store
+
   // TODO show some message that we're not authorized (if needed)
 };

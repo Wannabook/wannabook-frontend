@@ -7,6 +7,7 @@ import changePassword from './changePassword';
 import forgotPassword from './forgotPassword';
 import { googleLoginSaga } from './signin/google';
 import { signOutSaga } from './signout';
+import { updateUserInfo } from './updateUserInfo';
 
 const subSagas = [
   loadUserSaga,
@@ -16,6 +17,7 @@ const subSagas = [
   googleLoginSaga,
   signUpSaga,
   signOutSaga,
+  updateUserInfo,
 ];
 
 export function* authSaga(client) {

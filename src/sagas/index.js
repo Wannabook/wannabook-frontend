@@ -11,5 +11,5 @@ import { apiClient } from '../services';
 const subSagas = [authSaga, orgSaga];
 
 export default function*() {
-  yield all(subSagas.map(s => spawn(s, apiClient)));
+  yield all(subSagas.map(saga => spawn(saga, apiClient)));
 }

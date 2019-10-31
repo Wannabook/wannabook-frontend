@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { formValidator } from '../../../../services';
 
 const Form = ({
   children,
   className,
   onSubmit,
   isSubmitting,
-  verify,
+  formName,
   formContext: FormContext,
 }) => {
   const [data, setData] = useState({});
 
   const handleSubmit = e => {
     e.preventDefault();
-    const verificationError = verify(data);
+    const verificationError = formValidator.verifyMapper[formName](data);
     if (verificationError) {
       return setData({ ...data, error: verificationError.message });
     }
@@ -23,12 +24,14 @@ const Form = ({
   };
 
   const getInputValue = (name, defaultValue = '') => {
+    if (data[name] === '') return data[name];
+
     return data[name] || defaultValue;
   };
 
   const inputChange = name => e => {
     const targetValue = e.target.value;
-    setData({ ...data, [name]: targetValue, error: '' });
+    setData({ ...data, [name]: targetValue, error: '', isUpdated: true });
   };
 
   const addContextAsProp = elem =>
@@ -45,6 +48,7 @@ const Form = ({
         inputChange,
         isSubmitting,
         error: data.error,
+        isUpdated: data.isUpdated || false,
       }}
     >
       <form className={className} method="POST" onSubmit={handleSubmit}>
@@ -59,7 +63,7 @@ Form.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
-  verify: PropTypes.func.isRequired,
+  formName: PropTypes.oneOf(Object.keys(formValidator.verifyMapper)).isRequired,
   formContext: PropTypes.object.isRequired,
 };
 

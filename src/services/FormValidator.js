@@ -1,29 +1,51 @@
 export default class FormValidator {
   static requiredPasswordLength = 8;
 
-  verifyPassword = ({ password }) => {
+  verifyPassword = password => {
     return password.length < FormValidator.requiredPasswordLength
       ? { message: 'Password too short' }
       : null;
   };
 
-  verifyEmail = ({ email }) => {
+  verifyEmail = email => {
     return email.includes('-') ? { message: 'Wrong email' } : null; //TODO: Update checking condition
   };
 
-  verifySignInForm = data => {
-    const error = this.verifyEmail(data);
+  verifySignInForm = ({ email, password }) => {
+    const error = this.verifyEmail(email);
 
-    return error ? error : this.verifyPassword(data);
+    return error ? error : this.verifyPassword(password);
   };
 
-  verifySignUpForm = data => {
-    const error = this.verifyEmail(data);
+  verifySignUpForm = ({ email, password }) => {
+    const error = this.verifyEmail(email);
 
-    return error ? error : this.verifyPassword(data);
+    return error ? error : this.verifyPassword(password);
   };
 
-  verifyForgotPasswordForm = data => {
-    return this.verifyEmail(data);
+  verifyForgotPasswordForm = ({ email }) => {
+    return this.verifyEmail(email);
+  };
+
+  verifyChangePasswordForm = ({ oldPassword, newPassword, repeatPassword }) => {
+    const newPasswordError = this.verifyPassword(newPassword);
+    const matchPasswordError =
+      newPassword !== repeatPassword
+        ? { message: 'Пароли не совпадают' }
+        : null;
+
+    return newPasswordError ? newPasswordError : matchPasswordError;
+  };
+
+  verifyUserInfo = data => {
+    return null;
+  };
+
+  verifyMapper = {
+    signIn: this.verifySignInForm,
+    signUp: this.verifySignUpForm,
+    forgotPassword: this.verifyForgotPasswordForm,
+    changePassword: this.verifyChangePasswordForm,
+    userInfo: this.verifyUserInfo,
   };
 }

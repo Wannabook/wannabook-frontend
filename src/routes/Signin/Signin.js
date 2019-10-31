@@ -11,7 +11,7 @@ import {
   ForgotPasswordLink,
   SignUpLink,
 } from './styles';
-import SignInForm from '../../components/routes/Signin/SignInForm';
+import { SignInForm } from '../../components/routes/Signin/SignInForm/SignInForm';
 
 const SignIn = () => {
   const { isLoggedIn } = useContext(AuthContext);

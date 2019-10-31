@@ -13,7 +13,8 @@ export default function AppRoutes() {
       <Route path="/service/:id" component={Service} />
       <Route path="/categories" component={Categories} />
       <Route path="/category/:id" component={Category} />
-      <Route path="/account/:id" component={User} />
+      <Route exact path="/profile/:id/my-info" component={MyInfo} />
+      <Route path="/profile/:id" component={Profile} />
       <Route path="/sign-in" component={Signin} />
       <Route path="/sign-out" component={Signout} />
       <Route path="/sign-up" component={Signup} />
@@ -63,8 +64,15 @@ const Category = Loadable({
   loading: Loading,
 });
 
-const User = Loadable({
-  loader: () => import(/* webpackChunkName: "[request][index]" */ './Account'),
+const Profile = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Profile/Profile'),
+  loading: Loading,
+});
+
+const MyInfo = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Profile/MyInfo/MyInfo'),
   loading: Loading,
 });
 
@@ -101,7 +109,7 @@ const TokenGrabber = Loadable({
 // todo do we show changePassword anywhere?
 const ChangePassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Account/ChangePassword/ChangePasswordForm/ChangePasswordForm'),
+    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Profile/MyInfoPage/ChangePassword/ChangePassword'),
   loading: Loading,
 });
 

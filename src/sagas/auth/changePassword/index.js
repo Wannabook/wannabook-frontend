@@ -11,7 +11,7 @@ export default function*(client) {
   yield takeLatest(UPDATE_USER_PASSWORD_REQUEST, workerSaga, client);
 }
 
-const changePasswordRequest = client => client.put('endpoint here?');
+const changePasswordRequest = client => client.put('/users');
 
 export function* workerSaga(client) {
   try {

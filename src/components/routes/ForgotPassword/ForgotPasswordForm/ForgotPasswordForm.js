@@ -7,7 +7,6 @@ import {
   ErrorMessage,
 } from './styles';
 import { ForgotPasswordFormContext } from './ForgotPasswordFormContext';
-import { formValidator } from '../../../../services';
 
 import { forgotPassword } from '../../../../store/auth/forgotPassword';
 import { getForgotPasswordLoadingProps } from '../../../../store/auth/forgotPassword';
@@ -21,7 +20,7 @@ export const ForgotPasswordForm = () => {
     <StyledForm
       onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
-      verify={formValidator.verifyForgotPasswordForm}
+      formName="forgotPassword"
       formContext={ForgotPasswordFormContext}
     >
       <StyledEmailInput

@@ -11,7 +11,6 @@ import {
   ErrorMessage,
 } from './styles';
 import { SignUpFormContext } from './SignUpFormContext';
-import { formValidator } from '../../../../services';
 
 import { signUpRequest } from '../../../../store/auth/user';
 import { getLogInLoadingProps } from '../../../../store/auth/user';
@@ -25,7 +24,7 @@ export const SignUpForm = () => {
     <StyledForm
       onSubmit={signUp}
       isSubmitting={isSubmitting}
-      verify={formValidator.verifySignUpForm}
+      formName="signUp"
       formContext={SignUpFormContext}
     >
       <StyledEmailInput

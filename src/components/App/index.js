@@ -16,17 +16,21 @@ import { SideBarStateContext, AuthContext } from './contexts';
 import { GlobalStyle } from './styles';
 
 const App = ({ location }) => {
-  console.warn('location', location);
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(getUser);
+  const isLoggedIn = Boolean(useSelector(getUser));
   // TODO handle errors on ui (discuss with UI dep)
 
   // kostyl!
+  // since google and maybe other auth providers require redirects to their pages,
+  // we in the end need some frontend url to which backend will redirect back our
+  // browser. Upon redirection, in the url, we will have all required info like token,
+  // auth_method and id_token. This info needs to be grabbed by TokenGrabber component.
+  // It lives at `frontend_url/auth/<provider-name>/token`. When we're on such routes,
+  // we know we don't need to load the user as it leads to bugs
   const shouldLoadUser =
-    !isLoggedIn && location.pathname !== '/auth/google/token';
+    !isLoggedIn && !/\/auth\/.+\/token/.test(location.pathname);
 
   useEffect(() => {
-    console.warn(location.pathname);
     if (shouldLoadUser) {
       dispatch(loadUserRequest());
     }

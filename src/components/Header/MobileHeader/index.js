@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
 
-import { AuthContext } from '../../App/contexts';
-import { SideBarStateContext } from '../../App/contexts';
+import { AuthContext, SideBarStateContext } from '../../App/contexts';
 import { getPageUrl } from '../../../routes/RouteResolver';
 import {
   IconWrapper,
@@ -22,7 +21,7 @@ const UserProfile = () => {
   // we will then make user/:id dynamic depending on id coming from backend
 
   return isLoggedIn ? (
-    <Link to={`${getPageUrl('ACCOUNT')}/123456`}>
+    <Link to={`${getPageUrl('PROFILE')}/123456`}>
       <Image src={profileIcon} />
     </Link>
   ) : (

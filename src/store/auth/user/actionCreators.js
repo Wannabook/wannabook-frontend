@@ -42,7 +42,6 @@ export const signUpRequestFailure = createAction(
 
 export const signOut = createAction(USER_SIGN_OUT);
 
-export const loadUser = createAction(LOAD_USER);
 export const loadUserRequest = createAction(LOAD_USER_REQUEST);
 export const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
 export const loadUserFailure = createAction(LOAD_USER_FAILURE);
