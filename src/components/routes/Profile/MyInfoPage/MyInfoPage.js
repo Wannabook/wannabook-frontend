@@ -1,11 +1,13 @@
 import React from 'react';
-import { ChangePassword } from './ChangePassword/ChangePassword';
+import { MyInfoForm } from './MyInfoForm/MyInfoForm';
+
+import { MyInfoPageContainer, Title } from './styles';
 
 export const MyInfoPage = () => {
   return (
-    <>
-      <div>My info</div>
-      <ChangePassword />
-    </>
+    <MyInfoPageContainer>
+      <Title>Моя информация</Title>
+      <MyInfoForm />
+    </MyInfoPageContainer>
   );
 };

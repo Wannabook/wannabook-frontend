@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../../ui-kit/components/Button';
 
 const SubmitButton = ({ children, className, formContext, ...restProps }) => {
-  const { isSubmitting } = useContext(formContext);
+  const { isSubmitting, isUpdated } = useContext(formContext);
 
   return (
     <Button
@@ -11,6 +11,7 @@ const SubmitButton = ({ children, className, formContext, ...restProps }) => {
       className={className}
       type="submit"
       loading={isSubmitting}
+      disabled={!isUpdated}
     >
       {children}
     </Button>

@@ -24,12 +24,14 @@ const Form = ({
   };
 
   const getInputValue = (name, defaultValue = '') => {
+    if (data[name] === '') return data[name];
+
     return data[name] || defaultValue;
   };
 
   const inputChange = name => e => {
     const targetValue = e.target.value;
-    setData({ ...data, [name]: targetValue, error: '' });
+    setData({ ...data, [name]: targetValue, error: '', isUpdated: true });
   };
 
   const addContextAsProp = elem =>
@@ -46,6 +48,7 @@ const Form = ({
         inputChange,
         isSubmitting,
         error: data.error,
+        isUpdated: data.isUpdated || false,
       }}
     >
       <form className={className} method="POST" onSubmit={handleSubmit}>
