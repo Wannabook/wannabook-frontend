@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import { ProfileLink } from './ProfileLink/ProfileLink';
 import { ProfileImage } from './ProfileImage/ProfileImage';
 
@@ -13,7 +15,8 @@ import exit from './images/exit_icon.svg';
 import { MainProfilePageContainer } from './styles';
 
 import { getPageUrl } from '../../../../routes/RouteResolver';
-import { AuthContext } from '../../../../core/auth';
+import { AuthContext } from '../../../App/contexts';
+import { signOut } from '../../../../store/auth/user';
 
 const profileLinksData = [
   {
@@ -51,9 +54,12 @@ const profileLinksData = [
     text: 'Выйти',
     icon: exit,
     notificationsAmount: null,
+    actionToDispatch: signOut,
   },
 ];
+
 export const MainProfilePage = () => {
+  const dispatch = useDispatch();
   const { isLoggedIn } = useContext(AuthContext);
 
   return (
@@ -67,6 +73,10 @@ export const MainProfilePage = () => {
             to={link.url}
             icon={link.icon}
             notificationsAmount={link.notificationsAmount}
+            onClick={() => {
+              link.onClick?.(); // call function if exists
+              dispatch(link.actionToDispatch?.()); // call function if exists
+            }}
           >
             {link.text}
           </ProfileLink>

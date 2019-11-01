@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import {
   StyledForm,
   Label,
@@ -9,8 +10,10 @@ import {
 } from './styles';
 import { ChangePasswordFormContext } from './ChangePasswordFormContext';
 
-import { changePassword } from '../../../../../../store/modules/auth/changePassword';
-import { getChangePasswordLoadingProps } from '../../../../../../store/modules/auth/changePassword';
+import {
+  changePassword,
+  getChangePasswordLoadingProps,
+} from '../../../../../../store/auth/changePassword';
 
 export const ChangePasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getChangePasswordLoadingProps);

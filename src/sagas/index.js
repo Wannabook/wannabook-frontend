@@ -1,11 +1,15 @@
-import { all, fork } from 'redux-saga/effects';
+import { all, spawn } from 'redux-saga/effects';
 
-import auth from './modules/auth';
-import organizations from './modules/organizations';
+import { authSaga } from './auth';
+import { orgSaga } from './organizations';
+
+import { apiClient } from '../services';
 
 /**
  * rootSaga
  */
+const subSagas = [authSaga, orgSaga];
+
 export default function*() {
-  yield all([fork(auth), fork(organizations)]);
+  yield all(subSagas.map(saga => spawn(saga, apiClient)));
 }

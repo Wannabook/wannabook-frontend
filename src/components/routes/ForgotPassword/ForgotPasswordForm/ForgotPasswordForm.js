@@ -8,8 +8,8 @@ import {
 } from './styles';
 import { ForgotPasswordFormContext } from './ForgotPasswordFormContext';
 
-import { forgotPassword } from '../../../../store/modules/auth/forgotPassword';
-import { getForgotPasswordLoadingProps } from '../../../../store/modules/auth/forgotPassword';
+import { forgotPassword } from '../../../../store/auth/forgotPassword';
+import { getForgotPasswordLoadingProps } from '../../../../store/auth/forgotPassword';
 
 export const ForgotPasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getForgotPasswordLoadingProps);

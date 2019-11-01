@@ -6,6 +6,7 @@
     ["@babel/plugin-proposal-class-properties", { "loose": false }],
     "@babel/plugin-proposal-json-strings",
     "@babel/plugin-proposal-export-default-from",
-    ["@babel/plugin-transform-runtime", { "regenerator": true }]
+    ["@babel/plugin-transform-runtime", { "regenerator": true }],
+    "@babel/plugin-proposal-optional-chaining"
   ]
 }

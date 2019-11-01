@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { MyInfoFormContext } from './MyInfoFormContext';
 import { ChangePassword } from '../ChangePassword/ChangePassword';
 import { GenderToggle } from './GenderToggle/GenderToggle';
 
-import { updateUserInfo } from '../../../../../store/modules/auth/updateUserInfo';
-import { updateUserInfoLoadingProps } from '../../../../../store/modules/auth/updateUserInfo';
-import { getUser } from '../../../../../store/modules/auth/auth';
+import {
+  updateUserInfo,
+  updateUserInfoLoadingProps,
+} from '../../../../../store/auth/updateUserInfo';
+import { getUser } from '../../../../../store/auth/user';
 
 import {
   StyledForm,

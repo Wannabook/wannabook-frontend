@@ -12,8 +12,8 @@ import {
 } from './styles';
 import { SignUpFormContext } from './SignUpFormContext';
 
-import { signUpRequest } from '../../../../store/modules/auth/auth';
-import { getLogInLoadingProps } from '../../../../store/modules/auth/auth';
+import { signUpRequest } from '../../../../store/auth/user';
+import { getLogInLoadingProps } from '../../../../store/auth/user';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);

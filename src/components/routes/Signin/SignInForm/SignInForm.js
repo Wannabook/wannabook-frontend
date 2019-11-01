@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import {
   StyledForm,
   StyledEmailInput,
@@ -11,7 +12,7 @@ import { SignInFormContext } from './SignInFormContext';
 import {
   getLogInLoadingProps,
   logInRequest,
-} from '../../../../store/modules/auth/auth';
+} from '../../../../store/auth/user';
 
 export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);

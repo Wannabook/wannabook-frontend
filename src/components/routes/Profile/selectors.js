@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getUser } from '../../../store/modules/auth/auth';
+import { getUser } from '../../../store/auth/user';
 
 export const getUserInfo = createSelector(
   [getUser],

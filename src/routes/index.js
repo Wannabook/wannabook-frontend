@@ -18,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/sign-in" component={Signin} />
       <Route path="/sign-out" component={Signout} />
       <Route path="/sign-up" component={Signup} />
+      <Route path="/auth/google/token" component={TokenGrabber} />
       <Route path="/auth" component={Auth} />
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route component={NotFound} />
@@ -99,6 +100,13 @@ const Auth = Loadable({
   loading: Loading,
 });
 
+const TokenGrabber = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "[request][index]" */ './Auth/TokenGrabber'),
+  loading: Loading,
+});
+
+// todo do we show changePassword anywhere?
 const ChangePassword = Loadable({
   loader: () =>
     import(/* webpackChunkName: "[request][index]" */ '../components/routes/Profile/MyInfoPage/ChangePassword/ChangePassword'),

@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
-import { AuthContext } from '../../core/auth/index';
+import { AuthContext } from '../../components/App/contexts';
+import { getPageUrl } from '../RouteResolver';
 
 import {
   SignInContainer,
@@ -10,7 +11,6 @@ import {
   ForgotPasswordLink,
   SignUpLink,
 } from './styles';
-import { getPageUrl } from '../RouteResolver';
 import { SignInForm } from '../../components/routes/Signin/SignInForm/SignInForm';
 
 const SignIn = () => {
