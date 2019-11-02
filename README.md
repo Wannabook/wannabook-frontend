@@ -2,6 +2,11 @@
 
 This is a repo for Wannabook frontend
 
+### Run project
+1. create `.env.development` file and fill it with values based on `.env.example`
+2. mark `src` as Resources root in IDE (Webstorm). It enables you to navigate around internal Wannabook modules under `src` folder
+3. run `npm start` for development
+
 ### Git rules
 * merges are only after the pull passes a code review of 2 developers
 * one cannot push straight into develop branch. We create pull requests instead and wait for 2 developers' approval before merging
@@ -24,8 +29,6 @@ To turn off mobile testing mode just set `MOBILE_TESTING` to false and restart w
 `.env` files are in the root directory of the project. There are three of them: for development, staging and production. 
 
 Any values you put there will be available in the source code via `process.env.SOMETHING`, where `SOMETHING` is the key in the respective `.env` file.
-
-The `scripts` section in `package.json` contains commands where we specify which environment we want to run in.
 
 ## ESLint setup
 We support our custom shareable eslint config called `Wannabook`. 

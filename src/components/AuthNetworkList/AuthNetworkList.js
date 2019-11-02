@@ -3,6 +3,8 @@ import { Image } from 'semantic-ui-react';
 
 import { useDispatch } from 'react-redux';
 
+import { startGoogleAuth } from 'store';
+
 import { getPageUrl } from '../../routes/RouteResolver';
 import { SocialNetworkList, SocialNetworkLink } from './styles';
 
@@ -10,7 +12,6 @@ import facebookIcon from './images/f.svg';
 import vkIcon from './images/vk.svg';
 import googleIcon from './images/g.svg';
 import odnoklassnikiIcon from './images/ok.svg';
-import { startGoogleAuth } from '../../store/auth/actions';
 
 const socialNetworkList = [
   {

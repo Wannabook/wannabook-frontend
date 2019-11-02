@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white } from '../../../../../../ui-kit/theme';
+import { white } from 'ui-kit';
 
 export const GenderToggleContainer = styled.div`
   margin-bottom: 40px;

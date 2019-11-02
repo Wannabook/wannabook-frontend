@@ -1,9 +1,10 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { UPDATE_USER_INFO_REQUEST } from '../../../store/auth/updateUserInfo';
+
 import {
+  UPDATE_USER_INFO_REQUEST,
   updateUserInfoSuccess,
   updateUserInfoFailure,
-} from '../../../store/auth/updateUserInfo';
+} from 'store';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* updateUserInfo(client) {

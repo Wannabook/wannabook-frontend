@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,

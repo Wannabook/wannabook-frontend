@@ -1,5 +1,6 @@
 import React from 'react';
-import Menu from '../common/Menu';
+
+import { VerticalMenu } from '../common/Menu';
 
 import { CategoryListMenuContainer } from './styles';
 
@@ -33,7 +34,7 @@ const menuItemsList = [
 const RightSidebarMenu = () => {
   return (
     <CategoryListMenuContainer>
-      <Menu menuItemsList={menuItemsList} />
+      <VerticalMenu menuItemsList={menuItemsList} />
     </CategoryListMenuContainer>
   );
 };

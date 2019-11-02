@@ -72,7 +72,18 @@ module.exports = env => {
       ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx'],
+      modules: ['node_modules', 'node_modules/redux-saga'],
+      alias: {
+        components: path.resolve(__dirname, 'src/components'),
+        routes: path.resolve(__dirname, 'src/routes'),
+        sagas: path.resolve(__dirname, 'src/sagas'),
+        services: path.resolve(__dirname, 'src/services'),
+        store: path.resolve(__dirname, 'src/store'),
+        utils: path.resolve(__dirname, 'src/utils'),
+        'ui-kit': path.resolve(__dirname, 'src/ui-kit'),
+        consts: path.resolve(__dirname, 'src/constants.js'),
+      },
+      extensions: ['.js', '.jsx', '.json'],
     },
     plugins: [
       new CleanWebpackPlugin(),

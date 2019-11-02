@@ -4,7 +4,7 @@ import {
   UPDATE_USER_PASSWORD_REQUEST,
   changePasswordSuccess,
   changePasswordFailure,
-} from '../../../store/auth/changePassword';
+} from 'store';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function*(client) {

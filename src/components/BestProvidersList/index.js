@@ -2,7 +2,8 @@ import React from 'react';
 import { Grid, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { getPageUrl } from '../../routes/RouteResolver';
+import { getPageUrl } from 'routes';
+
 import { ImgContainer } from './styles';
 
 const BestProvidersList = ({ bestProvidersList }) => {

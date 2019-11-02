@@ -8,8 +8,9 @@ const IconWrapper = styled.div`
   top: 50%;
 `;
 
-const SliderArrow = props => {
+export const SliderArrow = props => {
   const { style, onClick, name, direction, size } = props;
+
   return (
     <IconWrapper
       className="slick-arrow"
@@ -25,6 +26,6 @@ SliderArrow.propTypes = {
   name: PropTypes.string.isRequired,
   direction: PropTypes.oneOf(['left', 'right']).isRequired,
   size: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func,
 };
-
-export default SliderArrow;

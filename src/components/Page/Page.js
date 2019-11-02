@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { RoutesContainer } from '../App/styles';
-import AppRoutes from '../../routes';
+import { AppRoutes } from '../../routes/AppRoutes';
 
 import { StyledPage } from './style.js';
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+
 import { Advantage, AdvantagesListContainer } from './styles';
-import { StyledGrid } from '../../../../ui-kit/components/Layout/Grid';
+import { StyledGrid } from 'ui-kit';
 import advantageImage1 from './images/advantage1.svg';
 import advantageImage2 from './images/advantage2.svg';
 import advantageImage3 from './images/advantage3.svg';

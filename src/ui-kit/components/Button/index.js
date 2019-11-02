@@ -36,7 +36,7 @@ const SecondaryButton = styled(SemanticButton)`
   }
 `;
 
-const Button = props => {
+export const Button = props => {
   const { primary, secondary, ...rest } = props;
   if (primary) return <PrimaryButton {...rest}>{props.children}</PrimaryButton>;
   if (secondary)
@@ -50,5 +50,3 @@ Button.propTypes = {
   secondary: PropTypes.bool,
   children: PropTypes.node,
 };
-
-export default Button;

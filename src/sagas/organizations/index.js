@@ -4,7 +4,7 @@ import {
   LOAD_ORGANIZATIONS_REQUEST,
   loadOrganizationsSuccess,
   loadOrganizationsFailure,
-} from '../../store/organizations';
+} from 'store';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* orgSaga(client) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { MenuHeader, MenuItem } from './styles.js';
 
-const VerticalMenu = ({ header, menuItemsList }) => {
+export const VerticalMenu = ({ header, menuItemsList }) => {
   return (
     <>
       <MenuHeader>{header}</MenuHeader>
@@ -31,5 +31,3 @@ VerticalMenu.propTypes = {
     })
   ).isRequired,
 };
-
-export default VerticalMenu;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { changePassword, getChangePasswordLoadingProps } from 'store';
+
 import {
   StyledForm,
   Label,
@@ -9,11 +11,6 @@ import {
   ErrorMessage,
 } from './styles';
 import { ChangePasswordFormContext } from './ChangePasswordFormContext';
-
-import {
-  changePassword,
-  getChangePasswordLoadingProps,
-} from '../../../../../../store/auth/changePassword';
 
 export const ChangePasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getChangePasswordLoadingProps);

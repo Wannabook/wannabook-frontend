@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyInfoPage } from '../../../components/routes/Profile/MyInfoPage/MyInfoPage';
+import { MyInfoPage } from 'components';
 
 const MyInfo = () => {
   return (

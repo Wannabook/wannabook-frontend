@@ -5,7 +5,7 @@ import { Modal } from 'semantic-ui-react';
 
 import { ModalHeader } from './styles';
 
-const ModalPopUp = ({ open, handleClose, title, children }) => (
+export const ModalPopUp = ({ open, handleClose, title, children }) => (
   <Modal open={open} onClose={handleClose}>
     {title && <ModalHeader>{title}</ModalHeader>}
     <Modal.Content>
@@ -20,5 +20,3 @@ ModalPopUp.propTypes = {
   title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
-
-export default ModalPopUp;

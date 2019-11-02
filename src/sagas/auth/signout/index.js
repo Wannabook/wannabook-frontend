@@ -1,8 +1,8 @@
 import { takeEvery, call } from '@redux-saga/core/effects';
 
-import { signOut } from '../../../store/auth/user';
-import { API_ENDPOINTS } from '../../../constants';
-import { unauthorized } from '../../../services/authService';
+import { signOut } from 'store';
+import { unauthorized } from 'services';
+import { API_ENDPOINTS } from 'consts';
 
 export function* signOutSaga(client) {
   yield takeEvery(signOut, handler, client);

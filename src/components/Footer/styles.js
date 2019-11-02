@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Button from '../../ui-kit/components/Button';
+
+import { Button } from '../../ui-kit/components/Button';
 import { white, fontSmall } from '../../ui-kit/theme';
 
 export const FooterContainer = styled.div`

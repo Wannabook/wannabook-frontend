@@ -1,8 +1,11 @@
 import { omit, identity } from 'ramda';
 import axios from 'axios';
 
-import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../constants';
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN, AUTH_METHODS } from 'consts';
+
 import { unauthorized } from './authService';
+import FormValidator from './FormValidator';
+import { MockApiClient } from './MockApiClient';
 
 const API_VERSION = process.env.API_VERSION;
 
@@ -15,7 +18,7 @@ const client = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-export class ApiClient {
+class ApiClient {
   constructor() {
     this.headers = {};
   }
@@ -91,3 +94,9 @@ export class ApiClient {
 }
 
 const isAbsolute = url => /^(?:[a-z]+:)?\/\//i.test(url);
+
+export const formValidator = new FormValidator();
+
+// we have to check bools from .env file as strings
+export const apiClient =
+  process.env.MOCK_CLIENT === 'true' ? new MockApiClient() : new ApiClient();

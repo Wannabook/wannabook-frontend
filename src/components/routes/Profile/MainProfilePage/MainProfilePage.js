@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import { getPageUrl } from 'routes';
+import { signOut } from 'store';
+
 import { ProfileLink } from './ProfileLink/ProfileLink';
 import { ProfileImage } from './ProfileImage/ProfileImage';
 
@@ -14,9 +17,7 @@ import exit from './images/exit_icon.svg';
 
 import { MainProfilePageContainer } from './styles';
 
-import { getPageUrl } from '../../../../routes/RouteResolver';
 import { AuthContext } from '../../../App/contexts';
-import { signOut } from '../../../../store/auth/user';
 
 const profileLinksData = [
   {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ErrorContainer } from './styles';
 
-const Error = ({ className, formContext, ...restProps }) => {
+export const Error = ({ className, formContext, ...restProps }) => {
   const { error } = useContext(formContext);
 
   return (
@@ -17,5 +17,3 @@ Error.propTypes = {
   className: PropTypes.string,
   formContext: PropTypes.object.isRequired,
 };
-
-export default Error;

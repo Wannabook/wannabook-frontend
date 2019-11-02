@@ -1,9 +1,10 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
-import { FORGOT_PASSWORD_REQUEST } from '../../../store/auth/forgotPassword';
 import {
+  FORGOT_PASSWORD_REQUEST,
   forgotPasswordSuccess,
   forgotPasswordFailure,
-} from '../../../store/auth/forgotPassword';
+} from 'store';
+
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function*(client) {

@@ -1,10 +1,8 @@
 import styled, { keyframes } from 'styled-components';
-import Form from '../../../common/FormComponents/Form';
-import CommonInput from '../../../common/FormComponents/CommonInput';
-import SubmitButton from '../../../common/FormComponents/SubmitButton';
-import Error from '../../../common/FormComponents/Error';
 
-import { fontSmall } from '../../../../ui-kit/theme/default';
+import { Form, SubmitButton, CommonInput, Error } from 'components';
+
+import { fontSmall } from 'ui-kit';
 
 export const StyledForm = styled(Form)`
   margin-bottom: 20px;

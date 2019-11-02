@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mainBackgroundColor } from '../../../ui-kit/theme';
+import { mainBackgroundColor } from 'ui-kit';
 
 export const DesktopHeaderContainer = styled.div`
   height: 80px;
