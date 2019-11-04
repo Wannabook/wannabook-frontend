@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input as SemanticInput } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { brandPrimaryColor, warningColor } from '../../theme';
+
+import { warningColor } from '../../theme';
 
 const PrimaryInput = styled(SemanticInput)`
   &&& input {
@@ -30,7 +31,7 @@ const InputWithError = styled(SemanticInput)`
   }
 `;
 
-const Input = props => {
+export const Input = props => {
   const { error, ...rest } = props;
   if (error) return <InputWithError {...rest} />;
 
@@ -40,5 +41,3 @@ const Input = props => {
 Input.propTypes = {
   error: PropTypes.bool,
 };
-
-export default Input;

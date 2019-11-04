@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../constants';
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from 'consts';
 
 export const unauthorized = () => {
   localStorage.removeItem(ACCESS_TOKEN);

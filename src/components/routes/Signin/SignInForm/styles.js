@@ -1,9 +1,11 @@
 import styled, { keyframes } from 'styled-components';
-import Form from '../../../common/FormComponents/Form';
-import CommonInput from '../../../common/FormComponents/CommonInput';
-import PasswordInput from '../../../common/FormComponents/PasswordInput';
-import SubmitButton from '../../../common/FormComponents/SubmitButton';
-import Error from '../../../common/FormComponents/Error';
+import {
+  Form,
+  Error,
+  PasswordInput,
+  SubmitButton,
+  CommonInput,
+} from 'components';
 
 export const StyledForm = styled(Form)`
   margin-bottom: 20px;

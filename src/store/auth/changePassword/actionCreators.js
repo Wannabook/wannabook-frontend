@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import {
   UPDATE_USER_PASSWORD_REQUEST,
   UPDATE_USER_PASSWORD_SUCCESS,

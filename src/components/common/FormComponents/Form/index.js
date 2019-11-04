@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { formValidator } from '../../../../services';
 
-const Form = ({
+import { formValidator } from 'services';
+
+export const Form = ({
   children,
   className,
   onSubmit,
@@ -66,5 +67,3 @@ Form.propTypes = {
   formName: PropTypes.oneOf(Object.keys(formValidator.verifyMapper)).isRequired,
   formContext: PropTypes.object.isRequired,
 };
-
-export default Form;

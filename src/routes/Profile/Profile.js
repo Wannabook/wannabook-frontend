@@ -1,5 +1,6 @@
 import React from 'react';
-import { MainProfilePage } from '../../components/routes/Profile/MainProfilePage/MainProfilePage';
+
+import { MainProfilePage } from 'components';
 
 const Profile = () => {
   return (

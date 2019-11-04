@@ -1,11 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import {
-  LOAD_USER_REQUEST,
-  loadUserFailure,
-  loadUserSuccess,
-} from '../../../store/auth/user';
-import { ACCESS_TOKEN, API_ENDPOINTS } from '../../../constants';
+import { LOAD_USER_REQUEST, loadUserFailure, loadUserSuccess } from 'store';
+import { ACCESS_TOKEN, API_ENDPOINTS } from 'consts';
 
 export function* loadUserSaga(client) {
   yield takeEvery(LOAD_USER_REQUEST, loadUser, client);

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Button from '../../ui-kit/components/Button';
+
+import { Button } from 'ui-kit';
 
 export const RegistrationContainer = styled.div`
   padding: 50px 0;

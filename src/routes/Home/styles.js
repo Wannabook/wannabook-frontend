@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Input from '../../ui-kit/components/Input';
-import Button from '../../ui-kit/components/Button';
+import { Input, Button } from 'ui-kit';
 
 export const Form = styled.form`
   padding: 0 50px;

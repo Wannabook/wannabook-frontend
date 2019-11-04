@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import SliderArrow from '../../../../ui-kit/components/SliderArrow';
+import { SliderArrow } from 'ui-kit';
 
 import { SliderWrapper, Slide, Illustration, Description } from './styles';
 

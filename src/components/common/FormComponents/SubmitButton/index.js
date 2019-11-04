@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../../../ui-kit/components/Button';
+import { Button } from 'ui-kit';
 
-const SubmitButton = ({ children, className, formContext, ...restProps }) => {
+export const SubmitButton = ({
+  children,
+  className,
+  formContext,
+  ...restProps
+}) => {
   const { isSubmitting, isUpdated } = useContext(formContext);
 
   return (
@@ -23,5 +28,3 @@ SubmitButton.propTypes = {
   className: PropTypes.string,
   formContext: PropTypes.object.isRequired,
 };
-
-export default SubmitButton;

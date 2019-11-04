@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import Input from '../../../../ui-kit/components/Input';
+import { Input } from 'ui-kit';
 
-const CommonInput = ({
+export const CommonInput = ({
   error,
   formContext,
   type,
@@ -24,5 +24,3 @@ const CommonInput = ({
     />
   );
 };
-
-export default CommonInput;

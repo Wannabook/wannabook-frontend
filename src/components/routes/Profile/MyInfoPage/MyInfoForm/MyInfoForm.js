@@ -5,11 +5,7 @@ import { MyInfoFormContext } from './MyInfoFormContext';
 import { ChangePassword } from '../ChangePassword/ChangePassword';
 import { GenderToggle } from './GenderToggle/GenderToggle';
 
-import {
-  updateUserInfo,
-  updateUserInfoLoadingProps,
-} from '../../../../../store/auth/updateUserInfo';
-import { getUser } from '../../../../../store/auth/user';
+import { updateUserInfo, updateUserInfoLoadingProps, getUser } from 'store';
 
 import {
   StyledForm,

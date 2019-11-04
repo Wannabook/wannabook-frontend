@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { mainBackgroundColor } from '../../../ui-kit/theme';
+import { mainBackgroundColor } from 'ui-kit';
 
 export const StyledMobileBar = styled.div`
   display: flex;

@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
 
+import { getPageUrl } from 'routes';
+
 import { AuthContext, SideBarStateContext } from '../../App/contexts';
-import { getPageUrl } from '../../../routes/RouteResolver';
 import {
   IconWrapper,
   SearchButton,

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ModalPopUp from '../../../../common/ModalPopUp';
-import { ChangePasswordForm } from './ChangePasswordForm/ChangePasswordForm';
-import { ChangePasswordSuccess } from './ChangePasswordSuccess/ChangePasswordSuccess';
+import { ModalPopUp } from 'components';
+
 import {
   getChangePasswordLoadingProps,
   resetChangePasswordRequestState,
-} from '../../../../../store/auth/changePassword';
+} from 'store';
+
+import { ChangePasswordForm } from './ChangePasswordForm';
+import { ChangePasswordSuccess } from './ChangePasswordSuccess';
 import { ShowChangePasswordModalButton, Title, CancelButton } from './styles';
 
 export const ChangePassword = () => {

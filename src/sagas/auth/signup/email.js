@@ -1,17 +1,15 @@
 import { call, takeLatest, put, takeEvery } from '@redux-saga/core/effects';
 
-import { AUTH_METHODS } from '../../../constants';
+import { AUTH_METHODS } from 'consts';
 import {
-  startLoginPasswordAuth,
   startLoginPasswordSignup,
-} from '../../../store/auth/actions';
-import { loadUserFailure, loadUserSuccess } from '../../../store/auth/user';
-import { apiClient } from '../../../services';
-import {
+  loadUserFailure,
+  loadUserSuccess,
   signUpRequestFailure,
   signUpRequestSuccess,
   USER_SIGN_UP_REQUEST,
-} from '../../../store/auth/user';
+} from 'store';
+import { apiClient } from 'services';
 
 export function* loginPasswordSignUpSaga(client) {
   yield takeLatest(startLoginPasswordSignup, function* handler() {

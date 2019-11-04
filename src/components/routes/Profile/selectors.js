@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getUser } from '../../../store/auth/user';
+import { getUser } from 'store';
 
 export const getUserInfo = createSelector(
   [getUser],

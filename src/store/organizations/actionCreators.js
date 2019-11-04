@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import {
   LOAD_ORGANIZATIONS_REQUEST,
   LOAD_ORGANIZATIONS_SUCCESS,

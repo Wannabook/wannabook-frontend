@@ -1,5 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { getForgotPasswordLoadingProps, forgotPassword } from 'store';
+
 import {
   StyledForm,
   StyledEmailInput,
@@ -7,9 +10,6 @@ import {
   ErrorMessage,
 } from './styles';
 import { ForgotPasswordFormContext } from './ForgotPasswordFormContext';
-
-import { forgotPassword } from '../../../../store/auth/forgotPassword';
-import { getForgotPasswordLoadingProps } from '../../../../store/auth/forgotPassword';
 
 export const ForgotPasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getForgotPasswordLoadingProps);
