@@ -23,6 +23,7 @@ class ApiClient {
     this.headers = {};
   }
 
+  // TODO: reduce duplication in client methods
   get(endpoint, params = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
@@ -51,6 +52,9 @@ class ApiClient {
 
     return this.request(endpoint, requestParams);
   }
+
+  // TODO: add patch method!
+  // patch(endpoint, params = {})
 
   delete(endpoint, params = {}) {
     const requestParams = {

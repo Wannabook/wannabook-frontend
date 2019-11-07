@@ -56,4 +56,9 @@ export function* logIn(client, data) {
 }
 
 const logInRequest = (client, data) =>
-  client.post('/users/login', { body: { ...data.payload } });
+  client.post('/users/login', {
+    headers: {
+      'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,
+    },
+    body: { ...data.payload },
+  });

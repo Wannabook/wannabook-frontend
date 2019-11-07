@@ -50,9 +50,11 @@ export function* signUpSaga(client) {
 export function* signUp(data) {
   try {
     const signUpResponse = yield call(signUpRequest, data);
-    const { authToken } = signUpResponse;
-    yield localStorage.setItem('authToken', authToken);
+    const { token, user } = signUpResponse;
+    yield localStorage.setItem('idToken', token);
+    // TODO: yield put(setUser(user))?
     yield put(signUpRequestSuccess(signUpResponse));
+    // TODO: redirect to front page?
   } catch (error) {
     yield put(signUpRequestFailure(error));
   }
