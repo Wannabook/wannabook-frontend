@@ -18,6 +18,7 @@ import { SignUpFormContext } from './SignUpFormContext';
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
+  // TODO disable button once pressed
   const signUp = data => dispatch(signUpRequest(data));
 
   return (
@@ -37,7 +38,7 @@ export const SignUpForm = () => {
         type="text"
         name="name"
         placeholder="Имя*"
-        pattern="^[a-zA-Z]+$"
+        pattern="^[a-zA-ZА-яЁё\s]+$"
         required
       />
       <StyledPasswordInput name="password" placeholder="Пароль*" required />
@@ -45,7 +46,8 @@ export const SignUpForm = () => {
         type="text"
         name="phone"
         placeholder="Контактный номер*"
-        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+        // TODO we should review the regexp for number. I had troubles submitting form
+        pattern="\+?[\d+\-?]+"
         required
       />
       <Description>
