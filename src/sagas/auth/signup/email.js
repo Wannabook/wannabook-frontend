@@ -9,7 +9,6 @@ import {
   signUpRequestSuccess,
   USER_SIGN_UP_REQUEST,
 } from 'store';
-import { apiClient } from 'services';
 
 export function* loginPasswordSignUpSaga(client) {
   yield takeLatest(startLoginPasswordSignup, function* handler() {
@@ -47,10 +46,17 @@ export function* signUpSaga(client) {
   yield takeEvery(USER_SIGN_UP_REQUEST, signUp, client);
 }
 
-export function* signUp(data) {
+export function* signUp(client, { payload }) {
+  const { email, name, password, phone } = payload;
   try {
-    const signUpResponse = yield call(signUpRequest, data);
-    const { token, user } = signUpResponse;
+    const signUpResponse = yield call(signUpRequest, client, {
+      // just to be explicit about what we send to backend
+      email,
+      name,
+      password,
+      phone,
+    });
+    const { token, user, authMethod } = signUpResponse;
     yield localStorage.setItem('idToken', token);
     // TODO: yield put(setUser(user))?
     yield put(signUpRequestSuccess(signUpResponse));
@@ -60,5 +66,5 @@ export function* signUp(data) {
   }
 }
 
-const signUpRequest = data =>
-  apiClient.post('/users', { body: { ...data.payload } });
+const signUpRequest = (client, data) =>
+  client.post('/users', { body: { ...data.payload } });
