@@ -12,7 +12,7 @@ export function* updateUserInfo(client) {
 }
 
 const updateUserInfoRequest = (client, data) =>
-  client.put('/users', { body: { ...data.payload } });
+  client.put('/users', { data: { ...data.payload } });
 
 export function* workerSaga(client, data) {
   try {

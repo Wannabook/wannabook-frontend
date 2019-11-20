@@ -60,5 +60,5 @@ const logInRequest = (client, data) =>
     headers: {
       'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,
     },
-    body: { ...data.payload },
+    data: { ...data.payload },
   });

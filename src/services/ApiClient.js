@@ -77,11 +77,12 @@ class ApiClient {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers, {
         Authorization: `Bearer ${accessToken}`,
-        'X-Auth-Method': authMethod,
+        'X-Auth-Method': authMethod || params.headers['X-Auth-Method'],
         'X-Id-Token': idToken,
       }),
       ...omit(['headers'], params),
     };
+    console.log('requestParams', requestParams);
 
     const url = isAbsolute(endpoint)
       ? endpoint

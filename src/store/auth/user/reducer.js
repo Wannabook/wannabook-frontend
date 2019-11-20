@@ -31,7 +31,7 @@ export default handleActions(
 
     [USER_SIGN_UP_REQUEST]: (state, action) => handleRequest(state, action),
     [USER_SIGN_UP_REQUEST_SUCCESS]: (state, action) =>
-      handleRequestSuccess(state, action),
+      handleSignupSuccess(state, action),
     [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
       handleRequestFailure(state, action),
 
@@ -80,6 +80,17 @@ const handleLoadUserSuccess = (state, { payload: user }) => {
     profile: user,
     loaded: true,
     loading: false,
+  };
+};
+
+const handleSignupSuccess = (state, { payload: { token, user } }) => {
+  return {
+    ...state,
+    loading: false,
+    loaded: true,
+    error: '',
+    user,
+    accessToken: token,
   };
 };
 

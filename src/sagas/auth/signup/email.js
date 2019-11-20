@@ -18,7 +18,7 @@ export function* loginPasswordSignUpSaga(client) {
         // TODO: do not hardcode url here, get it from env
         'http://localhost:5000/users/signup',
         {
-          body: {
+          data: {
             login,
             password,
           },
@@ -58,13 +58,19 @@ export function* signUp(client, { payload }) {
     });
     const { token, user, authMethod } = signUpResponse;
     yield localStorage.setItem('idToken', token);
-    // TODO: yield put(setUser(user))?
+    yield localStorage.setItem('authMethod', authMethod);
     yield put(signUpRequestSuccess(signUpResponse));
     // TODO: redirect to front page?
+    // window.location.href = '/';
   } catch (error) {
     yield put(signUpRequestFailure(error));
   }
 }
 
 const signUpRequest = (client, data) =>
-  client.post('/users', { body: { ...data.payload } });
+  client.post('/users/signup', {
+    headers: {
+      'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,
+    },
+    data,
+  });
