@@ -17,3 +17,5 @@ Error.propTypes = {
   className: PropTypes.string,
   formContext: PropTypes.object.isRequired,
 };
+
+export * from './styles';

@@ -1,7 +1,7 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-
 import { LOAD_USER_REQUEST, loadUserFailure, loadUserSuccess } from 'store';
 import { ACCESS_TOKEN, API_ENDPOINTS } from 'consts';
+
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 export function* loadUserSaga(client) {
   yield takeEvery(LOAD_USER_REQUEST, loadUser, client);
@@ -9,16 +9,28 @@ export function* loadUserSaga(client) {
 
 export function* loadUser(client) {
   try {
-    const { data } = yield call(fetchUser, client);
+    const res = yield call(fetchUser, client);
 
-    // Access token might have been refreshed so we need to set it for client to pick up
-    const { accessToken, user } = data;
+    if (res?.data?.message && res?.status >= 400) {
+      // request completed, but we got an error message
+      yield put(loadUserSuccess({ message: res.data.message }));
 
-    if (accessToken) {
-      localStorage.setItem(ACCESS_TOKEN, accessToken);
+      return;
     }
 
-    yield put(loadUserSuccess({ user, accessToken }));
+    // Access token might have been refreshed so we need to set it for client to pick up
+    if (res?.data?.accessToken) {
+      localStorage.setItem(ACCESS_TOKEN, res.data.accessToken);
+    }
+
+    if (res?.data?.user) {
+      yield put(
+        loadUserSuccess({
+          user: res?.data?.user,
+          accessToken: res?.data?.accessToken,
+        })
+      );
+    }
   } catch (error) {
     /*
     TODO: Dispatch a universal action that will show

@@ -58,6 +58,13 @@ export function* signUp(client, { payload }) {
       phone,
     });
 
+    if (signUpResponse.message) {
+      // request completed, but we got error message
+      yield put(signUpRequestSuccess({ message: signUpResponse.message }));
+
+      return;
+    }
+
     const {
       data: { token, authMethod },
     } = signUpResponse;

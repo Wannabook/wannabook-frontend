@@ -11,14 +11,17 @@ import {
   StyledPhoneInput,
   Description,
   SignInButton,
-  ErrorMessage,
+  ValidationError,
 } from './styles';
 import { SignUpFormContext } from './SignUpFormContext';
+import { SignUpError } from './SignUpError';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
+  const errorFromServer = useSelector(getAuthError);
+  console.warn('errorFromServer', errorFromServer);
 
   return (
     <StyledForm
@@ -52,7 +55,8 @@ export const SignUpForm = () => {
       <Description>
         Оставьте свой номер для связи с администраторами выбранных заведений
       </Description>
-      <ErrorMessage />
+      <ValidationError />
+      <SignUpError error={errorFromServer} />
       <SignInButton type="submit" size="large" primary>
         Зарегистрироваться
       </SignInButton>

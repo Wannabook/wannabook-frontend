@@ -94,6 +94,8 @@ class ApiClient {
         if (error?.response?.status === 401) {
           unauthorized();
         }
+
+        return error?.response?.data;
       });
   }
 }

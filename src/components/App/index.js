@@ -14,10 +14,12 @@ import { getUser, loadUserRequest } from '../../store/auth/user';
 import { SideBarStateContext, AuthContext } from './contexts';
 
 import { GlobalStyle } from './styles';
+import { ACCESS_TOKEN } from '../../constants';
 
 const App = ({ location }) => {
   const dispatch = useDispatch();
   const isLoggedIn = Boolean(useSelector(getUser));
+  const tokenInLS = localStorage.getItem(ACCESS_TOKEN);
   // TODO handle errors on ui (discuss with UI dep)
 
   // kostyl!
@@ -28,7 +30,7 @@ const App = ({ location }) => {
   // It lives at `frontend_url/auth/<provider-name>/token`. When we're on such routes,
   // we know we don't need to load the user as it leads to bugs
   const shouldLoadUser =
-    !isLoggedIn && !/\/auth\/.+\/token/.test(location.pathname);
+    !isLoggedIn && tokenInLS && !/\/auth\/.+\/token/.test(location.pathname);
 
   useEffect(() => {
     if (shouldLoadUser) {

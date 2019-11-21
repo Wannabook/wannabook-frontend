@@ -76,31 +76,28 @@ const handleRequestSuccess = (
   };
 };
 
-const handleLoadUserSuccess = (state, { payload: { user, accessToken } }) => {
+const handleLoadUserSuccess = (
+  state,
+  { payload: { user, accessToken, message } }
+) => {
   return {
     ...state,
     profile: user,
     loaded: true,
     loading: false,
     accessToken,
+    error: message, // message in payload indicates something's gone wrong (for now)
   };
 };
 
-const handleSignUpSuccess = (
-  state,
-  {
-    payload: {
-      data: { token, user, message },
-    },
-  }
-) => {
+const handleSignUpSuccess = (state, { payload: { data, message } }) => {
   return {
     ...state,
     loading: false,
     loaded: true,
     error: message,
-    profile: user,
-    accessToken: token,
+    profile: data?.user,
+    accessToken: data?.token,
   };
 };
 
