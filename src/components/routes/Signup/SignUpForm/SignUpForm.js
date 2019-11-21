@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getLogInLoadingProps, signUpRequest } from 'store';
+import { getAuthError, getLogInLoadingProps, signUpRequest } from 'store';
 
 import {
   StyledForm,
@@ -18,7 +18,6 @@ import { SignUpFormContext } from './SignUpFormContext';
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  // TODO disable button once pressed
   const signUp = data => dispatch(signUpRequest(data));
 
   return (
@@ -55,7 +54,7 @@ export const SignUpForm = () => {
       </Description>
       <ErrorMessage />
       <SignInButton type="submit" size="large" primary>
-        Зарегестрироваться
+        Зарегистрироваться
       </SignInButton>
     </StyledForm>
   );

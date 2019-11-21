@@ -18,4 +18,5 @@ export const INITIAL_STATE = {
   loaded: false,
   error: '',
   accessToken: null,
+  profile: null,
 };

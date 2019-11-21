@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import * as R from 'ramda';
 
 import {
   INITIAL_STATE,
@@ -23,17 +24,18 @@ import {
 
 export default handleActions(
   {
-    [USER_LOGIN_REQUEST]: (state, action) => handleRequest(state, action),
+    [USER_LOGIN_REQUEST]: (state, action) => handleRequestStart(state, action),
     [USER_LOGIN_REQUEST_SUCCESS]: (state, action) =>
       handleRequestSuccess(state, action),
     [USER_LOGIN_REQUEST_FAILURE]: (state, action) =>
       handleRequestFailure(state, action),
 
-    [USER_SIGN_UP_REQUEST]: (state, action) => handleRequest(state, action),
+    [USER_SIGN_UP_REQUEST]: (state, action) =>
+      handleRequestStart(state, action),
     [USER_SIGN_UP_REQUEST_SUCCESS]: (state, action) =>
-      handleSignupSuccess(state, action),
+      handleSignUpSuccess(state, action),
     [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
-      handleRequestFailure(state, action),
+      handleSignUpFailure(state, action),
 
     [LOAD_USER_REQUEST]: (state, action) => handleLoadUserStart(state, action),
     [LOAD_USER_SUCCESS]: (state, action) =>
@@ -48,7 +50,7 @@ export default handleActions(
   INITIAL_STATE
 );
 
-const handleRequest = (state, { payload }) => {
+const handleRequestStart = (state, { payload }) => {
   return {
     ...state,
     loading: true,
@@ -70,27 +72,44 @@ const handleRequestSuccess = (
     loading: false,
     loaded: true,
     error: '',
-    user,
+    profile: user,
   };
 };
 
-const handleLoadUserSuccess = (state, { payload: user }) => {
+const handleLoadUserSuccess = (state, { payload: { user, accessToken } }) => {
   return {
     ...state,
     profile: user,
     loaded: true,
     loading: false,
+    accessToken,
   };
 };
 
-const handleSignupSuccess = (state, { payload: { token, user } }) => {
+const handleSignUpSuccess = (
+  state,
+  {
+    payload: {
+      data: { token, user, message },
+    },
+  }
+) => {
   return {
     ...state,
     loading: false,
     loaded: true,
-    error: '',
-    user,
+    error: message,
+    profile: user,
     accessToken: token,
+  };
+};
+
+const handleSignUpFailure = (state, { payload: { message } }) => {
+  return {
+    ...state,
+    loading: false,
+    loaded: true,
+    error: message,
   };
 };
 
@@ -99,7 +118,8 @@ const handleLoadUserFailure = (state, { payload }) => {
     ...state,
     loaded: false,
     loading: false,
-    error: payload,
+    error: R.isEmpty(payload) ? '' : payload,
+    profile: null,
   };
 };
 

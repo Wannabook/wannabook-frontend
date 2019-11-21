@@ -18,7 +18,7 @@ export function* loadUser(client) {
       localStorage.setItem(ACCESS_TOKEN, accessToken);
     }
 
-    yield put(loadUserSuccess(user));
+    yield put(loadUserSuccess({ user, accessToken }));
   } catch (error) {
     /*
     TODO: Dispatch a universal action that will show

@@ -1,6 +1,6 @@
 import { call, takeLatest, put, takeEvery } from '@redux-saga/core/effects';
 
-import { AUTH_METHODS } from 'consts';
+import { AUTH_METHODS, ACCESS_TOKEN, AUTH_METHOD } from 'consts';
 import {
   startLoginPasswordSignup,
   loadUserFailure,
@@ -48,17 +48,28 @@ export function* signUpSaga(client) {
 
 export function* signUp(client, { payload }) {
   const { email, name, password, phone } = payload;
+
   try {
-    const signUpResponse = yield call(signUpRequest, client, {
+    const signUpResponse = yield call(doSignUp, client, {
       // just to be explicit about what we send to backend
       email,
       name,
       password,
       phone,
     });
-    const { token, user, authMethod } = signUpResponse;
-    yield localStorage.setItem('idToken', token);
-    yield localStorage.setItem('authMethod', authMethod);
+
+    const {
+      data: { token, authMethod },
+    } = signUpResponse;
+
+    if (token) {
+      localStorage.setItem(ACCESS_TOKEN, token);
+    }
+
+    if (authMethod) {
+      localStorage.setItem(AUTH_METHOD, authMethod);
+    }
+
     yield put(signUpRequestSuccess(signUpResponse));
     // TODO: redirect to front page?
     // window.location.href = '/';
@@ -67,7 +78,7 @@ export function* signUp(client, { payload }) {
   }
 }
 
-const signUpRequest = (client, data) =>
+const doSignUp = (client, data) =>
   client.post('/users/signup', {
     headers: {
       'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,
