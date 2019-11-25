@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import { AuthNetworkList, SignUpForm } from 'components';
+
 import { AuthContext } from '../../components/App/contexts';
-import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
 import { getPageUrl } from '../RouteResolver';
-import { SignUpForm } from '../../components/routes/Signup/SignUpForm/SignUpForm';
 
 import { SignUpContainer, Description, SignInLink } from './styles';
 

@@ -21,7 +21,6 @@ export const SignUpForm = () => {
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
   const errorFromServer = useSelector(getAuthError);
-  console.warn('errorFromServer', errorFromServer);
 
   return (
     <StyledForm

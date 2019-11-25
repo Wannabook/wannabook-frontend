@@ -82,7 +82,6 @@ class ApiClient {
       }),
       ...omit(['headers'], params),
     };
-    console.log('requestParams', requestParams);
 
     const url = isAbsolute(endpoint)
       ? endpoint

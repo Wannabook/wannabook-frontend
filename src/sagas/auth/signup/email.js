@@ -78,8 +78,6 @@ export function* signUp(client, { payload }) {
     }
 
     yield put(signUpRequestSuccess(signUpResponse));
-    // TODO: redirect to front page?
-    // window.location.href = '/';
   } catch (error) {
     yield put(signUpRequestFailure(error));
   }
