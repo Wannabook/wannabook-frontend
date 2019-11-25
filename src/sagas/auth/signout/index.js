@@ -10,6 +10,7 @@ export function* signOutSaga(client) {
 
 function* handler(client) {
   try {
+    // TODO: fix signout, some error is showing
     yield call(client.post(API_ENDPOINTS.signout));
   } catch (error) {
     // TODO: show something useful on UI in this case

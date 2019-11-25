@@ -26,9 +26,9 @@ export default handleActions(
   {
     [USER_LOGIN_REQUEST]: (state, action) => handleRequestStart(state, action),
     [USER_LOGIN_REQUEST_SUCCESS]: (state, action) =>
-      handleRequestSuccess(state, action),
+      handleSignInSuccess(state, action),
     [USER_LOGIN_REQUEST_FAILURE]: (state, action) =>
-      handleRequestFailure(state, action),
+      handleSignInFailure(state, action),
 
     [USER_SIGN_UP_REQUEST]: (state, action) =>
       handleRequestStart(state, action),
@@ -76,6 +76,7 @@ const handleRequestSuccess = (
   };
 };
 
+// TODO: can we reduce duplication in this file?
 const handleLoadUserSuccess = (
   state,
   { payload: { user, accessToken, message } }
@@ -87,6 +88,16 @@ const handleLoadUserSuccess = (
     loading: false,
     accessToken,
     error: message, // message in payload indicates something's gone wrong (for now)
+  };
+};
+
+const handleLoadUserFailure = (state, { payload }) => {
+  return {
+    ...state,
+    loaded: false,
+    loading: false,
+    error: R.isEmpty(payload) ? '' : payload,
+    profile: null,
   };
 };
 
@@ -110,13 +121,24 @@ const handleSignUpFailure = (state, { payload: { message } }) => {
   };
 };
 
-const handleLoadUserFailure = (state, { payload }) => {
+// Sign in
+const handleSignInSuccess = (state, { payload: { data, message } }) => {
   return {
     ...state,
-    loaded: false,
     loading: false,
-    error: R.isEmpty(payload) ? '' : payload,
-    profile: null,
+    loaded: true,
+    error: message,
+    profile: data?.user,
+    accessToken: data?.token,
+  };
+};
+
+const handleSignInFailure = (state, { payload: { message } }) => {
+  return {
+    ...state,
+    loading: false,
+    loaded: true,
+    error: message,
   };
 };
 

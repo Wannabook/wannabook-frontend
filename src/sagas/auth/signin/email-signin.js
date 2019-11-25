@@ -9,6 +9,7 @@ import {
   USER_LOGIN_REQUEST,
   startLoginPasswordAuth,
 } from 'store';
+import { ACCESS_TOKEN, AUTH_METHOD } from '../../../constants';
 
 export function* loginPasswordLoginSaga(client) {
   yield takeLatest(startLoginPasswordAuth, function* handler() {
@@ -47,8 +48,26 @@ export function* emailLoginSaga(client) {
 export function* logIn(client, data) {
   try {
     const logInResponse = yield call(logInRequest, client, data);
-    const { authToken } = logInResponse;
-    yield localStorage.setItem('authToken', authToken);
+
+    if (logInResponse.message) {
+      // we got an error during signin
+      yield put(logInRequestSuccess({ message: logInResponse.message }));
+
+      return;
+    }
+
+    const {
+      data: { token, authMethod },
+    } = logInResponse;
+
+    if (token) {
+      yield localStorage.setItem(ACCESS_TOKEN, token);
+    }
+
+    if (authMethod) {
+      yield localStorage.setItem(AUTH_METHOD, authMethod);
+    }
+
     yield put(logInRequestSuccess(logInResponse));
   } catch (error) {
     yield put(logInRequestFailure(error));

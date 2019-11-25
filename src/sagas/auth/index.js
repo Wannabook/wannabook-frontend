@@ -1,11 +1,11 @@
 import { all, spawn } from 'redux-saga/effects';
 
 import { loadUserSaga } from './user';
-import { emailLoginSaga } from './signin/email';
+import { emailLoginSaga } from './signin/email-signin';
 import { signUpSaga } from './signup/email';
 import changePassword from './changePassword';
 import forgotPassword from './forgotPassword';
-import { googleLoginSaga } from './signin/google';
+import { googleLoginSaga } from './signin/google-signin';
 import { signOutSaga } from './signout';
 import { updateUserInfo } from './updateUserInfo';
 
