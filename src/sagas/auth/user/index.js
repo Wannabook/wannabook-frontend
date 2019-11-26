@@ -1,4 +1,10 @@
-import { LOAD_USER_REQUEST, loadUserFailure, loadUserSuccess } from 'store';
+import {
+  LOAD_USER_REQUEST,
+  loadUserFailure,
+  loadUserRequest,
+  loadUserSuccess,
+  loadUserUnauthorized,
+} from 'store';
 import { ACCESS_TOKEN, API_ENDPOINTS } from 'consts';
 
 import { call, put, takeEvery } from 'redux-saga/effects';
@@ -11,9 +17,9 @@ export function* loadUser(client) {
   try {
     const res = yield call(fetchUser, client);
 
-    if (res?.data?.message && res?.status >= 400) {
-      // request completed, but we got an error message
-      yield put(loadUserSuccess({ message: res.data.message }));
+    if (res?.message) {
+      // we got an error, but we don't need it in store
+      yield put(loadUserUnauthorized());
 
       return;
     }

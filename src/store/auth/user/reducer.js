@@ -10,6 +10,7 @@ import {
   USER_SIGN_UP_REQUEST_SUCCESS,
   USER_SIGN_UP_REQUEST_FAILURE,
   LOAD_USER_SUCCESS,
+  LOAD_USER_UNAUTHORIZED,
   LOAD_USER_FAILURE,
   LOAD_USER_REQUEST,
   USER_SIGN_OUT,
@@ -40,6 +41,8 @@ export default handleActions(
     [LOAD_USER_REQUEST]: (state, action) => handleLoadUserStart(state, action),
     [LOAD_USER_SUCCESS]: (state, action) =>
       handleLoadUserSuccess(state, action),
+    [LOAD_USER_UNAUTHORIZED]: (state, action) =>
+      handleLoadUserUnauthorized(state, action),
     [LOAD_USER_FAILURE]: (state, action) =>
       handleLoadUserFailure(state, action),
 
@@ -98,6 +101,20 @@ const handleLoadUserFailure = (state, { payload }) => {
     loading: false,
     error: R.isEmpty(payload) ? '' : payload,
     profile: null,
+  };
+};
+
+const handleLoadUserUnauthorized = state => {
+  return {
+    ...state,
+    profile: null,
+    loaded: true,
+    loading: false,
+    accessToken: null,
+    // if user if unauthorized, we don't need any error message in store,
+    // otherwise our forms will have this error message underneath whenever
+    // an unauthorized user enters pages with these forms
+    error: null,
   };
 };
 
