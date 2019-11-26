@@ -21,9 +21,9 @@ const descriptionText =
 // TODO: don't let users in here if they are logged in
 
 const Registration = () => {
-  const { isLoggedIn } = React.useContext(AuthContext);
+  const { isLoggedIn, userLoaded } = React.useContext(AuthContext);
 
-  if (isLoggedIn) return <Redirect to={'/'} />;
+  if (isLoggedIn && userLoaded) return <Redirect to={'/'} />;
 
   return (
     <RegistrationContainer>

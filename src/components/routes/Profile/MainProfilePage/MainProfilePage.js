@@ -61,11 +61,11 @@ const profileLinksData = [
 
 export const MainProfilePage = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, userLoaded } = useContext(AuthContext);
 
   return (
     <MainProfilePageContainer>
-      {!isLoggedIn && <Redirect to={getPageUrl('AUTH')} />}
+      {!isLoggedIn && userLoaded && <Redirect to={getPageUrl('AUTH')} />}
       <ProfileImage />
       {profileLinksData.map(link => {
         return (

@@ -9,12 +9,12 @@ import { getPageUrl } from '../RouteResolver';
 import { SignUpContainer, Description, SignInLink } from './styles';
 
 const SignUp = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, userLoaded } = useContext(AuthContext);
 
   return (
     <SignUpContainer>
       {// if user is logged in, redirect them away from sign-up page
-      isLoggedIn && <Redirect to={getPageUrl('HOME')} />}
+      isLoggedIn && userLoaded && <Redirect to={getPageUrl('HOME')} />}
       <Description>Зарегистрироваться через</Description>
       <AuthNetworkList />
       <SignUpForm />
