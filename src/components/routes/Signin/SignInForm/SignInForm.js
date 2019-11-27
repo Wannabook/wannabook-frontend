@@ -1,7 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAuthError, getLogInLoadingProps, logInRequest } from 'store';
+import {
+  getSignInError,
+  getLogInLoadingProps,
+  logInRequest,
+  clearLoginError,
+} from 'store';
 
 import {
   StyledForm,
@@ -17,7 +22,11 @@ export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const logIn = data => dispatch(logInRequest(data));
-  const errorFromServer = useSelector(getAuthError);
+  const errorFromServer = useSelector(getSignInError);
+
+  React.useEffect(() => {
+    return () => dispatch(clearLoginError());
+  }, [dispatch]);
 
   return (
     <StyledForm

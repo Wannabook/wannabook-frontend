@@ -18,5 +18,5 @@ export const isUserLoggedIn = createSelector(
   }
 );
 
-export const getAuthError = state =>
+export const getLoadUserError = state =>
   R.pathOr(null, ['auth', 'user', 'error'], state);

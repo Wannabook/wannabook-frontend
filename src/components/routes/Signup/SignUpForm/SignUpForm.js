@@ -1,7 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAuthError, getLogInLoadingProps, signUpRequest } from 'store';
+import {
+  getSignUpError,
+  getLogInLoadingProps,
+  signUpRequest,
+  clearSignupError,
+} from 'store';
+
+import { SignUpFormContext } from './SignUpFormContext';
+import { SignUpError } from './SignUpError';
 
 import {
   StyledForm,
@@ -13,14 +21,16 @@ import {
   SignInButton,
   ValidationError,
 } from './styles';
-import { SignUpFormContext } from './SignUpFormContext';
-import { SignUpError } from './SignUpError';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
-  const errorFromServer = useSelector(getAuthError);
+  const errorFromServer = useSelector(getSignUpError);
+
+  React.useEffect(() => {
+    return () => dispatch(clearSignupError());
+  }, [dispatch]);
 
   return (
     <StyledForm

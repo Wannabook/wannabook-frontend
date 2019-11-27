@@ -3,12 +3,6 @@ import * as R from 'ramda';
 
 import {
   INITIAL_STATE,
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_REQUEST_SUCCESS,
-  USER_LOGIN_REQUEST_FAILURE,
-  USER_SIGN_UP_REQUEST,
-  USER_SIGN_UP_REQUEST_SUCCESS,
-  USER_SIGN_UP_REQUEST_FAILURE,
   LOAD_USER_SUCCESS,
   LOAD_USER_UNAUTHORIZED,
   LOAD_USER_FAILURE,
@@ -18,27 +12,9 @@ import {
 
 import { UPDATE_USER_INFO_SUCCESS } from '../updateUserInfo';
 
-import {
-  handleLoad as handleLoadUserStart,
-  handleLoadFailure as handleRequestFailure,
-} from '../../common/reducerHandlers';
-
 export default handleActions(
   {
-    [USER_LOGIN_REQUEST]: (state, action) => handleRequestStart(state, action),
-    [USER_LOGIN_REQUEST_SUCCESS]: (state, action) =>
-      handleSignInSuccess(state, action),
-    [USER_LOGIN_REQUEST_FAILURE]: (state, action) =>
-      handleSignInFailure(state, action),
-
-    [USER_SIGN_UP_REQUEST]: (state, action) =>
-      handleRequestStart(state, action),
-    [USER_SIGN_UP_REQUEST_SUCCESS]: (state, action) =>
-      handleSignUpSuccess(state, action),
-    [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
-      handleSignUpFailure(state, action),
-
-    [LOAD_USER_REQUEST]: (state, action) => handleLoadUserStart(state, action),
+    [LOAD_USER_REQUEST]: (state, action) => handleRequestStart(state, action),
     [LOAD_USER_SUCCESS]: (state, action) =>
       handleLoadUserSuccess(state, action),
     [LOAD_USER_UNAUTHORIZED]: (state, action) =>
@@ -59,23 +35,6 @@ const handleRequestStart = (state, { payload }) => {
     loading: true,
     loaded: false,
     error: '',
-  };
-};
-
-const handleRequestSuccess = (
-  state,
-  {
-    payload: {
-      data: { user },
-    },
-  }
-) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: '',
-    profile: user,
   };
 };
 
@@ -115,47 +74,6 @@ const handleLoadUserUnauthorized = state => {
     // otherwise our forms will have this error message underneath whenever
     // an unauthorized user enters pages with these forms
     error: null,
-  };
-};
-
-const handleSignUpSuccess = (state, { payload: { data, message } }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: message,
-    profile: data?.user,
-    accessToken: data?.token,
-  };
-};
-
-const handleSignUpFailure = (state, { payload: { message } }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: message,
-  };
-};
-
-// Sign in
-const handleSignInSuccess = (state, { payload: { data, message } }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: message,
-    profile: data?.user,
-    accessToken: data?.token,
-  };
-};
-
-const handleSignInFailure = (state, { payload: { message } }) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: message,
   };
 };
 

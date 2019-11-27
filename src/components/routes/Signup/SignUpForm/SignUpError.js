@@ -8,5 +8,5 @@ export const SignUpError = ({ error }) => (
 );
 
 SignUpError.propTypes = {
-  error: PropTypes.object,
+  error: PropTypes.string,
 };
