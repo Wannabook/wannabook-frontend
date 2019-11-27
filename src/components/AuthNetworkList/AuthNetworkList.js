@@ -14,20 +14,20 @@ import googleIcon from './images/g.svg';
 import odnoklassnikiIcon from './images/ok.svg';
 
 const socialNetworkList = [
-  {
-    name: 'Facebook',
-    id: 'fb',
-    url: getPageUrl('HOME'),
-    icon: facebookIcon,
-    enabled: false,
-  },
-  {
-    name: 'VK',
-    id: 'vk',
-    url: getPageUrl('HOME'),
-    icon: vkIcon,
-    enabled: false,
-  },
+  // {
+  //   name: 'Facebook',
+  //   id: 'fb',
+  //   url: getPageUrl('HOME'),
+  //   icon: facebookIcon,
+  //   enabled: false,
+  // },
+  // {
+  //   name: 'VK',
+  //   id: 'vk',
+  //   url: getPageUrl('HOME'),
+  //   icon: vkIcon,
+  //   enabled: false,
+  // },
   {
     name: 'Google',
     id: 'gl',
@@ -35,13 +35,13 @@ const socialNetworkList = [
     icon: googleIcon,
     enabled: true,
   },
-  {
-    name: 'Odnoklassniki',
-    id: 'ok',
-    url: getPageUrl('HOME'),
-    icon: odnoklassnikiIcon,
-    enabled: false,
-  },
+  // {
+  //   name: 'Odnoklassniki',
+  //   id: 'ok',
+  //   url: getPageUrl('HOME'),
+  //   icon: odnoklassnikiIcon,
+  //   enabled: false,
+  // },
 ];
 export const AuthNetworkList = () => {
   const dispatch = useDispatch();
