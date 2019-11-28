@@ -23,6 +23,7 @@ class ApiClient {
     this.headers = {};
   }
 
+  // TODO: reduce duplication in client methods
   get(endpoint, params = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
@@ -52,6 +53,9 @@ class ApiClient {
     return this.request(endpoint, requestParams);
   }
 
+  // TODO: add patch method!
+  // patch(endpoint, params = {})
+
   delete(endpoint, params = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
@@ -73,7 +77,7 @@ class ApiClient {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers, {
         Authorization: `Bearer ${accessToken}`,
-        'X-Auth-Method': authMethod,
+        'X-Auth-Method': authMethod || params.headers['X-Auth-Method'],
         'X-Id-Token': idToken,
       }),
       ...omit(['headers'], params),
@@ -89,6 +93,8 @@ class ApiClient {
         if (error?.response?.status === 401) {
           unauthorized();
         }
+
+        return error?.response?.data;
       });
   }
 }

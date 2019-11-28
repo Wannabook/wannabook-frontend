@@ -8,7 +8,6 @@ const TokenGrabber = ({ history }) => {
     const accessToken = getUrlParameter('access_token');
     const authMethod = getUrlParameter('auth_method');
     const idToken = getUrlParameter('id_token');
-    console.warn('accessToken', accessToken);
 
     if (accessToken) {
       localStorage.setItem(ACCESS_TOKEN, accessToken);

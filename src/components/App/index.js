@@ -5,19 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Sidebar } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
+import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
+
 import MobileSideBar from '../SideBar';
 import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
 import { Search } from '../Search/Search';
 import { StyledSideBar } from '../SideBar/styles';
-import { getUser, loadUserRequest } from '../../store/auth/user';
 import { SideBarStateContext, AuthContext } from './contexts';
 
 import { GlobalStyle } from './styles';
+import { ACCESS_TOKEN } from '../../constants';
 
 const App = ({ location }) => {
   const dispatch = useDispatch();
-  const isLoggedIn = Boolean(useSelector(getUser));
+  // TODO: would be nice to have this logic in a separate layer, e.g. auth layer
+  const isLoggedIn = useSelector(isUserLoggedIn);
+  const { loading, loaded } = useSelector(getLogInLoadingProps);
+  const tokenInLS = localStorage.getItem(ACCESS_TOKEN);
   // TODO handle errors on ui (discuss with UI dep)
 
   // kostyl!
@@ -28,7 +33,7 @@ const App = ({ location }) => {
   // It lives at `frontend_url/auth/<provider-name>/token`. When we're on such routes,
   // we know we don't need to load the user as it leads to bugs
   const shouldLoadUser =
-    !isLoggedIn && !/\/auth\/.+\/token/.test(location.pathname);
+    !isLoggedIn && tokenInLS && !/\/auth\/.+\/token/.test(location.pathname);
 
   useEffect(() => {
     if (shouldLoadUser) {
@@ -45,7 +50,9 @@ const App = ({ location }) => {
   const hideRightSideBar = () => setRightSideBarVisibility(false);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, userLoading: loading, userLoaded: loaded }}
+    >
       <SideBarStateContext.Provider
         value={{
           isLeftSideBarVisible,

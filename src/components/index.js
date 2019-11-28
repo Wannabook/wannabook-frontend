@@ -5,7 +5,7 @@ export * from './CategoryListMenu';
 export * from './common';
 export * from './Footer';
 export * from './Header';
-export * from './Loading';
+export * from './common/Loading';
 export * from './OrganizationsList';
 export * from './Page';
 export * from './routes';

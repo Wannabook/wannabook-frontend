@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { AuthNetworkList } from '../../components/AuthNetworkList/AuthNetworkList.js';
+import { SignInForm, AuthNetworkList } from 'components';
+
 import { AuthContext } from '../../components/App/contexts';
 import { getPageUrl } from '../RouteResolver';
 
@@ -11,15 +12,14 @@ import {
   ForgotPasswordLink,
   SignUpLink,
 } from './styles';
-import { SignInForm } from '../../components/routes/Signin/SignInForm/SignInForm';
 
 const SignIn = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, userLoaded } = useContext(AuthContext);
 
   return (
     <SignInContainer>
       {// if user is logged in, redirect them away from login page
-      isLoggedIn && <Redirect to={getPageUrl('HOME')} />}
+      isLoggedIn && userLoaded && <Redirect to={getPageUrl('HOME')} />}
       <Description>Войти с помощью</Description>
       <AuthNetworkList />
       <SignInForm />

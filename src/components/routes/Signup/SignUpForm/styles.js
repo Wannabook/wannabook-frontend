@@ -43,6 +43,6 @@ export const SignInButton = styled(SubmitButton)`
   }
 `;
 
-export const ErrorMessage = styled(Error)`
+export const ValidationError = styled(Error)`
   margin-top: 25px;
 `;

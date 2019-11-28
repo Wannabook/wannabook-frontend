@@ -12,7 +12,7 @@ export default function*(client) {
 }
 
 const forgotPasswordRequest = (client, data) =>
-  client.post('/users', { body: { ...data.payload } });
+  client.post('/users', { data: { ...data.payload } });
 
 export function* workerSaga(client, data) {
   try {

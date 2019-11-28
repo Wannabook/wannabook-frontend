@@ -1,7 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getLogInLoadingProps, logInRequest } from 'store';
+import {
+  getSignInError,
+  getLogInLoadingProps,
+  logInRequest,
+  clearLoginError,
+} from 'store';
 
 import {
   StyledForm,
@@ -11,11 +16,17 @@ import {
   ErrorMessage,
 } from './styles';
 import { SignInFormContext } from './SignInFormContext';
+import { SignInError } from './SignInError';
 
 export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const logIn = data => dispatch(logInRequest(data));
+  const errorFromServer = useSelector(getSignInError);
+
+  React.useEffect(() => {
+    return () => dispatch(clearLoginError());
+  }, [dispatch]);
 
   return (
     <StyledForm
@@ -32,6 +43,7 @@ export const SignInForm = () => {
       />
       <StyledPasswordInput name="password" placeholder="Пароль*" required />
       <ErrorMessage />
+      <SignInError error={errorFromServer} />
       <SignInButton type="submit" size="large" primary>
         Войти
       </SignInButton>

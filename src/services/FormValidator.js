@@ -3,12 +3,14 @@ export default class FormValidator {
 
   verifyPassword = password => {
     return password.length < FormValidator.requiredPasswordLength
-      ? { message: 'Password too short' }
+      ? { message: 'Пароль слишком короткий' }
       : null;
   };
 
   verifyEmail = email => {
-    return email.includes('-') ? { message: 'Wrong email' } : null; //TODO: Update checking condition
+    return email.includes('-')
+      ? { message: 'Неправильный адрес электронной почты' }
+      : null; //TODO: Update checking condition
   };
 
   verifySignInForm = ({ email, password }) => {

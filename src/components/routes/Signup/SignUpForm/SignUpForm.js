@@ -1,7 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getLogInLoadingProps, signUpRequest } from 'store';
+import {
+  getSignUpError,
+  getLogInLoadingProps,
+  signUpRequest,
+  clearSignupError,
+} from 'store';
+
+import { SignUpFormContext } from './SignUpFormContext';
+import { SignUpError } from './SignUpError';
 
 import {
   StyledForm,
@@ -11,14 +19,18 @@ import {
   StyledPhoneInput,
   Description,
   SignInButton,
-  ErrorMessage,
+  ValidationError,
 } from './styles';
-import { SignUpFormContext } from './SignUpFormContext';
 
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
   const signUp = data => dispatch(signUpRequest(data));
+  const errorFromServer = useSelector(getSignUpError);
+
+  React.useEffect(() => {
+    return () => dispatch(clearSignupError());
+  }, [dispatch]);
 
   return (
     <StyledForm
@@ -37,7 +49,7 @@ export const SignUpForm = () => {
         type="text"
         name="name"
         placeholder="Имя*"
-        pattern="^[a-zA-Z]+$"
+        pattern="^[a-zA-ZА-яЁё\s]+$"
         required
       />
       <StyledPasswordInput name="password" placeholder="Пароль*" required />
@@ -45,15 +57,17 @@ export const SignUpForm = () => {
         type="text"
         name="phone"
         placeholder="Контактный номер*"
-        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+        // TODO we should review the regexp for number. I had troubles submitting form
+        pattern="\+?[\d+\-?]+"
         required
       />
       <Description>
         Оставьте свой номер для связи с администраторами выбранных заведений
       </Description>
-      <ErrorMessage />
+      <ValidationError />
+      <SignUpError error={errorFromServer} />
       <SignInButton type="submit" size="large" primary>
-        Зарегестрироваться
+        Зарегистрироваться
       </SignInButton>
     </StyledForm>
   );

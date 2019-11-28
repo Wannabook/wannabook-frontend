@@ -1,14 +1,10 @@
 import { handleActions } from 'redux-actions';
+import * as R from 'ramda';
 
 import {
   INITIAL_STATE,
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_REQUEST_SUCCESS,
-  USER_LOGIN_REQUEST_FAILURE,
-  USER_SIGN_UP_REQUEST,
-  USER_SIGN_UP_REQUEST_SUCCESS,
-  USER_SIGN_UP_REQUEST_FAILURE,
   LOAD_USER_SUCCESS,
+  LOAD_USER_UNAUTHORIZED,
   LOAD_USER_FAILURE,
   LOAD_USER_REQUEST,
   USER_SIGN_OUT,
@@ -16,28 +12,13 @@ import {
 
 import { UPDATE_USER_INFO_SUCCESS } from '../updateUserInfo';
 
-import {
-  handleLoad as handleLoadUserStart,
-  handleLoadFailure as handleRequestFailure,
-} from '../../common/reducerHandlers';
-
 export default handleActions(
   {
-    [USER_LOGIN_REQUEST]: (state, action) => handleRequest(state, action),
-    [USER_LOGIN_REQUEST_SUCCESS]: (state, action) =>
-      handleRequestSuccess(state, action),
-    [USER_LOGIN_REQUEST_FAILURE]: (state, action) =>
-      handleRequestFailure(state, action),
-
-    [USER_SIGN_UP_REQUEST]: (state, action) => handleRequest(state, action),
-    [USER_SIGN_UP_REQUEST_SUCCESS]: (state, action) =>
-      handleRequestSuccess(state, action),
-    [USER_SIGN_UP_REQUEST_FAILURE]: (state, action) =>
-      handleRequestFailure(state, action),
-
-    [LOAD_USER_REQUEST]: (state, action) => handleLoadUserStart(state, action),
+    [LOAD_USER_REQUEST]: (state, action) => handleRequestStart(state, action),
     [LOAD_USER_SUCCESS]: (state, action) =>
       handleLoadUserSuccess(state, action),
+    [LOAD_USER_UNAUTHORIZED]: (state, action) =>
+      handleLoadUserUnauthorized(state, action),
     [LOAD_USER_FAILURE]: (state, action) =>
       handleLoadUserFailure(state, action),
 
@@ -48,7 +29,7 @@ export default handleActions(
   INITIAL_STATE
 );
 
-const handleRequest = (state, { payload }) => {
+const handleRequestStart = (state, { payload }) => {
   return {
     ...state,
     loading: true,
@@ -57,29 +38,18 @@ const handleRequest = (state, { payload }) => {
   };
 };
 
-const handleRequestSuccess = (
+// TODO: can we reduce duplication in this file?
+const handleLoadUserSuccess = (
   state,
-  {
-    payload: {
-      data: { user },
-    },
-  }
+  { payload: { user, accessToken, message } }
 ) => {
-  return {
-    ...state,
-    loading: false,
-    loaded: true,
-    error: '',
-    user,
-  };
-};
-
-const handleLoadUserSuccess = (state, { payload: user }) => {
   return {
     ...state,
     profile: user,
     loaded: true,
     loading: false,
+    accessToken,
+    error: message, // message in payload indicates something's gone wrong (for now)
   };
 };
 
@@ -88,7 +58,22 @@ const handleLoadUserFailure = (state, { payload }) => {
     ...state,
     loaded: false,
     loading: false,
-    error: payload,
+    error: R.isEmpty(payload) ? '' : payload,
+    profile: null,
+  };
+};
+
+const handleLoadUserUnauthorized = state => {
+  return {
+    ...state,
+    profile: null,
+    loaded: true,
+    loading: false,
+    accessToken: null,
+    // if user if unauthorized, we don't need any error message in store,
+    // otherwise our forms will have this error message underneath whenever
+    // an unauthorized user enters pages with these forms
+    error: null,
   };
 };
 
