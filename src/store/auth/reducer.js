@@ -7,7 +7,7 @@ import updateUserInfo from './updateUserInfo/reducer';
 import signUp from './signUp/reducer';
 import signIn from './signIn/reducer';
 
-export default combineReducers({
+export const authReducer = combineReducers({
   user,
   signIn,
   signUp,

@@ -7,7 +7,7 @@ import {
 } from './constants';
 import { handleLoad, handleLoadFailure } from '../common/reducerHandlers';
 
-export default handleActions(
+export const organizationsReducer = handleActions(
   {
     [LOAD_ORGANIZATIONS_REQUEST]: state => handleLoad(state),
     [LOAD_ORGANIZATIONS_SUCCESS]: (state, action) =>

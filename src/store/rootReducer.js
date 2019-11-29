@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { reducer as auth } from './auth';
-import { reducer as organizations } from './organizations';
+import { authReducer as auth } from './auth';
+import { organizationsReducer as organizations } from './organizations';
 
 export default combineReducers({
   // 3rd party reducers

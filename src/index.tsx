@@ -8,6 +8,10 @@ import store from './store/store';
 
 import 'semantic-ui-css/semantic.min.css';
 
+import { sum } from './utils/utils';
+
+const sumOfTwo = sum(4, 5);
+
 render(
   <Provider store={store}>
     <BrowserRouter>
@@ -17,4 +21,4 @@ render(
   document.getElementById('app')
 );
 
-module.hot.accept();
+// module.hot.accept();

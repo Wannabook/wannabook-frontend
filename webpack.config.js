@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
@@ -37,7 +38,7 @@ module.exports = env => {
   }, {});
 
   const config = {
-    entry: { main: './src/index.js' },
+    entry: { main: './src/index.tsx' },
     output: {
       path: path.resolve(__dirname, distFolder),
       filename: '[name].[hash].js',
@@ -46,11 +47,18 @@ module.exports = env => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.js|jsx$/,
+        //   exclude: /node_modules/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //   },
+        // },
         {
-          test: /\.js|jsx$/,
+          test: /\.(t|j)sx?$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
+            loader: 'awesome-typescript-loader',
           },
         },
         {
@@ -83,7 +91,7 @@ module.exports = env => {
         'ui-kit': path.resolve(__dirname, 'src/ui-kit'),
         consts: path.resolve(__dirname, 'src/constants.js'),
       },
-      extensions: ['.js', '.jsx', '.json'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     plugins: [
       new CleanWebpackPlugin(),
