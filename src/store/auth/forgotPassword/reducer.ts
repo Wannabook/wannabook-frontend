@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+
 import {
   INITIAL_STATE,
   FORGOT_PASSWORD_REQUEST,
@@ -10,6 +11,7 @@ import {
   handleLoad as handleRequest,
   handleLoadFailure as handleRequestFailure,
 } from '../../common/reducerHandlers';
+import { ForgotPasswordState } from './types';
 
 export default handleActions(
   {
@@ -21,7 +23,7 @@ export default handleActions(
   INITIAL_STATE
 );
 
-const handleRequestSuccess = state => {
+const handleRequestSuccess = (state: ForgotPasswordState) => {
   return {
     ...state,
     loading: false,

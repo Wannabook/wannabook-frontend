@@ -1,4 +1,4 @@
-import { getLoadingProps } from '../../common/selectors';
+import { getLoadingProps } from '../../common';
 
 export const getForgotPasswordLoadingProps = getLoadingProps(
   'auth',

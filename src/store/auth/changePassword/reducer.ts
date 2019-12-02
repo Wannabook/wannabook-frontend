@@ -12,6 +12,7 @@ import {
   handleLoad as handleUpdate,
   handleLoadFailure as handleUpdateFailure,
 } from '../../common/reducerHandlers';
+import { ChangePasswordState } from './types';
 
 export default handleActions(
   {
@@ -19,12 +20,12 @@ export default handleActions(
     [UPDATE_USER_PASSWORD_SUCCESS]: state => handleUpdateSuccess(state),
     [UPDATE_USER_PASSWORD_FAILURE]: (state, action) =>
       handleUpdateFailure(state, action),
-    [UPDATE_USER_PASSWORD_INIT]: state => handleUpdateInit(state),
+    [UPDATE_USER_PASSWORD_INIT]: () => handleUpdateInit(),
   },
   INITIAL_STATE
 );
 
-const handleUpdateSuccess = state => {
+const handleUpdateSuccess = (state: ChangePasswordState) => {
   return {
     ...state,
     loading: false,
