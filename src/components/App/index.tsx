@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { useDispatch, useSelector } from 'react-redux';
 import { Sidebar } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
-import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
+import {
+  getLogInLoadingProps,
+  isUserLoggedIn,
+  loadUserRequest,
+} from 'store';
 
 import MobileSideBar from '../SideBar';
 import { Page } from '../Page/Page';
@@ -17,7 +21,15 @@ import { SideBarStateContext, AuthContext } from './contexts';
 import { GlobalStyle } from './styles';
 import { ACCESS_TOKEN } from '../../constants';
 
-const App = ({ location }) => {
+interface Location {
+  pathname: string,
+}
+
+type AppProps = RouteComponentProps<Location> & {
+  location: Location,
+};
+
+const App: React.FC<AppProps> = ({ location }) => {
   const dispatch = useDispatch();
   // TODO: would be nice to have this logic in a separate layer, e.g. auth layer
   const isLoggedIn = useSelector(isUserLoggedIn);
@@ -91,11 +103,6 @@ const App = ({ location }) => {
       </SideBarStateContext.Provider>
     </AuthContext.Provider>
   );
-};
-
-App.propTypes = {
-  error: PropTypes.string,
-  location: PropTypes.object,
 };
 
 export default withRouter(App);
