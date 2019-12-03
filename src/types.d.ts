@@ -1,7 +1,7 @@
 export interface EntityInitialState {
   loading: boolean;
   loaded: boolean;
-  error: string;
+  error?: string;
 }
 
 export interface Profile {

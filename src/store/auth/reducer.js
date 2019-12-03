@@ -5,11 +5,11 @@ import changePassword from './changePassword/reducer';
 import forgotPassword from './forgotPassword/reducer';
 import updateUserInfo from './updateUserInfo/reducer';
 import signUp from './signUp/reducer';
-import signIn from './signIn/reducer';
+import { signInReducer } from './signIn/reducer';
 
 export const authReducer = combineReducers({
   user,
-  signIn,
+  signIn: signInReducer,
   signUp,
   changePassword,
   forgotPassword,

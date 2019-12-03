@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   getSignInError,
   getLogInLoadingProps,
-  logInRequest,
+  logInAction,
   clearLoginError,
 } from 'store';
 
@@ -21,7 +21,7 @@ import { SignInError } from './SignInError';
 export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  const logIn = data => dispatch(logInRequest(data));
+  const logIn = data => dispatch(logInAction.request(data));
   const errorFromServer = useSelector(getSignInError);
 
   React.useEffect(() => {
