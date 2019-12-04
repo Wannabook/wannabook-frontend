@@ -5,11 +5,7 @@ import { Sidebar } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 
-import {
-  getLogInLoadingProps,
-  isUserLoggedIn,
-  loadUserRequest,
-} from 'store';
+import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
 
 import MobileSideBar from '../SideBar';
 import { Page } from '../Page/Page';
@@ -22,11 +18,11 @@ import { GlobalStyle } from './styles';
 import { ACCESS_TOKEN } from '../../constants';
 
 interface Location {
-  pathname: string,
+  pathname: string;
 }
 
 type AppProps = RouteComponentProps<Location> & {
-  location: Location,
+  location: Location;
 };
 
 const App: React.FC<AppProps> = ({ location }) => {
