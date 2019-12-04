@@ -90,6 +90,7 @@ module.exports = env => {
         utils: path.resolve(__dirname, 'src/utils'),
         'ui-kit': path.resolve(__dirname, 'src/ui-kit'),
         consts: path.resolve(__dirname, 'src/constants.js'),
+        types: path.resolve(__dirname, 'src/types.d.ts'),
       },
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },

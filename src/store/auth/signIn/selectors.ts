@@ -1,4 +1,6 @@
 import * as R from 'ramda';
 
-export const getSignInError = state =>
+import { EntityInitialState } from 'types';
+
+export const getSignInError = (state: EntityInitialState) =>
   R.pathOr(null, ['auth', 'signIn', 'error'], state);
