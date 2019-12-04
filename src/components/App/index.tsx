@@ -10,7 +10,7 @@ import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
 import { NavigationSideBar as MobileSideBar } from '../SideBar/SideBar';
 import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
-import { Search } from '../Search/Search';
+import { Search } from '../Search';
 import { StyledSideBar } from '../SideBar/styles';
 import { SideBarStateContext, AuthContext } from './contexts';
 
