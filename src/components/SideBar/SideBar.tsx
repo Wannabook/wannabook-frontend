@@ -1,10 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Sidebar } from 'semantic-ui-react';
 
 import { Container } from '../../ui-kit/components/Layout/Container';
 
-const NavigationSideBar = ({ visible, onHide, direction, children }) => {
+type DirectionTypes = 'left' | 'right';
+
+interface NavigationSideBarProps {
+  visible: boolean;
+  direction: DirectionTypes;
+  onHide: () => void;
+  children: React.ReactNode;
+}
+
+export const NavigationSideBar: React.FC<NavigationSideBarProps> = ({
+  visible,
+  onHide,
+  direction,
+  children,
+}) => {
   return (
     <Sidebar
       as={Container}
@@ -20,12 +33,3 @@ const NavigationSideBar = ({ visible, onHide, direction, children }) => {
     </Sidebar>
   );
 };
-
-NavigationSideBar.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  direction: PropTypes.oneOf(['left', 'right']).isRequired,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-};
-
-export default NavigationSideBar;

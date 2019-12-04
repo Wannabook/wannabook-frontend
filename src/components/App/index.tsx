@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router';
 
 import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
 
-import MobileSideBar from '../SideBar';
+import { NavigationSideBar as MobileSideBar } from '../SideBar/SideBar';
 import { Page } from '../Page/Page';
 import CategoryListMenu from '../CategoryListMenu';
 import { Search } from '../Search/Search';
@@ -54,8 +54,8 @@ const App: React.FC<AppProps> = ({ location }) => {
 
   const showLeftSideBar = () => setLeftSideBarVisibility(true);
   const showRightSideBar = () => setRightSideBarVisibility(true);
-  const hideLeftSideBar = () => setLeftSideBarVisibility(false);
-  const hideRightSideBar = () => setRightSideBarVisibility(false);
+  const hideLeftSideBar = (): void => setLeftSideBarVisibility(false);
+  const hideRightSideBar = (): void => setRightSideBarVisibility(false);
 
   return (
     <AuthContext.Provider

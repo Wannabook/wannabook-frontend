@@ -10,4 +10,4 @@ export * from './OrganizationsList';
 export * from './Page';
 export * from './routes';
 export * from './Search';
-export * from './SideBar';
+export * from './SideBar/SideBar';
