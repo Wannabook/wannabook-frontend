@@ -47,15 +47,15 @@ module.exports = env => {
     },
     module: {
       rules: [
-        // {
-        //   test: /\.js|jsx$/,
-        //   exclude: /node_modules/,
-        //   use: {
-        //     loader: 'babel-loader',
-        //   },
-        // },
         {
-          test: /\.(t|j)sx?$/,
+          test: /\.js|jsx$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+          },
+        },
+        {
+          test: /\.tsx?$/,
           exclude: /node_modules/,
           use: {
             loader: 'awesome-typescript-loader',
