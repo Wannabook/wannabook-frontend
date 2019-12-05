@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 
 import { startGoogleAuth } from 'store';
 
-import { getPageUrl } from '../../routes/RouteResolver';
+import { getPageUrl } from '../../routes';
+import { SocialNetwork } from './types';
 import { SocialNetworkList, SocialNetworkLink } from './styles';
 
 import facebookIcon from './images/f.svg';
@@ -13,7 +14,7 @@ import vkIcon from './images/vk.svg';
 import googleIcon from './images/g.svg';
 import odnoklassnikiIcon from './images/ok.svg';
 
-const socialNetworkList = [
+const socialNetworkList: Array<SocialNetwork> = [
   // {
   //   name: 'Facebook',
   //   id: 'fb',
@@ -46,7 +47,7 @@ const socialNetworkList = [
 export const AuthNetworkList = () => {
   const dispatch = useDispatch();
 
-  const handleClick = authMethodId => {
+  const handleClick = (authMethodId: string): void => {
     switch (authMethodId) {
       case 'gl': {
         dispatch(startGoogleAuth());
