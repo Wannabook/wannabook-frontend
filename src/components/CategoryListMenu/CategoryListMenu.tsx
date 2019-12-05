@@ -2,9 +2,10 @@ import React from 'react';
 
 import { VerticalMenu } from '../common/Menu';
 
+import { CategoryMenuItem } from './types';
 import { CategoryListMenuContainer } from './styles';
 
-const menuItemsList = [
+const menuItemsList: Array<CategoryMenuItem> = [
   {
     text: 'Парикмахерские',
     url: '/category/1',
@@ -31,12 +32,10 @@ const menuItemsList = [
   },
 ];
 
-const RightSidebarMenu = () => {
+export const CategoryListMenu = () => {
   return (
     <CategoryListMenuContainer>
       <VerticalMenu menuItemsList={menuItemsList} />
     </CategoryListMenuContainer>
   );
 };
-
-export default RightSidebarMenu;
