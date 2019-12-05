@@ -10,3 +10,9 @@ export interface Profile {
   phone: string;
   picture: string;
 }
+
+export interface Organization {
+  id: string;
+  name: string;
+  description: string;
+}
