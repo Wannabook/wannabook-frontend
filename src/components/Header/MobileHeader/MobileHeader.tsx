@@ -40,7 +40,7 @@ const Logo = () => {
   );
 };
 
-const MobileHeader = () => {
+export const MobileHeader = () => {
   const {
     showLeftSideBar,
     isRightSideBarVisible,
@@ -65,5 +65,3 @@ const MobileHeader = () => {
     </StyledMobileBar>
   );
 };
-
-export default MobileHeader;

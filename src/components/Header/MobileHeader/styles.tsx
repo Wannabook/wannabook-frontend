@@ -11,7 +11,12 @@ export const StyledMobileBar = styled.div`
   background-color: ${mainBackgroundColor};
 `;
 
-export const Hamburger = styled.div`
+interface HamburgerProps {
+  open: boolean;
+  onClick: () => void;
+}
+
+export const Hamburger = styled.div<HamburgerProps>`
   width: 60px;
   height: 28px;
   position: relative;
@@ -72,4 +77,8 @@ export const IconWrapper = styled.div`
   }
 `;
 
-export const SearchButton = styled.div``;
+interface SearchButtonProps {
+  onClick: () => void;
+}
+
+export const SearchButton = styled.div<SearchButtonProps>``;

@@ -2,12 +2,10 @@ import React from 'react';
 
 import { DesktopHeaderContainer } from './styles';
 
-const DesktopHeader = () => {
+export const DesktopHeader = () => {
   return (
     <DesktopHeaderContainer>
       <div>DesktopHeader</div>
     </DesktopHeaderContainer>
   );
 };
-
-export default DesktopHeader;

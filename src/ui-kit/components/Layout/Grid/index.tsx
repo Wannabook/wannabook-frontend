@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
 
+const { Row, Column } = Grid;
+
 export const StyledGrid = styled(Grid)`
   &&&.ui.grid {
     margin: 0 !important;
@@ -19,3 +21,6 @@ export const StyledGrid = styled(Grid)`
     padding-bottom: 0 !important;
   }
 `;
+
+export const StyledRow = styled(Row)``;
+export const StyledColumn = styled(Column)``;
