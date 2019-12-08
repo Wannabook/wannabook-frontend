@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../../constants';
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../../consts';
 
 const TokenGrabber = ({ history }) => {
   React.useEffect(() => {

@@ -1,16 +1,10 @@
-import {
-  LOAD_USER_REQUEST,
-  loadUserFailure,
-  loadUserRequest,
-  loadUserSuccess,
-  loadUserUnauthorized,
-} from 'store';
+import { loadUserAction, loadUserUnauthorized } from 'store';
 import { ACCESS_TOKEN, API_ENDPOINTS } from 'consts';
 
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 export function* loadUserSaga(client) {
-  yield takeEvery(LOAD_USER_REQUEST, loadUser, client);
+  yield takeEvery(loadUserAction.request, loadUser, client);
 }
 
 export function* loadUser(client) {
@@ -31,7 +25,7 @@ export function* loadUser(client) {
 
     if (res?.data?.user) {
       yield put(
-        loadUserSuccess({
+        loadUserAction.success({
           user: res?.data?.user,
           accessToken: res?.data?.accessToken,
         })
@@ -42,7 +36,7 @@ export function* loadUser(client) {
     TODO: Dispatch a universal action that will show
      some universal error message (toast or smth similar)
      */
-    yield put(loadUserFailure(error));
+    yield put(loadUserAction.failure(error));
   }
 }
 

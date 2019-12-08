@@ -1,11 +1,13 @@
 import * as R from 'ramda';
 import { createSelector } from 'reselect';
 
-import { getLoadingProps } from '../../common/selectors';
+import { EntityInitialState } from 'types';
+
+import { getLoadingProps } from '../../common';
 
 export const getLogInLoadingProps = getLoadingProps('auth', 'user');
 
-export const getUser = state =>
+export const getUser = (state: EntityInitialState) =>
   R.pathOr(null, ['auth', 'user', 'profile'], state);
 
 export const isUserLoggedIn = createSelector(
@@ -18,5 +20,5 @@ export const isUserLoggedIn = createSelector(
   }
 );
 
-export const getLoadUserError = state =>
+export const getLoadUserError = (state: EntityInitialState) =>
   R.pathOr(null, ['auth', 'user', 'error'], state);

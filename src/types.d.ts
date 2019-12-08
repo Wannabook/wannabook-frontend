@@ -1,7 +1,12 @@
+export interface PlainOldJsObject {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
 export interface EntityInitialState {
   loading: boolean;
   loaded: boolean;
-  error?: string;
+  error?: string | PlainOldJsObject | null;
 }
 
 export interface Profile {

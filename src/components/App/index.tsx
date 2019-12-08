@@ -5,7 +5,7 @@ import { Sidebar } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 
-import { getLogInLoadingProps, isUserLoggedIn, loadUserRequest } from 'store';
+import { getLogInLoadingProps, isUserLoggedIn, loadUserAction } from 'store';
 
 import { NavigationSideBar as MobileSideBar } from '../SideBar';
 import { Page } from '../Page';
@@ -15,7 +15,7 @@ import { StyledSideBar } from '../SideBar/styles';
 import { SideBarStateContext, AuthContext } from './contexts';
 
 import { GlobalStyle } from './styles';
-import { ACCESS_TOKEN } from '../../constants';
+import { ACCESS_TOKEN } from '../../consts';
 
 interface Location {
   pathname: string;
@@ -25,6 +25,7 @@ type AppProps = RouteComponentProps<Location> & {
   location: Location;
 };
 
+// eslint-disable-next-line react/prop-types
 const App: React.FC<AppProps> = ({ location }) => {
   const dispatch = useDispatch();
   // TODO: would be nice to have this logic in a separate layer, e.g. auth layer
@@ -45,7 +46,7 @@ const App: React.FC<AppProps> = ({ location }) => {
 
   useEffect(() => {
     if (shouldLoadUser) {
-      dispatch(loadUserRequest());
+      dispatch(loadUserAction.request());
     }
   }, [dispatch, isLoggedIn, location.pathname, shouldLoadUser]);
 

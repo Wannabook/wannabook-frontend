@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux';
 
-import user from './user/reducer';
+import { signUpReducer } from './signUp';
+import { signInReducer } from './signIn';
+import { loadUserReducer } from './user';
+// TODO: will be migrated to TS as we'll be connecting them with backend
 import changePassword from './changePassword/reducer';
 import forgotPassword from './forgotPassword/reducer';
 import updateUserInfo from './updateUserInfo/reducer';
-import { signUpReducer } from './signUp/reducer';
-import { signInReducer } from './signIn/reducer';
 
 export const authReducer = combineReducers({
-  user,
+  user: loadUserReducer,
   signIn: signInReducer,
   signUp: signUpReducer,
   changePassword,

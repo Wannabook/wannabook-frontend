@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ACCESS_TOKEN, AUTH_METHOD } from '../../constants';
+import { ACCESS_TOKEN, AUTH_METHOD } from '../../consts';
 
 export default class Signout extends React.Component {
   componentDidMount() {
