@@ -1,14 +1,10 @@
 import { call, put, takeEvery } from '@redux-saga/core/effects';
 
 import { AUTH_METHODS, ACCESS_TOKEN, AUTH_METHOD } from 'consts';
-import {
-  signUpRequestFailure,
-  signUpRequestSuccess,
-  USER_SIGN_UP_REQUEST,
-} from 'store';
+import { signUpAction } from 'store';
 
 export function* signUpSaga(client) {
-  yield takeEvery(USER_SIGN_UP_REQUEST, signUp, client);
+  yield takeEvery(signUpAction.request, signUp, client);
 }
 
 export function* signUp(client, { payload }) {
@@ -25,7 +21,7 @@ export function* signUp(client, { payload }) {
 
     if (signUpResponse.message) {
       // request completed, but we got error message
-      yield put(signUpRequestSuccess({ message: signUpResponse.message }));
+      yield put(signUpAction.success({ message: signUpResponse.message }));
 
       return;
     }
@@ -42,9 +38,9 @@ export function* signUp(client, { payload }) {
       localStorage.setItem(AUTH_METHOD, authMethod);
     }
 
-    yield put(signUpRequestSuccess(signUpResponse));
+    yield put(signUpAction.success(signUpResponse));
   } catch (error) {
-    yield put(signUpRequestFailure(error));
+    yield put(signUpAction.failure(error));
   }
 }
 

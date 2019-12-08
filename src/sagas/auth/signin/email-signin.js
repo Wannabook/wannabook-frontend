@@ -1,17 +1,10 @@
-import { call, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
+import { call, put, takeEvery } from '@redux-saga/core/effects';
 
 import { AUTH_METHODS, ACCESS_TOKEN, AUTH_METHOD } from 'consts';
-import {
-  loadUserFailure,
-  loadUserSuccess,
-  logInRequestFailure,
-  logInRequestSuccess,
-  USER_LOGIN_REQUEST,
-  startLoginPasswordAuth,
-} from 'store';
+import { logInAction } from 'store';
 
 export function* emailLoginSaga(client) {
-  yield takeEvery(USER_LOGIN_REQUEST, logIn, client);
+  yield takeEvery(logInAction.request, logIn, client);
 }
 
 export function* logIn(client, data) {
@@ -20,7 +13,7 @@ export function* logIn(client, data) {
 
     if (logInResponse.message) {
       // we got an error during signin
-      yield put(logInRequestSuccess({ message: logInResponse.message }));
+      yield put(logInAction.success({ message: logInResponse.message }));
 
       return;
     }
@@ -37,9 +30,11 @@ export function* logIn(client, data) {
       yield localStorage.setItem(AUTH_METHOD, authMethod);
     }
 
-    yield put(logInRequestSuccess(logInResponse));
+    yield put(logInAction.success(logInResponse));
   } catch (error) {
-    yield put(logInRequestFailure(error));
+    // TODO: differentiate between custom-sent errors from our API and JS-specific errors
+    console.error('Email sign-in:', error);
+    yield put(logInAction.failure(error));
   }
 }
 

@@ -5,7 +5,7 @@ import {
   getSignUpError,
   getLogInLoadingProps,
   signUpRequest,
-  clearSignupError,
+  clearSignUpError,
 } from 'store';
 
 import { SignUpFormContext } from './SignUpFormContext';
@@ -29,7 +29,7 @@ export const SignUpForm = () => {
   const errorFromServer = useSelector(getSignUpError);
 
   React.useEffect(() => {
-    return () => dispatch(clearSignupError());
+    return () => dispatch(clearSignUpError());
   }, [dispatch]);
 
   return (

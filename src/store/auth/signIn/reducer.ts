@@ -1,7 +1,7 @@
 import { ActionType, createReducer } from 'typesafe-actions';
 
 import { EntityInitialState } from '../../../types';
-import * as actions from './actionCreators';
+import * as actions from './actions';
 
 const signInInitialState = {
   loading: false,
