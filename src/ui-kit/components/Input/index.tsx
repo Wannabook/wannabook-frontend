@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Input as SemanticInput } from 'semantic-ui-react';
+import { Input as SemanticInput, InputProps } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import { warningColor } from '../../theme';
@@ -31,13 +30,9 @@ const InputWithError = styled(SemanticInput)`
   }
 `;
 
-export const Input = props => {
+export const Input = (props: InputProps) => {
   const { error, ...rest } = props;
   if (error) return <InputWithError {...rest} />;
 
   return <PrimaryInput {...props} />;
-};
-
-Input.propTypes = {
-  error: PropTypes.bool,
 };

@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Button as SemanticButton } from 'semantic-ui-react';
+import {
+  Button as SemanticButton,
+  ButtonContentProps,
+} from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import {
@@ -36,17 +38,11 @@ const SecondaryButton = styled(SemanticButton)`
   }
 `;
 
-export const Button = props => {
+export const Button = (props: ButtonContentProps) => {
   const { primary, secondary, ...rest } = props;
   if (primary) return <PrimaryButton {...rest}>{props.children}</PrimaryButton>;
   if (secondary)
     return <SecondaryButton {...rest}>{props.children}</SecondaryButton>;
 
   return <SemanticButton {...props}>{props.children}</SemanticButton>;
-};
-
-Button.propTypes = {
-  primary: PropTypes.bool,
-  secondary: PropTypes.bool,
-  children: PropTypes.node,
 };
