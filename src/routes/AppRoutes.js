@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
-import Loading from '../components/common/Loading';
+import { Loading } from '../components/common/Loading';
 
 export function AppRoutes() {
   return (
@@ -54,7 +54,9 @@ const Service = Loadable({
 
 const Categories = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './Categories/Categories'),
+    import(
+      /* webpackChunkName: "[request][index]" */ './Categories/Categories'
+    ),
   loading: Loading,
 });
 
@@ -72,7 +74,9 @@ const Profile = Loadable({
 
 const MyInfo = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './Profile/MyInfo/MyInfo'),
+    import(
+      /* webpackChunkName: "[request][index]" */ './Profile/MyInfo/MyInfo'
+    ),
   loading: Loading,
 });
 
@@ -109,13 +113,17 @@ const TokenGrabber = Loadable({
 // todo do we show changePassword anywhere?
 const ChangePassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ '../components/routes/Profile/MyInfoPage/ChangePassword/ChangePassword'),
+    import(
+      /* webpackChunkName: "[request][index]" */ '../components/routes/Profile/MyInfoPage/ChangePassword/ChangePassword'
+    ),
   loading: Loading,
 });
 
 const ForgotPassword = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './ForgotPassword/ForgotPassword'),
+    import(
+      /* webpackChunkName: "[request][index]" */ './ForgotPassword/ForgotPassword'
+    ),
   loading: Loading,
 });
 

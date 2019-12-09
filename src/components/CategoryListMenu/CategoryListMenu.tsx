@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { VerticalMenu } from '../common/Menu';
+import { Menu as VerticalMenu } from '../common/Menu';
 
-import { CategoryMenuItem } from './types';
+import { CategoryMenuItem } from '../common/Menu/types';
+
 import { CategoryListMenuContainer } from './styles';
 
 const menuItemsList: Array<CategoryMenuItem> = [
