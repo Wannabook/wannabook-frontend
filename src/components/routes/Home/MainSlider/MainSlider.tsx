@@ -5,31 +5,37 @@ import { SliderArrow } from 'ui-kit';
 
 import { SliderWrapper, Slide, Illustration, Description } from './styles';
 
-const sliderItems = [
+interface SliderItem {
+  id: number;
+  description: string;
+  img: string;
+}
+
+const sliderItems: Array<SliderItem> = [
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 1',
     img: '',
-    id: '1',
+    id: 1,
   },
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 2',
     img: '',
-    id: '2',
+    id: 2,
   },
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 3',
     img: '',
-    id: '3',
+    id: 3,
   },
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 4',
     img: '',
-    id: '4',
+    id: 4,
   },
   {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 5',
     img: '',
-    id: '5',
+    id: 5,
   },
 ];
 
@@ -43,7 +49,7 @@ const settings = {
   nextArrow: <SliderArrow name="arrow right" direction="right" />,
 };
 
-const MainSlider = props => {
+export const MainSlider = () => {
   return (
     <SliderWrapper>
       <Slider {...settings}>
@@ -59,5 +65,3 @@ const MainSlider = props => {
     </SliderWrapper>
   );
 };
-
-export default MainSlider;

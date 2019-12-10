@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'semantic-ui-react';
 
 import { Advantage, AdvantagesListContainer } from './styles';
-import { StyledGrid } from 'ui-kit';
+import { StyledGrid, StyledColumn } from 'ui-kit';
 import advantageImage1 from './images/advantage1.svg';
 import advantageImage2 from './images/advantage2.svg';
 import advantageImage3 from './images/advantage3.svg';
@@ -25,21 +25,19 @@ const advantagesList = [
   },
 ];
 
-const AdvantagesList = () => {
+export const AdvantagesList = () => {
   return (
     <AdvantagesListContainer>
       <StyledGrid stackable columns={3} centered>
         {advantagesList.map(item => (
-          <StyledGrid.Column key={item.id}>
+          <StyledColumn key={item.id}>
             <Advantage>
               <Image src={item.img} />
               <p>{item.description}</p>
             </Advantage>
-          </StyledGrid.Column>
+          </StyledColumn>
         ))}
       </StyledGrid>
     </AdvantagesListContainer>
   );
 };
-
-export default AdvantagesList;
