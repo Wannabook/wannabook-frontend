@@ -92,6 +92,7 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
+    "@types/react-slick": "0.23.4",
     "axios": "0.19.0",
     "history": "4.10.1",
     "prop-types": "15.7.2",

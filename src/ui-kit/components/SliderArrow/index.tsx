@@ -10,8 +10,8 @@ const IconWrapper = styled.div`
 type Direction = 'left' | 'right';
 
 interface SliderArrowProp extends IconProps {
-  style: object;
-  onClick: () => void;
+  style?: object;
+  onClick?: () => void;
   direction: Direction;
 }
 
