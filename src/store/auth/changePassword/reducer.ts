@@ -16,7 +16,7 @@ import { ChangePasswordState } from './types';
 const INITIAL_STATE = {
   loading: false,
   loaded: false,
-  error: '',
+  // error: '',
 };
 
 export default handleActions(

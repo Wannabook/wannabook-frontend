@@ -9,6 +9,10 @@ export interface EntityInitialState {
   error?: string | PlainOldJsObject | null;
 }
 
+export interface EntityLoadFailurePayload {
+  payload?: string | object | null;
+}
+
 export interface Profile {
   firstName: string;
   lastName: string;

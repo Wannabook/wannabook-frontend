@@ -1,11 +1,18 @@
 import { handleActions } from 'redux-actions';
+
 import {
-  INITIAL_STATE,
   LOAD_ORGANIZATIONS_REQUEST,
   LOAD_ORGANIZATIONS_SUCCESS,
   LOAD_ORGANIZATIONS_FAILURE,
 } from './constants';
 import { handleLoad, handleLoadFailure } from '../common/reducerHandlers';
+
+const INITIAL_STATE = {
+  loading: false,
+  loaded: false,
+  error: '',
+  records: [],
+};
 
 export const organizationsReducer = handleActions(
   {
