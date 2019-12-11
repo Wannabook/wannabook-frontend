@@ -1,4 +1,4 @@
-import { getLoadingProps } from '../../common/selectors';
+import { getLoadingProps } from '../../common';
 
 export const updateUserInfoLoadingProps = getLoadingProps(
   'auth',

@@ -3,10 +3,27 @@ export interface PlainOldJsObject {
   [key: string]: any;
 }
 
+export interface Store {
+  auth: {
+    user: EntityInitialState;
+    signIn: EntityInitialState;
+    signUp: EntityInitialState;
+    changePassword: EntityInitialState;
+    forgotPassword: EntityInitialState;
+    updateUserInfo: EntityInitialState;
+  };
+  organizations: EntityInitialState;
+}
+
 export interface EntityInitialState {
   loading: boolean;
   loaded: boolean;
   error?: string | PlainOldJsObject | null;
+  records?: PlainOldJsObject[] | null;
+}
+
+export interface EntityLoadSuccessPayload {
+  payload?: PlainOldJsObject[];
 }
 
 export interface EntityLoadFailurePayload {
