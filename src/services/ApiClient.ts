@@ -1,7 +1,8 @@
 import { omit, identity } from 'ramda';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN, AUTH_METHODS } from 'consts';
+import { ApiClientReqParams, PlainOldJsObject } from 'types';
 
 import { unauthorized } from './authService';
 import FormValidator from './FormValidator';
@@ -19,12 +20,14 @@ const client = axios.create({
 });
 
 class ApiClient {
+  private headers: PlainOldJsObject;
+
   constructor() {
     this.headers = {};
   }
 
   // TODO: reduce duplication in client methods
-  get(endpoint, params = {}) {
+  get(endpoint: string, params: ApiClientReqParams = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
       ...omit(['headers'], params),
@@ -33,7 +36,7 @@ class ApiClient {
     return this.request(endpoint, requestParams);
   }
 
-  put(endpoint, params = {}) {
+  put(endpoint: string, params: ApiClientReqParams = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
       method: 'PUT',
@@ -43,7 +46,7 @@ class ApiClient {
     return this.request(endpoint, requestParams);
   }
 
-  post(endpoint, params = {}) {
+  post(endpoint: string, params: ApiClientReqParams = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
       method: 'POST',
@@ -56,7 +59,7 @@ class ApiClient {
   // TODO: add patch method!
   // patch(endpoint, params = {})
 
-  delete(endpoint, params = {}) {
+  delete(endpoint: string, params: ApiClientReqParams = {}) {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers),
       method: 'DELETE',
@@ -66,7 +69,7 @@ class ApiClient {
     return this.request(endpoint, requestParams);
   }
 
-  request(endpoint, params = {}) {
+  private request(endpoint: string, params: ApiClientReqParams = {}) {
     // if we initialize Client with these values then we'll not be able to
     // detect change to these values during app lifetime,
     // so we get "fresh" values before each request is made
@@ -77,7 +80,7 @@ class ApiClient {
     const requestParams = {
       headers: Object.assign({}, this.headers, params.headers, {
         Authorization: `Bearer ${accessToken}`,
-        'X-Auth-Method': authMethod || params.headers['X-Auth-Method'],
+        'X-Auth-Method': authMethod || params.headers?.['X-Auth-Method'],
         'X-Id-Token': idToken,
       }),
       ...omit(['headers'], params),
@@ -89,7 +92,7 @@ class ApiClient {
 
     return client(url, requestParams)
       .then(identity)
-      .catch(error => {
+      .catch((error: AxiosError) => {
         if (error?.response?.status === 401) {
           unauthorized();
         }
@@ -99,7 +102,7 @@ class ApiClient {
   }
 }
 
-const isAbsolute = url => /^(?:[a-z]+:)?\/\//i.test(url);
+const isAbsolute = (url: string) => /^(?:[a-z]+:)?\/\//i.test(url);
 
 export const formValidator = new FormValidator();
 

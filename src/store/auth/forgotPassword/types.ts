@@ -1,6 +1,6 @@
 import { EntityInitialState } from '../../../types';
 
-export interface ForgotPasswordState extends EntityInitialState {}
+export type ForgotPasswordState = EntityInitialState
 
 export interface ForgotPasswordRequestPayload {
   [key: string]: any;

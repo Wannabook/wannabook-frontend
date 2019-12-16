@@ -2,12 +2,16 @@ import { call, put, takeEvery } from '@redux-saga/core/effects';
 
 import { AUTH_METHODS, ACCESS_TOKEN, AUTH_METHOD } from 'consts';
 import { logInAction } from 'store';
+import { ApiClient } from 'types';
 
-export function* emailLoginSaga(client) {
+export function* emailLoginSaga(client: ApiClient) {
   yield takeEvery(logInAction.request, logIn, client);
 }
 
-export function* logIn(client, data) {
+export function* logIn(
+  client: ApiClient,
+  data: ReturnType<typeof logInAction.request>
+) {
   try {
     const logInResponse = yield call(logInRequest, client, data);
 
@@ -38,7 +42,10 @@ export function* logIn(client, data) {
   }
 }
 
-const logInRequest = (client, data) =>
+const logInRequest = (
+  client: ApiClient,
+  data: ReturnType<typeof logInAction.request>
+) =>
   client.post('/users/login', {
     headers: {
       'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,

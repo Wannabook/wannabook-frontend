@@ -3,6 +3,9 @@ export interface PlainOldJsObject {
   [key: string]: any;
 }
 
+/**
+ * Common Application Store
+ */
 export interface Store {
   auth: {
     user: EntityInitialState;
@@ -30,6 +33,25 @@ export interface EntityLoadFailurePayload {
   payload?: string | object | null;
 }
 
+/**
+ * API Client
+ */
+export interface ApiClient {
+  headers?: PlainOldJsObject;
+  get(string, headers?: PlainOldJsObject);
+  put(string, headers?: PlainOldJsObject);
+  post(string, headers?: PlainOldJsObject);
+  patch(string, headers?: PlainOldJsObject);
+  delete(string, headers?: PlainOldJsObject);
+}
+
+export interface ApiClientReqParams {
+  headers?: PlainOldJsObject;
+}
+
+/**
+ * Entities
+ */
 export interface Profile {
   firstName: string;
   lastName: string;
