@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import { white } from 'ui-kit';
+
 import selectImageIcon from './images/select_image.svg';
 
 export const ProfileImageContainer = styled.div`
   margin-bottom: 40px;
 `;
 
-export const Avatar = styled.div`
+interface AvatarProps {
+  avatar: string | null;
+}
+
+export const Avatar = styled.div<AvatarProps>`
   width: 115px;
   height: 115px;
   margin-bottom: 20px;

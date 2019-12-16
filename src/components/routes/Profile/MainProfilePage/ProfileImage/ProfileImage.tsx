@@ -1,11 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
+import { Profile } from 'types';
+
 import { getUserInfo } from '../../selectors';
 
 import { ProfileImageContainer, Avatar, Title } from './styles';
 
 export const ProfileImage = () => {
-  const { name, avatar } = useSelector(getUserInfo);
+  const user: Profile | null = useSelector(getUserInfo);
+  const avatar = user ? user.picture : null;
 
   return (
     <ProfileImageContainer>
