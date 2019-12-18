@@ -80,7 +80,7 @@ module.exports = env => {
       ],
     },
     resolve: {
-      modules: ['node_modules', 'node_modules/redux-saga'],
+      modules: ['node_modules'],
       alias: {
         components: path.resolve(__dirname, 'src/components'),
         routes: path.resolve(__dirname, 'src/routes'),

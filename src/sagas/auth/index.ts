@@ -1,5 +1,7 @@
 import { all, spawn } from 'redux-saga/effects';
 
+import { ApiClient } from 'types';
+
 import { loadUserSaga } from './user';
 import { emailLoginSaga } from './signin/email-signin';
 import { signUpSaga } from './signup/email';
@@ -20,6 +22,6 @@ const subSagas = [
   updateUserInfo,
 ];
 
-export function* authSaga(client) {
+export function* authSaga(client: ApiClient) {
   yield all(subSagas.map(s => spawn(s, client)));
 }

@@ -1,13 +1,17 @@
 import { call, put, takeEvery } from '@redux-saga/core/effects';
 
 import { AUTH_METHODS, ACCESS_TOKEN, AUTH_METHOD } from 'consts';
-import { signUpAction } from 'store';
+import { signUpAction, SignUpRequestPayload } from 'store';
+import { ApiClient } from 'types';
 
-export function* signUpSaga(client) {
+export function* signUpSaga(client: ApiClient) {
   yield takeEvery(signUpAction.request, signUp, client);
 }
 
-export function* signUp(client, { payload }) {
+export function* signUp(
+  client: ApiClient,
+  { payload }: ReturnType<typeof signUpAction.request>
+) {
   const { email, name, password, phone } = payload;
 
   try {
@@ -44,7 +48,7 @@ export function* signUp(client, { payload }) {
   }
 }
 
-const doSignUp = (client, data) =>
+const doSignUp = (client: ApiClient, data: SignUpRequestPayload) =>
   client.post('/users/signup', {
     headers: {
       'X-Auth-Method': AUTH_METHODS.LOGIN_PASSWORD,

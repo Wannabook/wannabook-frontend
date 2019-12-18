@@ -5,9 +5,11 @@ export interface SignUpInitialState extends EntityInitialState {
   accessToken: string;
 }
 
-export interface SingUpRequestPayload {
+export interface SignUpRequestPayload {
   email: string;
   password: string;
+  name: string;
+  phone: string;
 }
 
 export interface SignUpSuccessPayload {

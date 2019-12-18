@@ -25,7 +25,6 @@ type AppProps = RouteComponentProps<Location> & {
   location: Location;
 };
 
-// eslint-disable-next-line react/prop-types
 const App: React.FC<AppProps> = ({ location }) => {
   const dispatch = useDispatch();
   // TODO: would be nice to have this logic in a separate layer, e.g. auth layer

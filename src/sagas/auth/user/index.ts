@@ -1,18 +1,21 @@
+import { call, put, takeEvery } from 'redux-saga/effects';
+
 import { loadUserAction, loadUserUnauthorized } from 'store';
 import { ACCESS_TOKEN, API_ENDPOINTS } from 'consts';
 
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { ApiClient } from 'types';
 
-export function* loadUserSaga(client) {
+export function* loadUserSaga(client: ApiClient) {
   yield takeEvery(loadUserAction.request, loadUser, client);
 }
 
-export function* loadUser(client) {
+export function* loadUser(client: ApiClient) {
   try {
     const res = yield call(fetchUser, client);
 
+    // TODO: rename to errorMessage?
     if (res?.message) {
-      // we got an error, but we don't need it in store
+      // we know we got an error, but we don't need it in store
       yield put(loadUserUnauthorized());
 
       return;
@@ -40,4 +43,4 @@ export function* loadUser(client) {
   }
 }
 
-const fetchUser = client => client.get(API_ENDPOINTS.me);
+const fetchUser = (client: ApiClient) => client.get(API_ENDPOINTS.me);
