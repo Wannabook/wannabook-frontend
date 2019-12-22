@@ -1,9 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from '../../consts';
+import { ACCESS_TOKEN, AUTH_METHOD, ID_TOKEN } from 'consts';
 
-const TokenGrabber = ({ history }) => {
+const TokenGrabber: React.FC<RouteComponentProps> = ({ history }) => {
   React.useEffect(() => {
     const accessToken = getUrlParameter('access_token');
     const authMethod = getUrlParameter('auth_method');
@@ -25,11 +25,11 @@ const TokenGrabber = ({ history }) => {
   }, [history]);
 
   // TODO: Render loader here?
-  return 'Выполняем вход в систему...';
+  // we return a fragment instead of string for the sake of correct typing
+  return <>'Выполняем вход в систему...'</>;
 };
 
-// yes, this is Stackoverflow :(
-function getUrlParameter(name) {
+function getUrlParameter(name: string) {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
   const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   const results = regex.exec(location.search);

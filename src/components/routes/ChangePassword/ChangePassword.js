@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ModalPopUp } from 'components';
+import { ModalPopUp } from 'components/index';
 
 import {
   getChangePasswordLoadingProps,

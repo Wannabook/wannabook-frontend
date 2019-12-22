@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { MyInfoFormContext } from './MyInfoFormContext';
-import { ChangePassword } from '../ChangePassword/ChangePassword';
+import { ChangePassword } from '../../../ChangePassword/ChangePassword';
 import { GenderToggle } from './GenderToggle/GenderToggle';
 
 import { updateUserInfo, updateUserInfoLoadingProps, getUser } from 'store';

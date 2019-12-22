@@ -2,13 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
-import { Loading } from '../components/common/Loading';
+import { Loading } from 'components';
 
 export function AppRoutes() {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/companies" component={Company} />
       <Route path="/services" component={Services} />
       <Route path="/service/:id" component={Service} />
       <Route path="/categories" component={Categories} />
@@ -31,12 +30,6 @@ export function AppRoutes() {
 const Home = Loadable({
   loader: () =>
     import(/* webpackChunkName: "[request][index]" */ './Home/Home'),
-  loading: Loading,
-});
-
-const Company = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "[request][index]" */ './Company/Company'),
   loading: Loading,
 });
 
@@ -110,11 +103,10 @@ const TokenGrabber = Loadable({
   loading: Loading,
 });
 
-// todo do we show changePassword anywhere?
 const ChangePassword = Loadable({
   loader: () =>
     import(
-      /* webpackChunkName: "[request][index]" */ '../components/routes/Profile/MyInfoPage/ChangePassword/ChangePassword'
+      /* webpackChunkName: "[request][index]" */ './ChangePassword/ChangePassword'
     ),
   loading: Loading,
 });

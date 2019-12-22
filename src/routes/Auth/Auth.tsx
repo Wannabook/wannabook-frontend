@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 import { getPageUrl } from '../RouteResolver';
-
 import {
   RegistrationContainer,
   Title,
@@ -11,14 +10,12 @@ import {
   SignInButton,
   SignUpButton,
 } from './styles';
+import { AuthContext } from '../../components/App/contexts';
 
 import authImage from './images/auth_image.svg';
-import { AuthContext } from '../../components/App/contexts';
 
 const descriptionText =
   'Наличие профиля поможет без труда бронировать услуги на нашем сайте';
-
-// TODO: don't let users in here if they are logged in
 
 const Registration = () => {
   const { isLoggedIn, userLoaded } = React.useContext(AuthContext);

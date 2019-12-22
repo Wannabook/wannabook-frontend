@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryList } from '../../components/routes/Categories/CategoryList/CategoryList';
+import { CategoryList } from 'components';
 
 const categoryList = [
   {

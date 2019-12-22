@@ -1,4 +1,5 @@
-const pagesData = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const pagesData: any = {
   AUTH: { route: '/auth' },
   HOME: { route: '/' },
   COMPANIES: { route: '/companies' },
@@ -13,7 +14,7 @@ const pagesData = {
   'FORGOT-PASSWORD': { route: '/forgot-password' },
 };
 
-const getPageUrl = pageCode => {
+const getPageUrl = (pageCode: string) => {
   const pageInfo = pagesData[pageCode];
   if (!pageInfo) {
     console.error(`No page with code "${pageCode}"!!!`);
