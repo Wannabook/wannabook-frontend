@@ -1,3 +1,5 @@
+// we don't care about types here. We don't waste time on a mock client
+
 export class MockApiClient {
   userResponse = {
     user: {
@@ -9,7 +11,9 @@ export class MockApiClient {
     },
     authToken: 'Bearer: wef0ih8gg9g3gn',
   };
-  data = {
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any = {
     '/organizations': [
       {
         id: 1,
@@ -25,7 +29,7 @@ export class MockApiClient {
     '/users/me': this.userResponse,
   };
 
-  get(resourceUrl) {
+  get(resourceUrl: string) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.3
@@ -35,7 +39,7 @@ export class MockApiClient {
     });
   }
 
-  post(resourceUrl, { body = {} }) {
+  post(resourceUrl: string, { body = {} }) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.1
@@ -45,8 +49,10 @@ export class MockApiClient {
     });
   }
 
-  put(resourceUrl, data) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  put(resourceUrl: string, data: { [key: string]: any }) {
     const { body: user } = data;
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         Math.random() > 0.1 ? resolve(user) : reject('Something went wrong...');
