@@ -1,3 +1,7 @@
 {
-  "extends": "wannabook"
+  "extends": "wannabook",
+  "plugins": ["compat"],
+  "rules": {
+    "compat/compat": "warn"
+  }
 }
