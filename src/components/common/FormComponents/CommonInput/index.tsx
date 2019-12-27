@@ -1,8 +1,16 @@
-import React, { useContext } from 'react';
+import React, { Context, useContext } from 'react';
 
 import { Input } from 'ui-kit';
 
-export const CommonInput = ({
+interface Props {
+  error: object;
+  formContext: Context<any>;
+  type: string;
+  name: string;
+  defaultValue: string | number | null;
+}
+
+export const CommonInput: React.FC<Props> = ({
   error,
   formContext,
   type,

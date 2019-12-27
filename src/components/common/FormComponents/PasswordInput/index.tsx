@@ -1,8 +1,18 @@
-import React, { useState, useContext } from 'react';
-import { Icon } from 'semantic-ui-react';
+import React, { useState, useContext, Context } from 'react';
+import {Icon, InputProps} from 'semantic-ui-react';
 import { Input } from 'ui-kit';
 
-export const PasswordInput = ({ error, formContext, name, ...restProps }) => {
+interface Props {
+  error: object;
+  formContext: Context<any>;
+  name: string;
+}
+export const PasswordInput: React.FC<Props & InputProps> = ({
+  error,
+  formContext,
+  name,
+  ...restProps
+}) => {
   const [showPass, setShowPass] = useState(false);
   const { getInputValue, inputChange } = useContext(formContext);
   const showContent = () => setShowPass(!showPass);

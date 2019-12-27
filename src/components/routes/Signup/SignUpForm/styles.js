@@ -5,7 +5,7 @@ import {
   PasswordInput,
   CommonInput,
   Error,
-} from 'components';
+} from 'components/index';
 
 import { fontSmall } from 'ui-kit';
 

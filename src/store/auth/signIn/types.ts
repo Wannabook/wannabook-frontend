@@ -20,7 +20,7 @@ export interface SignInFailurePayload {
   message: string;
 }
 
-export interface SingInRequestPayload {
+export interface SignInRequestPayload {
   email: string;
   password: string;
 }

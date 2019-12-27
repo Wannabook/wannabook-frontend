@@ -1,9 +1,17 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { Context, HTMLProps, useContext } from 'react';
 
 import { Button } from 'ui-kit';
+import { ButtonContentProps } from 'semantic-ui-react';
 
-export const SubmitButton = ({
+interface Props {
+  className: string;
+  formContext: Context<any>;
+  children: React.ReactNode;
+}
+
+export const SubmitButton: React.FC<Props &
+  HTMLProps<HTMLButtonElement> &
+  ButtonContentProps> = ({
   children,
   className,
   formContext,
@@ -22,10 +30,4 @@ export const SubmitButton = ({
       {children}
     </Button>
   );
-};
-
-SubmitButton.propTypes = {
-  children: PropTypes.string,
-  className: PropTypes.string,
-  formContext: PropTypes.object.isRequired,
 };

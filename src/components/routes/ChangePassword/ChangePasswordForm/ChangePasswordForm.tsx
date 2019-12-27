@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FormEvent} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { changePassword, getChangePasswordLoadingProps } from 'store';
@@ -15,7 +15,8 @@ import { ChangePasswordFormContext } from './ChangePasswordFormContext';
 export const ChangePasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getChangePasswordLoadingProps);
   const dispatch = useDispatch();
-  const handleSubmit = data => dispatch(changePassword(data));
+  const handleSubmit = (data: React.SyntheticEvent<FormEvent>) =>
+    dispatch(changePassword(data));
 
   return (
     <StyledForm

@@ -1,4 +1,4 @@
-import { SingInRequestPayload } from '../store/auth/signIn';
+import { SignInRequestPayload } from '../store/auth/signIn';
 import { SignUpRequestPayload } from '../store/auth/signUp';
 
 export default class FormValidator {
@@ -16,7 +16,7 @@ export default class FormValidator {
       : null;
   };
 
-  verifySignInForm = ({ email, password }: SingInRequestPayload) => {
+  verifySignInForm = ({ email, password }: SignInRequestPayload) => {
     const error = this.verifyEmail(email);
 
     return error ? error : this.verifyPassword(password);
@@ -56,11 +56,23 @@ export default class FormValidator {
     return null;
   };
 
-  verifyMapper = {
+  verifyMapper: VerifyMapper = {
     signIn: this.verifySignInForm,
     signUp: this.verifySignUpForm,
     forgotPassword: this.verifyForgotPasswordForm,
     changePassword: this.verifyChangePasswordForm,
     userInfo: this.verifyUserInfo,
   };
+}
+
+interface Error {
+  message: string;
+}
+
+interface VerifyMapper {
+  signIn: (a: SignInRequestPayload) => Error | null;
+  signUp: (a: SignUpRequestPayload) => Error | null;
+  forgotPassword: (email: { email: string }) => Error | null;
+  changePassword: (email: { email: string }) => Error | null;
+  userInfo: (data: { data: any }) => Error | null;
 }

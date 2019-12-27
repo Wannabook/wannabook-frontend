@@ -5,7 +5,7 @@ import {
   PasswordInput,
   SubmitButton,
   CommonInput,
-} from 'components';
+} from 'components/index';
 
 export const StyledForm = styled(Form)`
   margin-bottom: 20px;

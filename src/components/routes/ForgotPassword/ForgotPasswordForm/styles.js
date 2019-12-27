@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-import { Form, SubmitButton, CommonInput, Error } from 'components';
+import { Form, SubmitButton, CommonInput, Error } from 'components/index';
 
 import { fontSmall } from 'ui-kit';
 

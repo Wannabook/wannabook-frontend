@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { Context, FormEvent, useState } from 'react';
 
 import { formValidator } from 'services';
 
-export const Form = ({
+type FormNameType =
+  | 'signUp'
+  | 'signIn'
+  | 'forgotPassword'
+  | 'changePassword'
+  | 'userInfo';
+
+interface Props {
+  children: any;
+  className?: string;
+  onSubmit: (a: React.SyntheticEvent<FormEvent>) => any;
+  isSubmitting: boolean;
+  formName: FormNameType;
+  formContext: Context<any>;
+}
+
+export const Form: React.FC<Props> = ({
   children,
   className,
   onSubmit,
@@ -11,11 +26,13 @@ export const Form = ({
   formName,
   formContext: FormContext,
 }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<any>({});
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const verificationError = formValidator.verifyMapper[formName](data);
+
     if (verificationError) {
       return setData({ ...data, error: verificationError.message });
     }
@@ -24,18 +41,20 @@ export const Form = ({
     onSubmit(payload);
   };
 
-  const getInputValue = (name, defaultValue = '') => {
+  const getInputValue = (name: string, defaultValue = '') => {
     if (data[name] === '') return data[name];
 
     return data[name] || defaultValue;
   };
 
-  const inputChange = name => e => {
+  const inputChange = (name: string) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const targetValue = e.target.value;
     setData({ ...data, [name]: targetValue, error: '', isUpdated: true });
   };
 
-  const addContextAsProp = elem =>
+  const addContextAsProp = (elem: any) =>
     React.cloneElement(elem, { formContext: FormContext });
 
   const childrenWithProps = React.Children.map(children, child =>
@@ -57,13 +76,4 @@ export const Form = ({
       </form>
     </FormContext.Provider>
   );
-};
-
-Form.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object),
-  className: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
-  isSubmitting: PropTypes.bool.isRequired,
-  formName: PropTypes.oneOf(Object.keys(formValidator.verifyMapper)).isRequired,
-  formContext: PropTypes.object.isRequired,
 };
