@@ -18,7 +18,12 @@ export const Description = styled.span`
   left: 0;
 `;
 
-export const ToggleButton = styled.div`
+interface ToggleButtonProps {
+  icon: string;
+  active: boolean;
+}
+
+export const ToggleButton = styled.div<ToggleButtonProps>`
   width: 70px;
   height: 70px;
   background-color: ${white};

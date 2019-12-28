@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MyInfoForm } from './MyInfoForm/MyInfoForm';
+import { MyInfoForm } from './MyInfoForm';
 
 import { MyInfoPageContainer, Title } from './styles';
 

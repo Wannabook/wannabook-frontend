@@ -6,7 +6,7 @@ import { ModalHeader } from './styles';
 interface ModalPopUpProp {
   open: boolean;
   handleClose: () => void;
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 

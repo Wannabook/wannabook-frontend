@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { Error, Form, SubmitButton, CommonInput } from 'components/index';
 import { fontSmall } from 'ui-kit';
 

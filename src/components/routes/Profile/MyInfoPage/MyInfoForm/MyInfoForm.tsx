@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { MyInfoFormContext } from './MyInfoFormContext';
-import { ChangePassword } from '../../../ChangePassword/ChangePassword';
-import { GenderToggle } from './GenderToggle/GenderToggle';
-
 import { updateUserInfo, updateUserInfoLoadingProps, getUser } from 'store';
+
+import { MyInfoFormContext } from './MyInfoFormContext';
+import { ChangePassword } from '../../../ChangePassword';
+import { GenderToggle } from './GenderToggle';
 
 import {
   StyledForm,
@@ -18,18 +18,31 @@ import {
 } from './styles';
 
 export const MyInfoForm = () => {
-  const user = useSelector(getUser) || {};
+  // TODO: feels like dark magic, as Michael says :)
+  const user = useSelector(getUser) || {
+    name: '',
+    email: '',
+    surname: '',
+    birthdate: '',
+    district: '',
+    gender: null,
+  };
+
   const {
     name = '',
     email = '',
     surname = '',
     birthdate = '',
     district = '',
-    gender = '',
+    gender = null,
   } = user;
+
   const { loading: isSubmitting } = useSelector(updateUserInfoLoadingProps);
   const dispatch = useDispatch();
-  const handleSubmit = data => dispatch(updateUserInfo({ ...user, ...data }));
+
+  // TODO: fix 'any' after we sync form data with backend
+  const handleSubmit = (data: any) =>
+    dispatch(updateUserInfo({ ...user, ...data }));
 
   return (
     <StyledForm
@@ -66,7 +79,7 @@ export const MyInfoForm = () => {
         placeholder="DD/MM/YYYY"
         pattern="^[a-zA-Z]+$"
       />
-      <GenderToggle userGender={gender} />
+      <GenderToggle userGender={gender} formContext={MyInfoFormContext} />
       <Label htmlFor="user-email-input">Адрес эл. почты</Label>
       <StyledEmailInput
         id="user-email-input"

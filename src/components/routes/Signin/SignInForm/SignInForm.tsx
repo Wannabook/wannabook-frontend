@@ -6,6 +6,7 @@ import {
   getLogInLoadingProps,
   logInAction,
   clearLoginError,
+  SignInRequestPayload,
 } from 'store';
 
 import {
@@ -21,16 +22,17 @@ import { SignInError } from './SignInError';
 export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  const logIn = data => dispatch(logInAction.request(data));
+  const logIn = (data: SignInRequestPayload) =>
+    dispatch(logInAction.request(data));
   const errorFromServer = useSelector(getSignInError);
 
   React.useEffect(() => {
-    return () => dispatch(clearLoginError());
+    dispatch(clearLoginError());
   }, [dispatch]);
 
   return (
     <StyledForm
-      onSubmit={logIn}
+      onSubmit={() => logIn}
       isSubmitting={isSubmitting}
       formName="signIn"
       formContext={SignInFormContext}

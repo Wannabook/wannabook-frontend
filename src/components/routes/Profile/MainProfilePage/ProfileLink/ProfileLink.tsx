@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+import { IconProps } from 'semantic-ui-react';
 
 import { ProfileLinkContainer, Icon, NotificationIcon } from './styles';
 
-export const ProfileLink = props => {
+export const ProfileLink: React.FC<IconProps> = props => {
   const { to, icon, children, notificationsAmount, onClick } = props;
 
   return (
@@ -17,14 +18,6 @@ export const ProfileLink = props => {
   );
 };
 
-ProfileLink.propTypes = {
-  to: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
-  notificationsAmount: PropTypes.number,
-  onClick: PropTypes.func,
-};
-
-ProfileLink.default = {
+ProfileLink.defaultProps = {
   notificationsAmount: null,
 };

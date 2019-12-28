@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getForgotPasswordLoadingProps, forgotPassword } from 'store';
+import {
+  getForgotPasswordLoadingProps,
+  forgotPassword,
+  ForgotPasswordRequestPayload,
+} from 'store';
 
 import {
   StyledForm,
@@ -14,7 +18,8 @@ import { ForgotPasswordFormContext } from './ForgotPasswordFormContext';
 export const ForgotPasswordForm = () => {
   const { loading: isSubmitting } = useSelector(getForgotPasswordLoadingProps);
   const dispatch = useDispatch();
-  const handleSubmit = data => dispatch(forgotPassword(data));
+  const handleSubmit = (data: ForgotPasswordRequestPayload) =>
+    dispatch(forgotPassword(data));
 
   return (
     <StyledForm

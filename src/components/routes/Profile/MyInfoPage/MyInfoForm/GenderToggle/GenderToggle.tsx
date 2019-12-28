@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { Context, useContext } from 'react';
 
 import {
   GenderToggleContainer,
@@ -22,7 +21,15 @@ const genderButtons = [
   },
 ];
 
-export const GenderToggle = ({ userGender, formContext }) => {
+interface GenderToggleProps {
+  userGender: 'male' | 'female' | null;
+  formContext: Context<any>;
+}
+
+export const GenderToggle: React.FC<GenderToggleProps> = ({
+  userGender,
+  formContext,
+}) => {
   const { getInputValue, inputChange } = useContext(formContext);
   const gender = getInputValue('gender', userGender);
 
@@ -48,13 +55,4 @@ export const GenderToggle = ({ userGender, formContext }) => {
       <input type="hidden" id="user-gender-input" name="sex" value={gender} />
     </GenderToggleContainer>
   );
-};
-
-GenderToggle.propTypes = {
-  userGender: PropTypes.string,
-  formContext: PropTypes.object,
-};
-
-GenderToggle.defaultProps = {
-  userGender: PropTypes.oneOf(['male', 'female']).isRequired,
 };

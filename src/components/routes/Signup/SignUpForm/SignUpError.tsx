@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 
 import { ErrorContainer } from 'components/index';
 
-export const SignInError = ({ error }) => (
+interface SignUpErrorProps {
+  error: string | null;
+}
+
+export const SignUpError: React.FC<SignUpErrorProps> = ({ error }) => (
   <ErrorContainer>{error}</ErrorContainer>
 );
 
-SignInError.propTypes = {
+SignUpError.propTypes = {
   error: PropTypes.string,
 };

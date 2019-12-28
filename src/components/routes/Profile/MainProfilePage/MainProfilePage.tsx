@@ -5,8 +5,10 @@ import { useDispatch } from 'react-redux';
 import { getPageUrl } from 'routes';
 import { signOut } from 'store';
 
-import { ProfileLink } from './ProfileLink/ProfileLink';
-import { ProfileImage } from './ProfileImage/ProfileImage';
+import { Action } from 'typesafe-actions';
+
+import { ProfileLink } from './ProfileLink';
+import { ProfileImage } from './ProfileImage';
 
 import notifications from './images/notifications.svg';
 import myinfo from './images/my_info_icon.svg';
@@ -19,7 +21,16 @@ import { MainProfilePageContainer } from './styles';
 
 import { AuthContext } from '../../../App/contexts';
 
-const profileLinksData = [
+interface ProfileLink {
+  url: string;
+  text: string;
+  icon: HTMLImageElement;
+  notificationsAmount: number | null;
+  onClick?: () => (e: React.SyntheticEvent<MouseEvent>) => void;
+  actionToDispatch?: () => Action;
+}
+
+const profileLinksData: ProfileLink[] = [
   {
     url: '/',
     text: 'Мои уведомления',

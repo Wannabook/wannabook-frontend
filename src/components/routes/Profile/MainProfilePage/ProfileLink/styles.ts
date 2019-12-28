@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { mainFontColor, white } from 'ui-kit';
 
 export const ProfileLinkContainer = styled(Link)`
@@ -16,7 +17,7 @@ export const ProfileLinkContainer = styled(Link)`
   border-radius: 10px;
 `;
 
-export const Icon = styled.span`
+export const Icon = styled.span<{ icon: string }>`
   position: absolute;
   top: 20px;
   left: 20px;

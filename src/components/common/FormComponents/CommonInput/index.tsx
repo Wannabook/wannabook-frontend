@@ -1,6 +1,7 @@
 import React, { Context, useContext } from 'react';
 
 import { Input } from 'ui-kit';
+import { InputProps } from 'semantic-ui-react';
 
 interface Props {
   error: object;
@@ -10,7 +11,7 @@ interface Props {
   defaultValue: string | number | null;
 }
 
-export const CommonInput: React.FC<Props> = ({
+export const CommonInput: React.FC<Props & InputProps> = ({
   error,
   formContext,
   type,

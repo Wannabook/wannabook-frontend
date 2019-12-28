@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   getSignUpError,
   getLogInLoadingProps,
-  signUpRequest,
+  signUpAction,
   clearSignUpError,
+  SignUpRequestPayload,
 } from 'store';
 
 import { SignUpFormContext } from './SignUpFormContext';
@@ -25,16 +26,17 @@ import {
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  const signUp = data => dispatch(signUpRequest(data));
+  const signUp = (data: SignUpRequestPayload) =>
+    dispatch(signUpAction.request(data));
   const errorFromServer = useSelector(getSignUpError);
 
   React.useEffect(() => {
-    return () => dispatch(clearSignUpError());
+    dispatch(clearSignUpError());
   }, [dispatch]);
 
   return (
     <StyledForm
-      onSubmit={signUp}
+      onSubmit={() => signUp}
       isSubmitting={isSubmitting}
       formName="signUp"
       formContext={SignUpFormContext}
