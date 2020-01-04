@@ -8,10 +8,10 @@
     "not dead"
   ],
   "scripts": {
-    "build": "webpack --mode production --env.ENVIRONMENT=production",
-    "staging": "webpack --mode production --env.ENVIRONMENT=staging",
+    "build": "webpack --env.NODE_ENV=production",
+    "staging": "webpack --env.NODE_ENV=staging",
     "start": "npm run dev",
-    "dev": "webpack-dev-server --mode development --env.ENVIRONMENT=development",
+    "dev": "webpack-dev-server --env.NODE_ENV=development",
     "test": "jest --watch"
   },
   "repository": {

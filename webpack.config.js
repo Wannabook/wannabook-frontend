@@ -10,7 +10,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dotenv = require('dotenv');
 
 module.exports = env => {
-  const devMode = process.env.NODE_ENV === 'development';
+  const devMode = env.NODE_ENV === 'development';
   const isTestingOnMobile = env && env.MOBILE_TESTING;
   const distFolder = 'dist';
 
@@ -22,7 +22,7 @@ module.exports = env => {
 
   // We're concatenating the environment name
   // to our filename to specify the correct env file!
-  const envPath = basePath + '.' + env.ENVIRONMENT;
+  const envPath = basePath + '.' + env.NODE_ENV;
 
   // Check if the file exists, otherwise fall back to the production .env
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
