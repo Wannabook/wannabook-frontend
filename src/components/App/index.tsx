@@ -57,6 +57,7 @@ const App: React.FC<AppProps> = ({ location }) => {
   const hideLeftSideBar = (): void => setLeftSideBarVisibility(false);
   const hideRightSideBar = (): void => setRightSideBarVisibility(false);
 
+  console.log('experimenting with typescript linting')
   return (
     <AuthContext.Provider
       value={{ isLoggedIn, userLoading: loading, userLoaded: loaded }}
@@ -74,11 +75,11 @@ const App: React.FC<AppProps> = ({ location }) => {
           <GlobalStyle />
 
           <Sidebar.Pushable as={StyledSideBar}>
-            <MobileSideBar
-              direction="left"
-              visible={isLeftSideBarVisible}
-              onHide={hideLeftSideBar}
-            >
+              <MobileSideBar
+                direction="left"
+                visible={isLeftSideBarVisible}
+                onHide={hideLeftSideBar}
+              >
               <Search />
             </MobileSideBar>
             <MobileSideBar
