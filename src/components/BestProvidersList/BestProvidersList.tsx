@@ -2,13 +2,9 @@ import React from 'react';
 import { Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { getPageUrl } from 'routes';
+import { getPageUrl } from 'routes/RouteResolver';
 
-import {
-  StyledGrid,
-  StyledRow,
-  StyledColumn,
-} from '../../ui-kit/components/Layout/Grid';
+import { StyledGrid, StyledColumn } from 'ui-kit';
 
 import { ImgContainer } from './styles';
 

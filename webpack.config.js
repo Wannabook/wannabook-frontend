@@ -38,7 +38,7 @@ module.exports = env => {
   }, {});
 
   const config = {
-    entry: { main: './src/index.tsx' },
+    entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, distFolder),
       filename: '[name].[hash].js',
@@ -126,6 +126,8 @@ module.exports = env => {
       })
     );
   }
+
+  // TODO: add uglify for prod
 
   return config;
 };

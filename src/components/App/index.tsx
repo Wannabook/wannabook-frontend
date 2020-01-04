@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 
 import { getLogInLoadingProps, isUserLoggedIn, loadUserAction } from 'store';
+import { ACCESS_TOKEN } from 'consts';
 
 import { NavigationSideBar as MobileSideBar } from '../SideBar';
 import { Page } from '../Page';
@@ -15,7 +16,6 @@ import { StyledSideBar } from '../SideBar/styles';
 import { SideBarStateContext, AuthContext } from './contexts';
 
 import { GlobalStyle } from './styles';
-import { ACCESS_TOKEN } from '../../consts';
 
 interface Location {
   pathname: string;

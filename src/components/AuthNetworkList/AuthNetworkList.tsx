@@ -4,8 +4,8 @@ import { Image } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 
 import { startGoogleAuth } from 'store';
+import { getPageUrl } from 'routes/RouteResolver';
 
-import { getPageUrl } from '../../routes';
 import { SocialNetwork } from './types';
 import { SocialNetworkList, SocialNetworkLink } from './styles';
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { getPageUrl } from 'routes';
+import { getPageUrl } from 'routes/RouteResolver';
 import { signOut } from 'store';
 
 import { Action } from 'typesafe-actions';

@@ -14,7 +14,7 @@ const pagesData: any = {
   'FORGOT-PASSWORD': { route: '/forgot-password' },
 };
 
-const getPageUrl = (pageCode: string) => {
+export const getPageUrl = (pageCode: string) => {
   const pageInfo = pagesData[pageCode];
   if (!pageInfo) {
     console.error(`No page with code "${pageCode}"!!!`);
@@ -24,5 +24,3 @@ const getPageUrl = (pageCode: string) => {
 
   return pageInfo.route;
 };
-
-export { getPageUrl };
