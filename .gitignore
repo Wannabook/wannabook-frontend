@@ -1,8 +1,16 @@
+# IDEs
 .idea/
+
+# modules
 node_modules/
+
+# production
 dist/
 build/
 temp/
+
+# environments
 .env
 .env.development
+.env.production
 .env.staging
