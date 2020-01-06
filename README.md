@@ -14,10 +14,6 @@ This is a repo for Wannabook frontend
 * commit names convention: `WNB-19: Create some feature`
 * commit names should contain URL to respective ticket 
 
-### Architecture and tech stack
-
-We use [the following technologies and architecture](https://docs.google.com/document/d/1bBVGc3HTySaMOgyjPUMZxbyz2gxKqtI6KeDokjYyR_Y/edit#).
-
 ### Testing on mobiles
 To test the app locally via Wi-Fi, set `MOBILE_TESTING` environment variable in `.env.development` to `true`. Once webpack is up and running you will see an IP address in the console (Access URLs - External). Type this URL with port number on mobile and you will see the app running. Now you can test it. 
 
@@ -28,7 +24,9 @@ To turn off mobile testing mode just set `MOBILE_TESTING` to false and restart w
 ### Environment variables
 `.env` files are in the root directory of the project. There are three of them: for development, staging and production. 
 
-Any values you put there will be available in the source code via `process.env.SOMETHING`, where `SOMETHING` is the key in the respective `.env` file.
+Any values you put there will be available in the source code via `process.env.SOMETHING`, where `SOMETHING` is the key in the respective `.env` file. 
+
+> Note: Do not try to destructure process.env, just use `process.env.SOMETHING` directly.
 
 ## ESLint setup
 We support our custom shareable eslint config called `Wannabook`. 
