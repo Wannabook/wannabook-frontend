@@ -42,7 +42,7 @@ module.exports = env => {
     output: {
       path: path.resolve(__dirname, distFolder),
       filename: '[name].[hash].js',
-      chunkFilename: '[name].js',
+      chunkFilename: '[name].[hash].js',
       publicPath: '/',
     },
     module: {
@@ -97,10 +97,8 @@ module.exports = env => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        inject: 'body',
-        hash: true,
-        template: './public/index.html',
-        filename: 'index.html',
+        template: path.resolve(__dirname, 'public/index.html'),
+        chunksSortMode: 'none',
       }),
       new MiniCssExtractPlugin({
         filename: 'style.css',
@@ -109,6 +107,22 @@ module.exports = env => {
       new WebpackMd5Hash(),
       new webpack.DefinePlugin(envKeys),
     ],
+    optimization: {
+      splitChunks: {
+        chunks: 'async',
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          // vendor chunk
+          vendor: {
+            // sync + async chunks
+            chunks: 'all',
+            // import file path containing node_modules
+            test: /node_modules/,
+          },
+        },
+      },
+    },
     devServer: {
       contentBase: './dist',
       hot: true,
