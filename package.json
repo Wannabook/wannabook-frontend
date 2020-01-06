@@ -2,16 +2,16 @@
   "name": "wannabook-frontend",
   "version": "1.0.0",
   "description": "This is a repo for Wannabook frontend",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "browserslist": [
     "defaults",
     "not dead"
   ],
   "scripts": {
-    "build": "webpack --env.NODE_ENV=production",
-    "staging": "webpack --env.NODE_ENV=staging",
+    "build": "webpack --env.NODE_ENV=production --mode production",
+    "staging": "webpack --env.NODE_ENV=staging --mode production",
     "start": "npm run dev",
-    "dev": "webpack-dev-server --env.NODE_ENV=development",
+    "dev": "webpack-dev-server --env.NODE_ENV=development --mode development",
     "test": "jest --watch"
   },
   "repository": {
