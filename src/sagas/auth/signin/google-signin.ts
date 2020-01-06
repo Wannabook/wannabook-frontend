@@ -8,12 +8,12 @@ export function* googleLoginSaga(client: ApiClient) {
 }
 
 function* handler(client: ApiClient) {
-  const { API_URL, API_VERSION, GOOGLE_AUTH_URL } = process.env;
-
   try {
     const response = yield call(
       [client, 'post'],
-      `${API_URL}/api/v${API_VERSION}/${GOOGLE_AUTH_URL}`
+      // destructuring on process.env doesn't work
+      // eslint-disable-next-line max-len
+      `${process.env.API_URL}/api/v${process.env.API_VERSION}/${process.env.GOOGLE_AUTH_URL}`
     );
 
     window.location = response.data;
