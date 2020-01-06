@@ -16,3 +16,5 @@ export const AUTH_METHODS = {
   VK: 'vk',
   ODNOKLASSNIKI: 'ok',
 };
+
+export const TOKEN_GRABBER_URL_REGEX = /\/auth\/.+\/token/;

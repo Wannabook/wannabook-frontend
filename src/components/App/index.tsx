@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 
 import { getLogInLoadingProps, isUserLoggedIn, loadUserAction } from 'store';
-import { ACCESS_TOKEN } from 'consts';
+import { ACCESS_TOKEN, TOKEN_GRABBER_URL_REGEX } from 'consts';
 
 import { NavigationSideBar as MobileSideBar } from '../SideBar';
 import { Page } from '../Page';
@@ -33,7 +33,6 @@ const App: React.FC<AppProps> = ({ location }) => {
   const tokenInLS = localStorage.getItem(ACCESS_TOKEN);
   // TODO handle errors on ui (discuss with UI dep)
 
-  // kostyl!
   // since google and maybe other auth providers require redirects to their pages,
   // we in the end need some frontend url to which backend will redirect back our
   // browser. Upon redirection, in the url, we will have all required info like token,
@@ -41,7 +40,9 @@ const App: React.FC<AppProps> = ({ location }) => {
   // It lives at `frontend_url/auth/<provider-name>/token`. When we're on such routes,
   // we know we don't need to load the user as it leads to bugs
   const shouldLoadUser =
-    !isLoggedIn && tokenInLS && !/\/auth\/.+\/token/.test(location.pathname);
+    !isLoggedIn &&
+    tokenInLS &&
+    !TOKEN_GRABBER_URL_REGEX.test(location.pathname);
 
   useEffect(() => {
     if (shouldLoadUser) {

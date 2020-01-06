@@ -22,8 +22,11 @@ import { SignInError } from './SignInError';
 export const SignInForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  const logIn = (data: SignInRequestPayload) =>
+
+  const logIn = (data: SignInRequestPayload) => {
     dispatch(logInAction.request(data));
+  };
+
   const errorFromServer = useSelector(getSignInError);
 
   React.useEffect(() => {
@@ -32,7 +35,7 @@ export const SignInForm = () => {
 
   return (
     <StyledForm
-      onSubmit={() => logIn}
+      onSubmit={logIn}
       isSubmitting={isSubmitting}
       formName="signIn"
       formContext={SignInFormContext}

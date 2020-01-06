@@ -8,7 +8,7 @@ export interface PlainOldJsObject {
  */
 export interface Store {
   auth: {
-    user: EntityInitialState;
+    user: UserInitialState;
     signIn: EntityInitialState;
     signUp: EntityInitialState;
     changePassword: EntityInitialState;
@@ -23,6 +23,10 @@ export interface EntityInitialState {
   loaded: boolean;
   error?: string | PlainOldJsObject | null;
   records?: PlainOldJsObject[] | null;
+}
+
+export interface UserInitialState extends EntityInitialState {
+  profile: Profile | null;
 }
 
 export interface EntityLoadSuccessPayload {

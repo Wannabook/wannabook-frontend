@@ -11,7 +11,7 @@ export default class FormValidator {
   };
 
   verifyEmail = (email: string) => {
-    return email.indexOf('@') > -1
+    return email.indexOf('@') === -1
       ? { message: 'Неправильный адрес электронной почты' }
       : null;
   };

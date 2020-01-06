@@ -12,7 +12,7 @@ type FormNameType =
 interface Props {
   children: any;
   className?: string;
-  onSubmit: (a: React.SyntheticEvent<FormEvent>) => any;
+  onSubmit: (a: any) => void;
   isSubmitting: boolean;
   formName: FormNameType;
   formContext: Context<any>;

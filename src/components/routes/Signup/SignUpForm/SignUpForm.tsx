@@ -26,8 +26,11 @@ import {
 export const SignUpForm = () => {
   const { loading: isSubmitting } = useSelector(getLogInLoadingProps);
   const dispatch = useDispatch();
-  const signUp = (data: SignUpRequestPayload) =>
+
+  const signUp = (data: SignUpRequestPayload) => {
     dispatch(signUpAction.request(data));
+  };
+
   const errorFromServer = useSelector(getSignUpError);
 
   React.useEffect(() => {
@@ -36,7 +39,7 @@ export const SignUpForm = () => {
 
   return (
     <StyledForm
-      onSubmit={() => signUp}
+      onSubmit={signUp}
       isSubmitting={isSubmitting}
       formName="signUp"
       formContext={SignUpFormContext}
