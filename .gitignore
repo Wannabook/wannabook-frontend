@@ -14,3 +14,6 @@ temp/
 .env.development
 .env.production
 .env.staging
+
+# debugging
+stats.json

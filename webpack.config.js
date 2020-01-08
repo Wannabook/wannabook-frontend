@@ -8,6 +8,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dotenv = require('dotenv');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 module.exports = env => {
   const devMode = env.NODE_ENV === 'development';
@@ -139,6 +141,10 @@ module.exports = env => {
         open: false,
       })
     );
+  }
+
+  if (env.PROFILING) {
+    config.plugins.push(new BundleAnalyzerPlugin());
   }
 
   // TODO: add uglify for prod
