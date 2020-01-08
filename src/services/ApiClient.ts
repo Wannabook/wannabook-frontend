@@ -19,6 +19,12 @@ const client = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
+interface RequestParams {
+  method: string;
+  headers?: PlainOldJsObject;
+  params?: PlainOldJsObject;
+}
+
 class ApiClient {
   private headers: PlainOldJsObject;
 
@@ -26,45 +32,32 @@ class ApiClient {
     this.headers = {};
   }
 
-  // TODO: reduce duplication in client methods
   get(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      ...omit(['headers'], params),
-    };
+    const requestParams = buildRequestParams('GET', params);
 
     return this.request(endpoint, requestParams);
   }
 
   put(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'PUT',
-      ...omit(['headers'], params),
-    };
+    const requestParams = buildRequestParams('PUT', params);
 
     return this.request(endpoint, requestParams);
   }
 
   post(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'POST',
-      ...omit(['headers'], params),
-    };
+    const requestParams = buildRequestParams('POST', params);
 
     return this.request(endpoint, requestParams);
   }
 
-  // TODO: add patch method!
-  // patch(endpoint, params = {})
+  patch(endpoint: string, params: ApiClientReqParams = {}) {
+    const requestParams = buildRequestParams('PATCH', params);
+
+    return this.request(endpoint, requestParams);
+  }
 
   delete(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'DELETE',
-      ...omit(['headers'], params),
-    };
+    const requestParams = buildRequestParams('DELETE', params);
 
     return this.request(endpoint, requestParams);
   }
@@ -109,3 +102,16 @@ export const formValidator = new FormValidator();
 // we have to check bools from .env file as strings
 export const apiClient =
   process.env.MOCK_CLIENT === 'true' ? new MockApiClient() : new ApiClient();
+
+const buildRequestParams = (method: string, params: PlainOldJsObject) => {
+  const requestParams: RequestParams = {
+    method,
+    ...omit(['headers'], params),
+  };
+
+  if (params.headers) {
+    requestParams.headers = { ...requestParams.headers, ...params.headers };
+  }
+
+  return requestParams;
+};

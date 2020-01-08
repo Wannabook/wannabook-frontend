@@ -15,9 +15,15 @@ export function* logIn(
   try {
     const logInResponse = yield call(logInRequest, client, data);
 
-    if (logInResponse.message) {
+    const loginError = logInResponse.message || logInResponse.error;
+
+    if (loginError) {
       // we got an error during signin
-      yield put(logInAction.success({ message: logInResponse.message }));
+      yield put(
+        logInAction.success({
+          message: loginError,
+        })
+      );
 
       return;
     }

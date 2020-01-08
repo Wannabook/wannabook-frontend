@@ -11,8 +11,7 @@ export function* signOutSaga(client: ApiClient) {
 
 function* handler(client: ApiClient) {
   try {
-    // TODO: fix signout, some error is showing
-    yield call(client.post(API_ENDPOINTS.signout));
+    yield call(client.post, API_ENDPOINTS.signout);
   } catch (error) {
     // TODO: show something useful on UI in this case
     console.error(error);
