@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Loadable from 'react-loadable';
+import Loadable, { LoadingComponentProps } from 'react-loadable';
 
 import { Loading } from 'components';
-import LoadingComponentProps = LoadableExport.LoadingComponentProps;
 
 export function AppRoutes() {
   return (
