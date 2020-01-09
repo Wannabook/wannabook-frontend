@@ -38,3 +38,5 @@ To change the config, clone the eslint-config repo from `Wannabook`, make change
 **For now you will need to install all eslint plugins and packages to the project in which you are going to use `eslint-config`. Do not install or add those packages to `eslint config`'s `package.json`.**
 
   
+## Webpack profiling
+To see the bundle structure, simply run `npm run profile`. Wait until webpack bundles all files and a browser tab will pop up, with all details about the bundle. 

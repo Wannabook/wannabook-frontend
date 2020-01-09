@@ -19,6 +19,12 @@ const client = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
+interface RequestParams {
+  method: string;
+  headers?: PlainOldJsObject;
+  params?: PlainOldJsObject;
+}
+
 class ApiClient {
   private headers: PlainOldJsObject;
 
@@ -26,50 +32,37 @@ class ApiClient {
     this.headers = {};
   }
 
-  // TODO: reduce duplication in client methods
-  get(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      ...omit(['headers'], params),
-    };
+  get = (endpoint: string, params: ApiClientReqParams = {}) => {
+    const requestParams = buildRequestParams('GET', params);
 
     return this.request(endpoint, requestParams);
-  }
+  };
 
-  put(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'PUT',
-      ...omit(['headers'], params),
-    };
+  put = (endpoint: string, params: ApiClientReqParams = {}) => {
+    const requestParams = buildRequestParams('PUT', params);
 
     return this.request(endpoint, requestParams);
-  }
+  };
 
-  post(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'POST',
-      ...omit(['headers'], params),
-    };
+  post = (endpoint: string, params: ApiClientReqParams = {}) => {
+    const requestParams = buildRequestParams('POST', params);
 
     return this.request(endpoint, requestParams);
-  }
+  };
 
-  // TODO: add patch method!
-  // patch(endpoint, params = {})
-
-  delete(endpoint: string, params: ApiClientReqParams = {}) {
-    const requestParams = {
-      headers: Object.assign({}, this.headers, params.headers),
-      method: 'DELETE',
-      ...omit(['headers'], params),
-    };
+  patch = (endpoint: string, params: ApiClientReqParams = {}) => {
+    const requestParams = buildRequestParams('PATCH', params);
 
     return this.request(endpoint, requestParams);
-  }
+  };
 
-  private request(endpoint: string, params: ApiClientReqParams = {}) {
+  delete = (endpoint: string, params: ApiClientReqParams = {}) => {
+    const requestParams = buildRequestParams('DELETE', params);
+
+    return this.request(endpoint, requestParams);
+  };
+
+  private request = (endpoint: string, params: ApiClientReqParams = {}) => {
     // if we initialize Client with these values then we'll not be able to
     // detect change to these values during app lifetime,
     // so we get "fresh" values before each request is made
@@ -99,7 +92,7 @@ class ApiClient {
 
         return error?.response?.data;
       });
-  }
+  };
 }
 
 const isAbsolute = (url: string) => /^(?:[a-z]+:)?\/\//i.test(url);
@@ -109,3 +102,16 @@ export const formValidator = new FormValidator();
 // we have to check bools from .env file as strings
 export const apiClient =
   process.env.MOCK_CLIENT === 'true' ? new MockApiClient() : new ApiClient();
+
+const buildRequestParams = (method: string, params: PlainOldJsObject) => {
+  const requestParams: RequestParams = {
+    method,
+    ...omit(['headers'], params),
+  };
+
+  if (params.headers) {
+    requestParams.headers = { ...requestParams.headers, ...params.headers };
+  }
+
+  return requestParams;
+};
