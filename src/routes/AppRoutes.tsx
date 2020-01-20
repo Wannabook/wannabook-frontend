@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Loadable from 'react-loadable';
+import Loadable, { LoadingComponentProps } from 'react-loadable';
 
 import { Loading } from 'components';
 
@@ -25,71 +25,75 @@ export function AppRoutes() {
   );
 }
 
+const ModuleLoader: React.ComponentType<LoadingComponentProps> = () => {
+  return <Loading fixed />;
+};
+
 // If you ever want to extract these into a single function,
 // don't waste your time. Dynamic imports don't play well with Routes
 const Home = Loadable({
   loader: () => import(/* webpackChunkName: "home" */ './Home/Home'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Services = Loadable({
   loader: () =>
     import(/* webpackChunkName: "services" */ './Services/Services'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Service = Loadable({
   loader: () => import(/* webpackChunkName: "service" */ './Service/Service'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Categories = Loadable({
   loader: () =>
     import(/* webpackChunkName: "categories" */ './Categories/Categories'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Category = Loadable({
   loader: () =>
     import(/* webpackChunkName: "category" */ './Category/Category'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Profile = Loadable({
   loader: () => import(/* webpackChunkName: "profile" */ './Profile/Profile'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const MyInfo = Loadable({
   loader: () =>
     import(/* webpackChunkName: "myinfo" */ './Profile/MyInfo/MyInfo'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Signup = Loadable({
   loader: () => import(/* webpackChunkName: "signup" */ './Signup/Signup'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Signin = Loadable({
   loader: () => import(/* webpackChunkName: "signin" */ './Signin/Signin'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Signout = Loadable({
   loader: () => import(/* webpackChunkName: "singout" */ './Signout/Signout'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const Auth = Loadable({
   loader: () => import(/* webpackChunkName: "auth" */ './Auth/Auth'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const TokenGrabber = Loadable({
   loader: () =>
     import(/* webpackChunkName: "tokengrabber" */ './Auth/TokenGrabber'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const ChangePassword = Loadable({
@@ -97,7 +101,7 @@ const ChangePassword = Loadable({
     import(
       /* webpackChunkName: "changepassword" */ './ChangePassword/ChangePassword'
     ),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const ForgotPassword = Loadable({
@@ -105,11 +109,11 @@ const ForgotPassword = Loadable({
     import(
       /* webpackChunkName: "forgotpassword" */ './ForgotPassword/ForgotPassword'
     ),
-  loading: Loading,
+  loading: ModuleLoader,
 });
 
 const NotFound = Loadable({
   loader: () =>
     import(/* webpackChunkName: "notfound" */ './NotFound/NotFound'),
-  loading: Loading,
+  loading: ModuleLoader,
 });
