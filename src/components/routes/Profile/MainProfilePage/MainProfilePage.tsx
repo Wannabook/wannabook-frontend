@@ -79,16 +79,18 @@ export const MainProfilePage = () => {
       {!isLoggedIn && userLoaded && <Redirect to={getPageUrl('AUTH')} />}
       <ProfileImage />
       {profileLinksData.map(link => {
+        const handleClick = () => {
+          link.onClick?.(); // call function if exists
+          link.actionToDispatch && dispatch(link.actionToDispatch()); // call function if exists
+        };
+
         return (
           <ProfileLink
             key={link.text}
             to={link.url}
             icon={link.icon}
             notificationsAmount={link.notificationsAmount}
-            onClick={() => {
-              link.onClick?.(); // call function if exists
-              dispatch(link.actionToDispatch?.()); // call function if exists
-            }}
+            onClick={handleClick}
           >
             {link.text}
           </ProfileLink>
